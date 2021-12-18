@@ -1,0 +1,309 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<div class="container">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <a [routerLink]="['../promotion']"> <button class="nextbtn">{{ contentLan.NEXT }}
+                        <i class="far fa-angle-right" *ngIf=" dir == 'ltr'"></i>
+                        <i class="far fa-angle-left" *ngIf=" dir == 'rtl'"></i>
+                    </button></a>
+                <a [routerLink]="['../projectpreview']"> <button class="projectpreview">{{contentLan.PREVIEW}} <img
+                            src="assets/image/visibility.png" class="img-fluid projectpreviewimg"></button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+    <!-- People list header  -->
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="projectfeaturelist">
+                <li> <a [routerLink]="['../basic']"><button class="basicbtn"><span>{{ contentLan.BASICS }}</span> <span
+                                class="basiccircle"></span></button></a></li>
+                <li>
+                    <a [routerLink]="['../rewards']"> <button class="rewardbtn"><span>{{ contentLan.REWARDS }}</span>
+                            <span class="rewardcircle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../story']"> <button class="storybtn"><span>{{ contentLan.STORY }}</span> <span
+                                class="storycircle"></span></button></a>
+                </li>
+                <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li> -->
+                <li> <a [routerLink]="['../payment']"><button class="paymentbtn btn_active"><span>{{ contentLan.PAYMENT
+                                }}</span> <span class="paymentcircle active_circle"></span></button></a></li>
+                <li> <a [routerLink]="['../promotion']"><button class="promotionbtn"><span>{{ contentLan.PROMOTION
+                                }}</span> <span class="promotioncircle"></span></button></a></li>
+            </ol>
+            <div class=" projectfeaturedselect" dropdown>
+                <p class="text-center"><button id="button-basic" dropdownToggle type="button"
+                        class="projectfeaturedselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                        Button dropdown <span class="caret"></span>
+                    </button></p>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../basic']">{{ contentLan.BASICS }}</a>
+                    </li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../rewards']">{{ contentLan.REWARDS
+                            }}</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../story']">{{ contentLan.STORY }}</a>
+                    </li>
+                    <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../payment']">{{ contentLan.PAYMENT
+                            }}</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../promotion']">{{ contentLan.PROMOTION
+                            }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Confirm your identity and link a bank account -->
+    <section class="start_basic_sec">
+        <div class="row">
+            <div class="col-md-12" *ngIf=" dir == 'ltr'">
+                <h3 class="startbasictitle">{{tabHead}}</h3>
+                <p class="startbasicpara">{{description}}</p>
+            </div>
+            <div class="col-md-12" *ngIf=" dir == 'rtl'">
+                <h3 class="startbasictitle">{{tabHead_Ar}}</h3>
+                <p class="startbasicpara">{{description_Ar}}</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="headerhr">
+        </div>
+    </div>
+    <!-- Contact email -->
+    <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="contactemail">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle_Ar}}</span>
+                    </h4>
+                    <p class="contactemailpara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes_Ar}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group user_box">
+                    <h4 class="contactemailuser">{{email}}</h4>
+                    <!-- <hr class="contactemailboxhr">
+                    <div class="completeddot"></div>
+                    <p class="completedtext"><span class="completeddot"></span>Completed</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+
+    <!-- Funds recipient -->
+    <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="fundsrecipient">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle1}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle1_Ar}}</span>
+                    </h4>
+                    <p class="fundsrecipientpara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes1}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes1_Ar}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check individualbox">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">{{ contentLan.INDIVIDUAL }}</label>
+                </div>
+                <div class="form-check individualbox">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">{{ contentLan.LEGALENTRY }}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Collaborators (optional) -->
+    <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="fundsrecipient">Collaborators (optional)</h4>
+                    <p class="fundsrecipientpara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="collab_field">
+                    <input type="text" class="form-control collaboratorsfullname" placeholder="Full Name">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-11">
+                        <input type="text" class="form-control collab_dob_field" bsDatepicker placeholder="DOB">
+                        <label class="collaboratorsdob">Date of birth</label>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="cal_ico">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collab_field">
+                    <input type="text" class="form-control collaboratorsfullname" placeholder="Home address">
+                </div>
+                <div class="collab_field">
+                    <select class="form-select">
+    <option>City</option>
+    </select>
+                </div>
+                <div class="collab_field">
+                    <select class="form-select">
+    <option>State</option>
+    </select>
+                </div>
+                <div class="collab_field">
+                    <select class="form-select">
+    <option>Country</option>
+    </select>
+                </div>
+                <div class="collab_field">
+                    <input type="text" class="form-control collaboratorsfullname" placeholder="Postcode">
+                </div>
+                <button class="sendconfirmation">Send for confirmation</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Bank account -->
+    <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="collaborators">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle2}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle2_Ar}}</span>
+                    </h4>
+                    <p class="collaboratorspara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes2}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes2_Ar}}</span>
+                </div>
+            </div>
+            <div class="col-md-6" style='display: flex;'>
+                <!-- <p class="lock_sec"><i class="fas fa-lock"></i> Complete the above steps to unlock this section</p> -->
+                <!-- <input type="text" name="" id=""> -->
+                <div class="col-md-6" *ngIf='bankAvailable; else ifEleMa'>
+                    <label>{{ contentLan.BANKNAME }}: </label>
+                    <h4 class="contactebankuser"> {{bankName || 'NA'}}</h4>
+                    <label>{{ contentLan.BANKACNO }}: </label>
+                    <h4 class="contactebankuser"> {{banknumber || 'NA'}}</h4>
+                    <label>{{ contentLan.IBAN }}: </label>
+                    <h4 class="contactebankuser"> {{iban || 'NA'}}</h4>
+                </div>
+                <ng-template #ifEleMa>
+                    <div class="col-md-6">
+                        <p style='color: red'>No data available.</p>
+                    </div>
+                   
+                </ng-template>
+
+                <div class="col-md-6" style="text-align: right;">
+                    <div class="col-md-12">
+                        <a class="profilemanage_Alter " (click)="changeStatus()"
+                            ngbTooltip="{{ bankAvailable ? 'Change the current bank detail' : 'Select new bank detail from your verifyed banks list'}} ">
+                            <i *ngIf='bankAvailable; else ifEle' class="fas fa-edit" aria-hidden="true"></i>
+                            <ng-template #ifEle>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </ng-template>
+                            {{ bankAvailable ? (contentLan.CHANGE || 'Change') : (contentLan.SELECT || 'Select') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf='openCard'>
+                <div class="col-md-3 boxes" *ngFor="let content of banksList" (click)='onSave(content._id)'>
+                    <div style="display: flex;">
+                        <h3>{{content.bankName}}</h3> <span class='forSpan'>Verified</span>
+                    </div>
+                    <span>Account No.</span>
+                    <p>{{content.accountNumber}}</p>
+                    <span>IBAN</span>
+                    <p>{{content.iban}}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment source -->
+    <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="fundsrecipient">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle3}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle3_Ar}}</span>
+                    </h4>
+                    <p class="fundsrecipientpara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes3}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes3_Ar}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="lock_sec"><i class="fas fa-lock"></i> {{ contentLan.COMPLETESTEPSCONTENT }}</p>
+            </div>
+        </div>
+
+    </section> -->
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="reward_btn_sec">
+                <button class="rewardcancel">{{ contentLan.CANCEL }}</button>
+                <a [routerLink]="['../promotion']">
+                    <button class="savereward"> {{ contentLan.NEXT }}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<app-footer></app-footer>

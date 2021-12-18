@@ -1,0 +1,412 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<div class="container">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <a [routerLink]="['../story']"> <button class="nextbtn">{{ contentLan.NEXT }} 
+                    <i class="far fa-angle-right" *ngIf=" dir == 'ltr'"></i>
+                    <i class="far fa-angle-left" *ngIf=" dir == 'rtl'"></i>
+                </button></a>
+                <a [routerLink]="['../projectpreview']"> <button class="projectpreview"> {{contentLan.PREVIEW}}<img src="assets/image/visibility.png" class="img-fluid projectpreviewimg"></button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reward list header  -->
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="projectfeaturelist">
+                <li> <a [routerLink]="['../basic']"><button class="basicbtn"><span>{{ contentLan.BASICS }}</span> <span class="basiccircle"></span></button></a></li>
+                <li>
+                    <a [routerLink]="['../rewards']"> <button class="rewardbtn btn_active"><span >{{ contentLan.REWARDS }}</span> <span class="rewardcircle active_circle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../story']"> <button class="storybtn"><span >{{ contentLan.STORY }}</span> <span class="storycircle"></span></button></a>
+                </li>
+                <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li> -->
+                <li> <a [routerLink]="['../payment']"><button class="paymentbtn"><span >{{ contentLan.PAYMENT }}</span> <span class="paymentcircle"></span></button></a></li>
+                <li> <a [routerLink]="['../promotion']"><button class="promotionbtn"><span >{{ contentLan.PROMOTION }}</span> <span class="promotioncircle"></span></button></a></li>
+            </ol>
+            <div class=" projectfeaturedselect" dropdown>
+                <p class="text-center"><button id="button-basic" dropdownToggle type="button" class="projectfeaturedselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+Button dropdown <span class="caret"></span>
+</button></p>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../basic']">{{ contentLan.BASICS }}</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../rewards']">{{ contentLan.REWARDS }}</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../story']">{{ contentLan.STORY }}</a></li>
+                    <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../payment']">{{ contentLan.PAYMENT }}</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../promotion']">{{ contentLan.PROMOTION }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Add your rewards -->
+    <section class="start_basic_sec">
+        <div class="row">
+            <div class="col-md-12" *ngIf=" dir == 'ltr'">
+                <h3 class="startbasictitle">{{tabHead}}</h3>
+                <p class="startbasicpara"> {{description}}</p>
+            </div>
+            <div class="col-md-12" *ngIf=" dir == 'rtl'">
+                <h3 class="startbasictitle">{{tabHead_Ar}} </h3>
+                <p class="startbasicpara"> {{description_Ar}}</p>
+            </div>
+        </div>
+    </section>
+    <!-- contents -->
+
+    <form [formGroup]="rewardForm" name="form" ngNativeValidate>
+        <!-- <button (click)="formclean()">Add New</button> -->
+        <div class="row">
+            <div class="col-md-7">
+
+                <div class="form-group">
+                    <label>{{ contentLan.TITLE }}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="Reward Title" style="  color: #5c82d4; " *ngIf=" dir == 'ltr'"></i>
+                    <i class="fas fa-info-circle " ngbTooltip="Title" style="  color: #5c82d4; " *ngIf=" dir == 'rtl'"></i></label>
+                    <input type="text" formControlName="title" (keyup)="onKey($event)" class="rewardtitleinput form-control" placeholder="Title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ contentLan.AMOUNT }}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="Amount for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                        *ngIf=" dir == 'ltr'"></i>
+                    <i class="fas fa-info-circle " ngbTooltip="Amount for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                        *ngIf=" dir == 'rtl'"></i></label>
+                    <span class="fundsar" style="left: -82px;">SAR</span><input type="number" formControlName="amount" (keyup)="onamt($event)" class="fundingno form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ contentLan.DESCRIPTION }}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="Description for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                        *ngIf=" dir == 'ltr'"></i>
+                    <i class="fas fa-info-circle " ngbTooltip="Description for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                        *ngIf=" dir == 'rtl'"></i></label>
+                    <textarea rows="5" cols="40" formControlName="description" (keyup)="ondesc($event)" maxlength="1000" placeholder="Description" class="rewarddescriptioninput form-control" required></textarea>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <section class="reward_pre_sec">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="rewardpreview" *ngIf=" dir == 'ltr'">{{rewardHead}}</h3>
+                            <p class="rewardpreviewdesc" *ngIf=" dir == 'ltr'">{{rewardDescription}}</p>
+                            <h3 class="rewardpreview" *ngIf=" dir == 'rtl'">{{rewardHead_Ar}}</h3>
+                            <p class="rewardpreviewdesc" *ngIf=" dir == 'rtl'">{{rewardDescription_Ar}}</p>
+                            <p class="rewardpreviewpledge">Pledge SAR {{amt}} or more</p>
+                            <hr class="rewardpreviewhr">
+                            <h4 class="rewardpreviewproject" aria-placeholder="Title">{{text}}</h4>
+                            <p class="rewardpreviewprojecttitle">{{desc}}</p>
+                            <h4 class="rewardpreviewproject">{{ contentLan.ESTIMATEDELIVERY }}</h4>
+                            <p class="rewardpreviewprojecttitle">{{month | date: 'MMMM , y'}} </p>
+                            <h4 class="rewardpreviewproject">{{ contentLan.SHIPSTO }}</h4>
+                            <p class="rewardpreviewprojecttitle">{{shipping}}</p>
+                            <p class="rewardpreviewprojecttitle">{{world}}</p>
+                            <h4 class="rewardpreviewproject">{{ contentLan.REWARDQTY }}</h4>
+                            <p class="rewardpreviewprojecttitle">{{quantity}}</p>
+                            <h4 class="rewardpreviewproject">{{ contentLan.TIMELIMIT }}</h4>
+                            <p class="rewardpreviewprojecttitle">{{timeLimit}}</p>
+                            <h4 class="rewardpreviewproject">Discount : <span class="rewardpreviewprojecttitle">{{discountValue}}</span></h4>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <section class="delive_sec">
+            <div class="row">
+                <div class="col-md-7">
+                    <label>{{contentLan.ITEMS}}</label>
+                    <table class="table table-bordered" formArrayName="items">
+                        <tr>
+                            <th colspan="2" class="add_item">{{contentLan.ADDITEMS}}:</th>
+                            <th class="add_more_btn"><button type="button" (click)="addQuantity()" class="btn btn-primary">{{contentLan.ADDMORE}}</button></th>
+                        </tr>
+                        <tr *ngFor="let quantity of items().controls; let i=index" [formGroupName]="i" class="titl_quan">
+                            <td class="tit_cls">
+                                <label> {{contentLan.TITLE}} :</label>
+                                <input type="text" style=" border-bottom-width: thin; border-top-width: thin; " formControlName="title" class="form-control">
+                            </td>
+                            <td class="tit_cls">
+                                <label> {{contentLan.QTY}}:</label>
+                                <input type="text" style=" border-bottom-width: thin; border-top-width: thin; " formControlName="quandity" class="form-control">
+                            </td>
+                            <td>
+                                <button (click)="removeQuantity(i)" class="btn btn-danger" style=" background: red;border: none;margin-top: 25%;margin-left: 5%; ">Remove</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{contentLan.ESTIMATEDELIVERY}}<span style=" color: red; ">*</span><i class="fas fa-info-circle" ngbTooltip="Delivery Time of the Reward" style="color: #5c82d4;padding: 0px 5px;" *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="Delivery Time of the Reward" style="color: #5c82d4;padding: 0px 5px;" *ngIf=" dir == 'rtl'"></i></label>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="month" class="form-control" [min]="newdate" formControlName="estimateDelivery" (change)="onmonth($event)">
+                                        <!-- <input type="date" class="form-control"> -->
+                                        <!-- <select class="rewarddeliverymonth" formControlName="estimateDelivery" (change)="onmonth($event)">
+                                <option disabled selected>Month</option>
+                                <option value=""><input type="month"></option> -->
+                                        <!-- <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option> -->
+                                        <!-- </select> -->
+                                    </div>
+                                    <!-- <div class="col-md-5">
+                                        <select class="rewarddeliveryyear" formControlName="estimateDeliveryYear" (change)="onyear($event)">
+                                <option disabled selected> Year</option>
+                                <option value="2021"> 2021</option>
+                                <option value="2022"> 2022</option>
+                                <option value="2023"> 2023</option>
+                                <option value="2024"> 2024</option>
+                                <option value="2025"> 2025</option>
+                                </select>
+                                    </div> -->
+                                    <div class="col-md-2">
+                                        <p class="calender_icon"><i class="fas fa-calendar-alt"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-1"></div> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{contentLan.SHIPPING}}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="To choose the city the reward to be shipped or Digital copy" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="To choose the city the reward to be shipped or Digital copy" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'rtl'"></i></label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <select class="rewardshipingoption" formControlName="sippingType" (change)="onshipping($event)">
+                                <option disabled selected> {{contentLan.SHIPPING}}</option>
+                                <option value="NO Shipping(Digital copy only)"> NO Shipping(Digital copy only)</option>
+                                <option value="_All_Saudi_" formControlName="w" > All cities in saudi</option>
+                                <option value="Only Certain Cities" > Only Certain Cities</option>
+                                <option value="Anywhere in the World" > Anywhere in the World</option>                                                                                       
+                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="sippingType =='All cities in saudi'">
+                                <div class="row">
+                                    <!-- <div class="col-md-6">
+                                <input type="text" formControlName="destination" class="form-control" placeholder="Coutry">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" formControlName="cost" placeholder="Cost">
+                            </div> -->
+                                    <table class="table" formArrayName="sipping">
+                                        <tr>
+                                            <th colspan="2">{{contentLan.ADDITEMS}}:</th>
+                                            <th width="150px"><button type="button" (click)="addQuantitycountry()" class="btn btn-primary" style=" background: #fe8741; border: none;margin-left: 30%; ">{{contentLan.ADDMORE}}</button></th>
+                                        </tr>
+                                        <tr *ngFor="let quantity of sipping().controls; let i=index" [formGroupName]="i">
+                                            <td style=" width: 40%; ">
+                                                <label> Cities :</label>
+                                                <input type="text" formControlName="destination" class="form-control">
+                                            </td>
+                                            <td>
+                                                <label> Cost:</label>
+                                                <input type="text" formControlName="cost" class="form-control">
+                                            </td>
+                                            <td>
+                                                <button (click)="removeQuantitycountry(i)" class="btn btn-danger" style=" background: red; border: none;margin-top: 30%;margin-left: 30%; ">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="sippingType =='Only Certain Cities'">
+                                <div class="row">
+                                    <!-- <div class="col-md-6">
+                                <input type="text" formControlName="destination" class="form-control" placeholder="Coutry">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" formControlName="cost" placeholder="Cost">
+                            </div> -->
+                                    <table class="table" formArrayName="sipping">
+                                        <tr>
+                                            <th colspan="2">{{contentLan.ADDITEMS}}:</th>
+                                            <th width="150px"><button type="button" (click)="addQuantitycountry()" class="btn btn-primary" style=" background: #fe8741; border: none;margin-left: 30%; ">{{contentLan.ADDMORE}}</button></th>
+                                        </tr>
+                                        <tr *ngFor="let quantity of sipping().controls; let i=index" [formGroupName]="i">
+                                            <td style=" width: 40%; ">
+                                                <label> Cities :</label>
+                                                <!-- <input type="text" formControlName="destination" class="form-control"> -->
+                                                <select class="form-control" formControlName="destination" required>
+                                                    <option>Select City</option>
+                                                    <option *ngFor="let cities of cityList"
+                                                        [value]="cities.cityName">
+                                                        {{cities.cityName}}</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <label> Cost:</label>
+                                                <input type="text" formControlName="cost" class="form-control">
+                                            </td>
+                                            <td>
+                                                <button (click)="removeQuantitycountry(i)" class="btn btn-danger" style=" background: red; border: none;margin-top: 30%;margin-left: 30%; ">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="sippingType =='Anywhere in the World'">
+                                <div class="row">
+                                    <!-- <div class="col-md-6">
+                                <input type="text" class=" form-control" formControlName="destination" placeholder="Coutry">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class=" form-control" formControlName="cost" placeholder="Cost">
+                            </div> -->
+                                    <table class="table" formArrayName="sipping">
+                                        <tr>
+                                            <th colspan="2">{{contentLan.ADDITEMS}}:</th>
+                                            <th width="150px"><button type="button" (click)="addQuantitycountry()" class="btn btn-primary" style=" background: #fe8741; border: none;margin-left: 30%; ">{{contentLan.ADDMORE}}</button></th>
+                                        </tr>
+                                        <tr *ngFor="let quantity of sipping().controls; let i=index" [formGroupName]="i">
+                                            <td style=" width: 40%; ">
+                                                <label> {{contentLan.COUNTRY}} :</label>
+                                                <input type="text" formControlName="destination" (keyup)="onKeyworld($event)" class="form-control">
+                                            </td>
+                                            <td>
+                                                <label> Cost:</label>
+                                                <input type="text" formControlName="cost" class="form-control">
+                                            </td>
+                                            <td>
+                                                <button (click)="removeQuantitycountry(i)" class="btn btn-danger" style=" background: red; border: none;margin-top: 30%;margin-left: 30%; ">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{contentLan.QTY}}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="Quantity of the item to be rewarded" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="Quantity of the item to be rewarded" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'rtl'"></i></label>
+                                <div class="row limitbox">
+                                    <label for="unlimited"><input type="radio" id="unlimited"[(ngModel)]="quantity" formControlName="quantityType" name="quantityType" value="Unlimited" (change)="onquantity($event)"><span>{{contentLan.UNLIMITED}}</span></label>
+                                </div>
+                                <div class="row limitbox1">
+                                    <label for="limited"><input type="radio" id="limited"[(ngModel)]="quantity" formControlName="quantityType" name="quantityType" value="Limited" (change)="onquantity($event)"><span>{{contentLan.LIMITED}}</span></label>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="quantity =='Limited'">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="number" class=" form-control" formControlName="quantityCount" placeholder="No. of Quanity">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-1"></div> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{contentLan.TIMELIMIT}}<span style=" color: red; ">*</span> <i class="fas fa-info-circle" ngbTooltip="Time Limit for the reward to accept by Backer" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="Time Limit for the reward to accept by Backer" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'rtl'"></i></label>
+                                <div class="row limitbox">
+                                    <label for="unlimitedtime">  <input type="radio" id="unlimitedtime" [(ngModel)]="timeLimit" formControlName="timeLimit" name="timeLimit" value="Unlimited"><span>{{contentLan.NOLIMIT}}</span></label>
+                                </div>
+                                <div class="row limitbox1">
+                                    <label for="limitedtime">  <input type="radio" id="limitedtime" [(ngModel)]="timeLimit" formControlName="timeLimit" name="timeLimit" value="Limited"><span>{{contentLan.LIMITED}}</span></label>
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="timeLimit =='Limited'">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="date" class=" form-control" formControlName="limitDate" placeholder="Coutry">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Discounts&nbsp;%&nbsp;: <i class="fas fa-info-circle" ngbTooltip="Discount for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="Discount for the Reward" style="color: #5c82d4;padding: 0px 5px;"
+                                    *ngIf=" dir == 'rtl'"></i></label><br>
+                                <input type="number" class=" form-control" (keyup)="onDiscount($event)" formControlName="discountAmount" placeholder="Discount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reward_btn_sec">
+                        <button class="rewardcancel">{{contentLan.CANCEL}}</button>
+                        <!-- <a [routerLink]="['../story']"> -->
+                        <button class="savereward" type="submit" (click)="onSubmit()">{{contentLan.SAVEREWARD}}</button>
+                        <!-- </a> -->
+                    </div>
+                </div>
+
+                <div class="col-md-1"></div>
+                <div class="col-md-4 scroll">
+                    <section class="reward_pre_sec" *ngFor='let rewardsshow of showreward'>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="rewardpreview">Added Rewards</h3>
+                                <h4 class="rewardpreviewproject">{{contentLan.TITLE}} : {{rewardsshow.title}}</h4>
+                                <p class="rewardpreviewpledge">Pledge SAR {{rewardsshow.amount}}</p>
+                                <p class="rewardpreviewpledge">Discount {{rewardsshow.discountAmount}}%</p>
+                                <hr class="rewardpreviewhr">
+                                <h4 class="rewardpreviewproject" aria-placeholder="Title">{{rewardsshow.description}}</h4>
+                                <p class="rewardpreviewprojecttitle">{{rewardsshow.description}}</p>
+                                <h4 class="rewardpreviewproject" style="padding-bottom: 10px;">{{contentLan.ESTIMATEDELIVERY}} : <span class="rewardpreviewprojecttitle">{{rewardsshow.estimateDelivery | date: 'MMMM , y'}}</span></h4>
+                                <h4 class="rewardpreviewproject" style="padding-bottom: 10px;">{{contentLan.SHIPSTO}} : <span class="rewardpreviewprojecttitle">{{rewardsshow.sippingType}}</span></h4>
+                                <h4 class="rewardpreviewproject" style="padding-bottom: 10px;">{{contentLan.REWARDQTY}} : <span class="rewardpreviewprojecttitle" *ngIf="rewardsshow.quantityCount == null ">{{rewardsshow.quantityType}}</span>
+                                    <span class="rewardpreviewprojecttitle" *ngIf="rewardsshow.quantityCount !== null ">{{rewardsshow.quantityCount}}</span></h4>
+                                <h4 class="rewardpreviewproject" style="padding-bottom: 10px;">{{contentLan.TIMELIMIT}} : <span class="rewardpreviewprojecttitle">{{rewardsshow.timeLimit}}</span></h4>
+                            </div>
+                            <button (click)="editrewards(rewardsshow)" class="projectauthorseemore">Edit</button>
+                            <button [swal]="{
+                                text: 'Delete Message',
+                                showCancelButton: true,
+                                confirmButtonColor: '#ff5959'
+                              }" (confirm)="deleterewards(rewardsshow)" class="projectauthorseemoredelete">Delete</button>
+                        </div>
+                    </section>
+                </div>
+                <!-- <div class="col-md-7">
+                    <div class="reward_btn_sec">
+                        <button class="rewardcancel">Cancel</button>
+                        <button class="savereward" type="submit" (click)="onSubmit()"> Save Reward</button>
+                    </div>
+                </div> -->
+
+
+            </div>
+
+        </section>
+        <!-- Button section End -->
+    </form>
+</div>
+<app-footer></app-footer>

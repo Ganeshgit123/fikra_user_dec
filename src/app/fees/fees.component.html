@@ -1,0 +1,42 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- content -->
+<section *ngFor="let item of topBanner" [style.background]="background">
+    <!-- <img src="{{topBanner?.bannerImage}}" alt="Snow" style="width:100%;" /> -->
+    <div class="centered">
+        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+        <p *ngIf=" dir == 'ltr'" style='color: white;'>{{item.bannerDescription}}</p>
+        <p *ngIf=" dir == 'rtl'" style='color: white;'>{{item.bannerDescription_Ar}}</p>
+    </div>
+</section>
+<section class="sec2" *ngFor="let item of rules">
+    <div class="container" style="margin: 0px; max-width: 100%;">
+        <div class="row">
+            <div class="col-md-11" style="max-width: 100%;">
+                <section class="fikra_ques_sec" *ngFor='let data of accordian'>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" [id]="'flush-headingOne'+data._id">
+                                <button class="accordion-button collapsed" style='color: black;' type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseOne'+data._id" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne'+data._id">
+                                <span *ngIf=" dir == 'ltr'" class="collspan" >{{data.Header}}</span>
+                                <span *ngIf=" dir == 'rtl'" class="collspan"  >{{data.Header_Ar}}</span>
+                            </button>
+                            </h2>
+                            <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;'>{{data.Description}}
+                                </div>
+                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;'>{{data.Description_Ar}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<app-footer></app-footer>
+
+<!-- <app-rules></app-rules> -->

@@ -1,0 +1,189 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<!-- Following -->
+<section class="follow_sec" *ngIf="role !== 'investor'; else creatorTemplate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="followinghead">{{ contentLan.FOLLOWING }}</h3>
+                <!-- <p class="followingpara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
+                </p> -->
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="followbox">
+                <!-- <a href="/followinginner"> <button class="findfbfrd">Find Facebook friends</button> </a> -->
+                <button class="findcreator" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active': displayMode === 1}">{{ contentLan.FINDCREATOR }}</button>
+                <button class="findfollowing" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary active': displayMode === 2}"> {{ contentLan.FOLLOWING }}</button>
+                <button class="findfollower" (click)="onDisplayModeChange(3)" [ngClass]="{'btn-primary active': displayMode === 3}">{{ contentLan.FOLLOWERS }}</button>
+                <!-- <button class="findblocked" (click)="onDisplayModeChange(4)" [ngClass]="{'btn-primary active': displayMode === 4}">Blocked</button> -->
+            </div>
+        </div>
+
+        <div class="followdownbox">
+            <div class="row" *ngIf="displayMode === 1">
+                <div class="col-md-12">
+                    <p class="text-center"><a href="/"><button class="exploreproject">{{ contentLan.EXPLOREPROJECTS }}</button></a></p>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayMode === 2">
+
+                <div class="col-md-12 followcard">
+                    <div class="card" *ngFor="let datas of following" style="border:none;">
+                        <div class="card-body" style="border:none;">
+                            <!-- <h5 class="card-title">{{datas.serviceType}}</h5> -->
+                            <!-- <h6 class="card-subtitle  mb-2"><span class="tag-box">{{datas.projectId.title}}</span></h6> -->
+                            <div class="row">
+                                <div class="col-md-1" *ngIf="datas.iAmFollow.profileImage">
+                                    <img src="{{datas.iAmFollow.profileImage}}" style=" width: 50px; height: 50px; border-radius: 50px; ">
+                                </div>
+
+                                <div class="col-md-1" *ngIf="!datas.iAmFollow.profileImage">
+                                    <i class="fas fa-user-circle" style="width: 50px; font-size: 3pc; border-radius: 136px; height: 47px; border: 2px solid #ff4362;"></i>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p class="card-text followname">{{datas.iAmFollow.fullName}}</p>
+                                    <a class="viewBox" [routerLink]="['/profile_view', datas.iAmFollow._id,datas.iAmFollow._userRole_]">{{contentLan.VIEWPROFILE}}
+                                        <i class="fas fa-arrow-right" *ngIf=" dir == 'ltr'"></i>
+                                        <i class="fas fa-arrow-left" *ngIf=" dir == 'rtl'"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="card-text" style=" margin-bottom: 0%; ">{{datas.iAmFollow.city}},&nbsp;{{datas.iAmFollow.country}}</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button (click)="unfollow( datas.iAmFollow._id)" class="unfollow">{{contentLan.UNFOLLOW}}</button>
+                                </div>
+                            </div>
+                            <!-- <p class="card-text" style=" margin-bottom: 0%; ">{{datas.userId.city}},{{datas.userId.country}}</p>
+                            <p class="card-text" style=" margin-bottom: 0%; ">{{datas.userName}}</p> -->
+                        </div>
+                    </div>
+                    <p class="text-center" style=" background: white; ">
+
+                        <a href="/"> <button class="exploreproject" *ngIf="followcount == 0">{{ contentLan.GETSTARTED }}</button></a>
+                    </p>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayMode === 3">
+                <div class="col-md-12 followcard">
+                    <div class="card" *ngFor="let datas of followers" style="border:none;">
+                        <div class="card-body" style=" border: none; ">
+                            <!-- <h5 class="card-title">{{datas.serviceType}}</h5> -->
+                            <!-- <h6 class="card-subtitle  mb-2"><span class="tag-box">{{datas.projectId.title}}</span></h6> -->
+                            <div class="row">
+                                <div class="col-md-1" *ngIf="datas.userDetails.profileImage">
+                                    <img src="{{datas.userDetails.profileImage}}" style=" width: 50px; height: 50px; border-radius: 50px; ">
+                                </div>
+
+                                <div class="col-md-1" *ngIf="!datas.userDetails.profileImage">
+                                    <i class="fas fa-user-circle" style="width: 50px; font-size: 3pc; border-radius: 136px; height: 47px; "></i>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p class="card-text followname">{{datas.userDetails.fullName}}</p>
+                                    <a class="viewBox" [routerLink]="['/profile_view', datas.userId,datas.userDetails._userRole_]">{{contentLan.VIEWPROFILE}}
+                                        <i class="fas fa-arrow-right" *ngIf=" dir == 'ltr'"></i>
+                                        <i class="fas fa-arrow-left" *ngIf=" dir == 'rtl'"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <p class="card-text" style=" margin-bottom: 0%; ">{{datas..fullName}}</p> -->
+                            <!-- <p class="card-text" style=" margin-bottom: 0%; ">{{datas.userId.city}},{{datas.userId.country}}</p>
+                            <p class="card-text" style=" margin-bottom: 0%; ">{{datas.userName}}</p> -->
+                        </div>
+                    </div>
+                    <p class="followerslist" style=" background: white; " *ngIf="followerscount == 0;">You don't have any followers yet.</p>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayMode === 4">
+                <div class="col-md-12">
+                    <p class="blockerslist">You haven't blocked anyone from following you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #creatorTemplate>
+    <section class="follow_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="followinghead">{{ contentLan.FOLLOWING }}</h3>
+                    <!-- <p class="followingpara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p> -->
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <div class="row">
+                <div class="followbox">
+                    <!-- <a href="/followinginner"> <button class="findfbfrd">Find Facebook friends</button> </a> -->
+                    <button class="findcreator" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active': displayMode === 1}">{{ contentLan.FINDCREATOR }}</button>
+                    <button class="findfollowing" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary active': displayMode === 2}"> {{ contentLan.FOLLOWING }}</button>
+                    <!-- <button class="findfollower" (click)="onDisplayModeChange(3)" [ngClass]="{'btn-primary active': displayMode === 3}">Followers</button> -->
+                    <!-- <button class="findblocked" (click)="onDisplayModeChange(4)" [ngClass]="{'btn-primary active': displayMode === 4}">Blocked</button> -->
+                </div>
+            </div>
+
+            <div class="followdownbox">
+                <div class="row" *ngIf="displayMode === 1">
+                    <div class="col-md-12">
+                        <p class="text-center"><a href="/"><button class="exploreproject">{{ contentLan.EXPLOREPROJECTS }}</button></a></p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="displayMode === 2">
+                    <div class="col-md-12 followcard">
+                        <div class="card" *ngFor="let datas of following" style="border:none;">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">{{datas.serviceType}}</h5> -->
+                                <!-- <h6 class="card-subtitle  mb-2"><span class="tag-box">{{datas.projectId.title}}</span></h6> -->
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <img src="{{datas.iAmFollow.profileImage}}" style=" width: 50px; height: 50px; border-radius: 50px; ">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text followname">{{datas.iAmFollow.fullName}}</p>
+                                        <a class="viewBox" [routerLink]="['/profile_view', datas.iAmFollow._id,datas.iAmFollow._userRole_]">{{contentLan.VIEWPROFILE}}
+                                            <i class="fas fa-arrow-right" *ngIf=" dir == 'ltr'"></i>
+                                            <i class="fas fa-arrow-left" *ngIf=" dir == 'rtl'"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text followname">{{datas.iAmFollow.city}},&nbsp;{{datas.iAmFollow.country}}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button (click)="unfollow( datas.iAmFollow._id)" class="unfollow">{{contentLan.UNFOLLOW}}</button>
+                                    </div>
+                                </div>
+                                <!--
+                                <p class="card-text" style=" margin-bottom: 0%; ">{{datas.userName}}</p> -->
+                            </div>
+                        </div>
+                        <p class="text-center" style=" background: white; " *ngIf="following == '';">
+                            <a href="/"> <button class="exploreproject">{{ contentLan.GETSTARTED }}</button></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="displayMode === 3">
+                    <div class="col-md-12">
+                        <p class="followerslist">You don't have any followers yet.</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="displayMode === 4">
+                    <div class="col-md-12">
+                        <p class="blockerslist">You haven't blocked anyone from following you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+<app-footer></app-footer>

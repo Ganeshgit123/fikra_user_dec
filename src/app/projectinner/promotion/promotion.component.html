@@ -1,0 +1,279 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<div class="container">
+  <!-- Preview & Next -->
+  <section class="preview_sec">
+    <div class="row">
+      <div class="col-md-12">
+        <a [routerLink]="['..']">
+          <button class="nextbtn">
+            {{ contentLan.PROJECTOVERVIEW }}
+            <i class="far fa-angle-right" *ngIf="dir == 'ltr'"></i>
+            <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button></a>
+        <a [routerLink]="['../projectpreview']">
+          <button class="projectpreview">
+            {{ contentLan.PREVIEW
+            }}<img src="assets/image/visibility.png" class="img-fluid projectpreviewimg" /></button></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr class="headerhr" />
+      </div>
+    </div>
+  </section>
+  <!-- People list header  -->
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="projectfeaturelist">
+        <li>
+          <a [routerLink]="['../basic']"><button class="basicbtn">
+              <span>{{ contentLan.BASICS }}</span>
+              <span class="basiccircle"></span></button></a>
+        </li>
+        <li>
+          <a [routerLink]="['../rewards']">
+            <button class="rewardbtn">
+              <span>{{ contentLan.REWARDS }}</span>
+              <span class="rewardcircle"></span></button></a>
+        </li>
+        <li>
+          <a [routerLink]="['../story']">
+            <button class="storybtn">
+              <span>{{ contentLan.STORY }}</span>
+              <span class="storycircle"></span></button></a>
+        </li>
+        <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li> -->
+        <li>
+          <a [routerLink]="['../payment']"><button class="paymentbtn">
+              <span>{{ contentLan.PAYMENT }}</span>
+              <span class="paymentcircle"></span></button></a>
+        </li>
+        <li>
+          <a [routerLink]="['../promotion']"><button class="promotionbtn btn_active">
+              <span>{{ contentLan.PROMOTION }}</span>
+              <span class="promotioncircle active_circle"></span></button></a>
+        </li>
+      </ol>
+      <div class="projectfeaturedselect" dropdown>
+        <p class="text-center">
+          <button id="button-basic" dropdownToggle type="button" class="projectfeaturedselectbtn dropdown-toggle"
+            aria-controls="dropdown-basic">
+            Button dropdown <span class="caret"></span>
+          </button>
+        </p>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../basic']">{{
+              contentLan.BASICS
+              }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../rewards']">{{
+              contentLan.REWARDS
+              }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../story']">{{
+              contentLan.STORY
+              }}</a>
+          </li>
+          <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../payment']">{{
+              contentLan.PAYMENT
+              }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../promotion']">{{
+              contentLan.PROMOTION
+              }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prepare for launch -->
+  <section class="start_basic_sec">
+    <div class="row">
+      <div class="col-md-10 col-9">
+        <h3 class="startbasictitle" *ngIf="dir == 'ltr'">{{ tabHead }}</h3>
+        <h3 class="startbasictitle" *ngIf="dir == 'rtl'">{{ tabHead_Ar }}</h3>
+        <p class="startbasicpara" *ngIf="dir == 'ltr'">{{ description }}</p>
+        <p class="startbasicpara" *ngIf="dir == 'rtl'">{{ description_Ar }}</p>
+      </div>
+      <div class="col-md-2 col-3">
+        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'ltr'">{{ contentLan.SKIP }} <i
+            class="fas fa-arrow-right"></i></a>
+        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'rtl'">{{ contentLan.SKIP }} <i
+            class="fas fa-arrow-left"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr class="headerhr" />
+    </div>
+  </div>
+  <!-- Project URL -->
+  <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="collaborators">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle_Ar}}</span>
+                    </h4>
+                    <p class="collaboratorspara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes_Ar}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="lock_sec"><i class="fas fa-lock"></i>{{ contentLan.GENERATEURLCONTENT }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section> -->
+  <!-- Pre-launch page -->
+  <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="collaborators">
+                        <span *ngIf=" dir == 'ltr'">{{prjtitle1}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjtitle1_Ar}}</span>
+                    </h4>
+                    <p class="collaboratorspara">
+                        <span *ngIf=" dir == 'ltr'">{{prjdes1}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{prjdes1_Ar}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="prelaunchbox">
+                    <h5 class="inacvtivetitle">{{ contentLan.INACTIVE }}</h5>
+                    <hr class="inactivehr">
+                    <p class="inactivepeople">0 {{ contentLan.PEOPLEAREFOLLOWING }}</p>
+                </div>
+                <button class="activatemypage" disabled>{{ contentLan.ACTIVEMYPAGE }}</button>
+                <p class="you_cant">{{ contentLan.GENERATEURLCONTENT }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section> -->
+  <!-- Google Analytics -->
+  <section class="box_sec">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="left_sec">
+          <h4 class="collaborators">
+            <span *ngIf="dir == 'ltr'">{{ prjtitle2 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjtitle2_Ar }}</span>
+          </h4>
+          <p class="collaboratorspara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes2 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes2_Ar }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- <div class="prelaunchbox">
+                   <h5 class="inacvtivetitle">Tracking ID</h5> -->
+        <!-- <div class="form-group">
+                        <input type="text" class="form-control" placeholder="UA - 000000-0">
+                    </div> -->
+        <!-- </div> -->
+        <button class="activatemypages" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal()">
+          {{ contentLan.REQUEST }}
+        </button>
+        <p class="you_cant">{{ contentLan.YOUCANREQUESTCONTENT }}</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let listitem of listreq">
+        <div class="card">
+          <h6 class="card-header">{{ listitem.serviceType }}</h6>
+          <p class="card-body card-text">{{ listitem.comments }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" >
+    Launch demo modal
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" [ngStyle]="{ display: display }">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Request to Admin For Project Campagin
+          </h5>
+          <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal" aria-label="Close"
+            (click)="onCloseHandled()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="specialrequestform" name="form">
+            <div class="col-md-12">
+              <label>Services</label><span style="color: red">*</span>
+              <div>
+                <select class="form-select" #mySelect formControlName="serviceType" [ngClass]="{
+                    'is-invalid': submitted && f.serviceType.errors
+                  }">
+                  <option>Select Service</option>
+                  <option *ngFor="let allcountry of requestspecial" class="form-control"
+                    value="{{ allcountry.specialReqestName }}">
+                    <span *ngIf="dir == 'ltr'">{{
+                      allcountry.specialReqestName
+                      }}</span>
+                    <span *ngIf="dir == 'rtl'">{{
+                      allcountry.specialReqestNameAr
+                      }}</span>
+                  </option>
+                </select>
+                <div *ngIf="submitted && f.serviceType.errors" class="invalid-feedback">
+                  <div *ngIf="f.serviceType.errors.required">
+                    Select any Service
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-md-12">
+              <label>{{ contentLan.COMMENT }}:</label>
+              <div>
+                <textarea style="width: -webkit-fill-available" class="form-control"
+                  formControlName="comments"></textarea>
+              </div>
+            </div>
+            <br />
+            <p class="text-center">
+              <button type="button" (click)="onSubmit()" class="btn btn-primary submit_req_btn">
+                {{ contentLan.SUBMITREQ }}
+              </button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

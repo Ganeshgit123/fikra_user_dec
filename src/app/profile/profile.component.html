@@ -1,0 +1,438 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Profile -->
+<section class="profice_sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-2 col-xl-2 col-12">
+        <img
+          class="upload-img"
+          *ngIf="profileImage === 'undefined'"
+          src="assets/image/avatar-placeholder.png"
+        />
+        <img
+          class="upload-img"
+          *ngIf="profileImage !== 'undefined'"
+          src="{{ profileimg }}"
+        />
+        <input
+          type="file"
+          class="custom-file-input"
+          multiple
+          accept="image/*"
+          id="customFile"
+          style="display: none"
+          (change)="uploadImageFile($event)"
+          #fileinput
+        />
+        <button
+          (click)="fileinput.click()"
+          style="
+            margin-left: -8%;
+            border: none;
+            background-color: #ff943b;
+            border-radius: 50px;
+          "
+        >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="col-md-12 cl-lg-7 col-xl-7 col-12">
+        <h4 class="profilename">{{ user }}</h4>
+        <span class="tag-box">{{
+          role == "investor"
+            ? capitalize(contentLan.BACKER || "Backer")
+            : capitalize(role)
+        }}</span>
+
+        <p class="profiledetail" style="margin-top: 6px">
+          {{ contentLan.BACKED }}
+          <span style="font-weight: 600; color: #000000c4">{{ backed }}</span>
+          {{ contentLan.PROJECTS }} · {{ contentLan.JOINED }}
+          {{ dob | date: "MMM d, y" }}
+        </p>
+
+        <button
+          class="profileabout"
+          (click)="onDisplayModeChange(1)"
+          [ngClass]="{ 'btn-primary active': displayMode === 1 }"
+        >
+          {{ contentLan.ABOUT || "ABOUT" }}
+        </button>
+
+        <section
+          class="profice_down_sec"
+          *ngIf="displayMode === 1"
+          style="border: #fe953a 2px"
+        >
+          <div
+            class="row profileabtbox"
+            [style]="
+              role === 'creator' ? ' border-bottom: 2px solid #dedede; ' : ''
+            "
+          >
+            <div class="col-md-2">
+              <h4 class="profileboxbio">
+                <b>{{ contentLan.BIOGRAPHY }}</b>
+              </h4>
+            </div>
+            <div class="col-md-8">
+              <p *ngIf="bio" class="profileboxcontent">{{ bio }}</p>
+              <a (click)="popup1 = true" type="sumbit" class="profileaddbio">
+                <span *ngIf="bio === '' || bio == null; else editTemplate"
+                  ><img src="assets/image/profile/add-button.png" />{{
+                    contentLan.ADD
+                  }}
+                  {{ contentLan.BIOGRAPHY }}</span
+                >
+              </a>
+
+              <ng-template #editTemplate>
+                <a (click)="popup1 = true" type="submit" class="profileaddbio">
+                  <span
+                    ><img src="assets/image/profile/edit.png" />
+                    {{ contentLan.EDIT }} {{ contentLan.BIOGRAPHY }}</span
+                  >
+                </a>
+              </ng-template>
+            </div>
+            <div class="col-md-2">
+              <form
+                [formGroup]="savebiographyform"
+                (change)="savebio()"
+                ngNativeValidate
+              >
+                <div class="form-check form-switch">
+                  <span *ngIf="bio === ''; else editcheckTemplate"> </span>
+                  <span class="profileaddbio">
+                    {{ contentLan.VISIBILITY }}
+                  </span>
+                  <ng-template #editcheckTemplate>
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      formControlName="_isUserBio_On_"
+                      id="_isUserBio_On_"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      ngbTooltip="To Visible Biography to Every One"
+                    />
+                  </ng-template>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div
+            class="row prof_next_sec"
+            *ngIf="role === 'creator'; else creatorTemplate"
+          >
+            <div class="col-md-2">
+              <h4 class="profileboxbio">
+                <b>{{ contentLan.WEBSITE }}</b>
+              </h4>
+            </div>
+            <div class="col-md-8">
+              <p *ngIf="webSiteURL" class="profileboxcontent">
+                {{ webSiteURL }}
+              </p>
+              <a
+                (click)="popup2 = true"
+                *ngIf="webSiteURL"
+                type="submit"
+                class="profileaddbio"
+                >Edit website</a
+              >
+              <a
+                (click)="popup2 = true"
+                type="submit"
+                *ngIf="web == '' || web == null"
+                class="profileaddbio"
+                ><img src="assets/image/profile/add-button.png" />{{
+                  contentLan.ADD
+                }}
+                {{ contentLan.WEBSITE }}</a
+              >
+            </div>
+            <div class="col-md-2">
+              <form
+                [formGroup]="saveweburlform"
+                (change)="savewebsite()"
+                ngNativeValidate
+              >
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    formControlName="_isWebURL_On_"
+                    id="_isWebURL_On_"
+                    data-toggle="toggle"
+                    data-placement="top"
+                    ngbTooltip="To Visible Website URL to Every One"
+                  />
+                  <span class="profileaddbio">
+                    {{ contentLan.VISIBILITY }}
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <ng-template #creatorTemplate>
+            <div class="row"></div>
+          </ng-template>
+        </section>
+      </div>
+      <div class="col-md-6 col-lg-3 col-xl-3 col-12">
+        <a class="profilemanage" (click)="gotoprofile()"
+          >{{
+            contentLan.MANAGEYOURPRIVACYSETTINGS ||
+              "Manage your privacy settings"
+          }}
+        </a>
+
+        <form
+          [formGroup]="sendmobileform"
+          (ngSubmit)="makemecreator()"
+          ngNativeValidate
+        >
+          <div class="overlay" *ngIf="popup">
+            <div class="popup">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-10"></div>
+                  <div class="col-md-2">
+                    <a class="close" (click)="popup = false">&times;</a>
+                  </div>
+
+                  <h2>Make Me As Creator</h2>
+                  <div class="col-md-6" style="margin-top: 0%">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="cmnlabel">Make Me As Creator</label>
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          type="text"
+                          placeholder="profileStory"
+                          class="form-control"
+                          name="profileStory"
+                          formControlName="profileStory"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="cmnlabel">Business Name</label>
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          type="text"
+                          placeholder="businessName"
+                          class="form-control"
+                          name="businessName"
+                          formControlName="businessName"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="cmnlabel">{{ contentLan.IBAN }}</label>
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          type="number"
+                          placeholder="iban"
+                          class="form-control"
+                          name="iban"
+                          formControlName="iban"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="cmnlabel">Business Type</label>
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          type="text"
+                          placeholder="BusinessType"
+                          class="form-control"
+                          name="businessType"
+                          formControlName="businessType"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6" style="margin-top: 0%">
+                    <div class="col-md-6">
+                      <label class="cmnlabel">Account Number</label>
+                    </div>
+                    <div class="col-md-12">
+                      <input
+                        type="number"
+                        placeholder="accountNumber"
+                        class="form-control"
+                        name="accountNumber"
+                        formControlName="accountNumber"
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="cmnlabel">Is Business Exist</label>
+                    </div>
+                    <div class="col-md-12">
+                      <!-- <input type="radio" placeholder="Business Exist" class="form-control" name="_is_businuss_exist_" formControlName="_is_businuss_exist_"> -->
+                      <input
+                        type="radio"
+                        id="Yes"
+                        name="_is_businuss_exist_"
+                        [checked]="showDateInput"
+                        formControlName="_is_businuss_exist_"
+                        value="true"
+                        (click)="radioValueCheck(1)"
+                      />
+                        <label for="css">Yes</label>&nbsp;
+                      <input
+                        type="radio"
+                        id="No"
+                        name="_is_businuss_exist_"
+                        [checked]="!showDateInput"
+                        formControlName="_is_businuss_exist_"
+                        value="false"
+                        (click)="radioValueCheck(2)"
+                      />
+                        <label for="css">No</label><br />
+                      <!-- <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">yes<br>
+                                            <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">no -->
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="cmnlabel">Business Address</label>
+                    </div>
+
+                    <div class="col-md-12">
+                      <input
+                        type="text"
+                        [disabled]="!showDateInput"
+                        placeholder="businessAddress"
+                        class="form-control"
+                        name="businessAddress"
+                        formControlName="businessAddress"
+                      />
+                    </div>
+                  </div>
+                  <button class="makecreatorreq" type="submit">
+                    Request to make Creator
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form
+          [formGroup]="savebiographyform"
+          (ngSubmit)="savebio()"
+          ngNativeValidate
+        >
+          <div class="overlay" *ngIf="popup1">
+            <div class="popup1">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-10"></div>
+                  <div class="col-md-2">
+                    <a class="close" (click)="popup1 = false">&times;</a>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="cmnlabel">{{
+                          contentLan.BIOGRAPHY
+                        }}</label>
+                      </div>
+                      <div class="col-md-12">
+                        <!-- <input type="text" placeholder="profileStory" class="form-control" name="profileStory" formControlName="profileStory"> -->
+                        <textarea
+                          class="form-control"
+                          style="height: 100px"
+                          formControlName="userBio"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="addbio" type="submit">
+                    {{ contentLan.SAVEBIOGRAPHY }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form
+          [formGroup]="saveweburlform"
+          (ngSubmit)="savewebsite()"
+          ngNativeValidate
+        >
+          <div class="overlay" *ngIf="popup2">
+            <div class="popup2">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-10"></div>
+                  <div class="col-md-2">
+                    <a class="close" (click)="popup2 = false">&times;</a>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="cmnlabel"
+                          >{{ contentLan.ADD }} {{ contentLan.WEBSITE }}</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <input
+                          type="text"
+                          placeholder="Url"
+                          class="form-control"
+                          name="webSiteURL"
+                          formControlName="webSiteURL"
+                        />
+                        <!-- <textarea class="form-control" formControlName="userBio"></textarea> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="weburl" type="submit">
+                    {{ contentLan.SAVEWEBSITE }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <section class="delet_account">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+          <div
+            class="row"
+            *ngIf="alreadyDelete"
+            style="margin: 30px 0px; color: red"
+          >
+            <a
+              >Your account delete request is on processing. We will let you
+              know!</a
+            >
+          </div>
+          <a
+            *ngIf="!alreadyDelete"
+            class="profilemanage_Alter"
+            (click)="deleteRequest()"
+          >
+            <i class="fas fa-user-minus"></i>
+            {{ contentLan.DELETEYOURACCOUNT || "Delete your account" }}
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<app-footer></app-footer>

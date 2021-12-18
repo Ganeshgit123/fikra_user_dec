@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="385.68" height="777" viewBox="0 0 385.68 777">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_334" data-name="Path 334" d="M20117-100.438h385.68v777H20117Z" transform="translate(-34010.68 13179.5)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff5d4b"/>
+      <stop offset="1" stop-color="#fe953a"/>
+    </linearGradient>
+  </defs>
+  <g id="Mask_Group_127" data-name="Mask Group 127" transform="translate(13893.68 -13079.063)" clip-path="url(#clip-path)">
+    <g id="Group_703" data-name="Group 703">
+      <path id="Path_333" data-name="Path 333" d="M-12453.582,15990.063l-6.017,2.529-254.532,107.045s-42.973,4.172-70.806,57.209,0,123.949,0,123.949l147.613,362.318s11.759,66.9,57.6,85.811,128.411,38.139,128.411,38.139l-.643-777" transform="translate(-1056.692 -2911)" fill="url(#linear-gradient)"/>
+      <g id="Group_702" data-name="Group 702" transform="translate(-14115 11135.68)" opacity="0.19">
+        <g id="Ellipse_203" data-name="Ellipse 203" transform="translate(118 2100)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+          <circle cx="197.5" cy="197.5" r="197.5" stroke="none"/>
+          <circle cx="197.5" cy="197.5" r="178" fill="none"/>
+        </g>
+        <g id="Ellipse_204" data-name="Ellipse 204" transform="translate(177 2159)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+          <circle cx="138.5" cy="138.5" r="138.5" stroke="none"/>
+          <circle cx="138.5" cy="138.5" r="119" fill="none"/>
+        </g>
+        <g id="Ellipse_205" data-name="Ellipse 205" transform="translate(47 2029)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+          <circle cx="268.5" cy="268.5" r="268.5" stroke="none"/>
+          <circle cx="268.5" cy="268.5" r="249" fill="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,197 @@
+.follow_sec {
+    padding: 80px 0 40px 0;
+}
+
+.followinghead {
+    font-size: 30px;
+    font-weight: 600;
+    color: #353535;
+}
+
+.followingpara {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9A999E;
+}
+
+.viewBox {
+    color: lightcoral;
+    cursor: pointer;
+}
+
+.followbox {
+    background: #353535 0% 0% no-repeat padding-box;
+    margin-top: 40px;
+    padding: 10px 0;
+}
+
+.unfollow {
+    background: transparent linear-gradient( 180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 86px;
+    opacity: 1;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    padding: 5px 30px;
+    box-shadow: 5px 5px 13px #00000021;
+}
+
+.unfollow:hover {
+    background: #353535;
+    color: #fff;
+    box-shadow: 5px 5px 13px #00000021;
+    transition: 1s ease-in-out;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .followbox {
+        background: none;
+        padding: 0 20px;
+    }
+}
+
+.findfbfrd {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 30px 10px 30px;
+    background-color: #353535;
+    border: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .findfbfrd {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.findcreator {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 60px 10px 30px;
+    background-color: #353535;
+    border: none;
+    border-right: 3px solid #FF5959;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .findcreator {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 30px;
+    }
+}
+
+.findfollowing {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 30px 10px 60px;
+    background-color: #353535;
+    border: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .findfollowing {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-left: 30px;
+    }
+}
+
+.findfollower {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 30px 10px 30px;
+    background-color: #353535;
+    border: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .findfollower {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.findblocked {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 30px 10px 30px;
+    background-color: #353535;
+    border: none;
+}
+
+.followcard {
+    background: white;
+    text-align: initial;
+}
+
+.followname {
+    margin-bottom: 0%;
+    padding: 5px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .findblocked {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .followcard {
+        background: white;
+        text-align: center;
+    }
+}
+
+.followdownbox {
+    background: #9a999e17 0% 0% no-repeat padding-box;
+}
+
+.exploreproject {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: transparent linear-gradient(254deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border: none;
+    padding: 10px 30px 10px 30px;
+    margin: 100px 0 20px 0;
+    border-radius: 80px;
+    box-shadow: 5px 5px 13px #00000021;
+}
+
+.exploreproject:hover {
+    background: #353535;
+    color: #fff;
+    box-shadow: 5px 5px 13px #00000021;
+    transition: 1s ease-in-out;
+}
+
+.followerslist {
+    font-size: 16px;
+    font-weight: 500;
+    ;
+    color: black;
+    text-align: center;
+    margin: 100px 0 20px 0;
+}
+
+.blockerslist {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    margin: 100px 0 20px 0;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-primary.active {
+    background: transparent linear-gradient(253deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box !important;
+}

@@ -1,0 +1,28 @@
+.cagetstart {
+    color: #11175D;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 5%;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .cagetstart {
+        font-size: 20px;
+        margin-left: 0%;
+    }
+}
+
+.cagetstartpara {
+    color: #11175D;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 5%;
+    padding-bottom: 30px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .cagetstartpara {
+        font-size: 12px;
+        margin-left: 0%;
+    }
+}

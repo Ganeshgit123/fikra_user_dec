@@ -1,0 +1,45 @@
+<app-right-header></app-right-header>
+<section>
+    <div class="container">
+        <h4 class="titleguide" *ngIf=" dir == 'ltr'">{{dataList.title}}</h4>
+        <h4 class="titleguide" *ngIf=" dir == 'rtl'">{{dataList.titleAr}}</h4>
+        <div class="d-flex align-items-start" *ngFor='let ques of dataList.question;let i = index'>
+            <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}"
+                    id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="'#v-pills-home'+ques._id" type="button"
+                    role="tab">
+                    <span *ngIf=" dir == 'ltr'">{{ques.question}}</span>
+                    <span *ngIf=" dir == 'rtl'">{{ques.questionAr}}</span>
+                </button>
+            </div>
+            <div class="tab-content col-md-9" id="v-pills-tabContent">
+                <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id"
+                    role="tabpanel">
+                    <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
+                    <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style=" margin-top: 5%; text-align: center; ">
+            <div class="col-md-12">
+                <a>{{contentLan.HAVEQUESTION}}?
+                    <span class="submitreq" (click)="opentext()">{{ contentLan.SUBMITREQ }}</span>
+                </a>
+            </div>
+        </div>
+        <ng-container *ngIf="visible">
+            <div class="row" style="margin-top: 5%;">
+                <div class="col-md-2"></div>
+                <div class="col-md-8" style="text-align: end;">
+                    <form [formGroup]="submitquestionform" ngNativeValidate>
+                        <textarea rows="5" cols="40" style=" height: max-content; " maxlength="1000"
+                            class="rewarddescriptioninput form-control" formControlName="question"></textarea>
+                    </form>
+                    <button class="submitbtnhelp" (click)="onquessubmit()">{{ contentLan.SUBMIT }}</button>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </ng-container>
+    </div>
+</section>
+<app-footer></app-footer>

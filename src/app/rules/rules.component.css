@@ -1,0 +1,80 @@
+.centered {
+    text-align: center;
+    /* background: linear-gradient(90deg, rgba(221, 151, 167, 1) 0%, rgba(227, 142, 161, 1) 52%, rgba(231, 134, 156, 1) 100%); */
+    color: white;
+    height: 350px;
+    padding: 100px 200px;
+}
+
+.sec_header {
+    font-size: 28px;
+    text-align: center;
+    margin: 0px 0px 2% 0px;
+}
+
+.sec_desc {
+    font-size: 18px;
+}
+
+.sec2 {
+    margin: 5%;
+}
+
+.overcontent {
+    margin: 5% 0%;
+}
+
+.accordion {
+    border: 1px solid #7070704D;
+}
+
+.fikra_ques_sec {
+    margin: 10px 0px 10px 0px;
+}
+
+.collspan {
+    font-size: 18px;
+}
+
+p {
+    opacity: 0.8;
+    color: white;
+}
+
+.accbutton {
+    background: #ff455f;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.sepacc {
+    padding-bottom: 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .centered {
+        text-align: center;
+        /* background: linear-gradient( 90deg, rgba(221, 151, 167, 1) 0%, rgba(227, 142, 161, 1) 52%, rgba(231, 134, 156, 1) 100%); */
+        color: white;
+        padding: 40px;
+        height: auto;
+    }
+    .collspan {
+        font-size: 14px;
+    }
+    .accbutton {
+        background: #ff455f;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        margin-left: 20px;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    .sepacc {
+        padding-bottom: 10px;
+    }
+}

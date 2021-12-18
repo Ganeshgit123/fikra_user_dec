@@ -1,0 +1,235 @@
+.discover_sec {
+    padding: 80px 0 40px 0;
+    margin-bottom: 1%;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .discover_sec {
+        padding: 40px 0;
+    }
+}
+
+.listbutton {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 2px 5px 20px #00000017;
+    border-radius: 49px;
+    text-align: center;
+    padding: 15px 40px 15px 40px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #353535;
+    text-decoration: none;
+    margin: 15px !important;
+    border: none !important;
+}
+
+.listbutton:hover {
+    background: #FE8840 0% 0% no-repeat padding-box;
+    color: #FFFFFF;
+}
+
+.display_content {
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+.disply_flex {
+    display: flex !important;
+}
+
+.activity_sec {
+    padding: 80px 0 40px 0;
+}
+
+.activitybox {
+    background: black 0% 0% no-repeat padding-box;
+    border: 1px solid #70707030;
+}
+
+.activitybtn {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    background-color: black;
+    padding: 15px 40px;
+    text-align: center;
+}
+
+
+/* .activitybtn:active {
+    background-color: #FF5959;
+} */
+
+.backedbtn {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    background-color: black;
+    padding: 15px 40px;
+}
+
+.createdbtn {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    background-color: black;
+    padding: 15px 40px;
+}
+
+.settingbtn {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9A999E;
+    border: none;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.profilebtn {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9A999E;
+    border: none;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.activityhead {
+    font-size: 30px;
+    font-weight: 500;
+    color: #353535;
+    margin: 40px 0 30px 0;
+}
+
+.activitypara {
+    font-size: 14px;
+    font-weight: 500;
+    color: #9A999E;
+}
+
+.activitparahl {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FF5D4B;
+}
+
+.created_proj_sec {
+    box-shadow: 0px 1px 25px #0000000D;
+    margin: 20px 0;
+}
+
+.right_img_sec {
+    height: 190px;
+    float: right;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .right_img_sec {
+        height: 164px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .right_img_sec {
+        height: 100px;
+    }
+}
+
+.project_cont {
+    padding: 60px 40px 0 40px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .project_cont {
+        padding: 20px 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .project_cont {
+        padding: 20px 20px;
+    }
+}
+
+.created_proj_sec h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .created_proj_sec h3 {
+        font-size: 20px;
+    }
+}
+
+.created_proj_sec p {
+    font-size: 14px;
+    color: #9A999E;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .created_proj_sec p {
+        font-size: 12px;
+    }
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+
+/* .activity_sec .btn-primary {
+    color: #FF5959; */
+
+
+/* } */
+
+.cate li {
+    display: inline;
+    float: left;
+}
+
+.discover {
+    margin-top: 5%;
+    margin-bottom: 4%;
+    font-size: 30px;
+    font-family: 'Poppins';
+    font-weight: 500;
+}
+
+
+/* .activitybtn :active :focus {
+    background-color: coral;
+} */
+
+.activitybox .btn-primary.active {
+    background: transparent linear-gradient(253deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box !important;
+    color: black;
+}
+
+.catimg {
+    border-radius: 50px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.userfulbtn {
+    border: 1px solid #1bff00;
+    padding: 2px 15px;
+    font-size: 14px;
+    color: #1bff00;
+    background: white;
+}
+
+.notuserfulbtn {
+    border: 1px solid #ff4b5b;
+    padding: 2px 15px;
+    font-size: 14px;
+    color: #ff4b5b;
+    background: white;
+    margin-left: 2%;
+}

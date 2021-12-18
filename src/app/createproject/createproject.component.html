@@ -1,0 +1,237 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Create a Project -->
+
+<section class="whole_proj_sec">
+    <div class="container">
+        <section class="create_proj_sec">
+            <ul class="project_tab_ul" *ngIf=" dir == 'ltr'">
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 0}">
+                    {{tabHeadbus}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 1}">
+                    {{tabHeadloc}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 2}">
+                    {{tabHeadcat}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 3}">
+                    {{tabHeadidea}}</li>
+
+                <li class="createprojectnumber"> {{ displayMode + 1 }} of 4</li>
+            </ul>
+            <ul class="project_tab_ul" *ngIf=" dir == 'rtl'">
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 0}">
+                    {{tabHeadbusar}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 1}">
+                    {{tabHeadlocar}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 2}">
+                    {{tabHeadcatar}}</li>
+                <li class="createprojectcategory" [ngClass]="{'createprojectcategoryactive ': displayMode === 3}">
+                    {{tabHeadprjar}}</li>
+
+                <li class="createprojectnumber"> {{ displayMode + 1 }} of 4</li>
+            </ul>
+
+            <form [formGroup]="checkoutForm" id="checkoutForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+                <section class="proj_det_sec" *ngIf="displayMode === 0">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 class="categorytitle" *ngIf=" dir == 'ltr'">{{bustabHead}}</h3>
+                            <h3 class="categorytitle" *ngIf=" dir == 'rtl'">{{bustabHeadar}}</h3>
+                            <hr class="categoryhr">
+                            <p class="categorypara" *ngIf=" dir == 'ltr'">{{bustabDesc}}</p>
+                            <p class="categorypara" *ngIf=" dir == 'rtl'">{{bustabDescar}}</p>
+                            <div class="form-check">
+                                <h3 for="business">{{ contentLan.BUSINESSMODEL }}<span style=" color: red; ">*</span></h3><br>
+                                <label class="form-check-label"> <input type="radio"
+                                        name="business" class="form-check-input" formControlName="business"
+                                        value="keep_it_all" [(ngModel)]="keep" required>&nbsp;{{contentLan.KEEPALL}}</label>
+                                <i class="fas fa-info-circle " ngbTooltip="{{buskiades}}" style=" margin-left: 1%; color: #5c82d4; " *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-info-circle " ngbTooltip="{{buskiadesar}}" style=" margin-right: 1%; color: #5c82d4; " *ngIf=" dir == 'rtl'"></i><br>
+                                <label class="form-check-label"> <input type="radio"
+                                        name="business" class="form-check-input" formControlName="business"
+                                        value="all_or_nothing" [(ngModel)]="keep" required>&nbsp;{{contentLan.ALLORNOTHING}} <i
+                                        class="fas fa-info-circle" ngbTooltip="{{busarndes}}" style="  color: #5c82d4; "
+                                        *ngIf=" dir == 'ltr'"></i>
+                                    <i class="fas fa-info-circle " ngbTooltip="{{busarndesar}}"
+                                        style="  color: #5c82d4; " *ngIf=" dir == 'rtl'"></i><br>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <img src="{{busimg}}" class="img-fluid">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_bottom_cont" *ngIf="displayMode === 0">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="categorypara2" *ngIf=" dir == 'ltr'">{{busfooter}}</p>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{busfooterar}}</p>
+
+                        </div>
+                        <div class="col-md-6">
+                            <button class="nextprojectidea" (click)="onDisplayModeChange(1)" [disabled]="!keep" [ngClass]="{'btn-primary ': displayMode === 0}">{{ contentLan.NEXT }} | {{ contentLan.LOCATION }}</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_det_sec" *ngIf="displayMode === 1">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 class="categorytitle" *ngIf=" dir == 'ltr'">{{loctabHead}}</h3>
+                            <h3 class="categorytitle" *ngIf=" dir == 'rtl'">{{loctabHeadar}}</h3>
+                            <hr class="categoryhr">
+                            <p class="categorypara" *ngIf=" dir == 'ltr'">{{loctabDesc}}</p>
+                            <p class="categorypara" *ngIf=" dir == 'rtl'">{{loctabDescar}}</p>
+                            <div class="edit_form_group">
+                                <label class="cmnlabel">{{contentLan.COUNTRY}} <span style=" color: red; ">*</span></label>
+                                <select class="form-select" #mySelect formControlName="country" [(ngModel)]="countrySs" required (change)='oncountrySelected(mySelect.value)'>
+                                    <option [ngValue]="undefined" selected disabled>Select Country</option>
+                                    <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
+                                        <span *ngIf=" dir == 'ltr'">{{allcountry.countryName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{allcountry.countryNameAr}}</span>
+                                    </option>
+                                </select>
+                                <label class="cmnlabel">{{contentLan.CITY}} <span style=" color: red; ">*</span></label>
+                                <select formControlName="city" [(ngModel)]="citySs" required class="form-select">
+                                    <option [ngValue]="undefined" selected disabled>Select City</option>
+                                    <option *ngFor="let cities of cityList" [value]="cities.cityName">
+                                        <span *ngIf=" dir == 'ltr'">{{cities.cityName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{cities.cityNameAr}}</span>
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <img src="{{locimg}}" class="img-fluid">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_bottom_cont" *ngIf="displayMode === 1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="categorypara2" *ngIf=" dir == 'ltr'">{{locfooter}}</p>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{locfooterar}}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="previousprojectidea" (click)="onDisplayModeChange(0)" [ngClass]="{'btn-primary ': displayMode === 1}">
+                                <i class="far fa-angle-left" *ngIf=" dir == 'ltr'"></i>
+                                <i class="far fa-angle-right" *ngIf=" dir == 'rtl'"></i> {{ contentLan.BUSINESSMODEL }}</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="nextprojectidea" (click)="onDisplayModeChange(2)" [disabled]="!countrySs || !citySs" [ngClass]="{'btn-primary ': displayMode === 1}"> {{ contentLan.NEXT }} |
+                                {{ contentLan.CATEGORY }}</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_det_sec" *ngIf="displayMode === 2">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 class="categorytitle" *ngIf=" dir == 'ltr'">{{cattabHead}}</h3>
+                            <h3 class="categorytitle" *ngIf=" dir == 'rtl'">{{cattabHeadar}}</h3>
+                            <hr class="categoryhr">
+                            <p class="categorypara" *ngIf=" dir == 'ltr'">{{cattabDesc}}</p>
+                            <p class="categorypara" *ngIf=" dir == 'rtl'">{{cattabDescar}}</p>
+                            <div class="edit_form_group">
+                                <label class="cmnlabel">{{ contentLan.CATEGORY }} <span style=" color: red; ">*</span></label>
+                                <select formControlName="categoryName" #user class="form-select" [(ngModel)]="categSs" required style="margin-top: 5px;margin-bottom: 5px;" (change)='oncategorySelected(user.value)'>
+                                    <option [ngValue]="undefined" selected disabled>Select Category</option>
+                                    <option *ngFor="let user of category.list" value="{{user.categorieName}}">
+                                        <span *ngIf=" dir == 'ltr'">{{user.categorieName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{user.categorieNameAr}}</span>
+                                    </option>
+                                </select>
+                                <label class="cmnlabel">Sub-category <span style=" color: red; ">*</span></label>
+                                <select formControlName="subCategoryName" class="form-select" [(ngModel)]="subCategSs" style="margin-top: 5px;margin-bottom: 5px;">
+                                    <option [ngValue]="undefined" selected disabled>Select SubCategory</option>
+                                    <option *ngFor="let user of subCategList" value="{{user.subCategorieName}}">
+                                        <span *ngIf=" dir == 'ltr'">{{user.subCategorieName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{user.subCategorieNameAr}}</span>
+                                    </option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <img src="{{catimg}}" class="img-fluid">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_bottom_cont" *ngIf="displayMode === 2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="categorypara2" *ngIf=" dir == 'ltr'">{{catfooter}}</p>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{catfooterar}}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="previousprojectidea" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary ': displayMode === 2}">
+                                <i class="far fa-angle-left" *ngIf=" dir == 'ltr'"></i>
+                                <i class="far fa-angle-right" *ngIf=" dir == 'rtl'"></i> {{ contentLan.LOCATION }}</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="nextprojectidea" (click)="onDisplayModeChange(3)" [disabled]="!categSs || !subCategSs" [ngClass]="{'btn-primary ': displayMode === 2}">{{ contentLan.NEXT }} | {{ contentLan.PROJECTIDEA }} </button>
+
+                        </div>
+                    </div>
+                </section>
+                <section class="proj_det_sec" *ngIf="displayMode === 3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 class="categorytitle" *ngIf=" dir == 'ltr'">{{prjtabHead}}</h3>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{prjtabHeadar}}</p>
+                            <hr class="categoryhr">
+                            <p class="categorypara" *ngIf=" dir == 'ltr'">{{prjtabDesc}}</p>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{prjtabDescar}}</p>
+                            <div class="edit_form_group">
+                                <label class="cmnlabel">{{ contentLan.TITLE }} <span style=" color: red; ">*</span></label><br>
+                                <input type="text" formControlName="title" [(ngModel)]="des1" class="form-control" placeholder="Title"><br>
+                                <label class="cmnlabel">{{ contentLan.DESCRIPTION }} <span style=" color: red; ">*</span></label><br>
+                                <textarea class="form-control" [(ngModel)]="des2" name="decription" [maxlength]="250" onKeyPress="if(this.value.length==250) return false;" formControlName="decription" placeholder="Tell me about the project"></textarea>
+                                <label>{{ contentLan.MAXWORD }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <img src="{{prjimg}}" class="img-fluid">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="proj_bottom_cont" *ngIf="displayMode === 3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="categorypara2" *ngIf=" dir == 'ltr'">{{prjfooter}}</p>
+                            <p class="categorypara2" *ngIf=" dir == 'rtl'">{{prjfooterar}}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="previousprojectidea" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary ': displayMode === 3}">
+                                <i class="far fa-angle-left" *ngIf=" dir == 'ltr'"></i>
+                                <i class="far fa-angle-right" *ngIf=" dir == 'rtl'"></i> {{ contentLan.CATEGORY }}</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button [disabled]="!des1 || !des2" class="nextprojectidea"> {{ contentLan.CONTINUE }}</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+
+
+        </section>
+
+
+        <section class="proj_bot_sec">
+            <p *ngIf=" dir == 'ltr'">{{commonNotes}}</p>
+            <p *ngIf=" dir == 'rtl'">{{commonNotesAr}}</p>
+        </section>
+    </div>
+</section>
+<app-footer></app-footer>

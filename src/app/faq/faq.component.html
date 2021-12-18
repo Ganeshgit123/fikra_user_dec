@@ -1,0 +1,71 @@
+<app-right-header></app-right-header>
+<div class="container">
+    <section class="discover_sec">
+        <div class="conatiner">
+            <div class="" style='text-align: center; border-bottom: 20px'>
+                <h4>{{contentLan.FAQ}}</h4>
+            </div>
+            <div class="row">
+                <section class="fikra_ques_sec" *ngFor='let data of faq'>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" [id]="'flush-headingOne'+data._id">
+                                <button class="accordion-button collapsed" style='color: black;' type="button"
+                                    data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseOne'+data._id"
+                                    aria-expanded="false" [attr.aria-controls]="'flush-collapseOne'+data._id">
+                                    <span *ngIf=" dir == 'ltr'" style='font-size: 18px;'>{{data.faq_Header}}</span>
+                                    <span *ngIf=" dir == 'rtl'" style='font-size: 18px;'>{{data.faq_Header_ar}}</span>
+                                </button>
+                            </h2>
+                            <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;'>{{data.faq_Body}}
+                                </div>
+                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;'>{{data.faq_Body_ar}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <span *ngFor="let data of faq" style="margin-bottom: 2%;">
+
+            <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                <ngb-panel>
+                    <ng-template ngbPanelTitle >
+                        <div class="col-md-2"></div>
+                        <div class=" col-md-8">
+                            <span *ngIf=" dir == 'ltr'">{{data.faq_Header}}</span>
+                    <span *ngIf=" dir == 'rtl'">{{data.faq_Header_ar}}</span>
+                            <i class="far fa-arrow-down goBack padding_r_10"></i>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-md-7 display_content">
+                                <div>
+                                    <p> 
+                                        <span *ngIf=" dir == 'ltr'">{{data.faq_Body}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{data.faq_Body_ar}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <form [formGroup]="usefullform"  ngNativeValidate>
+                                    <button class="userfulbtn" (click)="onusefull(data._id)" >Use full</button>
+                                    <button class="notuserfulbtn" (click)="onnotusefull(data._id)" >Not use full</button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+            </span> -->
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer></app-footer>

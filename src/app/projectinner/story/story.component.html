@@ -1,0 +1,176 @@
+<!-- Header -->
+
+<app-right-header></app-right-header>
+<div class="container">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <a [routerLink]="['../payment']">
+                    <button class="nextbtn">
+            {{ contentLan.NEXT }}
+            <i class="far fa-angle-right" *ngIf="dir == 'ltr'"></i>
+            <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button></a>
+                <a [routerLink]="['../projectpreview']">
+                    <button class="projectpreview">
+            {{ contentLan.PREVIEW
+            }}<img src="assets/image/visibility.png" class="img-fluid projectpreviewimg" /></button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr" />
+            </div>
+        </div>
+    </section>
+    <!-- Story list header  -->
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="projectfeaturelist">
+                <li>
+                    <a [routerLink]="['../basic']"><button class="basicbtn">
+              <span>{{ contentLan.BASICS }}</span>
+              <span class="basiccircle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../rewards']">
+                        <button class="rewardbtn">
+              <span>{{ contentLan.REWARDS }}</span>
+              <span class="rewardcircle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../story']">
+                        <button class="storybtn btn_active">
+              <span>{{ contentLan.STORY }}</span>
+              <span class="storycircle active_circle"></span></button></a>
+                </li>
+                <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li> -->
+                <li>
+                    <a [routerLink]="['../payment']"><button class="paymentbtn">
+              <span>{{ contentLan.PAYMENT }}</span>
+              <span class="paymentcircle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../promotion']"><button class="promotionbtn">
+              <span>{{ contentLan.PROMOTION }}</span>
+              <span class="promotioncircle"></span></button></a>
+                </li>
+            </ol>
+            <div class="projectfeaturedselect" dropdown>
+                <p class="text-center">
+                    <button id="button-basic" dropdownToggle type="button" class="projectfeaturedselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+            Button dropdown <span class="caret"></span>
+          </button>
+                </p>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem">
+                        <a class="dropdown-item" [routerLink]="['../basic']">{{
+              contentLan.BASICS
+              }}</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="dropdown-item" [routerLink]="['../rewards']">{{
+              contentLan.REWARDS
+              }}</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="dropdown-item" [routerLink]="['../story']">{{
+              contentLan.STORY
+              }}</a>
+                    </li>
+                    <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                    <li role="menuitem">
+                        <a class="dropdown-item" [routerLink]="['../payment']">{{
+              contentLan.PAYMENT
+              }}</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="dropdown-item" [routerLink]="['../promotion']">{{
+              contentLan.PROMOTION
+              }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Introduce your project -->
+    <section class="start_basic_sec">
+        <div class="row">
+            <div class="col-md-12" *ngIf="dir == 'ltr'">
+                <h3 class="startbasictitle">{{ tabHead }}</h3>
+                <p class="startbasicpara">{{ description }}</p>
+            </div>
+            <div class="col-md-12" *ngIf="dir == 'rtl'">
+                <h3 class="startbasictitle">{{ tabHead_Ar }}</h3>
+                <p class="startbasicpara">{{ description_Ar }}</p>
+            </div>
+        </div>
+    </section>
+    <form name="form" [formGroup]="storyForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" *ngIf="dir == 'ltr'">
+                <h3 class="projectdescription">{{ projectStoryHead }}</h3>
+                <p class="projectdescriptionpara">{{ projectStoryDescr }}</p>
+            </div>
+            <div class="col-md-6" *ngIf="dir == 'rtl'">
+                <h3 class="projectdescription">{{ projectStoryHead_Ar }}</h3>
+                <p class="projectdescriptionpara">{{ projectStoryDescr_Ar }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="description">{{ contentLan.DESCRIPTION }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <angular-editor [config]="config" formControlName="description"></angular-editor>
+            </div>
+        </div>
+        <section class="risk_sec">
+            <div class="row">
+                <div class="col-md-4" *ngIf="dir == 'ltr'">
+                    <h3 class="riskschallenge">{{ riskHead }}</h3>
+                    <p class="riskschallengepara">{{ riskDescr }}</p>
+                </div>
+                <div class="col-md-4" *ngIf="dir == 'rtl'">
+                    <h3 class="riskschallenge">{{ riskHead_Ar }}</h3>
+                    <p class="riskschallengepara">{{ riskDescr_Ar }}</p>
+                </div>
+                <div class="col-md-6">
+                    <textarea rows="5" cols="40" style="height: max-content" maxlength="1000" class="rewarddescriptioninput form-control" formControlName="risk_chalenges"></textarea>
+                </div>
+            </div>
+        </section>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-6">
+                    <div class="reward_btn_sec">
+                        <button class="rewardcancel">{{ contentLan.CANCEL }}</button>
+                        <!-- <a [routerLink]="['../payment']"> -->
+
+                        <button type="submit" class="savereward" *ngIf="projectpreview == undefined; else nothing">
+              Save
+            </button>
+                        <ng-template #nothing>
+                            <button type="submit" class="savereward">
+                {{ contentLan.ALREADYSAVE }}
+              </button>
+                        </ng-template>
+                        <!-- </a> -->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </form>
+    <!-- Button section End -->
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,63 @@
+.activityhead {
+    font-size: 30px;
+    font-weight: 500;
+    color: #353535;
+    margin: 40px 0 30px 0;
+}
+
+.activitypara {
+    font-size: 14px;
+    font-weight: 500;
+    color: #9A999E;
+}
+
+.submit_btn {
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    color: #FFFFFF;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 10px 35px;
+    box-shadow: 5px 5px 13px #00000021;
+}
+
+.submit_btn:hover {
+    background: #353535 !important;
+}
+
+.requestlist {
+    height: 600px;
+    overflow-y: scroll;
+    margin-bottom: 5%;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #fd4565;
+    border-radius: 1px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}

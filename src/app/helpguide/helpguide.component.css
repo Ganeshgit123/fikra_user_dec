@@ -1,0 +1,27 @@
+.titleguide {
+    color: #ff3e66;
+    margin: 10% 0%;
+    background-color: white;
+    padding: 10px 30px 10px 30px;
+    border: 2px solid #ff455fc7;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.titleguide:hover {
+    color: white;
+    margin: 10% 0%;
+    background-color: #ff3e66;
+    padding: 10px 30px 10px 30px;
+    border: 2px solid #ff455fc7;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.helpques {
+    font-size: 18px;
+    font-weight: 200;
+    color: #525151;
+}

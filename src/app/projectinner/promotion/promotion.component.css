@@ -1,0 +1,173 @@
+.box_sec {
+    padding: 20px 0 20px 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .box_sec {
+        padding: 20px 0 0px 0;
+    }
+}
+
+.forAtag{
+    text-align: right;
+    cursor: pointer;
+}
+
+.left_sec {
+    padding-right: 40px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+    .left_sec {
+        padding-right: 0;
+    }
+}
+
+.collaborators {
+    font-size: 24px;
+    font-weight: 500;
+    color: #353535;
+    opacity: 1;
+}
+
+.collaboratorspara {
+    font-size: 14px;
+    color: #9A999E;
+    opacity: 1;
+}
+
+.lock_sec {
+    background: #9A999E1A;
+    padding: 60px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .lock_sec {
+        margin-bottom: 20px;
+        padding: 40px;
+    }
+}
+
+.lock_sec i {
+    font-size: 24px;
+    padding-right: 20px;
+}
+.lock_sec i:lang(ar){
+    padding-left: 20px;
+    padding-right: auto;
+}
+.prelaunchbox {
+    border: 1px solid #70707040;
+    padding: 30px;
+}
+
+.inacvtivetitle {
+    font-size: 20px;
+    font-weight: 500;
+    color: #353535;
+}
+
+.inactivepeople {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.activatemypage {
+    background: #9A999E66 0% 0% no-repeat padding-box;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.activatemypages {
+    background: transparent linear-gradient(265deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.you_cant {
+    font-size: 12px;
+    color: #9A999E;
+    padding: 20px 0;
+    margin-bottom: 0;
+}
+
+.form-group {
+    padding: 10px 0 10px 0;
+}
+
+::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    color: #9A999E;
+}
+
+.reward_btn_sec {
+    float: right;
+    padding-bottom: 40px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .reward_btn_sec {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .reward_btn_sec {
+        padding-bottom: 40px;
+    }
+}
+
+.rewardcancel {
+    background: transparent linear-gradient(255deg, #E80101 0%, #FF0000 100%) 0% 0% no-repeat padding-box;
+    border-radius: 43px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 40px 10px 40px;
+    margin: 0 30px 0 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .rewardcancel {
+        margin: 0 10px 0 0;
+    }
+}
+
+.rewardcancel:hover {
+    background: #353535;
+}
+
+.savereward {
+    background: transparent linear-gradient(255deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 43px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 40px 10px 40px;
+}
+
+.savereward:hover {
+    background: #353535;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .savereward {
+        padding: 10px 20px 10px 20px;
+    }
+}

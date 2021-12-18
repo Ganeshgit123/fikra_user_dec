@@ -1,0 +1,61 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Profile -->
+<section class="profice_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="upload-img" *ngIf="profileImage === 'undefined'" src="assets/image/avatar-placeholder.png" />
+                <img class="upload-img" *ngIf="profileImage !== 'undefined'" src="{{ profileLogo }}" />
+            </div>
+            <div class="col-md-7">
+                <h4 class="profilename">{{ user }}</h4>
+                <span class="tag-box">{{
+          role == "investor"
+            ? capitalize(contentLan.BACKER || "Backer")
+            : capitalize(role)
+        }}</span>
+
+                <p class="profiledetail">
+                    {{ contentLan.BACKED }}
+                    <span style="font-weight: 600; color: #000000c4">{{ backed }}</span> {{ contentLan.PROJECTS }} · {{ contentLan.JOINED }} {{ dob | date: "MMM d, y" }}
+                </p>
+                <button class="profileabout" (click)="onDisplayModeChange(1)" [ngClass]="{ 'btn-primary active': displayMode === 1 }">
+          {{ contentLan.ABOUT || "ABOUT" }}
+        </button>
+                <section class="profice_down_sec" *ngIf="displayMode === 1">
+                    <div class="row profileabtbox">
+                        <div class="row">
+                            <div class="col-md-10"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="profileboxbio">{{ contentLan.BIOGRAPHY }}</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="profileboxcontent">
+                                {{ bio?._isUserBio_On_ ? bio?.userBio : "NA" }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row prof_next_sec" *ngIf="role === 'creator'; else creatorTemplate">
+                        <div class="row">
+                            <div class="col-md-10"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="profileboxbio">{{ contentLan.WEBSITE }}</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="profileboxcontent">
+                                {{ bio?._isWebURL_On_ ? bio?.webSiteURL : "NA" }}
+                            </p>
+                        </div>
+                    </div>
+                    <ng-template #creatorTemplate>
+                        <div class="row"></div>
+                    </ng-template>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

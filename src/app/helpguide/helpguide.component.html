@@ -1,0 +1,21 @@
+<app-right-header></app-right-header>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor='let data of guide'>
+                <button class="titleguide" [routerLink]="['/help/cat', data._id ]" (click)="onbuttonselect(data._id)">
+                    <span *ngIf=" dir == 'ltr'">{{data.title}}</span>
+                    <span *ngIf=" dir == 'rtl'">{{data.titleAr}}</span>
+                </button>
+                <div class="row" *ngFor='let ques of data.question'>
+                    <div class="col-md-12">
+                        <h4 class="helpques" *ngIf=" dir == 'ltr'">{{ques.question}}</h4>
+                        <h4 class="helpques" *ngIf=" dir == 'rtl'">{{ques.questionAr}}</h4>
+                        <hr style=" color: #424242; ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

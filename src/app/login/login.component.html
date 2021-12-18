@@ -1,0 +1,59 @@
+<section class="login_sec">
+    <div class="container-fluid">
+        <div class="row mobile_only_sec">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <img src="assets/image/top_design.svg" class="img-fluid">
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <form *ngIf="!isLoggedIn" name="form" [formGroup]="signinForm" (ngSubmit)="f.form.valid" #f="ngForm"
+            ngNativeValidate>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="backtohome">
+                        <a routerLink="/" routerLinkActive="active" class="homea">
+                            <i class="fas fa-arrow-left" *ngIf=" dir == 'ltr'"></i>
+                            <i class="fas fa-arrow-right" *ngIf=" dir == 'rtl'"></i>{{ contentLan.HOME }} </a>
+                    </div>
+                    <div *ngIf=" dir == 'ltr'">
+                        <img src="assets/image/left_design.svg" class="img-fluid login_side_img">
+                    </div>
+                    <div *ngIf=" dir == 'rtl'">
+                        <img src="assets/image/rtl/login_rtl.svg" class="img-fluid login_side_img">
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 comm_login">
+                    <h4 class="loginhead">Log in as</h4>
+
+                    <ul class="signup_sec">
+                        <li>
+                            <a routerLink="/investor_login"> <button class="switch_btn">Backer</button></a>
+                        </li>
+                        <li>
+                            <h4 class="loginor">or</h4>
+                        </li>
+                        <li>
+                            <a routerLink="/creator_login"> <button class="switch_btn">Creator</button></a>
+                        </li>
+                    </ul>
+                    <ul class="signup_sec1">
+                        <li>
+                            <h6>New to Fikra ?</h6>
+                        </li>
+                        <li style="padding-right: 4px !important;"><button [routerLink]="['/createaccount']"
+                                class="common_signup"><i class="fa fa-spinner fa-spin" *ngIf="loading"></i>{{ contentLan.SIGNUP }}</button></li>
+                        <li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 empty"></div>
+                <div class="col-md-4">
+                    <img src="assets/image/login.svg" class="img-fluid loginpageimg1">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

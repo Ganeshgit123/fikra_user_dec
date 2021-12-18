@@ -1,0 +1,244 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<div class="container">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <a [routerLink]="['../payment']"> <button class="nextbtn">Next <i class="far fa-angle-right"></i></button></a>
+                <a [routerLink]="['../projectpreview']"> <button class="projectpreview"> <img src="assets/image/visibility.png" class="img-fluid projectpreviewimg"></button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+    <!-- People list header  -->
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="projectfeaturelist">
+                <li> <a [routerLink]="['../basic']"><button class="basicbtn"><span>Basic</span> <span class="basiccircle"></span></button></a></li>
+                <li>
+                    <a [routerLink]="['../rewards']"> <button class="rewardbtn"><span >Rewards</span> <span class="rewardcircle"></span></button></a>
+                </li>
+                <li>
+                    <a [routerLink]="['../story']"> <button class="storybtn"><span >Story</span> <span class="storycircle"></span></button></a>
+                </li>
+                <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li>
+                <li> <a [routerLink]="['../payment']"><button class="paymentbtn"><span >Payment</span> <span class="paymentcircle"></span></button></a></li>
+                <li> <a [routerLink]="['../promotion']"><button class="promotionbtn"><span >Promotion</span> <span class="promotioncircle"></span></button></a></li>
+            </ol>
+            <div class=" projectfeaturedselect" dropdown>
+                <p class="text-center"><button id="button-basic" dropdownToggle type="button" class="projectfeaturedselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+Button dropdown <span class="caret"></span>
+</button></p>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../basic']">Basic</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../rewards']">Rewards</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../story']">Story</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../payment']">Payment</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['../promotion']">Promotion</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduce yourself -->
+    <section class="start_basic_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="startbasictitle">Introduce yourself</h3>
+                <p class="startbasicpara">Lorem Ipsum is simply dummy text of the printing</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="headerhr">
+        </div>
+    </div>
+
+    <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="yourprofile">Your profile</h4>
+                    <p class="yourprofilepara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="yourprofilebox">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="assets/image/avatar-placeholder.png" class="img-fluid yourprofileimg">
+                            <h4 class="yourprofilename">{{user.fullName}}<br> <span class="yourprofilecreator"> Project creator</span> </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="completeyourprofile">Complete your profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="yourprofile">Vanity URL</h4>
+                    <p class="yourprofilepara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>https://fikra.com/profile/</label>
+                    <input type="text" class="form-control vanityurltext">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <section class="box_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left_sec">
+                    <h4 class="yourprofile">Collaborators (optional)</h4>
+                    <p class="yourprofilepara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="collaboratorbtn" (click)="popup = true">Add your first collaborator</button>
+            </div>
+        </div>
+    </section> -->
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="reward_btn_sec">
+                <button class="rewardcancel">Cancel</button>
+                <button class="savereward"> Next</button>
+            </div>
+        </div>
+    </div>
+    <!-- Button section End -->
+</div>
+<app-footer></app-footer>
+<!-- New collaborator -->
+<div class="overlay" *ngIf="popup">
+    <div class="popup">
+        <div class="container">
+            <a class="close" (click)="popup = false">&times;</a>
+            <form [formGroup]="peopleForm" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="newcollaborator">New collaborator</h2>
+                        <p class="newcollaboratordesc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.
+                        </p>
+                        <h4 class="newcollaboratoremail">Email</h4>
+                        <p class="newcollaboratoremaildesc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        <input type="email" placeholder="User@gmail.com" formControlName="email" name="email" class="form-control newcollaboratoremailinput">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="newcollaboratoremail">Title</h4>
+                        <p class="newcollaboratoremaildesc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        <input type="text" placeholder="collaborator" formControlName="title" class="form-control newcollaboratoremailinput">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="newcollaboratoremail">Permissions</h4>
+                        <p class="newcollaboratoremaildesc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        <!-- edit project checkbox -->
+                        <div class="form-check">
+                            <input name="edit" [(ngModel)]="type" type="checkbox" formControlName="edit_project" [value]="1" class="form-check-input" [checked]="radioStatus" (change)="edit()">
+                            <label class="form-check-label">Edit Project</label>
+                        </div>
+                        <div *ngIf="type === true">
+                            <div class="form-check">
+                                <input type="checkbox" formControlName="edit_project" class="form-check-input">
+                                <label class="form-check-label">Make edits to your project's basic info, story, rewards, and Spotlight page</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label">Update project FAQs</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="headerhr">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Manage community checkbox -->
+                        <div class="form-check">
+                            <input name="manage" type="checkbox" [(ngModel)]="type1" [value]="2" formControlName="edit_project" [checked]="manageStatus" class="form-check-input" (change)="manage()">
+                            <label class="form-check-label">Manage community</label>
+                        </div>
+                        <div *ngIf="type1 == true">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label">Draft and publish project updates</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label">Post comments and mark comments as spam</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="headerhr">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Coordinate fulfillment checkbox -->
+                        <div class="form-check">
+                            <input name="coordinate" type="checkbox" [(ngModel)]="type2" [value]="3" formControlName="coordinate" [checked]="coordinatStatus" class="form-check-input" (change)="coordinate()" />
+                            <label class="form-check-label">Coordinate fulfillment</label>
+                        </div>
+                        <div *ngIf="type2 == true">
+                            <div class="form-check">
+                                <input type="checkbox" formControlName="view_backing" class="form-check-input">
+                                <label class="form-check-label">View backing activity and access the backer report</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" formControlName="manage_backing" class="form-check-input">
+                                <label class="form-check-label">Manage backer surveys, add notes to pledges, and mark reward as delivered</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="headerhr">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="invite_btn" type="submit">Send invitation</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

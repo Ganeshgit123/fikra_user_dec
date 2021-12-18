@@ -1,0 +1,84 @@
+<app-right-header></app-right-header>
+<section class="carreer_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{{careerimg}}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="career_desc_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="carer_head" *ngIf=" dir == 'ltr'">{{head}}</h4>
+                <h4 class="carer_head" *ngIf=" dir == 'rtl'">{{headAr}}</h4>
+            </div>
+            <div class="col-md-9"></div>
+        </div>
+    </div>
+</section>
+
+<section class="career_desc_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>{{ contentLan.ADVANTAGES }}</h4>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]="advantage"></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]="advantagear"></p>
+            </div>
+            <div class="col-md-6">
+                <h4>{{ contentLan.BENEFITS }}</h4>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]="benifit"></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]="benifitar"></p>
+            </div>
+            </div>
+    </div>
+</section>
+
+
+<section class="job_list_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="open_head">{{ contentLan.JOBOPENING }}</h4>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <form class="search-container">
+                    <input type="text" id="search-bar" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" placeholder="Search">
+                    <a href="#"><img class="search-icon" src="assets/image/search_carrer.svg"></a>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{{ contentLan.SNO }}</th>
+                            <th>{{ contentLan.ROLE }}</th>
+                            <th>{{ contentLan.NOOFVACANCIES }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let datas of jobdata | filter:searchTerm ; let ndx = index">
+                            <td>{{ndx+1}}.</td>
+                            <td>
+                                <span *ngIf=" dir == 'ltr'">{{datas.jobRole}}</span>
+                                <span *ngIf=" dir == 'rtl'">{{datas.jobRoleAr}}</span>
+                            </td>
+                            <td>{{datas.jobVacancies}}</td>
+                            <td><a [routerLink]="['/career_form',datas._id]" class="more_btn">{{ contentLan.MOREDETAIL }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

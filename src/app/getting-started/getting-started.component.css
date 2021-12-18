@@ -1,0 +1,43 @@
+.header-color {
+    background-color: #c1c1c1c2;
+    height: 200px;
+    padding: 100px 100px 140px 100px;
+}
+
+.header-color h2 h4 h6 {
+    color: black;
+    font-size: 22px;
+}
+
+.container_secont {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.header {
+    background: url("/assets/image/createrhandbook/getting_started.jpg") no-repeat;
+    /* background: url("/assets/image/Group_25.png") no-repeat; */
+    /* background-size: contain; */
+    height: 500px;
+}
+
+.getting-btn button {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    font-weight: 600;
+    color: white;
+    background: transparent linear-gradient( 265deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+}
+
+.content-para {
+    margin-top: 5%;
+    font-size: 20px;
+}

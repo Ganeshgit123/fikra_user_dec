@@ -1,0 +1,89 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- content -->
+<section class="sec1" *ngFor="let item of topBanner">
+    <div class="container_sec1">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                <p *ngIf=" dir == 'ltr'">{{item.bannerDescription}}</p>
+                <p *ngIf=" dir == 'rtl'">{{item.bannerDescription_Ar}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section *ngFor="let item of bodySection">
+    <div class="row sec2" style="width: 100%;">
+        <div class="col-md-8 sec2div1">
+            <h3 *ngIf=" dir == 'ltr'">{{item.Header}}</h3>
+            <h3 *ngIf=" dir == 'rtl'">{{item.Header_Ar}}</h3>
+            <p *ngIf=" dir == 'ltr'">{{item.Description}}.</p>
+            <p *ngIf=" dir == 'rtl'">{{item.Description_Ar}}.</p>
+        </div>
+        <div class="col-md-4 sec2img">
+            <img src="{{item.imageURL}}">
+        </div>
+    </div>
+</section>
+<section *ngFor="let item of bodySection">
+    <div class="row sec3">
+        <div class="col-md-12 sec3div">
+            <h3 *ngIf=" dir == 'ltr'">{{item.Header2}}</h3>
+            <h3 *ngIf=" dir == 'rtl'">{{item.Header2_Ar}}</h3>
+            <p *ngIf=" dir == 'ltr'">{{item.Description2}}</p>
+            <p *ngIf=" dir == 'rtl'">{{item.Description2_Ar}}</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 sec4div" *ngFor="let item of accDescription">
+                <h2 *ngIf=" dir == 'ltr'">{{item.header}}</h2>
+                <h2 *ngIf=" dir == 'rtl'">{{item.header_Ar}}</h2>
+                <p *ngIf=" dir == 'ltr'"> {{item.description}}</p>
+                <p *ngIf=" dir == 'rtl'"> {{item.description_Ar}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation" *ngFor='let data of accordCont;let i = index'>
+                        <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}"
+                            id="home-tab" data-bs-toggle="tab"  type="button"
+                            role="tab" aria-controls="home" aria-selected="true">{{data.Header}}</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent" *ngFor="let data of accordCont;let i = index">
+                    <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" 
+                        role="tabpanel" aria-labelledby="home-tab">
+                        <h4>{{data.Description}}</h4>
+                    </div>
+                </div>
+
+
+                <!-- <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" *ngFor="let item of ruless.accordian" data-bs-target="'#nav-home'+item._id" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><h4>{{item.Header}}</h4></button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="'#nav-home'+item._id" role="tabpanel" aria-labelledby="nav-home-tab" style=" border: 1px solid #7070702E; margin-top: 3px; padding: 15px; ">
+                        <div class="row">
+                            <div class="col-md-5" style=" margin: 3% 5% 0% 0%; ">
+                                <h4 *ngFor="let item of ruless.accordian">{{item.Description}}</h4>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>

@@ -1,0 +1,333 @@
+<!-- Header -->
+<section class="top_heder" *ngIf="notifyl == true">
+    <div class="container">
+        <div class="row" [hidden]="IsmodelShow">
+            <div class="col-md-12">
+                <button type="button" class="close" (click)="close()">&times;</button>
+                <a routerLink="/message">
+                    <p class="learnpara">You have Notification</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="header">
+    <div class="row" *ngIf="opensearch == true" style="width: 100%;">
+        <div class="col-md-12">
+            <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" placeholder="Search" class="form-control search-control w-80 p-3" />
+        </div>
+        <div class="col-md-11"></div>
+        <span class="searchclose">
+            <i class="fal fa-times search_close" (click)="opensearch = false"></i></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-5 col-3 mob_pad_no_right">
+                <div class="backtohome" style="position: sticky !important">
+                    <a (click)="goBack()" style="cursor: pointer">
+                        <i class="fas fa-arrow-left" *ngIf="dir == 'ltr'"></i>
+                        <i class="fas fa-arrow-right" *ngIf="dir == 'rtl'"></i> {{ contentLan.BACK }}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-6">
+                <div class="discover">
+                    <p class="text-center" routerLink="/" style="cursor: pointer">
+                        <img src="assets/image/logo_colored.png" class="common_logo" />
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-5 col-12 mob_pad_no_left">
+                <ul class="right_cont">
+                    <li class="search_box">
+                        <form class="search-form ng-pristine ng-valid">
+                            <div class="input-group search-group">
+                                <span (click)="searchenable()"><i class="fa fa-search"></i> {{ contentLan.SEARCH }}</span>
+                                <!-- (keydown.enter)='onquerySelected(valuesearch)'  (click)="popup1 = true" -->
+                                <!-- <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" class="form-control search-control" /> -->
+                                <!-- <button (click)='onquerySelected(seetodo.value)'></button> -->
+                            </div>
+                            <!-- /.input-group -->
+                        </form>
+                    </li>
+                    <li *ngIf="role === null">
+                        <a routerLink="/login" (click)="logapi()" class="log_btn">{{
+              contentLan.LOGIN
+              }}</a>
+                    </li>
+                    <li *ngIf="lang == 'en'">
+                        <button class="singup" (click)="switchLang('ar')">العربية</button>
+                    </li>
+                    <li *ngIf="lang == 'ar'">
+                        <button class="singup" (click)="switchLang('en')">English</button>
+                    </li>
+                    <li *ngIf="role === 'investor' || role === 'creator'">
+                        <a (click)="popup = true" style="font-size: 25px; margin-left: 10%; cursor: pointer">
+                            <img class="upload-img" style=" width: 50px; height: 50px; border-radius: 50%; cursor: pointer; " *ngIf="profileImage !== 'undefined'" src="{{ profileimg }}" />
+                        </a>
+                        <i (click)="popup = true" style="cursor: pointer" *ngIf="profileImage === 'undefined'" class="extraCl fa fa-user-circle-o" aria-hidden="true"></i>
+                        <div>
+                            <div class="overlay" *ngIf="popup">
+                                <form [formGroup]="WordpressForm">
+                                    <div class="popup">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-10"></div>
+                                                <i class="fal fa-times" (click)="popup = false" style="cursor: pointer; margin: 20px 0px"></i>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 profile_sec"></div>
+                                                <div class="row">
+                                                    <div class="col-md-6" style=" display: -webkit-box; margin-bottom: 30px; display: flex; ">
+                                                        <h3 class="youracccount" style="margin-right: 20px; margin-bottom: 0px">
+                                                            {{ user.data.fullName }}
+                                                        </h3>
+                                                        <span class="tag-box">{{ role == "investor" ? "Backer" : capitalize(role) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style=" margin-bottom: 2%; border-bottom: 2px solid #fe953a; padding: 20px; opacity: 1; margin-left: 0px; ">
+                                                    <div class="col-md-6" style=" text-align: initial; border-right: 2px solid #fe953a; ">
+                                                        <ul class="profile_ul">
+                                                            <li class="profile_li">
+                                                                <a routerLink="/savedproject">{{ contentLan.SAVEDPROJECTS }}</a>
+                                                            </li>
+                                                            <li class="profile_li">
+                                                                <a routerLink="/mypledge">{{ contentLan.BACKEDPROJECS }}</a>
+                                                            </li>
+                                                            <li class="profile_li">
+                                                                <a routerLink="/following">{{ contentLan.FOLLOWING }}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-5" style="text-align: initial">
+                                                        <ul class="profile_ul">
+                                                            <li class="profile_li">
+                                                                <a routerLink="/profile">{{ contentLan.PROFILE }} </a>
+                                                            </li>
+                                                            <li class="profile_li">
+                                                                <a routerLink="/account/1">{{ contentLan.SETTINGS }}</a>
+                                                            </li>
+                                                            <li class="profile_li">
+                                                                <a routerLink="/specialrequest" *ngIf=" role === 'creator'; else creatorTemplatemessage ">{{ contentLan.SPECIALREQ }} </a>
+                                                            </li>
+                                                            <ng-template #creatorTemplatemessage>
+                                                                <li class="profile_li" style="padding: 0px 0px">
+                                                                    <a routerLink="/message">{{ contentLan.MESSAGE }} </a>
+                                                                </li>
+                                                            </ng-template>
+                                                            <li class="profile_li">
+                                                                <a routerLink="/activity">{{ contentLan.ACTIVITY }} </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngIf="role === 'creator'; else creatorTemplate" class="create_proj_top">
+                                                    <div class="col-md-12" style="text-align: initial; padding: 20px">
+                                                        <div class="crr_po_to">
+                                                            <h4 class="createdproject" style="margin-top: 7px">
+                                                                <b>{{ contentLan.CREATEDPROJECTS }}</b>
+                                                            </h4>
+                                                            <a class="createnewa" routerLink="/createproject"> <button class="createplus">+</button><span class="createnew">{{ contentLan.CREATENEW }}</span> </a>
+                                                        </div>
+                                                        <ul *ngFor=" let country of user.projectData; let i = index " style="margin-bottom: 10px; padding: 0px"> <input type="text" placeholder="Title" [(ngModel)]="title" formControlName="title" hidden />
+                                                            <a *ngIf="6 > i" [routerLink]="[ '/projectinner/' + country._id + '/projectoverview/basic' ]" target="_blank">
+                                                                <li>
+                                                                    {{ country.title }}
+                                                                    <span [style]="
+                                      country.aproval_Status == 'approved'
+                                        ? 'color: green'
+                                        : country.aproval_Status == 'rejected'
+                                        ? 'color: red'
+                                        : 'color: #fc9d03'
+                                    ">
+                                    -
+                                    {{
+                                    capitalize(country.aproval_Status)
+                                    }}</span>
+                                                                </li>
+                                                            </a>
+                                                        </ul>
+                                                        <ul *ngIf="user.projectData?.length > 5" style="
+                                margin-bottom: 10px;
+                                padding: 0px;
+                                margin-bottom: 10px;
+                              ">
+                                                            <a [routerLink]="['/activity']">
+                                                                <li class="VewA">View all</li>
+                                                            </a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <ng-template #creatorTemplate>
+                                                    <div class="row"></div>
+                                                </ng-template>
+                                                <div class="row" style="margin-bottom: 3%; margin-top: 3%">
+                                                    <!-- <div class="col-md-6" *ngIf="role === 'creator'" style=" text-align: initial; ">
+<a class="createnewa" routerLink="/specialrequest">
+<button class="createplus"></button><span class="createnew">Special Request</span>
+                        </a>
+                    </div> -->
+                                                    <div class="col-md-12">
+                                                        <a routerlink="/">
+                                                            <button class="logouticon" (click)="loggedout()">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>{{ contentLan.LOGOUT }}
+                              </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="
+              role === 'investor' || role === 'creator';
+              else nologinTemplate
+            " [style]="profileImage != 'undefined' ? '' : 'margin-left: 35px;'">
+                        <span style="font-size: 25px; color: #fe764a">
+              <a (click)="popup2 = true"> <i class="far fa-bell"></i></a><span class="sec counter counter-lg">{{ cou
+                }}</span>
+                        </span>
+                    </li>
+                    <ng-template #nologinTemplate> </ng-template>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="overlay1" *ngIf="popup1">
+        <form [formGroup]="WordpressForm">
+            <div class="popup1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10" style="margin: 10px 0px"></div>
+                        <i class="fal fa-times" (click)="popup1 = false" style="cursor: pointer; text-align: right; padding: 0px 25px"></i>
+                    </div>
+                    <div class="row" *ngFor="let data of search; let i = index" style="margin-top: 1%">
+                        <a [routerLink]="[
+                '/projectinner/' + data._id + '/projectoverview/basic'
+              ]" style="color: black; text-decoration: none">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{{ data.basicInfoId.projectImage }}" />
+                                </div>
+                                <div class="col-md-8 search_tit">
+                                    <h4 class="pop_tit">{{ data.title }}</h4>
+                                    <p>by&nbsp;{{ data.userId.fullName }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div *ngIf="search?.length == 0" style="text-align: center; padding: 70px; color: red">
+                        <h6>No data found</h6>
+                    </div>
+                    <div class="row" *ngIf="search?.length >= 5">
+                        <div class="col-md-12">
+                            <a [routerLink]="['/recommended', valuesearch]">
+                                <button class="profilemanage">See more</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="overlay2" *ngIf="popup2">
+        <form [formGroup]="WordpressForm">
+            <div class="popup2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10" style="margin-top: 5%">
+                            <h5 style="font-size: 18px">Notification</h5>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 5%">
+                            <i class="fal fa-times" (click)="popup2 = false" style="cursor: pointer"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="
+              text-align: center;
+              font-size: 18px;
+              margin-top: 25%;
+              color: red;
+            " *ngIf="notify == ''; else shownot">
+                        <div class="col-md-12">
+                            <h6>No Notification</h6>
+                        </div>
+                    </div>
+                    <ng-template #shownot>
+                        <div class="row" *ngFor="let notifyobj of notify">
+                            <span *ngIf="notifyobj._is_Visited_ === false; else successTemplate">
+                <a href="/message" style="text-decoration: none; color: black" (click)="verifynotify(notifyobj._id)">
+                  <div class="col-md-12 notifyfull">
+                    <div class="row">
+                      <!-- <h5 *ngIf="cou == 0">No Notification</h5> -->
+                      <div class="col-md-10">
+                        <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
+
+                        <label style="font-size: 14px">Message:</label>
+                        <p *ngIf="notifyobj.notiContent" style="
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            font-size: 14px;
+                          ">
+                          {{ notifyobj.notiContent }}
+                        </p>
+                      </div>
+                      <div class="col-md-2">
+                        <span style="font-size: 18px; color: #ff495e">
+                          <a (click)="deletenotify(notifyobj._id)">
+                            <i class="fas fa-trash-alt"></i></a>
+                        </span>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy, h:mm a'}}</label>
+                    </div>
+                </div>
+            </div>
+            </a>
+            </span>
+            <ng-template #successTemplate>
+                <a href="/message" style="text-decoration: none; color: black">
+                    <div class="col-md-12 notifyfullverify">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
+                                <label>{{ contentLan.MESSAGE }} :</label>
+                                <p *ngIf="notifyobj.notiContent" style="
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            font-size: 14px;
+                          ">
+                                    {{ notifyobj.notiContent }}
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <span style="font-size: 18px; color: #ff495e">
+                          <a (click)="deletenotify(notifyobj._id)">
+                            <i class="fas fa-trash-alt"></i></a>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy, h:mm a'}}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </a>
+            </ng-template>
+    </div>
+    </ng-template>
+    </div>
+    </div>
+    </form>
+    </div>
+
+</section>

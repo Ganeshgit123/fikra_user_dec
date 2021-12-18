@@ -1,0 +1,166 @@
+.log_btn {
+    background: transparent linear-gradient(259deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 23px;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 30px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .log_btn {
+        font-size: 12px;
+        padding: 5px 15px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .log_btn {
+        background: #fff;
+        color: #000;
+    }
+}
+
+.log_btn:hover {
+    background: #A8A8A8;
+    color: #000;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 500ms;
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 45%;
+    transition: all 5s ease-in-out;
+    height: auto;
+    float: right;
+    box-shadow: 1px 1px 18px 0px #fe953a;
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup .close {
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0px 5px 0px 5px;
+    ;
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.profile_sec {
+    background: url("/assets/image/groups/Mask Group 77.svg") no-repeat;
+    background-size: contain;
+}
+
+.youracccount {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #353535;
+    opacity: 1;
+    margin-bottom: 5%;
+}
+
+.profile_ul {
+    list-style: none;
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #9A999E;
+    opacity: 1;
+}
+
+.profile_li {
+    margin-bottom: 5%;
+    text-decoration: none;
+    color: #9A999E;
+}
+
+.profile_li a {
+    margin-bottom: 5%;
+    text-decoration: none;
+    color: #9A999E;
+}
+
+.profil_hr {
+    height: 105px;
+    border: 1px solid #FE953A;
+    opacity: 1;
+    width: 0px;
+    margin-top: 0px;
+}
+
+.createdproject {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #353535;
+    opacity: 1;
+    margin-bottom: 5%;
+}
+
+.createplus {
+    border: none;
+    background: #FE8840 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 15px #fe953a;
+    opacity: 1;
+    padding: 0px 8px 0px 8px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+}
+
+.createnew {
+    font-family: Poppins;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #353535;
+    opacity: 1;
+    margin-left: 5%;
+}
+
+.createnewa {
+    text-decoration: none;
+}
+
+.logouticon {
+    border: none;
+    background: #FE4D40 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 15px #FF5D4B;
+    opacity: 1;
+    padding: 0px 8px 0px 8px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+}

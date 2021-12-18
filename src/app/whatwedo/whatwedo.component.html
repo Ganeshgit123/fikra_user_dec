@@ -1,0 +1,206 @@
+<app-right-header></app-right-header>
+<section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="banner_cont_sec">
+                    <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                    <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                    <p *ngIf=" dir == 'ltr'">{{item.bannerDescription}}</p>
+                    <p *ngIf=" dir == 'rtl'">{{item.bannerDescription_Ar}}</p>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</section>
+
+<section class="what_video_sec" *ngFor="let item of videoDescSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- <img src="assets/image/whatwedo/video_img.svg" class="img-fluid"> -->
+                <!-- <video controls [src]="videourl" width='100%' style="border: 1px solid; border-radius: 20px;">
+                    <source src='projectpreviewvideo'  />
+                </video> -->
+                <iframe class="video" style=" width: 100%; height: 100%; border-radius: 20px; " [src]='videourl'></iframe>
+            </div>
+            <div class="col-md-6">
+                <div class="video_cont_sec">
+                    <h2 *ngIf=" dir == 'ltr'">{{item.headTitle}}</h2>
+                    <h2 *ngIf=" dir == 'rtl'">{{item.headTitle_Ar}}</h2>
+                    <p *ngIf=" dir == 'ltr'">{{item.Description}}</p>
+                    <p *ngIf=" dir == 'rtl'">{{item.Description_Ar}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="journey_sec" *ngFor="let item of containerSection">
+    <div class="container">
+        <h2 *ngIf=" dir == 'ltr'">{{item.title}}</h2>
+        <h2 *ngIf=" dir == 'rtl'">{{item.title_Ar}}</h2>
+        <div class="row">
+            <div class="col-md-2 col-lg-1"></div>
+            <div class="col-md-3 col-lg-4">
+                <img src="assets/image/whatwedo/left_arrow.png" class="arrow_img">
+            </div>
+            <div class="col-md-2 col-lg-2"></div>
+            <div class="col-md-3 col-lg-4">
+                <img src="assets/image/whatwedo/right_arrow.png" class="arrow_img">
+            </div>
+            <div class="col-md-2 col-lg-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let items of item.container">
+                <div class="icon_cont">
+                    <p class="text-center"><img src="{{items.icon}}" alt="Avatar" class="image"><br>
+                        <span class="journey_title" *ngIf=" dir == 'ltr'">{{items.header}}</span>
+                        <span class="journey_title" *ngIf=" dir == 'rtl'">{{items.header_Ar}}</span>
+                    </p>
+                    <div class="overlay">
+                        <div class="text" *ngIf=" dir == 'ltr'">{{items.containerText}}</div>
+                        <div class="text" *ngIf=" dir == 'rtl'">{{items.containerText_Ar}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-3">
+                <div class="icon_cont">
+                    <p class="text-center"><img src="assets/image/whatwedo/prototyping.png" alt="Avatar" class="image"><br>
+                        <span class="journey_title">Prototype</span>
+                    </p>
+                    <div class="overlay">
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon_cont">
+                    <p class="text-center"><img src="assets/image/whatwedo/production.png" alt="Avatar" class="image"><br>
+                        <span class="journey_title">Production</span>
+                    </p>
+                    <div class="overlay">
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon_cont">
+                    <p class="text-center"><img src="assets/image/whatwedo/express-delivery.png" alt="Avatar" class="image"><br>
+                        <span class="journey_title">Shipping</span>
+                    </p>
+                    <div class="overlay">
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-lg-4"></div>
+            <div class="col-md-3 col-lg-4">
+                <img src="assets/image/whatwedo/bottom_arrow.png" class="arrow_img">
+            </div>
+            <div class="col-md-4 col-lg-4"></div>
+        </div>
+    </div>
+</section>
+
+<section class="sec_img_sec" *ngFor="let item of imageDescSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="right_cont_sec">
+                    <p *ngIf=" dir == 'ltr'">{{item.Description}}</p>
+                    <p *ngIf=" dir == 'rtl'">{{item.Description_Ar}}</p>
+                    <!-- <a href="" class="read_a"><button class="read_btn">{{item.buttonName}}</button></a> -->
+                </div>
+            </div>
+            <div class="col-md-6 order-first order-md-last">
+                <img src="{{item.ImageURL}}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="subscribe_section" *ngFor="let item of subscriptionSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 *ngIf=" dir == 'ltr'">{{item.header}}</h2>
+                <h2 *ngIf=" dir == 'rtl'">{{item.header_Ar}}</h2>
+                <p *ngIf=" dir == 'ltr'">{{item.description}}</p>
+                <p *ngIf=" dir == 'rtl'">{{item.description_Ar}}</p>
+                <form class="newsletter" [formGroup]="homenewsletterform" ngNativeValidate (ngSubmit)="homenewsletter()">
+                    <input type="email" name="email" formControlName="email" class="form-control" placeholder="Your Email" required />
+                    <button class="signup-btn" type="submit" id="element">
+                  <span>Subscribe</span>
+                </button>
+                </form>
+                <div class="col-md-12" style="text-align: center; margin-bottom: 20px">
+                    <a style="color: red; background: white">{{ errValue }}</a>
+                </div>
+                <p style="text-align: center; color: black">
+                    <input type="checkbox" (change)="checksubscribe($event)" /> &nbsp;{{ contentLan.agreetothe }}
+                    <a routerLink="/termsofuse" target="_blank" style="color: #ff475f">{{
+            contentLan.TERMSOFUSE
+          }}</a
+          >{{ contentLan.havereadandunderstand }}
+          <a routerLink="/privacypolicy" target="_blank" style="color: #ff475f">{{
+            contentLan.PRIVACYPOLICY
+          }}</a
+          >.
+        </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="last_box_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="last_box_col_right">
+                    <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle}}</h2>
+                    <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitlear}}</h2>
+                    <p *ngIf=" dir == 'ltr'">{{multipleSectiondescription}}</p>
+                    <p *ngIf=" dir == 'rtl'">{{multipleSectiondescriptionar}}</p>
+                    <a href="{{multipleSectionreadMoreURL}}" class="last_read_btn">Read More</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 padding_no">
+            <img src="{{multipleSectionimageURL}}" class="img-fluid">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6 padding_no">
+            <img src="{{multipleSectionimageURL1}}" class="img-fluid">
+        </div>
+        <div class="col-md-6 col-lg-6 order-first order-md-last">
+            <div class="last_box_col_left">
+                <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle1}}</h2>
+                <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle1ar}}</h2>
+                <p *ngIf=" dir == 'ltr'">{{multipleSectiondescription1}}</p>
+                <p *ngIf=" dir == 'rtl'">{{multipleSectiondescription1ar}}</p>
+                <a href="{{multipleSectionreadMoreURL1}}" class="last_read_btn">Read More</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="last_box_col_right">
+                <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle2}}</h2>
+                <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle2ar}}</h2>
+                <p *ngIf=" dir == 'ltr'">{{multipleSectiondescription2}}</p>
+                <p *ngIf=" dir == 'rtl'">{{multipleSectiondescription2ar}}</p>
+                <a href="{{multipleSectionreadMoreURL2}}" class="last_read_btn">Read More</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 padding_no">
+            <img src="{{multipleSectionimageURL2}}" class="img-fluid">
+        </div>
+    </div>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,302 @@
+<footer class="footer">
+    <div class="footer_top_sec">
+        <div class="container">
+            <div class="row" *ngIf=" dir == 'ltr'">
+                <div class="col-lg-4 col-md-4"></div>
+
+                <div class="col-lg-6 col-md-8">
+                    <h2>{{header}}</h2>
+
+                    <p>{{description}}</p>
+
+                    <p class="text-center"><button class="act_btn"> <a style="color: black;text-decoration: none;" href="{{buttonURL}}"> {{
+                                button1 }}</a></button></p>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="row" *ngIf=" dir == 'rtl'">
+                <div class="col-lg-2"></div>
+               <div class="col-lg-6 col-md-8">
+                    <h2>{{headerAr}}</h2>
+
+                    <p>{{descriptionAr}}</p>
+
+                    <p class="text-center"><button class="act_btn"><a style="color: black;text-decoration: none;" href="{{buttonURL}}">{{
+                                buttonAr }}</a></button></p>
+                </div>
+                <div class="col-lg-4 col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="footer_top_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4"></div>
+                <div class="col-lg-6 col-md-8">
+                    <h2>{{user.header_ar}}</h2>
+                    <p>{{user.discription_ar}}</p>
+                    <p class="text-center"><button class="act_btn">{{ user.buttonName_ar }}</button></p>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="mob_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 foot_img ">
+                    <img src="assets/image/logo_full.png" class="foot_logo">
+                    <p class="mail_id">{{ contactEmail }}</p>
+                    <!-- <p class="ph_number">{{ contactNumber }}</p> -->
+                </div>
+                <!-- web  -->
+                <div class="col-md-2 hidefoo">
+                    <h5 class="foot_head">
+                        <span *ngIf=" dir == 'ltr'">{{drawerHead}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{drawerHeadAr}}</span>
+                    </h5>
+                    <ul class="under_head">
+                        <a href="{{aboutusurl}}">
+                            <li *ngIf=" dir == 'ltr'">{{ aboutus }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ aboutusar }}</li>
+                        </a>
+                        <a href="{{contacturl}}">
+                            <li *ngIf=" dir == 'ltr'">{{ contactus }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ contactar }}</li>
+                        </a>
+                        <a href="{{careerurl}}">
+                            <li *ngIf=" dir == 'ltr'">{{ career }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ careerar }}</li>
+                        </a>
+                        <a href="{{aboutusurl1}}">
+                            <li *ngIf=" dir == 'ltr'">{{ aboutus1 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ aboutusar1 }}</li>
+                        </a>
+                        <a href="{{aboutusurl2}}">
+                            <li *ngIf=" dir == 'ltr'">{{ aboutus2 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ aboutusar2 }}</li>
+                        </a>
+                    </ul>
+                </div>
+                <!-- mobile  -->
+                <div class="footerselect" dropdown>
+                    <p class="text-center">
+                        <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                            {{drawerHead}} <span class="caret"></span>
+                    </button>
+                    </p>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{aboutusurl}}">{{aboutus}}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{contacturl}}">{{
+                                contactus
+                        }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{careerurl}}">{{
+                                career
+                        }}</a>
+                        </li>
+                        <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{aboutusurl1}}">{{
+                                aboutus1
+                        }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{aboutusurl2}}">{{
+                                aboutus2
+                        }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- web  -->
+                <div class="col-md-2 hidefoo">
+                    <h5 class="foot_head">
+                        <span *ngIf=" dir == 'ltr'">{{drawerHead1}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{drawerHeadAr1}}</span>
+                    </h5>
+                    <ul class="under_head">
+                        <a href="{{supporturl}}">
+                            <li *ngIf=" dir == 'ltr'">{{ support }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ supportar }}</li>
+                        </a>
+                        <a href="{{supporturl1}}">
+                            <li *ngIf=" dir == 'ltr'">{{ support1 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ supportar1 }}</li>
+                        </a>
+                        <a href="{{supporturl2}}">
+                            <li *ngIf=" dir == 'ltr'">{{ support2 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ supportar2 }}</li>
+                        </a>
+                        <a href="{{supporturl3}}">
+                            <li *ngIf=" dir == 'ltr'">{{ support3 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ supportar3 }}</li>
+                        </a>
+                        <a href="{{supporturl4}}">
+                            <li *ngIf=" dir == 'ltr'">{{ support4 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ supportar4 }}</li>
+                        </a>
+                    </ul>
+                </div>
+                <!-- mobile  -->
+                <div class="footerselect" dropdown>
+                    <p class="text-center">
+                        <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                            {{drawerHead1}} <span class="caret"></span>
+                    </button>
+                    </p>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{supporturl}}">{{support}}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{supporturl1}}">{{
+                                support1
+                        }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{supporturl2}}">{{
+                                support2
+                        }}</a>
+                        </li>
+                        <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{supporturl3}}">{{
+                                support3
+                        }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{supporturl4}}">{{
+                                support4
+                        }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- web  -->
+                <div class="col-md-5 hidefoo">
+                    <h5 class="foot_head">
+                        <span *ngIf=" dir == 'ltr'">{{drawerHead2}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{drawerHeadAr2}}</span>
+                    </h5>
+                    <ul class="under_head">
+                        <a href="{{mffurl}}">
+                            <li *ngIf=" dir == 'ltr'">{{ mff }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ mffar }}</li>
+                        </a>
+                        <a href="{{mffurl1}}">
+                            <li *ngIf=" dir == 'ltr'">{{ mff1 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ mffar1 }}</li>
+                        </a>
+                        <a href="{{mffurl2}}">
+                            <li *ngIf=" dir == 'ltr'">{{ mff2 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ mffar2 }}</li>
+                        </a>
+                        <a href="{{mffurl3}}">
+                            <li *ngIf=" dir == 'ltr'">{{ mff3 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ mffar3 }}</li>
+                        </a>
+                        <a href="{{mffurl4}}">
+                            <li *ngIf=" dir == 'ltr'">{{ mff4 }}</li>
+                            <li *ngIf=" dir == 'rtl'">{{ mffar4 }}</li>
+                        </a>
+                    </ul>
+                    </div>
+                    <div class="footerselect" dropdown>
+                        <p class="text-center">
+                            <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                                {{drawerHead2}} <span class="caret"></span>
+                        </button>
+                        </p>
+                        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="{{mffurl}}">{{mff}}</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="{{mffurl}}">{{
+                                    mff1
+                            }}</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="{{mffurl2}}">{{
+                                    mff2
+                            }}</a>
+                            </li>
+                            <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="{{mffurl3}}">{{
+                                    mff3
+                            }}</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="{{mffurl4}}">{{
+                                    mff4
+                            }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="social_links">
+                        <li><a class="ftlink" href="{{ youtubeURL}}"><i class="fa fa-youtube"></i></a></li>
+                        <li><a class="ftlink" href="{{ twetterURL}}"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="ftlink" href="{{ instaURL}}"><i class="fa fa-instagram"></i></a></li>
+                        <li><a class="ftlink" href="{{ facebookURL}}"><i class="fab fa-facebook"></i></a></li>
+                    </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <ul class="language_sec">
+                        <li>
+                            <button>
+                                <!-- <select #langselect (change)='translate.use(langselect.value)' name="lang" id="">
+<option *ngFor='let lang of translate.getLangs()' [value]='lang'>{{ lang == 'en' ? "English" : "Arabic"}}</option>
+</select> -->
+                                <select #langselect (change)='switchLang(langselect.value)' name="lang">
+                                    <option value="en" [selected]="lang == 'en'">English</option>
+                                    <option value="ar" [selected]="lang == 'ar'">عربي</option>
+                                </select>
+                            </button>
+
+                        </li>
+                        <!-- <li>
+                            <button>
+                                <select>
+                                    <option>$ US Dollar (USD)</option>
+                                    <option>ر.س Saudi Riyal (SAR)</option>
+                                </select>
+                            </button>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="copy_right_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="left_side_head">
+                    <li>
+                        <a routerLink="/termsofuse" class="discoverhome"> Terms of Use</a>
+                    </li>
+                    <li>
+                        <a routerLink="/cookiepolicy" class="startprojecthome"> Cookie Policy</a>
+
+                    </li>
+                    <li>
+                        <a routerLink="/privacypolicy" class="startprojecthome"> Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p><img src="assets/image/copyright.svg" alt="" width="20px"> {{ 'Footer.All_right_reserved' | translate }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

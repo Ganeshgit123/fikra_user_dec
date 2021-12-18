@@ -1,0 +1,241 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Start a project -->
+
+<section class="start_proj_sec">
+    <div class="container">
+        <div class="row" *ngFor='let data of topSection'>
+            <div class="col-md-12 col-lg-5 col-xl-5">
+                <h3 class="creativeproject" *ngIf=" dir == 'ltr'">{{data.headName}}</h3>
+                <h3 class="creativeproject" *ngIf=" dir == 'rtl'">{{data.headNameAr}}</h3>
+
+                <p class="creativeprojectpara" *ngIf=" dir == 'ltr'">{{data.description}}</p>
+                <p class="creativeprojectpara" *ngIf=" dir == 'rtl'">{{data.descriptionAr}}</p>
+                <div *ngIf='role == "creator"; else investorTemplate'>
+                    <p class="cent" *ngIf=" dir == 'ltr'">
+                        <a href="{{data.buttonURL}}">
+                            <button class="startaprojectbtn">{{ data.buttonName }}</button>
+                        </a>
+                    </p>
+                    <p class="cent" *ngIf=" dir == 'rtl'">
+                        <a href="{{data.buttonURL}}">
+                            <button class="startaprojectbtn">{{data.buttonNameAr}}</button>
+                        </a>    
+                    </p>
+                    <p class="cent">
+                        <a [routerLink]="['/startproject']" fragment="createrhandbook">
+                            <button class="startaprojectbtnkn">{{contentLan.KNOWMORE}}</button>
+                        </a>
+                    </p>
+                </div>
+                <ng-template #investorTemplate>
+                    <p class="cent" *ngIf='role == "investor";'>
+                        <a [swal]="{ title:'Need to start a project',text: 'Signup as Creator', showCancelButton: true, confirmButtonColor: '#ff5959'}"
+                            (confirm)="redirect()">
+                            <button class="startaprojectbtn" *ngIf=" dir == 'ltr'">{{ data.buttonName }}</button>
+                            <button class="startaprojectbtn" *ngIf=" dir == 'rtl'">{{ data.buttonNameAr }}</button>
+                        </a>
+                    </p>
+                    <p class="cent" *ngIf='role == null;'>
+                        <a href="/login">
+                            <button class="startaprojectbtn" *ngIf=" dir == 'ltr'">{{ data.buttonName }}</button>
+                            <button class="startaprojectbtn" *ngIf=" dir == 'rtl'">{{ data.buttonNameAr }}</button>
+                        </a>
+                        <a [routerLink]="['/startproject']" fragment="createrhandbook">
+                            <button class="startaprojectbtnkn">{{contentLan.KNOWMORE}}</button>
+                        </a>
+                    </p>
+                </ng-template>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-md-6 col-lg-6 col-xl-6" *ngIf=" dir == 'ltr'" style=" height: fit-content; ">
+                <img src="{{data.image_One}}" class="img-fluid creativeprojectimg1">
+                <div class="row" style=" margin-top: 2%; ">
+                    <div class="col-md-6">
+                        <img src="{{data.image_two}}" class="img-fluid creativeprojectimg2">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{data.image_three}}" class="img-fluid creativeprojectimg3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6" *ngIf=" dir == 'rtl'" style=" height: fit-content; ">
+                <img src="{{data.image_One}}" class="img-fluid creativeprojectimg1rtl">
+                <div class="row" style=" margin-top: 2%; ">
+                    <div class="col-md-6">
+                        <img src="{{data.image_two}}" class="img-fluid creativeprojectimg2">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{data.image_three}}" class="img-fluid creativeprojectimg3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start a project quotes -->
+
+<section class="spbox" *ngIf="quoteSecShow == true">
+    <div class="container">
+        <div class="row" *ngFor='let data of quotes'>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <p class="spboxpara" *ngIf=" dir == 'ltr'">{{data.quotesData}}</p>
+                <p class="spboxpara" *ngIf=" dir == 'rtl'">{{data.quotesDataAr}}</p>
+
+                <h4 class="spboxauthor">{{data.writerName}}</h4>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="questionSecShow == true">
+    <div class="container">
+        <div class="row" *ngFor='let data of questions'>
+            <div class="col-md-1"></div>
+            <div class="col-md-12 col-lg-6 col-xl-6">
+                <h3 class="projectname" *ngIf=" dir == 'ltr'">{{data.headName}}
+                    <hr class="projectnamehr">
+                </h3>
+                <h3 class="projectname" *ngIf=" dir == 'rtl'">{{data.headNameAr}}
+                    <hr class="projectnamehr">
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div *ngIf=" dir == 'ltr'">
+                    <img src="assets/image/left_design.svg" class="img-fluid projectsideimage">
+                </div>
+                <div *ngIf=" dir == 'rtl'">
+                    <img src="assets/image/rtl/login_rtl.svg" class="img-fluid projectsideimage">
+                </div>
+            </div>
+            <div class="col-md-10" *ngFor='let data of questions'>
+                <section class="proj_cont">
+                <!-- <div class="row bord_bott" *ngFor='let questiondata of data.questionBody'>
+                    <div class="col-md-6">
+                        <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'ltr'">{{questiondata.question}}</h4>
+                        <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'rtl'">{{questiondata.questionAr}}</h4>
+                    </div>
+                    <div class="col-md-6" *ngIf="visible">
+                        <p class="projectanswer1" *ngIf=" dir == 'ltr'">{{questiondata.answer}}</p>
+                        <p class="projectanswer1" *ngIf=" dir == 'rtl'">{{questiondata.answerAr}}</p>
+                    </div>
+                </div> -->
+                <div *ngFor='let ques of  data.questionBody;let i = index'>
+                    <div class="d-flex align-items-start bord_bott" *ngIf=" ques._is_on_ == true">
+                        <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="'#v-pills-home'+ques._id" type="button" role="tab">
+                            <span *ngIf=" dir == 'ltr'">{{ques.question}}</span>
+                            <span *ngIf=" dir == 'rtl'">{{ques.questionAr}}</span>
+                        </button>
+                        </div>
+                        <div class="tab-content col-md-9" id="v-pills-tabContent" *ngIf=" ques._is_on_ == true">
+                            <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id" role="tabpanel">
+                                <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
+                                <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Video -->
+<div *ngIf="videoSecShow == true">
+    <section class="videobox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6" *ngFor='let data of videoExplanation'>
+                    <h4 class="videoquestion" *ngIf=" dir == 'ltr'">{{data.videoHead}}</h4>
+                    <h4 class="videoquestion" *ngIf=" dir == 'rtl'">{{data.videoHeadAr}}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row" *ngFor='let data of videoExplanation'>
+            <div class="col-md-6">
+                <iframe class="video" [src]='Url'></iframe>
+            </div>
+            <div class="col-md-6">
+                <p class="videoanswer" *ngIf=" dir == 'ltr'">{{data.videoDescription}}</p>
+                <p class="videoanswer" *ngIf=" dir == 'rtl'">{{data.videoDescriptionAr}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Question -->
+<section class="why_fikra_sec" *ngIf="whyFikraSecShow == true">
+    <div class="container">
+
+        <h3 class="whyfikra">{{ contentLan.WHYFIKRA }}</h3>
+        <section class="fikra_ques_sec" *ngFor='let data of whyFikra'>
+
+            <div class="accordion accordion-flush" id="accordionFlushExample" *ngIf=" data._is_on_ == true">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" [id]="'flush-headingOne'+data._id">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#flush-collapseOne'+data._id" aria-expanded="false"
+                            [attr.aria-controls]="'flush-collapseOne'+data._id">
+                            <label class="circle1"></label>
+                            <span *ngIf=" dir == 'ltr'">{{data.why_Head}}</span>
+                            <span *ngIf=" dir == 'rtl'">{{data.why_HeadAr}}</span>
+                        </button>
+                    </h2>
+                    <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <span *ngIf=" dir == 'ltr'">{{data.solution}}</span>
+                            <span *ngIf=" dir == 'rtl'">{{data.solutionAr}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- dynmaic -->
+
+<section class="creater_handbook" id="createrhandbook" *ngIf="handBookSecShow == true">
+    <div class="container" *ngFor='let data of createHand'>
+        <h3 class="createrhb">
+            <span *ngIf=" dir == 'ltr'">{{data.head}}</span>
+            <span *ngIf=" dir == 'rtl'">{{data.headAr}}</span>
+        </h3>
+        <section class="creater_para">
+            <div class="row">
+                <div class="col-md-8">
+                    <p><span *ngIf=" dir == 'ltr'">{{data.body}}</span>
+                        <span *ngIf=" dir == 'rtl'">{{data.bodyAr}}</span>
+                    </p>
+                </div>
+                <!-- <div class="col-md-4">
+                    <button [routerLink]="['/getting-started']" class="creater_jump">Jump in ></button>
+                </div> -->
+            </div>
+        </section>
+        <section class="creater_option">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-xl-4" *ngFor='let data of creatorhandbook'>
+                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12"
+                        *ngIf=" dir == 'ltr'">{{data.handBookHead}}</button>
+                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12"
+                        *ngIf=" dir == 'rtl'">{{data.handBookHeadAr}}</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<app-footer></app-footer>

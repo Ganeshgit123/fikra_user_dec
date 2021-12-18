@@ -1,0 +1,531 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+
+<div class="container">
+  <!-- Preview & Next -->
+  <section class="preview_sec">
+    <div class="row">
+      <div class="col-md-12">
+        <a [routerLink]="['../rewards']">
+          <button class="nextbtn">
+            {{ contentLan.NEXT }}
+            <i class="far fa-angle-right" *ngIf="dir == 'ltr'"></i>
+            <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button
+        ></a>
+        <a [routerLink]="['../projectpreview']">
+          <button class="projectpreview">
+            {{ contentLan.PREVIEW }}
+            <img
+              src="assets/image/visibility.png"
+              class="img-fluid projectpreviewimg"
+            /></button
+        ></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr class="headerhr" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Basic list header  -->
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="projectfeaturelist">
+        <li>
+          <a [routerLink]="['../basic']"
+            ><button class="basicbtn btn_active">
+              <span *ngIf="dir == 'ltr'">{{ tabName }}</span>
+              <span *ngIf="dir == 'rtl'">{{ tabName_Ar }}</span>
+              <span class="basiccircle active_circle"></span></button
+          ></a>
+        </li>
+        <li>
+          <a [routerLink]="['../rewards']">
+            <button class="rewardbtn">
+              <span>{{ contentLan.REWARDS }}</span>
+              <span class="rewardcircle"></span></button
+          ></a>
+        </li>
+        <li>
+          <a [routerLink]="['../story']">
+            <button class="storybtn">
+              <span>{{ contentLan.STORY }}</span>
+              <span class="storycircle"></span></button
+          ></a>
+        </li>
+        <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a>
+                </li> -->
+        <li>
+          <a [routerLink]="['../payment']"
+            ><button class="paymentbtn">
+              <span>{{ contentLan.PAYMENT }}</span>
+              <span class="paymentcircle"></span></button
+          ></a>
+        </li>
+        <li>
+          <a [routerLink]="['../promotion']"
+            ><button class="promotionbtn">
+              <span>{{ contentLan.PROMOTION }}</span>
+              <span class="promotioncircle"></span></button
+          ></a>
+        </li>
+      </ol>
+      <div class="projectfeaturedselect" dropdown>
+        <p class="text-center">
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="projectfeaturedselectbtn dropdown-toggle"
+            aria-controls="dropdown-basic"
+          >
+            Button dropdown <span class="caret"></span>
+          </button>
+        </p>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../basic']">
+              <span *ngIf="dir == 'ltr'">{{ tabName }}</span>
+              <span *ngIf="dir == 'rtl'">{{ tabName_Ar }}</span>
+            </a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../rewards']">{{
+              contentLan.REWARDS
+            }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../story']">{{
+              contentLan.STORY
+            }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../payment']">{{
+              contentLan.PAYMENT
+            }}</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="['../promotion']">{{
+              contentLan.PROMOTION
+            }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start with the basics -->
+  <section class="start_basic_sec">
+    <div class="row">
+      <div class="col-md-12" *ngIf="dir == 'ltr'">
+        <h3 class="startbasictitle">{{ tabHead }}</h3>
+        <p class="startbasicpara">{{ description }}</p>
+      </div>
+      <div class="col-md-12" *ngIf="dir == 'rtl'">
+        <h3 class="startbasictitle">{{ tabHead_Ar }}</h3>
+        <p class="startbasicpara">{{ description_Ar }}</p>
+      </div>
+    </div>
+  </section>
+  <form [formGroup]="basicForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="box1">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'"
+              >{{ prjtitle }}<span style="color: red">*</span>
+            </span>
+            <span *ngIf="dir == 'rtl'"
+              >{{ prjtitle_Ar }}<span style="color: red">*</span>
+            </span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <label style="font-weight: 500">{{ contentLan.TITLE }}</label>
+            <input
+              type="text"
+              class="title form-control"
+              placeholder="Title"
+              formControlName="title"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="row">
+            <label style="font-weight: 500">{{ contentLan.SUBTITLE }}</label>
+            <input
+              type="text"
+              class="subtitle form-control"
+              placeholder="Subtitle"
+              formControlName="subTitle"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'"
+              >{{ prjtitle1 }}<span style="color: red">*</span>
+            </span>
+            <span *ngIf="dir == 'rtl'"
+              >{{ prjtitle1_Ar }}<span style="color: red">*</span>
+            </span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes1 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes1_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
+            <h5 class="title form-control">{{ categorieName }}</h5>
+            <!-- <select formControlName="categoryName" #user class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
+<option value="" disabled>Select Category</option>
+<option *ngFor="let user of category" value="{{user.categorieName}}">
+{{user.categorieName}}</option>
+</select> -->
+          </div>
+          <div class="row">
+            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
+            <h5 class="title form-control">{{ subcategorieName }}</h5>
+            <!-- <select formControlName="subCategoryName" class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
+<option value="" disabled>Select SubCategory</option>
+<option *ngFor="let user of subcategory" value="{{user.subCategorieName}}">
+{{user.subCategorieName}}</option>
+
+</select> -->
+            <!-- <input type="text" class="categoryId form-control" formControlName="subCategoryName"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box1">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'"
+              >{{ prjtitle2 }}<span style="color: red">*</span>
+            </span>
+            <span *ngIf="dir == 'rtl'"
+              >{{ prjtitle2_Ar }}<span style="color: red">*</span>
+            </span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes2 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes2_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <!-- <input type="text" class="location form-control" placeholder="" disabled formControlName="country"> -->
+            <label style="font-weight: 500">{{ contentLan.COUNTRY }}</label>
+            <h5 class="title form-control">{{ country }}</h5>
+          </div>
+          <div class="row">
+            <!-- <input type="search" class="location form-control" placeholder="" formControlName="city"> -->
+            <label style="font-weight: 500">{{ contentLan.CITY }}</label>
+            <h5 class="title form-control">{{ city }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'"
+              >{{ prjtitle3 }}<span style="color: red">*</span>
+            </span>
+            <span *ngIf="dir == 'rtl'"
+              >{{ prjtitle3_Ar }}<span style="color: red">*</span>
+            </span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes3 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes3_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row" *ngIf="projectImage == ''; else showimage">
+            <!-- <span>Choose image</span>  -->
+
+            <input
+              type="file"
+              class="image form-control"
+              accept="image/*"
+              (change)="uploadImageFile($event, '')"
+              required
+            />
+            <img class="upload-img" src="{{ imgfile }}" />
+            <!-- <img class="upload-img" src="{{projectImage}}" /> -->
+            <span style="color: red"
+              >Please select this images size below 5MB and in this ratio
+              1024*576</span
+            >
+          </div>
+          <ng-template #showimage>
+            <div class="row">
+              <!-- <span>Choose image</span> -->
+
+              <input
+                type="file"
+                class="image form-control"
+                (change)="uploadImageFile($event, '')"
+              />
+              <img
+                class="upload-img"
+                src="{{ imgfile }}"
+                *ngIf="showimgon == true; else imgpre"
+              />
+              <ng-template #imgpre>
+                <img class="upload-img" src="{{ projectImage }}" />
+              </ng-template>
+
+              <span style="color: red"
+                >Please select this images size below 5MB and in this ratio
+                1024*576</span
+              >
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="box1">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'">{{ prjtitle4 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjtitle4_Ar }}</span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes4 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes4_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <!-- <span>Choose Video</span>  -->
+            <input
+              type="file"
+              class="video form-control"
+              (change)="uploadVideoFile($event)"
+              [disabled]="loading"
+            />
+
+            <p *ngIf="videoSizeError" style="color: red">
+              *Too big Upload Video maximum 30sec, and the size of the video
+              should be less than 5MB
+            </p>
+
+            <span *ngIf="loading; else durationVideo" style="padding: 2pc 13pc">
+              <i class="fal fa-sync fa-pulse"></i>
+            </span>
+            <ng-template #durationVideo>
+              <video
+                *ngIf="videourl"
+                width="320"
+                [src]="videourl"
+                height="240"
+                controls
+                (loadedmetadata)="getDuration($event)"
+              >
+                <!-- <source src="{{ videourl }}" /> -->
+              </video>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'"
+              >{{ prjtitle5 }}<span style="color: red">*</span>
+            </span>
+            <span *ngIf="dir == 'rtl'"
+              >{{ prjtitle5_Ar }}<span style="color: red">*</span>
+            </span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes5 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes5_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <!-- <span>Choose image</span>  -->
+            <h6 class="fundamt">{{ contentLan.AMOUNT }}</h6>
+            <span class="fundsar">SAR</span>
+            <input
+              type="text"
+              maxlength="22"
+              max="999999999"
+              onKeyPress="if(this.value.length==22)  return false;"
+              oninput="if(!this.value.match('^[0-9]*$'))this.value='';"
+              class="form-control fundingno"
+              formControlName="goalAmount"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box1">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'">{{ prjtitle6 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjtitle6_Ar }}</span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes6 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes6_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <h5>{{ launchdates | date: "EEEE, MMMM d, y" }}</h5>
+            <p style="margin-bottom: 0">
+              <input
+                type="date"
+                class="form-control launchdate"
+                formControlName="launchDate"
+                placeholder="yyyy-mm-dd"
+              />
+              <span class="calender_icon"
+                ><i class="fas fa-calendar-alt"></i
+              ></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2">
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="projecttitle">
+            <span *ngIf="dir == 'ltr'">{{ prjtitle7 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjtitle7_Ar }}</span>
+          </h4>
+          <p class="projecttitlepara">
+            <span *ngIf="dir == 'ltr'">{{ prjdes7 }}</span>
+            <span *ngIf="dir == 'rtl'">{{ prjdes7_Ar }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <hr class="projecttitlehr" />
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <h5>{{ campaignDuation | date: "EEEE, MMMM d, y" }}</h5>
+            <select
+              class="category form-select"
+              #Myselect
+              formControlName="campaignDuation"
+              (change)="selectduration(Myselect.value)"
+            >
+              <option value="3">Fixed number of days (1-30)</option>
+              <option value="2">Fixed number of days (1-60)</option>
+              <option value="1">End on a specific date & time</option>
+            </select>
+
+            <div class="subcategory" *ngIf="selectedValue1">
+              <input
+                formControlName="campaignDuation"
+                [min]="newdate"
+                [max]="dateFormated"
+                type="date"
+              />
+            </div>
+          </div>
+          <div class="subcategory" *ngIf="selectedValue2">
+            <input
+              formControlName="campaignDuation"
+              [(ngModel)]="dateFormated"
+              type="date"
+              readonly
+            />
+          </div>
+          <div class="subcategory" *ngIf="selectedValue3">
+            <input
+              formControlName="campaignDuation"
+              [(ngModel)]="dateFormatedthree"
+              type="date"
+              readonly
+            />
+          </div>
+          <div class="row"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="proj_bottom_cont">
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-2 col-6">
+          <button class="previousprojectidea">
+            <span *ngIf="dir == 'ltr'"><i class="far fa-angle-left"></i></span>
+            <span *ngIf="dir == 'rtl'"><i class="far fa-angle-right"></i></span
+            >{{ contentLan.BACK }}
+          </button>
+        </div>
+        <div class="col-md-2 col-6">
+          <!-- <a [routerLink]="['../rewards']"> -->
+          <button type="submit" class="nextprojectidea">
+            {{ contentLan.NEXT }}
+          </button>
+          <!-- </a> -->
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
+
+<app-footer></app-footer>

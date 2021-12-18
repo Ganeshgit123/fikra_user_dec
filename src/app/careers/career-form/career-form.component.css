@@ -1,0 +1,133 @@
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    p {
+        font-size: 12px;
+    }
+}
+.career_top_sec{
+    padding: 40px 0;
+    background: #F5F5F5;
+    margin-top: 20px;
+}
+.career_top_sec h5{
+    color: #353535a6;
+    padding-top: 20px;
+}
+.career_top_sec p{
+    color: #353535a6;
+}
+.cirte_sec{
+    padding: 40px 0;
+}
+.carer_form{
+    border: 1px solid #FF5355;
+    padding: 40px 40px 20px 40px;
+    border-radius: 10px;
+    position: relative;
+    top: -10rem;
+    background: #fff;
+}
+@media only screen and (min-width: 320px) and (max-width: 1023px) { 
+    .carer_form{
+        top: 0;
+        padding: 20px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
+    .carer_form{
+        padding: 20px;
+    }
+}
+.carer_form h5{
+    color: #FF5355;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.carer_form .form-group{
+    padding-bottom: 20px;
+}
+.carer_form .form-control{
+    background: #e4e4e4;
+    height: 50px;
+    border:none !important;
+    padding: 0 0 0 30px;
+}
+.carer_form .form-control::placeholder{
+    color: #6b6a6a;
+}
+.carer_form .form-select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #e4e4e4;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 10px;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    margin-right: 2rem;
+    height: 50px;
+    padding-right: 2rem;
+    padding-left: 30px;
+    color: #6b6a6a;
+}
+.carer_form .form-select:lang(ar){
+    margin-right: auto;
+}
+.carer_form .form-group1{
+    background: #e4e4e4;
+    border:none !important;
+    margin-bottom: 20px;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input{
+      width: 100%;
+  }
+  .custom-file-input::before {
+    content: 'Attach Resume';
+    display: inline-block;
+    padding: 12px 0px 12px 30px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #6b6a6a;
+  }
+  textarea{
+    height: 120px !important;
+}
+.carer_form .form-textarea{
+    background: #e4e4e4;
+    border:none !important;
+    padding: 15px 0 0 30px;
+    width: 100%;
+    outline: none !important;
+}
+.carr_sub_btn{
+    color: #FF5355;
+    font-size: 24px;
+    border: none;
+    background:none;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.carr_sub_btn:hover{
+    background: #6b6a6a;
+    color: #fff;
+}
+.custom-file-input1::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+  }
+  /* .custom-file-input1{
+      width: 100%;
+  }
+  .custom-file-input1::before {
+    content: '';
+    display: inline-block;
+    padding: 0px 0px 10px 10px !important;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #6b6a6a;
+  } */

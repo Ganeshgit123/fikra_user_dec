@@ -1,0 +1,52 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<section *ngIf="notify == '';else shownotify">
+    <div class="container" style="margin-top: 5%;">
+        <div class="row">
+            <h2>Notification</h2>
+        </div>
+        <div class="row" style="text-align: center;margin-top: 3%;">
+            <h4>No Notification available</h4>
+        </div>
+    </div>
+</section>
+<ng-template #shownotify>
+    <section class="notification">
+        <div class="container">
+            <div class="row">
+                <h2>Notification</h2>
+                <div class="card" style="margin-bottom: 2%;" *ngFor="let notifyobj of notify">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <h4>{{notifyobj.notiSub}}</h4>
+                                    <span>From:&nbsp;{{notifyobj.notiFrom}}</span>
+                                    <label>Message:&nbsp; <p *ngIf="notifyobj.notiContent"> {{notifyobj.notiContent}}</p></label>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>{{notifyobj.createdAt | date: 'M/d/yy, h:mm a'}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 deleteicon">
+                                <span style="font-size: 18px; color: #ff495e;cursor: pointer;" [swal]="{
+                                    text: 'Delete Message',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#ff5959'
+                                  }" (confirm)="deletenotify(notifyobj._id)">
+                                    
+                                      <i class="fas fa-trash-alt"></i>
+                                  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+<!-- Footer -->
+<app-footer></app-footer>

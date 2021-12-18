@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920.909" height="1465" viewBox="0 0 1920.909 1465">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff5d4b"/>
+      <stop offset="1" stop-color="#ff3c68"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <path id="Path_135" data-name="Path 135" d="M3604.229,9720.136l.68,610.864H3131.34V9720.136Z" transform="translate(-1685 373)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_136" data-name="Path 136" d="M3013.791,9685.865v447.71H2262.324v-290.55s26.59-54.229,180.607-69.167c47.129-4.571,121.439-19.046,198.43-30.76C2815.6,9716.589,3013.791,9685.865,3013.791,9685.865Z" transform="translate(-1685 373)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_393" data-name="Group 393" transform="translate(-0.091 -9983)">
+    <g id="Group_392" data-name="Group 392" transform="translate(0.09 16)">
+      <g id="Group_260" data-name="Group 260" transform="translate(1 -0.5)">
+        <path id="Path_13" data-name="Path 13" d="M-402.5,3131.355s211.831-322.858,291.355-443.975c13.956-21.255,23.855-36.325,27.741-42.226,25.9-39.34,54.738-123.966,165.824-112.7H1517.5V3697.813h-1920Z" transform="translate(401.501 7734.687)" fill="#f9f9f9"/>
+        <g id="Group_259" data-name="Group 259">
+          <path id="Path_14" data-name="Path 14" d="M2692.782,2156.609,1529.3,2335.982s-95.937,7.77-147.957,41.55c0,0-37.835,14.864-84.452,116.206l-114.854,224.3s-24.321,53.373,8.107,115.529c0,0,33.106,52.022,84.452,57.427l134.446,2.7H2692.782Z" transform="translate(-773.552 7810.891)" fill="url(#linear-gradient)"/>
+          <g id="Mask_Group_75" data-name="Mask Group 75" clip-path="url(#clip-path)">
+            <g id="Group_9" data-name="Group 9" transform="translate(1462.729 8158)" opacity="0.19">
+              <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(132.153 2114.153)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                <circle cx="236.87" cy="236.87" r="236.87" stroke="none"/>
+                <circle cx="236.87" cy="236.87" r="217.37" fill="none"/>
+              </g>
+              <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(202.914 2184.914)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                <circle cx="166.109" cy="166.109" r="166.109" stroke="none"/>
+                <circle cx="166.109" cy="166.109" r="146.609" fill="none"/>
+              </g>
+              <g id="Ellipse_11" data-name="Ellipse 11" transform="translate(47 2029)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                <circle cx="322.023" cy="322.023" r="322.023" stroke="none"/>
+                <circle cx="322.023" cy="322.023" r="302.523" fill="none"/>
+              </g>
+            </g>
+          </g>
+          <g id="Mask_Group_76" data-name="Mask Group 76" clip-path="url(#clip-path-2)">
+            <g id="Group_25" data-name="Group 25" transform="translate(-0.771 266.5)">
+              <g id="Group_24" data-name="Group 24" transform="translate(590.977 7539.5)" opacity="0.19">
+                <g id="Ellipse_9-2" data-name="Ellipse 9" transform="translate(132.153 2114.153)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                  <circle cx="236.87" cy="236.87" r="236.87" stroke="none"/>
+                  <circle cx="236.87" cy="236.87" r="217.37" fill="none"/>
+                </g>
+                <g id="Ellipse_10-2" data-name="Ellipse 10" transform="translate(202.914 2184.914)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                  <circle cx="166.109" cy="166.109" r="166.109" stroke="none"/>
+                  <circle cx="166.109" cy="166.109" r="146.609" fill="none"/>
+                </g>
+                <g id="Ellipse_11-2" data-name="Ellipse 11" transform="translate(47 2029)" fill="none" stroke="#f3f3f3" stroke-width="39" opacity="0.32">
+                  <circle cx="322.023" cy="322.023" r="322.023" stroke="none"/>
+                  <circle cx="322.023" cy="322.023" r="302.523" fill="none"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

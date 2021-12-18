@@ -1,0 +1,98 @@
+<section class="login_sec">
+    <div class="container-fluid">
+        <div class="row mobile_only_sec">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <img src="assets/image/top_design.svg" class="img-fluid">
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <form *ngIf="!isLoggedIn" name="form" [formGroup]="signinForm" (ngSubmit)="f.form.valid" #f="ngForm" ngNativeValidate>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="backtohome">
+                        <a routerLink="/" routerLinkActive="active" class="homea">
+                            <i class="fas fa-arrow-left" *ngIf=" dir == 'ltr'"></i>
+                            <i class="fas fa-arrow-right" *ngIf=" dir == 'rtl'"></i>{{ contentLan.HOME }}</a>
+                    </div>
+                    <div *ngIf=" dir == 'ltr'">
+                        <img src="assets/image/left_design.svg" class="img-fluid login_side_img">
+                    </div>
+                    <div *ngIf=" dir == 'rtl'">
+                        <img src="assets/image/rtl/login_rtl.svg" class="img-fluid login_side_img">
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <h4 class="loginhead">Log in</h4>
+                    <!-- <div class="activitybox" style="margin-right: 108px;">
+                        <button class="activitybtn" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active ': displayMode == 1}">Investor </button>
+                        <button class="backedbtn" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary active': displayMode == 2}"> Creator </button>
+                    </div>
+
+                    <h6 class="separe_login" *ngIf="displayMode == 1">Investor</h6>
+                    <h6 class="separe_login" *ngIf="displayMode == 2">Creator</h6> -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" formControlName="email" required>
+                        <!-- <input type="text" class="form-control" formControlName="lat" value="{{lat}}" required hidden> -->
+                        <!-- <div class="alert alert-danger" role="alert"> email is required! </div> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+                        <!-- <div class="alert alert-danger" role="alert"> password is required! </div> -->
+
+                    </div>
+                    <!--<div class="form-group">
+                            <input type="checkbox"><span class="remindme">Remind Me</span>
+                        </div> -->
+                    <div class="form-group">
+                        <a href="/account-recovery"><label class="forget_pass">{{ contentLan.FORGOTPASSWORD }}</label></a>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <ul class="signup_sec">
+                                <li>
+                                    <!-- <button type="submit" (click)="loginUser()" class="singup">{{ contentLan.LOGIN }}
+                                        <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                                    <img style="width: 20px;" src="assets/image/index.svg">Login 
+                                    </button> -->
+                                    <!-- <button type="submit" *ngIf="displayMode === 2" (click)="creatorlogin()" class="singup">Login
+                                    </button> -->
+
+                                    <button type="submit" (click)="loginUser()" class="singup" *ngIf="!loading">
+                                        {{ contentLan.LOGIN || 'login'}}
+                                    </button>
+                                    <button *ngIf="loading" disabled='true' (click)="loginUser()" class="singup">
+                                        <i class="fa fa-spinner fa-spin" ></i>
+                                    </button>
+ 
+                                </li>
+                                <li>
+                                    <h4 class="loginor">or</h4>
+                                </li>
+                                <li style="padding-right: 4px !important;">
+                                    <button [routerLink]="['/createaccount']" class="singup">
+                                        {{ contentLan.SIGNUP || 'signup'}}
+                                    </button>
+                                </li>
+                                <li>
+                                    <!-- <a><img src="assets/image/search.svg" class="img-fluid googlelogin"></a> -->
+                                </li>
+                                <!-- <li>
+                                        <a><img src="assets/image/apple.svg" class="img-fluid applelogin"></a>
+                                    </li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 empty"></div>
+                <div class="col-md-4">
+                    <img src="assets/image/login.svg" class="img-fluid loginpageimg1">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

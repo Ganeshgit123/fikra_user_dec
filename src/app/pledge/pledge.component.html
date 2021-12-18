@@ -1,0 +1,77 @@
+<app-right-header></app-right-header>
+<section class="saved_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="savedprojecthead">{{contentLan.PLEDGEDPROJECTS || "Pledge Project"}}</h3>
+                <!-- <p class="savedprojectpara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
+                </p> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="savedprojecthr">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="saveddata == '';else showsaved">
+    <div class="row" style="text-align: center;margin-top: 4%;">
+        <h4>No data available</h4>
+    </div>
+</section>
+<ng-template #showsaved>
+    <section class="saved_cont_sec" *ngFor="let obj of saveddata">
+        <div class="container">
+            <div class="row">
+                <diV class="col-md-3">
+                    <img src="{{obj.projectId.basicInfoId.projectImage}}" class="img-fluid" style='height: 90% !important;'>
+                </diV>
+                <div class="col-md-9">
+                    <ul class="cont_sec_pro">
+                        <li style="padding: 0px;"><i class="fa fa-list-alt" aria-hidden="true"></i>{{obj.projectId.basicInfoId.subCategoryName}}</li>
+                        <li><i class="fa fa-map-marker"></i>{{obj.projectId.basicInfoId.city}}</li>
+                        <li class="pay_bbbtn">
+                            <button class="paybtn" (click)="payprocess(obj)" *ngIf="obj.checkoutVerifyed === false && obj._is_Paid_ === false;">{{contentLan.PAY}}</button>
+                        </li>
+                    </ul>
+                    <h3 style="padding: 0%;"><a class="onHover" [routerLink]="['/projectview',obj.projectId._id]">{{obj.projectId.title}}</a></h3>
+                    
+                    <p *ngIf="obj.projectId.basicInfoId.decription?.length >= 121">{{obj.projectId.basicInfoId.decription.slice(0, 120)}} <a [routerLink]="['/projectview',obj.projectId._id]" class="read_mre_btn">Read more</a></p>
+                    <p *ngIf="121 >= obj.projectId.basicInfoId.decription?.length">{{obj.projectId.basicInfoId.decription}}</p>
+
+                    <!-- <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-4" style="text-align: end;">
+                            <button class="paybtn" (click)="payprocess(obj)" *ngIf="obj.checkoutVerifyed === false;">Pay</button>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div> -->
+                    <hr class="cont_sec_hr">
+                    <ul class="save_last_sec">
+                        <span *ngIf="obj.checkoutVerifyed === false; else trueTemplate">
+                        <li class="coloured"><span style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}</li>
+                        </span>
+                        <ng-template #trueTemplate>
+                            <li class="coloured1"><span style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}</li>
+                        </ng-template>
+                        <span *ngIf="obj._is_Paid_ === false; else truepledgeTemplate">
+                        <li class="coloured"><span style="color: black;">{{contentLan.PAID}}: &nbsp;</span>{{contentLan.NOTPAID}}</li>
+                        </span>
+                        <ng-template #truepledgeTemplate>
+                            <li class="coloured1"><span style="color: black;">{{contentLan.PAID}}:&nbsp;</span>{{contentLan.PAID}}</li>
+                        </ng-template>
+                        <li>{{contentLan.PLEDGE}} {{contentLan.AMOUNT}}: <span style=" font-size: 14px; font-weight: 600; ">SAR&nbsp;{{obj.totalAmount}}</span></li>
+                        <li>{{contentLan.PLEDGE}} {{contentLan.AT}}: {{obj.createdAt | date:'MMM d, y'}}</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</ng-template>
+
+<app-footer></app-footer>

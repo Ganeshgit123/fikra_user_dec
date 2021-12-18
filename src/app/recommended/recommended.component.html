@@ -1,0 +1,260 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Filters column -->
+
+<div class='clearAll'>
+    <a class='textA' (click)='clearAll()'>
+        {{contentLan.CLEARALL}}
+    </a>
+</div>
+
+<section class="recom_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="filterbox" style='padding-bottom: 20px;'>
+                    <li class="reccategory" style='margin-top: 20px;'>
+                        <p>{{contentLan.CATEGORY}}</p>
+                        <img src="assets/image/filter.png" class="filt_img">
+                        <div ngbDropdown class="d-inline-block">
+                            <span *ngIf="selectedcategory == null; else selectname">
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.category' ngbDropdownToggle>Select</button>
+                            </span>
+                            <ng-template #selectname>
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.category' ngbDropdownToggle>{{selectedcategory}}</button>
+                            </ng-template>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <span *ngFor="let listData of category">
+                                    <button ngbDropdownItem type="submit" [disabled]='disable.category'
+                                        (click)="Onchangerecommended(listData.categorieName,'','','', '')">{{listData.categorieName}}</button>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="reccategory" style="border-right: 2px solid orange; margin-top: 20px;">
+                        <p>{{contentLan.SUBCATEGORY}}</p>
+                        <img src="assets/image/filter.png" class="filt_img">
+                        <div ngbDropdown class="d-inline-block">
+                            <span *ngIf="selectedtag == null; else selecttag">
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.subCategory' ngbDropdownToggle>Select</button>
+                            </span>
+                            <ng-template #selecttag>
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.subCategory' ngbDropdownToggle>{{selectedtag}}</button>
+                            </ng-template>
+
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 15rem;overflow-y: scroll;">
+                                <span *ngFor="let listData of subcategory">
+                                    <button ngbDropdownItem type="submit" [disabled]='disable.subCategory'
+                                        (click)="Onchangerecommended('','','','', listData.subCategorieName)">{{listData.subCategorieName}}</button>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="reccategory" style="border-right: 2px solid orange; margin-top: 20px;">
+                        <p>{{contentLan.LOCATION}}</p>
+                        <img src="assets/image/filter.png" class="filt_img">
+                        <div ngbDropdown class="d-inline-block">
+                            <span *ngIf="selectedcity == null; else selectcity">
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.city' ngbDropdownToggle>Select</button>
+                            </span>
+                            <ng-template #selectcity>
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.city' ngbDropdownToggle>{{selectedcity}}</button>
+                            </ng-template>
+
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 17pc;
+                            overflow-y: scroll;">
+                                <span *ngFor="let listData of city">
+                                    <button ngbDropdownItem type="submit" [disabled]='disable.city'
+                                        (click)="Onchangerecommended('','','',listData.cityName, '')">{{listData.cityName}}</button>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="reccategory" style='margin-top: 20px;'>
+                        <p>{{contentLan.SHORTBY}}</p>
+                        <img src="assets/image/sort.png" class="filt_img">
+                        <div ngbDropdown class="d-inline-block">
+                            <span *ngIf="sortedValue == null; else selectSort">
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.sort' ngbDropdownToggle>Select</button>
+                            </span>
+                            <ng-template #selectSort>
+                                <button class="btn" id="dropdownBasic1" [disabled]='disable.sort' ngbDropdownToggle>{{sortedValue}}</button>
+                            </ng-template>
+
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <span *ngFor="let listData of sort">
+                                    <button ngbDropdownItem type="submit" [disabled]='disable.sort'
+                                        (click)=" Onchangerecommended('','',listData.sortname,'', '')">{{listData.name}}</button>
+                                </span>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <input type="text" placeholder="search" class="form-control" [disabled]='disable.search' (change)='onquerySelected()' [(ngModel)]="valuesearch">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Explore projects -->
+
+<section class="filter_sec_pad">
+    <div class="container">
+        <div class="row filt_bord_bot">
+            <div class="col-md-6">
+                <div *ngFor="let obj of collection">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="filt_btn_sec">
+                    <button class="btn active" type="button" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active': displayMode === 1}">
+                        <img src="assets/image/list-textblack.png" class="filt_btn_img img-fluid"></button>
+                    <button class="btn btn-white" type="button" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary active': displayMode === 2}">
+                        <img src="assets/image/menu.png" class="filt_btn_img img-fluid">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" *ngIf="displayMode === 1">
+    <section class="saved_cont_sec" *ngFor="let obj of recommendeddata">
+
+        <div class="row">
+
+            <diV class="col-md-3">
+                <img src="{{obj.basicInfoId.projectImage}}" class="img-fluid">
+            </diV>
+            <div class="col-md-9">
+                <ul class="icons_sec">
+                    <li>
+                        <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
+        <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"></i></span>
+                    </li>
+
+                    <ng-template #showsave>
+                        <li>
+                            <span (click)="addtosave(obj._id)">
+          <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
+          <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"
+            *ngIf="obj._is_Saved_Project == false"></i>
+          <i class="fa fa-bookmark" style="color: #f13b0099" aria-hidden="true"
+            *ngIf="obj._is_Saved_Project == true"></i>
+        </span>
+                        </li>
+                    </ng-template>
+                    <li>
+                        <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
+        <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true">
+        </i>
+      </span>
+                    </li>
+                    <ng-template #showlike>
+                        <li>
+                            <span (click)="addtolike(obj._id)">
+          <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true"
+            *ngIf="obj._is_Liked_Project == false"></i>
+          <i class="fa fa-thumbs-up" style="color: #f13b0099" aria-hidden="true"
+            *ngIf="obj._is_Liked_Project == true"></i>
+        </span>
+                        </li>
+                    </ng-template>
+                </ul>
+                <a [routerLink]="['/projectview',obj._id]" (click)="localprojectid()" style="text-decoration: none;color: black;">
+                    <ul class="cont_sec_pro">
+                        <li>{{obj.basicInfoId.categoryName}}</li>
+                        <li><i class="fa fa-map-marker"></i>{{obj.basicInfoId.country}}</li>
+                    </ul>
+                    <h3>{{obj.title}}</h3>
+                    <p class="feat_cont">{{obj.basicInfoId.decription}}</p>
+                    <p class="by_bame">{{obj.userId.userName}}</p>
+                    <hr class="cont_sec_hr">
+                    <ul class="save_last_sec">
+                        <li class="coloured">Goal Amount:&nbsp;{{obj.basicInfoId.goalAmount}} SAR </li>
+                        <li>Amount Funded:&nbsp;{{obj._amount_Pleadged_}} </li>
+                        <li>Launch Date:&nbsp;{{obj.basicInfoId.launchDate | date: 'MMM d, y'}}</li>
+                    </ul>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+    <div class="row" *ngIf="recommendeddata?.length == 0" style="text-align: center">
+        <h5>{{contentLan.NOPROJECTFOUND}}</h5>
+    </div>
+</div>
+
+<section class="grid_view" *ngIf="displayMode === 2">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4" *ngFor="let obj of recommendeddata">
+
+                <div class="whole_grid_view">
+                    <img src="{{obj.basicInfoId.projectImage}}" style=" border-radius: 10px 10px 0px 0px; " class="img-fluid">
+                    <div class="grid_proj_slider">
+                        <ul class="icons_sec">
+                            <li>
+                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
+                    <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"></i></span>
+                            </li>
+
+                            <ng-template #showsave>
+                                <li>
+                                    <span (click)="addtosave(obj._id)">
+                      <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
+                      <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"
+                        *ngIf="obj._is_Saved_Project == false"></i>
+                      <i class="fa fa-bookmark" style="color: #f13b0099" aria-hidden="true"
+                        *ngIf="obj._is_Saved_Project == true"></i>
+                    </span>
+                                </li>
+                            </ng-template>
+                            <li>
+                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
+                    <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true">
+                    </i>
+                  </span>
+                            </li>
+                            <ng-template #showlike>
+                                <li>
+                                    <span (click)="addtolike(obj._id)">
+                      <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true"
+                        *ngIf="obj._is_Liked_Project == false"></i>
+                      <i class="fa fa-thumbs-up" style="color: #f13b0099" aria-hidden="true"
+                        *ngIf="obj._is_Liked_Project == true"></i>
+                    </span>
+                                </li>
+                            </ng-template>
+                        </ul>
+                        <ul class="grid_sec_pro">
+                            <li>{{obj.basicInfoId.categoryName}}</li>
+                            <li><i class="fa fa-map-marker"></i>{{obj.basicInfoId.country}}</li>
+                        </ul>
+                        <a [routerLink]="['/projectview',obj._id]" (click)="localprojectid()" style="text-decoration: none;color: black;">
+                            <h3 class="grid_head">{{obj.title}}</h3>
+                            <p class="grid_cont">{{obj.basicInfoId.decription}}</p>
+                            <p class="grid_by_bame">{{obj.userId.userName}}</p>
+                            <hr class="grid_hr">
+                            <ul class="grid_last_sec">
+                                <li class="coloured">Goal Amount:&nbsp;{{obj.basicInfoId.goalAmount}} SAR </li>
+                                <li>Amount Funded:&nbsp;{{obj._amount_Pleadged_}} SAR</li>
+                                <li>Launch Date:&nbsp;{{obj.basicInfoId.launchDate | date: 'MMM d, y'}}</li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" *ngIf="recommendeddata.length == 0 || recommendeddata == null" style="text-align: center">
+            <h5>{{contentLan.NOPROJECTFOUND}}</h5>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

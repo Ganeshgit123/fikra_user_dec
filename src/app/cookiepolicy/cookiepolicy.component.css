@@ -1,0 +1,25 @@
+.header h3 h5 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30px;
+    font-family: popins;
+}
+
+.para p {
+    font-size: 18px;
+    line-height: 30px;
+    font-family: popins;
+}
+
+.pageheader {
+    margin-bottom: 5%;
+}
+
+.header {
+    margin-top: 5%;
+}
+
+
+/* .pageheader h1 {
+    margin-bottom: 15px;
+} */

@@ -1,0 +1,212 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<!-- Project Title -->
+<div class="container">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="project_title">{{ contentLan.PROJECTOVERVIEW }}</h3>
+                <!-- <p class="project_para">by Nabeel</p> -->
+            </div>
+            <div class="col-md-6">
+                <a [routerLink]="['../projectoverview/projectpreview']"> <button class="projectpreview"> {{contentLan.PREVIEW}}<img src="assets/image/visibility.png" class="img-fluid projectpreviewimg"></button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="headerhr">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Status -->
+    <section class="project_stat_sec" *ngIf="projectpreview == false;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="stat_btn">{{tabName}}</h3>
+            </div>
+        </div>
+        <div class="stat_inner_sec">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{tabHead}}</h3>
+                    <p>{{description}}</p>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="custom-counter" *ngFor="let subCategory of rules?.split(',')">
+                        <li>{{subCategory}}</li>
+                        <!-- <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                        <li>Lorem Ipsum is simply dummy text</li>
+                        <li>Lorem Ipsum is simply dummy dummy</li>
+                        <li>industry Lorem Ipsum is simply dummy text</li> -->
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <form id="form" [formGroup]="projectreqform">
+                        <p class="text-center" style="margin-bottom: 0;"><button class="gotit_btn" (click)="onRequest()">{{ contentLan.REQTOADMIN }}</button></p>
+                        <p class="readmore"><span>{{message}}</span></p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Project overview -->
+    <section class="proj_over_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="projectoverview">{{ contentLan.PROJECTOVERVIEW }}</h3>
+                <hr class="projectviewhr">
+            </div>
+            <ol class="projectfeaturelist">
+                <li>
+                    <a [routerLink]="['./basic']">
+                        <div class="feature_box">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="proj_title">{{ lang == "en" ? basicContent?.tabName : basicContent?.tabName_Ar }}</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="roundprogress">
+                                        <round-progress [current]="50" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="proj_desc">{{ lang == "en" ? basicContent?.description : basicContent?.description_Ar }}</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['./rewards']">
+                        <div class="feature_box1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="proj_title">{{ lang == "en" ? rewardContent?.tabName : rewardContent?.tabName_Ar }}</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="roundprogress">
+                                        <round-progress [current]="30" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="proj_desc">{{ lang == "en" ? rewardContent?.description : rewardContent?.description_Ar }}</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['./story']">
+                        <div class="feature_box1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="proj_title">{{ lang == "en" ? storyContent?.tabName : storyContent?.tabName_Ar }}</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="roundprogress">
+                                        <round-progress [current]="75" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="proj_desc">{{ lang == "en" ? storyContent?.description : storyContent?.description_Ar }}</p>
+                        </div>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a [routerLink]="['./people']">
+                        <div class="feature_box1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="proj_title">People</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="roundprogress">
+                                        <round-progress [current]="5" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="proj_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+                        </div>
+                    </a>
+                </li> -->
+                <li>
+                    <a [routerLink]="['./payment']">
+                        <div class="feature_box1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="proj_title">{{ lang == "en" ? paymentContent?.tabName : paymentContent?.tabName_Ar }}</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="roundprogress">
+                                        <round-progress [current]="20" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="proj_desc">{{ lang == "en" ? paymentContent?.description : paymentContent?.description_Ar }}</p>
+                        </div>
+                    </a>
+                </li>
+            </ol>
+
+        </div>
+    </section>
+
+    <section class="review_launch_sec">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="projectoverview">{{ contentLan.SUBMITYOURPROJ }}</h3>
+                <hr class="projectviewhr">
+                <a [routerLink]="['./projectpreview']">
+                    <div class="review_box">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="proj_title">{{ lang == "en" ? previewContent?.tabName : previewContent?.tabName_Ar }}</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="roundprogress">
+                                    <round-progress [current]="50" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="proj_desc">{{ lang == "en" ? previewContent?.description : previewContent?.description_Ar }}</p>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <h3 class="projectoverview">{{ contentLan.PREPAREFORLAUNCH }}</h3>
+                <hr class="projectviewhr">
+                <a [routerLink]="['./promotion']">
+                    <div class="review_box">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="proj_title">{{ lang == "en" ? promotionContent?.tabName : promotionContent?.tabName_Ar }}</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="roundprogress">
+                                    <round-progress [current]="50" [max]="100" [radius]="20" [stroke]="3" [color]="'#FE953A'" [background]="'#e1e1e1'" class="prog_bar"></round-progress>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="proj_desc">{{ lang == "en" ? promotionContent?.description : promotionContent?.description_Ar }}</p>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="delete_btn_sec">
+        <form id="form" [formGroup]="projectdel">
+
+            <button class="delete_btn" (click)="onSubmit()"><i class="fas fa-trash"></i>{{ contentLan.DELETEPROJECT }}</button>
+        </form>
+    </section>
+</div>
+
+<app-footer></app-footer>

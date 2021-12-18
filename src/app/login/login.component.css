@@ -1,0 +1,48 @@
+.common_signup {
+    border-radius: 86px;
+    opacity: 1;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 10px 35px 10px 35px;
+    box-shadow: 5px 5px 13px #00000021;
+    background: #fff;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1499px) {
+    .common_signup {
+        padding: 5px 20px;
+    }
+}
+
+.common_signup:hover {
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    color: #fff;
+}
+
+.comm_login {
+    padding-top: 5rem;
+}
+
+.signup_sec1 {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.signup_sec1:lang(ar) {
+    padding-right: 0;
+    padding-left: auto;
+}
+
+.signup_sec1 li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.signup_sec1 li:lang(ar) {
+    padding-left: 10px;
+    padding-right: 0;
+}

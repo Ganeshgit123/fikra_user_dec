@@ -1,0 +1,78 @@
+<!-- Header -->
+<app-right-header></app-right-header>
+<section class="about_us">
+    <div class="container">
+        <div class="row" *ngIf=" _is_Top_On_ == true">
+            <div class="col-md-12">
+                <img src="{{topImage}}" class="img-fluid aboutusimage">
+            </div>
+        </div>
+        <div class="row firstrow" *ngIf="_is_Top_On_ == true">
+            <div class="col-md-12 para" *ngIf=" dir == 'ltr'">
+                <p [innerHtml]='topContent'></p>
+            </div>
+            <div class="col-md-12 para" *ngIf=" dir == 'rtl'">
+                <p [innerHtml]='topContentAr'></p>
+            </div>
+        </div>
+        <div class="row firstrow" *ngFor="let data of mission">
+            <div class="col-md-6">
+                <img src="{{data.secImage}}" class="img-fluid ourmissionimage">
+            </div>
+            <div class="col-md-6">
+                <h4 class="firstrow" *ngIf=" dir == 'ltr'">{{data.secHeadName}}</h4>
+                <h4 class="firstrow" *ngIf=" dir == 'rtl'">{{data.secHeadNameAr}}</h4>
+
+                <p class="para" style="margin-top: 3%;" *ngIf=" dir == 'ltr'">{{data.secContent}}</p>
+                <p class="para" style="margin-top: 3%;" *ngIf=" dir == 'rtl'">{{data.secContentAr}}</p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 5%;" *ngIf=" _is_Middle_On_ == true">
+            <div class="col-md-12">
+                <!-- <img src="{{topImage}}" class="img-fluid aboutusimage"> -->
+                <h4 *ngIf=" dir == 'rtl'">{{middleHeadar}}</h4>
+                <h4 *ngIf=" dir == 'ltr'">{{middleHead}}</h4>
+            </div>
+        </div>
+        <div class="row firstrow" *ngIf=" _is_Middle_On_ == true">
+            <div class="col-md-12 para" *ngIf=" dir == 'ltr'">
+                <p [innerHtml]='middileContend'></p>
+            </div>
+            <div class="col-md-12 para" *ngIf=" dir == 'rtl'">
+                <p [innerHtml]='middileContendAR'></p>
+            </div>
+        </div>
+        <!-- <div class="row firstrow">
+            <div class="col-md-6">
+                <h4 class="firstrow">OUR VISION</h4>
+                <p class="para" style="margin-top: 3%;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type</p>
+            </div>
+            <div class="col-md-6">
+                <img src="assets/image/brain-programming.png" class="img-fluid ourmissionimage">
+            </div>
+        </div> -->
+    </div>
+</section>
+<!-- <section>
+    <div class="row backred">
+        <div class="col-md-12">
+            <p>{{middileContend}}</p>
+        </div>
+    </div>
+</section> -->
+<!-- <section class="about_us">
+    <div class="container">
+        <section *ngIf="_is_Sec_On_ === true">
+            <div class="row firstrow" *ngFor="let data of mission.Sections">
+                <div class="col-md-6">
+                    <img src="{{data.secImage}}" class="img-fluid ourmissionimage">
+                </div>
+                <div class="col-md-6">
+                    <h4 class="firstrow">{{data.secHeadName}}</h4>
+                    <p class="para" style="margin-top: 3%;">{{data.secContent}}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</section> -->
+<app-footer></app-footer>

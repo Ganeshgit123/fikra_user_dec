@@ -1,0 +1,109 @@
+.yourproject {
+font: normal normal normal 35px Poppins;
+letter-spacing: 0px;
+color: #353535;
+opacity: 1;
+}
+
+.yourprojectpara {
+font: normal normal normal 20px Poppins;
+letter-spacing: 0px;
+color: #9A999E;
+opacity: 1;
+}
+
+
+.projectdescription {
+font-size: 20px;
+font-weight: 500;
+color: #353535;
+opacity: 1;
+}
+
+.projectdescriptionpara {
+font-size: 14px;
+color: #9A999E;
+opacity: 1;
+}
+
+.description {
+font-size: 18px;
+font-weight: 500;
+color: #353535;
+opacity: 1;
+margin-top: 4%;
+}
+.risk_sec{
+padding: 40px 0;
+}
+.rewarddescriptioninput{
+background: #f9f9f9 0% 0% no-repeat padding-box;
+color: #9A999E;
+padding: 10px 20px 10px 20px;
+border: none;
+}
+.riskschallenge {
+font-size: 20px;
+font-weight: 500;
+color: #353535;
+opacity: 1;
+margin-top: 40px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+.riskschallenge {
+margin-top: 0px;
+}
+}
+
+.riskschallengepara {
+font-size: 14px;
+color: #9A999E;
+opacity: 1;
+}
+
+.reward_btn_sec{
+float: right;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
+.reward_btn_sec{
+padding-bottom: 40px;
+}
+}
+.rewardcancel {
+background: transparent linear-gradient(255deg, #E80101 0%, #FF0000 100%) 0% 0% no-repeat padding-box;
+border-radius: 43px;
+font-size: 16px;
+font-weight: 500;
+color: #FFFFFF;
+border: none;
+padding: 10px 40px 10px 40px;
+margin: 0 30px 0 0;
+}
+.rewardcancel:lang(ar){
+    margin:0 0 0 30px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+.rewardcancel{
+margin: 0 10px 0 0;
+}
+}
+.rewardcancel:hover{
+background: #353535;
+}
+.savereward {
+background: transparent linear-gradient(255deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+border-radius: 43px;
+font-size: 16px;
+font-weight: 500;
+color: #FFFFFF;
+border: none;
+padding: 10px 40px 10px 40px;
+}
+.savereward:hover{
+background: #353535;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
+.savereward{
+padding: 10px 20px 10px 20px;
+}
+}

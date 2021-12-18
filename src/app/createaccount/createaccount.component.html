@@ -1,0 +1,630 @@
+<section>
+
+    <div class="row" style=" width: 100%; ">
+        <!-- <div class="col-md-6 firsthalf">
+            <div class="row homesec">
+                <div class="col-md-3 homeadj">
+                    <a href="/" style=" text-decoration: none; "><img src="assets/image/signup/Group 552.svg"
+                            style=" width: 13%; margin-left: 10%; " class="img-fluid imgsizehome"><span
+                            style=" margin-left: 14px; font-size: 18px; color: #fe8c3e; font-weight: 600; ">Home</span></a>
+                </div>
+                <div class="col-md-9"></div>
+            </div>
+            <div class="row fhfirst">
+                <div class="col-md-3">
+                    <img src="assets/image/signup/Group 550.svg" class="img-fluid">
+                </div>
+                <div class="col-md-9"></div>
+            </div>
+            <div class="row fhsecond">
+                <div class="col-md-3">
+                    <img src="assets/image/signup/Group 542.svg" class="img-fluid">
+                </div>
+                <div class="col-md-9"></div>
+            </div>
+        </div> -->
+        <!-- <div class="col-md-12 secondhalf">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <img src="assets/image/signup/Mask Group 108.svg" class="img-fluid">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10%;">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <img src="assets/image/signup/Group 551.svg" class="img-fluid">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20%;">
+                <div class="col-md-8"></div>
+                <div class="col-md-2"> <img src="assets/image/signup/Group 8.svg" class="img-fluid"></div>
+                <div class="col-md-2">
+                    <img src="assets/image/signup/Group 537 (1).svg" class="img-fluid">
+                </div>
+            </div>
+        </div> -->
+
+
+        <div [class]="lang == 'en' ? ' card-container ' : ' card-container' ">
+            <div class="card">
+                <div class="overlay">
+                    <div class="row">
+                        <div>
+                            <a href="/" style=" text-decoration: none; " >
+                                <i class="fas fa-arrow-left" *ngIf=" dir == 'ltr'"></i>
+                                <i class="fas fa-arrow-right" *ngIf=" dir == 'rtl'"></i>
+                                <span class="home_con">
+                                    {{ contentLan.HOME }}
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <h4 class="acc_type">Account Type</h4>
+                            <br>
+                            <div class="activitybox">
+                                <button class="activitybtn" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active ': displayMode == 1}">Backer </button>
+                                <span style="margin:0 20px;">Or</span>
+                                <button class="backedbtn" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary active': displayMode == 2}"> Creator </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <!-- <div class="row">
+                        <p>
+                            <label fot="imageFile">upload</label>
+                            <input type="file" id="imageFile" capture="user" accept="image/*">
+                        </p>
+                    </div> -->
+                    <h4 style=" text-align: center; margin: 3%; font-size: 18px; color: #ff5a52; ">{{ contentLan.SIGNUP }}</h4>
+                    <!-- <div class="col-md-12">{{registerform.value | json}}</div> -->
+                    <section class="dynamic_field_sec" *ngIf="displayMode == 1">
+                        <form id="form" [formGroup]="registerform" ngNativeValidate>
+                            <div class="row" style="width: 100%;">
+                                <div class="col-md-6" *ngFor="let control of user">
+                                    <div [ngSwitch]="control.fieldType">
+                                        <div *ngSwitchCase="'text'">
+                                            <div *ngIf="control.fieldId == 'userName'; else showtext">
+                                                <div class="col-md-4 form_group_left">
+
+                                                    <label class="comlabel">{{control.fieldName}}
+                                                        <span style=" color: red; "
+                                                            *ngIf="control._is_Mandatory_ == true">*</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input autoComplete="on" list="menace" #seatodo type="search" (keyup)='onchangeusername()' [(ngModel)]="valuesearch" name="seetodo" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" required [class]="isUserExist ? ' form-control borderRed ': 'form-control'">
+                                                    <datalist id="menace">
+                                                        <option *ngFor="let menace of nameList">{{menace}} </option>
+                                                    </datalist>
+                                                    <div *ngIf="isUserExist">
+                                                        <label style=" font-size: 11px; color: red; "> {{ isUserExist }}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-template #showtext>
+                                                <div class="col-md-4 form_group_left">
+
+                                                    <label class="comlabel">{{control.fieldName}}
+                                                        <span style=" color: red; "
+                                                            *ngIf="control._is_Mandatory_ == true">*</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="text" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" required class="form-control">
+                                                </div>
+                                            </ng-template>
+
+                                        </div>
+                                        <div *ngSwitchCase="'password'">
+                                            <div class="col-md-8 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}} <span
+                                                        style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <ng-template #showpass>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="password" [formControlName]="control.fieldId" autocomplete="off" (keyup)="checkpass($event)" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="{{control.placeholder}}" required class="form-control">
+                                                    <div *ngIf="passcrt">
+                                                        <label style=" font-size: 11px; color: red; "> {{ errors
+                                                            }}</label>
+                                                    </div>
+                                                    <!-- <div *ngIf="control.fieldId.errors?.pattern">
+                                                    User name not valid.
+                                                </div> -->
+                                                </div>
+                                            </ng-template>
+                                            <div class="col-md-10 form_group_left" *ngIf="control.fieldId == 'confirmpassword';else showpass">
+                                                <input type="password" [formControlName]="control.fieldId" autocomplete="off" (keyup)="checkpass1($event)" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="{{control.placeholder}}" required class="form-control">
+                                                <div *ngIf="passcrt">
+                                                    <label style=" font-size: 11px; color: red; "> {{ errors1 }}</label>
+                                                </div>
+                                                <!-- <div *ngIf="control.fieldId.errors?.pattern">
+                                                    User name not valid.
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'email'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}} <span
+                                                        style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <input type="email" [formControlName]="control.fieldId" [class]="isEmailExist ? ' borderRed ': ''" (change)="checkemail($event)" required="true" placeholder="{{control.placeholder}}" class="form-control">
+                                                <div *ngIf="isEmailExist">
+                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'number'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}}<span style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="number" [formControlName]="control.fieldId" maxlength="15" max="999999999" onKeyPress="if(this.value.length==15) return false;" placeholder="{{control.placeholder}}" required class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div *ngSwitchCase="'tel'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}}<span style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <label class="tel_label">+966</label><input type="tel" [formControlName]="control.fieldId" maxlength="9" max="999999999" onKeyPress="if(this.value.length==9) return false;" placeholder="Mobile Number" pattern="^[1-9][0-9]*$"
+                                                    required oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control tel_cons_num">
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'select'">
+                                            <div *ngIf="control.fieldName === 'Country'">
+                                                <div class="col-md-4 form_group_left">
+                                                    <label class="comlabel">{{control.fieldName}} <span
+                                                            style=" color: red; "
+                                                            *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <select class="form-control" #mySelect [formControlName]="control.fieldId" (change)='oncountrySelected(mySelect.value)'>
+                                                        <option value='' [selected]="true" [disabled]="true">Select
+                                                            Country</option>
+                                                        <option *ngFor="let allcountry of country"
+                                                            [value]="allcountry.countryName">{{lang == 'en' ?
+                                                            allcountry.countryName : allcountry.countryNameAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="control.fieldName === 'City'">
+                                                <div class="col-md-4 form_group_left">
+                                                    <label class="comlabel">{{control.fieldName}} <span
+                                                            style=" color: red; "
+                                                            *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <select class="form-control" [formControlName]="control.fieldId">
+                                                        <option value='' [selected]="true" [disabled]="true">Select City
+                                                        </option>
+                                                        <option *ngFor="let cities of cityList"
+                                                            [value]="cities.cityName">
+                                                            {{lang == 'en' ? cities.cityName : cities.cityNameAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'hidden'">
+
+                                            <div class="col-md-6 colhide" nghide>
+                                                <input type="hidden" [formControlName]="control.fieldId" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'date'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}} <span
+                                                        style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <input type="date" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div *ngSwitchCase="'radio'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label>{{control.fieldName}} <span style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <input type="radio" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'textarea'">
+                                            <div class="col-md-8 form_group_left">
+                                                <label class="comlabel">{{control.fieldName}}<span style=" color: red; "
+                                                        *ngIf="control._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <textarea [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" required class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                        <div class="col-md-6" *ngFor="let control of user">
+                            <div [ngSwitch]="control.fieldType">
+                                <div *ngSwitchCase="'checkbox'" style=" margin-left: 4%; ">
+                                    <div class="col-md-12 form_group_left" style="margin-top: 7%;">
+                                        <div class="row">
+                                            <input type="checkbox" [formControlName]="control.fieldId" class="form-control" style=" margin-bottom: -20px; "><span class="chelabel">{{control.placeholder}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                            <div class="row">
+                                <div class="col-md-10 col-12 custom_checkbox">
+                                    <input type="checkbox" formControlName="_send_me_newsletter_"><label class="cus_check_lab">{{ contentLan.SENDNEWSLETTERCONTENT
+                                        }}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 col-12 custom_checkbox">
+                                    <input type="checkbox" formControlName="_ispolicy_and_terms_accepted_"><label class="cus_check_lab">By clicking this you will accpeting
+                                        the <a href="/privacypolicy" target="_blank"> Privacy Policy</a> and <a
+                                            href="/termsofuse" target="_blank"> Terms
+                                            &
+                                            condition</a> of Fikra.<span
+                                            style=" color: red;font-size: 18px ">*</span></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <ul class="signup_sec">
+                                    <li>
+                                        <button type="submit" (click)="registerUser()" *ngIf="!loading" [disabled]='(statusInvestor || loading) ? true: false ' [class]="statusInvestor? 'singup disabledClass' : 'singup'">
+                                            {{ contentLan.SIGNUP }}
+                                        </button>
+                                        <button *ngIf="loading" disabled='true' [class]="statusInvestor? 'singup disabledClass' : 'singup'">
+                                            <i class="fa fa-spinner fa-spin"></i>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="loginor">or</h4>
+                                    </li>
+
+                                    <li>
+                                        <button [routerLink]="['/login']" class="singup">
+                                            {{ contentLan.LOGIN }}
+                                        </button>
+                                    </li>
+                                </ul>
+                                <ul style='padding-left: 70px'>
+                                    <a *ngIf='statusInvestor' style='color: red; font-size: 11px'>Please fill all the
+                                        required fields</a>
+                                </ul>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Creator Signup Form  -->
+                    <section class="dynamic_field_sec" *ngIf="displayMode == 2">
+                        <form id="form" [formGroup]="registercreatorform" ngNativeValidate>
+                            <div class="row" style="width: 100%;">
+                                <div class="col-md-6" *ngFor="let controls of creator">
+                                    <div [ngSwitch]="controls.fieldType">
+                                        <div *ngSwitchCase="'text'">
+                                            <div *ngIf="controls.fieldName == 'IBAN';else ibannot">
+                                                <div class="col-md-8 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <span style="background: #fe7447;color: white;padding: 8px 10px;position: absolute;">SA</span>
+                                                    <input type="text" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" maxlength="22" max="999999999" onKeyPress="if(this.value.length == 22) return false;" oninput="if(!this.value.match('^[0-9]*$'))this.value='';" required class="form-control sa_class">
+                                                </div>
+                                            </div>
+                                            <ng-template #ibannot>
+                                                <div *ngIf="controls.fieldId == 'businessName' || controls.fieldId == 'typeOfBusiness' ; else hidefield">
+                                                    <div *ngIf="show">
+                                                        <div class="col-md-8 form_group_left">
+                                                            <label class="comlabel">{{controls.fieldName}}<span
+                                                                    style=" color: red; "
+                                                                    *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-10 form_group_left">
+                                                            <input type="text" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <ng-template #hidefield>
+                                                    <div class="col-md-8 form_group_left">
+                                                        <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                    </div>
+
+                                                    <div class="col-md-10 form_group_left" *ngIf="controls.fieldId == 'userName';else showuser">
+                                                        <input autoComplete="on" list="menace" #seatodoo type="search" (keyup)='onchangeusername()' [(ngModel)]="valuesearch" name="seetodoo" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required [class]="isUserExist ? ' form-control borderRed ': 'form-control'">
+                                                        <datalist id="menace">
+                                                        <option *ngFor="let menace of nameList">{{menace}} </option>
+                                                    </datalist>
+                                                        <div *ngIf="isUserExist">
+                                                            <label style=" font-size: 11px; color: red; "> {{ isUserExist }}</label>
+                                                        </div>
+                                                    </div>
+                                                    <ng-template #showuser>
+                                                        <div class="col-md-10 form_group_left">
+                                                            <input type="text" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                        </div>
+                                                    </ng-template>
+                                                </ng-template>
+                                            </ng-template>
+                                        </div>
+                                        <div *ngSwitchCase="'password'">
+                                            <div class="col-md-8 form_group_left">
+                                                <label class="comlabel">{{controls.fieldName}} <span
+                                                        style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <ng-template #showpass>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="password" [formControlName]="controls.fieldId" autocomplete="off" (keyup)="checkpass($event)" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                    <div *ngIf="passcrt">
+                                                        <label style=" font-size: 11px; color: red; "> {{ errors
+                                                            }}</label>
+                                                    </div>
+                                                    <!-- <div *ngIf="control.fieldId.errors?.pattern">
+                                                    User name not valid.
+                                                </div> -->
+                                                </div>
+                                            </ng-template>
+                                            <div class="col-md-10 form_group_left" *ngIf="controls.fieldId == 'confirmpassword';else showpass">
+                                                <input type="password" [formControlName]="controls.fieldId" autocomplete="off" (keyup)="checkpass1($event)" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                <div *ngIf="passcrt">
+                                                    <label style=" font-size: 11px; color: red; "> {{ errors1 }}</label>
+                                                </div>
+                                                <!-- <div *ngIf="control.fieldId.errors?.pattern">
+                                                    User name not valid.
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'email'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{controls.fieldName}}<span
+                                                        style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <input type="email" [formControlName]="controls.fieldId" [class]="isEmailExist ? ' borderRed ': ''" (change)="checkemail($event)" placeholder="{{controls.placeholder}}" required="true" class="form-control">
+                                                <div *ngIf="isEmailExist">
+                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'number'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{controls.fieldName}}<span
+                                                        style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="number" [formControlName]="controls.fieldId" maxlength="15" max="999999999" onKeyPress="if(this.value.length==15) return false;" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div *ngSwitchCase="'tel'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{controls.fieldName}}<span
+                                                        style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <label class="tel_label">+966</label><input type="tel" [formControlName]="controls.fieldId" maxlength="9" max="999999999" onKeyPress="if(this.value.length==9) return false;" placeholder="Mobile Number" pattern="^[1-9][0-9]*$"
+                                                    required oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control tel_cons_num">
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'select'">
+                                            <div *ngIf="controls.fieldName === 'Country'">
+                                                <div class="col-md-4 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <select class="form-control" #mySelect [formControlName]="controls.fieldId" required (change)='oncountrySelected(mySelect.value)' placeholder='Contry'>
+                                                        <option value='' [selected]="true" [disabled]="true">Select
+                                                            {{ contentLan.COUNTRY }}</option>
+                                                        <option *ngFor="let allcountry of country"
+                                                            [value]="allcountry.countryName">{{lang == 'en' ?
+                                                            allcountry.countryName : allcountry.countryNameAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="controls.fieldName === 'City'">
+                                                <div class="col-md-4 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <select class="form-control" [formControlName]="controls.fieldId">
+                                                        <option value='' [selected]="true" [disabled]="true">Select City
+                                                        </option>
+                                                        <option *ngFor="let cities of cityList"
+                                                            [value]="cities.cityName">
+                                                            {{lang == 'en' ? cities.cityName : cities.cityNameAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="controls.fieldName === 'Is Business Exist'">
+                                                <div class="col-md-4 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <select class="form-control" #mybus (change)="selectchange(mybus.value)" [formControlName]="controls.fieldId">
+                                                        <option disabled selected>Select </option>
+                                                        <option *ngFor="let datas of controls.dropDown"
+                                                            [value]="datas.displayName">
+                                                            {{datas.displayName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'hidden'">
+
+                                            <div class="col-md-6 colhide" nghide>
+                                                <input type="hidden" [formControlName]="controls.fieldId" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'date'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label class="comlabel">{{controls.fieldName}}<span
+                                                        style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left">
+                                                <input type="date" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div *ngSwitchCase="'radio'">
+                                            <div class="col-md-4 form_group_left">
+                                                <label>{{controls.fieldName}}<span style=" color: red; "
+                                                        *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                            </div>
+                                            <div class="col-md-10 form_group_left" *ngFor="let drop of controls.dropDown">
+                                                <input type="radio" style="width: 0px;height: 0px;" id="controls.fieldId" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control">
+                                                <label id="controls.fieldId">{{drop.displayName}}</label>
+                                                <!-- <input type="radio" style="width: 0px;height: 0px;" id="controls.fieldId" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control"><label id="controls.fieldId">No</label> -->
+                                            </div>
+                                        </div>
+                                        <div *ngSwitchCase="'file'">
+                                            <div *ngIf="controls.fieldId == 'tradingLicense';else showfield">
+                                                <div *ngIf="show">
+                                                    <div class="col-md-8 form_group_left">
+                                                        <label class="comlabel">{{controls.fieldName}}<span
+                                                                style=" color: red; "
+                                                                *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-10 form_group_left">
+                                                        <input type="file" (change)="uploadImageFile($event,controls.fieldId)" required placeholder="{{controls.placeholder}}" class="form-control" accept=".pdf,.doc,.docx">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-template #showfield>
+                                                <div class="col-md-8 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <input type="file" (change)="uploadImageFile($event,controls.fieldId)" required placeholder="{{controls.placeholder}}" class="form-control" accept="image/*,.pdf">
+
+                                                </div>
+                                            </ng-template>
+                                        </div>
+                                        <div *ngSwitchCase="'textarea'">
+                                            <div *ngIf="controls.fieldId == 'businessAddress';else showtextfield">
+                                                <div *ngIf="show">
+                                                    <div class="col-md-8 form_group_left">
+                                                        <label class="comlabel">{{controls.fieldName}}<span
+                                                                style=" color: red; "
+                                                                *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-10 form_group_left">
+                                                        <textarea [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control"></textarea>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-template #showtextfield>
+                                                <div class="col-md-8 form_group_left">
+                                                    <label class="comlabel">{{controls.fieldName}}<span
+                                                            style=" color: red; "
+                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                </div>
+                                                <div class="col-md-10 form_group_left">
+                                                    <textarea [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control"></textarea>
+                                                </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 col-12 custom_checkbox">
+                                    <input type="checkbox" formControlName="_send_me_newsletter_"><label class="cus_check_lab"> {{ contentLan.SENDNEWSLETTERCONTENT
+                                        }}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 col-12 custom_checkbox">
+                                    <input type="checkbox" formControlName="_ispolicy_and_terms_accepted_"><label class="cus_check_lab">By clicking this you will accpeting
+                                        the <a href="/privacypolicy"> Privacy Policy</a> and <a href="/termsofuse"> Terms
+                                            &
+                                            condition</a> of Fikra.<span
+                                            style=" color: red;font-size: 18px ">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <ul class="signup_sec">
+                                    <li>
+                                        <!-- <button type="submit" (click)="registerCreator()" [disabled]='statusCreator? true: false' [class]="statusCreator? 'singup disabledClass' : 'singup'">{{ contentLan.SIGNUP }}</button> -->
+                                        <button type="submit" (click)="registerCreator()" *ngIf="!loading" [disabled]='statusCreator? true: false' [class]="statusCreator? 'singup disabledClass' : 'singup'">
+                                            {{ contentLan.SIGNUP }}
+                                        </button>
+                                        <button *ngIf="loading" disabled='true' [class]="statusCreator? 'singup disabledClass' : 'singup'">
+                                            <i class="fa fa-spinner fa-spin"></i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <h4 class="loginor">or</h4>
+                                        <!-- <input type="range">hi -->
+                                    </li>
+                                    <li><button [routerLink]="['/login']" class="singup">{{ contentLan.LOGIN }}</button>
+                                    </li>
+
+                                    <!-- <li>
+                                        <a><img src="assets/image/search.svg" class="img-fluid googlelogin"></a>
+                                    </li>
+                                    <li>
+                                        <a><img src="assets/image/apple.svg" class="img-fluid applelogin"></a>
+                                    </li> -->
+                                </ul>
+                                <ul style='padding-left: 70px'>
+                                    <a *ngIf='statusCreator' style='color: red; font-size: 11px'>Please fill all the
+                                        required fields</a>
+                                </ul>
+                            </div>
+                        </form>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

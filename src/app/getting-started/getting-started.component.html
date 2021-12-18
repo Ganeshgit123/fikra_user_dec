@@ -1,0 +1,36 @@
+<app-right-header></app-right-header>
+<div class="container_secont" *ngIf="handbookpage?.handbookImg">
+    <img src="{{handbookpage?.handbookImg}}" alt="Snow" style="width:100%; max-height: 25pc;"/>
+    <div class="centered">
+        <h6>Creator Handbook</h6>
+        <h2>{{lang =='en' ? handbookpage?.handBookHead : handbookpage?.handBookHeadAr}}</h2>
+    </div>
+</div>
+<section class="header-color" *ngIf="!handbookpage?.handbookImg">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <h6>Creator Handbook</h6>
+            <h2>{{lang =='en' ? handbookpage?.handBookHead : handbookpage?.handBookHeadAr}}</h2>
+        </div>
+    </div>
+</section>
+<section class="content-para">
+    <div class="container">
+        <p [innerHtml]='body'> </p>
+    </div>
+</section>
+<section class="getting-btn">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button *ngIf="previous" (click)="nexbtn(previous?._id)"> < {{lang =='en' ?  previous?.handBookHead : previous?.handBookHeadAr}} </button>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button *ngIf="next" (click)="nexbtn(next?._id)">{{lang =='en' ? next?.handBookHead : next?.handBookHeadAr }} ></button>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

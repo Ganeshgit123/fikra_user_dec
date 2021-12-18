@@ -1,0 +1,391 @@
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+::placeholder {
+    font-size: 14px;
+}
+
+.form-group {
+    padding-bottom: 30px;
+}
+
+.rewardtitleinput {
+    background: #f9f9f9 0% 0% no-repeat padding-box;
+    color: #9A999E;
+    padding: 10px 20px 10px 20px;
+    border: none;
+}
+
+.fundingno {
+    background: #f9f9f9 0% 0% no-repeat padding-box;
+    color: #9A999E;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    width: 89%;
+    margin-left: 11%;
+}
+.fundingno:lang(ar){
+    margin-left: auto;
+    margin-right: 9%;
+}
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .fundingno {
+        width: 85%;
+        margin-left: 15%;
+    }
+}
+
+.fundsar {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    background: #353535 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 12px 25px;
+    position: relative;
+    top: 3rem;
+    left: -3.3rem;
+}
+.fundsar:lang(ar){
+    right: -3.3rem;
+    left: auto;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .fundsar {
+        position: relative;
+        top: 2.8rem;
+        padding: 10px 10px 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .fundsar {
+        position: relative;
+        top: 2.8rem;
+        padding: 10px 10px 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .fundsar {
+        padding-left: 18px;
+    }
+}
+
+.calender_icon {
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+}
+
+.calender_icon i {
+    color: #fff;
+    padding: 13px 14px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .calender_icon i {
+        padding: 13px 10px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .calender_icon {
+        display: none;
+    }
+}
+
+.rewarddescriptioninput {
+    background: #f9f9f9 0% 0% no-repeat padding-box;
+    color: #9A999E;
+    padding: 10px 20px 10px 20px;
+    border: none;
+}
+
+.projectauthorseemore {
+    background: transparent linear-gradient(265deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 20px #FF595942;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.projectauthorseemore:hover {
+    background: transparent;
+    border: 2px solid #FE953A;
+    color: #000;
+}
+
+.projectauthorseemoredelete {
+    background: #FF5959;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 5%;
+}
+
+.projectauthorseemoredelete:hover {
+    background: transparent;
+    border: 2px solid #FE953A;
+    color: #000;
+}
+
+.scroll {
+    height: 600px;
+    overflow-y: scroll;
+    margin-top: -1%;
+    margin-bottom: 5%;
+}
+
+.reward_pre_sec {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #9A999E;
+    padding: 30px 30px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.rewardpreview {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000000;
+    opacity: 1;
+}
+
+.rewardpreviewdesc {
+    font-size: 12px;
+    color: #000000;
+    padding: 20px 0 10px 0;
+}
+
+.rewardpreviewpledge {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1;
+}
+
+.rewardpreviewhr {
+    height: 0px;
+    border: 2px solid #FF5D4B;
+    opacity: 1;
+    width: 100px;
+}
+
+.rewardpreviewproject {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.rewardpreviewprojecttitle {
+    font-size: 14px;
+    color: #35353580;
+}
+
+.rewarddeliverymonth {
+    background-color: #353535;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 10px 10px 10px 20px;
+    border: none;
+    width: 100%;
+}
+
+.cal_bg {
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    padding: 20px;
+}
+
+.rewarddeliveryyear {
+    background-color: #353535;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 10px 10px 10px 20px;
+    border: none;
+    width: 100%;
+}
+
+.rewardshipingoption {
+    background: #353535 0% 0% no-repeat padding-box;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 10px 10px 10px 20px;
+    border: none;
+    width: 100%;
+}
+
+.rewardtimelimit {
+    font: normal normal normal 18px Poppins;
+    letter-spacing: 0px;
+    color: #353535;
+    opacity: 1;
+    margin-top: 10%;
+}
+
+[type="radio"] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/* One radio button per line */
+
+.limitbox {
+    background: #353535 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font: normal normal normal 15px Poppins;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin: 0px 3px 0 3px;
+}
+
+.limitbox1 {
+    background: #353535 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font: normal normal normal 15px Poppins;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin: 10px 3px 0 3px;
+}
+
+.limitbox label {
+    padding-bottom: 0;
+}
+
+.limitbox1 label {
+    padding-bottom: 0;
+}
+
+[type="radio"]+span {
+    display: block;
+    font-size: 14px;
+    padding: 10px 0px 10px 0px;
+}
+
+
+/* the basic, unchecked style */
+
+[type="radio"]+span:before {
+    content: '';
+    /* display: inline-block; */
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 1em;
+    box-shadow: 0 0 0 0.15em #FF5D4B;
+    margin-right: 3%;
+    transition: 0.5s ease all;
+    padding: 5px;
+    margin-top: 4px;
+    float: right;
+}
+[type="radio"]:lang(ar)+span:before{
+    float: left;
+    margin-left: 3%;
+    margin-right: auto;
+}
+
+/* the checked style using the :checked pseudo class */
+
+[type="radio"]:checked+span:before {
+    background: white;
+    box-shadow: 0 0 0 0.25em #FF5D4B;
+}
+
+.reward_btn_sec {
+    float: right;
+}
+
+.rewardcancel {
+    background: transparent linear-gradient(255deg, #E80101 0%, #FF0000 100%) 0% 0% no-repeat padding-box;
+    border-radius: 43px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 40px 10px 40px;
+    margin: 0 30px 0 0;
+}
+.rewardcancel:lang(ar){
+    margin: 0 0 0 30px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .rewardcancel {
+        margin: 0 10px 0 0;
+    }
+}
+
+.rewardcancel:hover {
+    background: #353535;
+}
+
+.savereward {
+    background: transparent linear-gradient(255deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 43px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 40px 10px 40px;
+}
+
+.savereward:hover {
+    background: #353535;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .savereward {
+        padding: 10px 20px 10px 20px;
+    }
+}
+
+.reward_btn_sec {
+    padding-bottom: 40px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .delive_sec {
+        padding: 40px 0 0 0;
+    }
+}
+
+.add_item{
+    margin-left: 20px;
+    border: none;
+}
+.add_item:lang(ar){
+    margin-right: 20px;
+    margin-left: auto;
+}
+.add_more_btn{
+    text-align: right;
+    border:none;
+}
+.add_more_btn:lang(ar){
+    text-align: left;
+}
+.add_more_btn .btn{
+    background: transparent linear-gradient( 203deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border: none;
+}
+.titl_quan{
+    border: none;
+    border-color: #fff;
+}
+.tit_cls{
+    padding-left: 20px;
+}
+.tit_cls:lang(ar){
+    padding-right: 20px;
+    padding-left: auto;
+}

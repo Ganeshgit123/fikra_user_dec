@@ -1,0 +1,345 @@
+.whole_proj_sec {
+    padding: 40px 0 80px 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .whole_proj_sec {
+        padding: 20px 0 40px 0;
+    }
+}
+
+input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.create_proj_sec {
+    border: 1px solid #9A999E;
+    border-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin: 40px 0 0 0;
+    padding: 40px 80px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .create_proj_sec {
+        padding: 40px 20px;
+    }
+}
+
+.project_tab_ul {
+    list-style: none;
+    padding-left: 0;
+    background-color: #f3f3f3;
+    border-radius: 50px;
+    /* width: max-content; */
+}
+
+.project_tab_ul:lang(ar) {
+    padding-right: 0;
+    padding-left: auto;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .project_tab_ul {
+        border-radius: 0;
+    }
+}
+
+.project_tab_ul li {
+    display: inline-block;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .project_tab_ul li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.createprojectcategory {
+    font-size: 16px;
+    font-weight: 500;
+    color: #AEAEAE;
+    border: none;
+    padding: 15px 60px 15px 60px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .createprojectcategory {
+        padding: 15px 30px 15px 30px;
+    }
+}
+
+.createprojectcategoryactive {
+    background: transparent linear-gradient( 261deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    padding: 15px 60px 15px 60px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .createprojectcategoryactive {
+        padding: 15px 30px 15px 30px;
+    }
+}
+
+.createprojectnumber {
+    background: #353535;
+    color: #fff;
+    padding: 15px 25px 15px 40px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    float: right;
+}
+
+.createprojectnumber:lang(ar) {
+    float: left;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .createprojectnumber {
+        border-radius: 50px;
+    }
+    .edit_form_group {
+        padding-bottom: 20px;
+    }
+}
+
+.proj_det_sec {
+    padding: 30px 0;
+    border-bottom: 2px solid #9a999e45;
+}
+
+.categorytitle {
+    font-size: 25px;
+    font-weight: 500;
+    color: #000000;
+    margin-top: 30px;
+}
+
+.categoryhr {
+    border: 1px;
+    color: #FE953A;
+    opacity: 1;
+    height: 5px;
+    border-radius: 50px;
+    width: 25%;
+}
+
+.categorypara {
+    font-size: 14px;
+    color: #9A999E;
+    padding: 10px 0 20px 0;
+}
+
+.form-select {
+    font-size: 14px;
+    height: 50px;
+    border-radius: 10px;
+    border-color: #e8e7e7;
+    background-position: right 2rem center;
+    background-size: 15px 30px;
+    font-weight: 400;
+}
+
+.form-select:lang(ar) {
+    background-position: left 2rem center;
+}
+
+.form-select:focus {
+    border-color: #0000003d;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+}
+
+.proj_bottom_cont {
+    padding: 60px 0 0px 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .proj_bottom_cont {
+        padding: 20px 0 0 0;
+    }
+}
+
+.categorypara2 {
+    font-size: 14px;
+    color: #9A999E;
+}
+
+.nextprojectidea {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background: transparent linear-gradient(257deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    border-radius: 43px;
+    border: none;
+    padding: 15px 30px 15px 30px;
+    float: right;
+}
+
+.nextprojectidea:lang(ar) {
+    float: left;
+}
+
+.nextprojectidea:hover {
+    background: #353535;
+}
+
+.proj_bot_sec {
+    background: #353535 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 37px 37px;
+    padding: 20px 0;
+}
+
+.proj_bot_sec p {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .proj_bot_sec p {
+        padding: 0 20px;
+        font-size: 12px;
+    }
+}
+
+.previousprojectidea {
+    font-size: 14px;
+    color: #353535;
+    background: white;
+    border-radius: 43px;
+    opacity: 1;
+    border: none;
+    padding: 15px 0px 15px 0px;
+    float: right;
+    transition: transform .2s;
+}
+
+.previousprojectidea i {
+    font-size: 26px;
+    padding-right: 20px;
+    position: relative;
+    top: 5px;
+}
+
+.previousprojectidea i:lang(ar) {
+    padding-left: 20px;
+    padding-right: auto;
+}
+
+.previousprojectidea:hover {
+    transform: scale(1.1);
+    color: #FE953A;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.edit_form_group::placeholder {
+    font-size: 14px;
+    color: #9A999E;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #FF5959;
+}
+
+.check_box_sec {
+    margin-top: 20px;
+}
+
+.form-check {
+    padding: 10px 0;
+}
+
+.form-check label {
+    font-size: 14px;
+    color: #9A999E;
+    margin-left: 20px;
+}
+
+.form-check label:lang(ar) {
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+.form-check .form-check-input[type=checkbox] {
+    border-radius: 50px;
+    border: 3px solid #F0F0F1;
+    background: #F0F0F1;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 25px;
+    top: -2px;
+}
+
+.form-check .form-check-input:checked {
+    border: 6px solid #FF5959;
+    background: transparent;
+}
+
+.form-check .form-check-input:checked[type=checkbox] {
+    background-image: none;
+    font-weight: 500;
+}
+
+.form-check .form-check-input:focus {
+    box-shadow: none;
+}
+
+.cmnlabel {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}
+
+button[disabled] {
+    border: none;
+    color: white;
+    background: #c1c0be;
+}
+
+.form-check .form-check-input:lang(ar) {
+    float: right;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
