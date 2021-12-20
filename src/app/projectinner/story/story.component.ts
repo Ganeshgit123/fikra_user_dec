@@ -13,6 +13,7 @@ export class StoryComponent implements OnInit {
   htmlContent: any;
   storyForm: any;
   params: any;
+  loading= false;
   projectpreview: any;
   tabHead: any;
   tabHead_Ar: any;
@@ -36,7 +37,7 @@ export class StoryComponent implements OnInit {
     placeholder: "Enter text here...",
   };
   contentLan: any = {};
-
+ 
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -113,10 +114,12 @@ export class StoryComponent implements OnInit {
     });
   }
   onSubmit() {
+    
     if (this.projectpreview === undefined) {
       this.authService.story(this.storyForm.value);
       // console.log('story',this.storyForm.value)
     } else {
+      this.loading = true;
       this.authService.storyedit(this.storyForm.value);
     }
   }

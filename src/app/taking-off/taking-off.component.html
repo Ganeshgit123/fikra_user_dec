@@ -94,10 +94,47 @@
               </ul>
               <ul class="cont_sec_pro">
                 <!-- <li>{{obj.basicInfoId.categoryName}}</li> -->
+                <li style="padding: 0px">
+                  <i class="fa fa-list-alt" aria-hidden="true"></i
+                  >{{ obj.basicInfoId.categoryName }}-->
+                  {{ obj.basicInfoId.subCategoryName }}
+                </li>
                 <li>
                   <i class="fa fa-map-marker"></i>{{ obj.basicInfoId.city }}
                 </li>
               </ul>
+              <h6 *ngIf="obj._is_All_Nothing_ == true">
+                {{ contentLan.BUSINESSMODEL }}:
+                <span style="color: #ff4264"
+                  >{{ contentLan.ALLORNOTHING }}
+                  <i
+                    class="fas fa-info-circle"
+                    ngbTooltip="{{ contentLan.ALLORNOTHING }}"
+                    style="
+                      color: #5c82d4;
+                      margin-left: 1%;
+                      font-size: 14px;
+                      cursor: pointer;
+                    "
+                  ></i
+                ></span>
+              </h6>
+              <h6 *ngIf="obj._is_Keep_It_All_ == true">
+                {{ contentLan.BUSINESSMODEL }}:
+                <span style="color: #ff4264"
+                  >{{ contentLan.KEEPALL
+                  }}<i
+                    class="fas fa-info-circle"
+                    ngbTooltip="{{ contentLan.KEEPALL }}"
+                    style="
+                      color: #5c82d4;
+                      margin-left: 1%;
+                      font-size: 14px;
+                      cursor: pointer;
+                    "
+                  ></i
+                ></span>
+              </h6>
               <a
                 [routerLink]="['/projectview', obj._id]"
                 (click)="localprojectid()"
@@ -109,19 +146,23 @@
                 <hr class="cont_sec_hr" />
                 <ul class="save_last_sec">
                   <li class="coloured">
-                    {{ contentLan.GOAL || "Goal" }}:{{
-                      obj.basicInfoId.goalAmount
-                    }}
-                    SAR
-                  </li>
-                  <li>
-                    {{ contentLan.AMOUNT || "Amount" }}:{{
-                      obj._amount_Pleadged_
-                    }}
+                    {{ contentLan.GOAL || "Goal" }}: SAR
+                    {{ obj.basicInfoId.goalAmount }}
                   </li>
                   <li>
                     {{ contentLan.LAUNCH || "Launch" }}:{{ obj.inter }}
                     {{ obj.luncont }}
+                  </li>
+                  <li>
+                    {{ contentLan.PLEDGE || "Pledge" }}:{{
+                      obj._amount_Pleadged_
+                    }}
+                    &nbsp;({{ obj.takinglastpercentage | number: "1.0-0" }}%)
+                  </li>
+                  <li>
+                    {{ contentLan.PLEDGE || "Pledge" }}Count:{{
+                      obj._pledged_count_
+                    }}
                   </li>
                 </ul>
               </a>

@@ -13,7 +13,11 @@ export class SavedprojectsComponent implements OnInit {
   list:any;
   saveddata:any;
   saveform:any
+  savedatacount =0;
   contentLan: any = {};
+  savegoalAmount:any;
+  saveamountPleadged:any;
+  savepercentage:any;
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     private http: HttpClient,
@@ -51,6 +55,22 @@ export class SavedprojectsComponent implements OnInit {
       (res: any)=>{
         console.log('user',res);
        this.saveddata = res.data;
+       this.savedatacount = this.saveddata.length;
+       this.saveddata.forEach((elementss: any) => {
+        this.savegoalAmount = elementss.savedProjectId.basicInfoId.goalAmount;
+
+        this.saveamountPleadged = elementss.savedProjectId._amount_Pleadged_;
+        this.savepercentage =
+          this.saveamountPleadged / this.savegoalAmount;
+        var totPercent = this.savepercentage * 100;
+        if (totPercent >= 100) {
+          elementss.savelastper = 100;
+        } else {
+          elementss.savelastper = totPercent;
+        }
+
+        elementss.savelastpercentage = totPercent;
+      });
       }
     );
     this.list=[

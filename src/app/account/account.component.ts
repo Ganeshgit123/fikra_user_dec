@@ -29,6 +29,8 @@ export class AccountComponent implements OnInit {
   citySs:any;
   submitted = false;
   shippingaddressForm:any;
+  display = "none";
+
   // paymentForm:any;
 errors:any
   checkoutForm = this.formBuilder.group({
@@ -630,5 +632,12 @@ errors:any
         return false;
     }
     return true;
+}
+openModal() {
+  this.display = "block";
+}
+onCloseHandled() {
+  this.display = "none";
+  // this.specialrequestform.reset();
 }
 }

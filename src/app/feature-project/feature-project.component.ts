@@ -21,6 +21,9 @@ export class FeatureProjectComponent implements OnInit {
   projectdate: any;
   inter:any;
   luncont:any;
+  featuregoalAmount:any;
+  featureamountPleadged:any;
+  featurepercentage:any;
   constructor(public authService: AuthService,private route: ActivatedRoute,private toaster: ToastrService,    public fb: FormBuilder) { }
 
   myPromise = new Promise((resolve, reject) => {
@@ -53,6 +56,23 @@ export class FeatureProjectComponent implements OnInit {
       if (res.error === false) {
         this.featureproject = res.data;
         console.log("featureproject",this.featureproject)
+
+        this.featureproject.forEach((elementss: any) => {
+          this.featuregoalAmount = elementss.basicInfoId.goalAmount;
+
+          this.featureamountPleadged = elementss._amount_Pleadged_;
+          this.featurepercentage =
+            this.featureamountPleadged / this.featuregoalAmount;
+          var totPercent = this.featurepercentage * 100;
+          if (totPercent >= 100) {
+            elementss.featurelastper = 100;
+          } else {
+            elementss.featurelastper = totPercent;
+          }
+
+          elementss.featurelastpercentage = totPercent;
+        });
+
         this.featureproject.forEach((value: any, key: any) => {
           this.currentdate = new Date();
           this.projectdate = new Date(value.basicInfoId.launchDate);

@@ -662,7 +662,7 @@ p {
 .projectremindme {
     border: 2px solid #FF594E;
     background-color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     margin-top: 10px;
     float: right;
 }
@@ -731,4 +731,10 @@ p {
 }
 .accordion-button:lang(ar){
     text-align: right;
+ }
+ .owl-carousel.owl-rtl .owl-item{
+     float: left !important;
+ }
+ .owl-carousel.owl-rtl .owl-item:lang(ar){
+     float: right !important;
  }

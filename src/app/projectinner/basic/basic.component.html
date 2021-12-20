@@ -346,18 +346,20 @@
               type="file"
               class="video form-control"
               (change)="uploadVideoFile($event)"
+              accept="video/*"
               [disabled]="loading"
             />
 
             <p *ngIf="videoSizeError" style="color: red">
-              *Too big Upload Video maximum 30sec, and the size of the video
-              should be less than 5MB
+              *Too big Upload Video maximum 2mins, and the size of the video
+              should be less than 15MB
             </p>
 
             <span *ngIf="loading; else durationVideo" style="padding: 2pc 13pc">
               <i class="fal fa-sync fa-pulse"></i>
             </span>
             <ng-template #durationVideo>
+              <button (click)="canclevideo()" class="closevideo">X</button>
               <video
                 *ngIf="videourl"
                 width="320"
@@ -435,6 +437,8 @@
               <input
                 type="date"
                 class="form-control launchdate"
+                [min]="newdate"
+                [max]="dateFormated"
                 formControlName="launchDate"
                 placeholder="yyyy-mm-dd"
               />

@@ -49,7 +49,10 @@ export class ProjectpreviewComponent implements OnInit {
   busarndesar: any;
   busarndes: any;
   contentLan: any = {};
-
+  date1:any;
+  date2:any;
+  inter:any;
+  luncont:any;
   constructor(   public authService: AuthService,
     private router: Router,private route: ActivatedRoute) { }
     myPromise = new Promise((resolve, reject) => {
@@ -86,9 +89,30 @@ export class ProjectpreviewComponent implements OnInit {
        this.currentdate = new Date();
        this.projectdate = new Date(this.projectpreview.basicInfoId.launchDate);
        var Days = Math.abs(this.projectdate - this.currentdate);
-       if(this.projectdate <= this.currentdate){
-         this.lastdate = "0";
-       }else{ this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));}
+      //  if(this.projectdate <= this.currentdate){
+      //    this.lastdate = "0";
+      //  }else{ this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));}
+      var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
+      this.date1 =this.currentdate;
+     this.date2 = this.projectdate;
+      if(this.lastdate < 1){
+        var timediff = this.date2 - this.date1;
+        this.inter="hours";
+      }else{
+        var timediff = this.date2 - this.date1;
+        this.inter="days";
+      }
+      switch (this.inter) {
+        case "days"   :  this.inter =  Math.floor(timediff / day)
+        this.luncont=  this.contentLan.DAYSTOGO || "days to go"; 
+        break;
+        case "minutes"   :  this.inter =  Math.floor(timediff / minute); 
+        break;
+        case "hours"  : this.inter =  Math.floor(timediff / hour)
+        this.luncont= this.contentLan.HOURSTOGO || "Hours to go"; 
+        break;
+        default: return undefined;
+      }
       }
     );
     this.authService.getcreateproject().subscribe((res: any) => {

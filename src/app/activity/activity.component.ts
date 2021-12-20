@@ -15,6 +15,7 @@ export class ActivityComponent implements OnInit {
   visible: boolean = false;
   data1:any;
   displayMode= 1;
+  getadmincount =0;
   displayModein=1;
   popup:any;
   popup1:any;
@@ -48,6 +49,12 @@ export class ActivityComponent implements OnInit {
   contentLan: any = {};
   popuppay = false;
   createdcount = 0;
+  featuregoalAmount:any;
+  featureamountPleadged:any;
+  featurepercentage:any;
+  likegoalAmount:any;
+  likeamountPleadged:any;
+  likepercentage:any;
   addmoneyform = this.fb.group({
     userId: JSON.parse(localStorage.getItem('userId')!),
     userType: JSON.parse(localStorage.getItem('role')!),
@@ -84,14 +91,28 @@ myPromise = new Promise((resolve, reject) => {
     } 
   ngOnInit(): void {
     this.myPromise
-
+this.onclick(this.value);
     this.role = this.readLocalStorageValue('role');
     this.authService.activitycreated().subscribe(
     
       (res: any) =>{
        this.created = res;
-       console.log("ss",this.created)
         this.createdcount = res.data.length;
+        this.created.forEach((elementss: any) => {
+          this.featuregoalAmount = elementss.basicInfoId.goalAmount;
+
+          this.featureamountPleadged = elementss._amount_Pleadged_;
+          this.featurepercentage =
+            this.featureamountPleadged / this.featuregoalAmount;
+          var totPercent = this.featurepercentage * 100;
+          if (totPercent >= 100) {
+            elementss.featurelastper = 100;
+          } else {
+            elementss.featurelastper = totPercent;
+          }
+
+          elementss.featurelastpercentage = totPercent;
+        });
       }
     );
     this.authService.likedproject().subscribe(
@@ -99,6 +120,21 @@ myPromise = new Promise((resolve, reject) => {
       (res: any)=>{
         console.log('like',res);
        this.likedata = res.data;
+       this.likedata.forEach((elementss: any) => {
+        this.likegoalAmount = elementss.likedProjectId.basicInfoId.goalAmount;
+
+        this.likeamountPleadged = elementss.likedProjectId._amount_Pleadged_;
+        this.likepercentage =
+          this.likeamountPleadged / this.likegoalAmount;
+        var totPercent = this.likepercentage * 100;
+        if (totPercent >= 100) {
+          elementss.likelastper = 100;
+        } else {
+          elementss.likelastper = totPercent;
+        }
+
+        elementss.likelastpercentage = totPercent;
+      });
       }
     );
     this.authService.deletedproject().subscribe(
@@ -228,13 +264,14 @@ myPromise = new Promise((resolve, reject) => {
     this.paymentvisform = this.fb.group({
       userId: JSON.parse(localStorage.getItem("userId")!),
       userType: JSON.parse(localStorage.getItem("role")!),
-      projectId: [value["_id"]],
+      // projectId: [value["_id"]],
     });
     this.authService
       .getadminpayment(this.paymentvisform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
           this.getadmin = res.data;
+          this.getadmincount =res.data.length;
         } else {
         }
       });

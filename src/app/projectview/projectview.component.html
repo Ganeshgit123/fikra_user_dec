@@ -2,809 +2,1443 @@
 <app-right-header></app-right-header>
 
 <!-- Project View -->
-<div *ngIf="status == 0;else elseStatement">
-    <section class="proj_ban1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <div class="video" *ngIf='projectpreview?.basicInfoId?.projectVideo != "undefined"; else elseVideo'>
-                        <video controls (click)="toggleVideo()" [src]="videourl" width='100%' style="border: 1px solid; border-radius: 20px;">
-                            <!-- <source src='projectpreviewvideo'  /> -->
-                        </video>
-                        <!-- <iframe [src]={{videourl}} frameborder="0"></iframe> -->
-                    </div>
-                    <ng-template #elseVideo>
-                        <img src="{{projectpreview?.basicInfoId?.projectImage}}" class="img-fluid projectimage">
-                    </ng-template>
-                </div>
-            </div>
+<div *ngIf="status == 0; else elseStatement">
+  <section class="proj_ban1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" style="text-align: center">
+          <div
+            class="video"
+            *ngIf="
+              projectpreview?.basicInfoId?.projectVideo == null ||
+                projectpreview?.basicInfoId?.projectVideo == 'undefined';
+              else elseVideo
+            "
+          >
+            <img
+              src="{{ projectpreview?.basicInfoId?.projectImage }}"
+              class="img-fluid projectimage"
+            />
+          </div>
+          <ng-template #elseVideo>
+            <video
+              controls
+              (click)="toggleVideo()"
+              [src]="videourl"
+              width="100%"
+              style="border: 1px solid; border-radius: 20px"
+            >
+              <!-- <source src='projectpreviewvideo'  /> -->
+            </video>
+          </ng-template>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="proj_ban1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="right_hr_line">
-                        <div style='display: flex;'>
-                            <h3 class="projecttitle">{{projectpreview?.basicInfoId?.title}}</h3>
-                            <span *ngIf='projectpreview?._is_On_Live_; else either' class='forSpan'>{{ contentLan.ACTIVE || 'Active'}}</span>
+  <section class="proj_ban1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="right_hr_line">
+            <div style="display: flex">
+              <h3 class="projecttitle">
+                {{ projectpreview?.basicInfoId?.title }}
+              </h3>
+              <!-- <span *ngIf='projectpreview?._is_On_Live_; else either' class='forSpan'>{{ contentLan.ACTIVE || 'Active'}}</span>
                             <ng-template #either>
                                 <span class='forSpan' style='background: red'>{{ contentLan.INACTIVE || 'Inactive'}}</span>
                             </ng-template>
-                            <span *ngIf="projectpreview?._is_succeed_ == true" class='forSpan'>{{ contentLan.COMPLETED || 'Completed'}}</span>
-                        </div>
-                        <p class="projectcontent">{{projectpreview?.basicInfoId?.decription}}</p>
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <h3 class="projectamt"> <label class="projectcurrency">SAR</label> {{projectpreview?._amount_Pleadged_}}
-                                </h3>
-                                <h4 class="projectpleged">{{contentLan.PLEDGE}} SAR {{projectpreview?.basicInfoId?.goalAmount}} {{contentLan.GOAL}} {{contentLan.AMOUNT}}
-                                </h4>
-                                <span *ngIf="projectpreview?._is_Keep_It_All_ == true; else nothing">
-                                    <h4 class="bussmodel">{{ contentLan.BUSINESSMODEL }}: <span class="bussmodespan">Keep it all</span>
-                                <i class="fas fa-info-circle" ngbTooltip="{{buskiades}}" style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;" *ngIf=" dir == 'ltr'"></i></h4>
-                                </span>
-                                <ng-template #nothing>
-                                    <h4 class="bussmodel">{{ contentLan.BUSINESSMODEL }}: <span class="bussmodespan">All or
-                                            Nothing</span><i class="fas fa-info-circle" ngbTooltip="{{busarndes}}" style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;" *ngIf=" dir == 'ltr'"></i></h4>
-                                </ng-template>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" [style.width.%]="featurelastper" aria-valuenow="featurelastper" aria-valuemin="0" aria-valuemax="100">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-2">{{featurelastpercentage | number : '1.0-0'}}%</div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-md-6" *ngIf="projectpreview?._is_Ower_ == false;else elseremindcreator">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul class="icons_sec">
-                                            <li>
-                                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
-                        <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"></i></span>
-                                            </li>
-
-                                            <ng-template #showsave>
-                                                <li>
-                                                    <span (click)="addtosave()">
-                          <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
-                          <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"
-                            *ngIf="projectpreview._is_Saved_Project == false"></i>
-                          <i class="fa fa-bookmark" style="color: #f13b0099" aria-hidden="true"
-                            *ngIf="projectpreview._is_Saved_Project == true"></i>
-                        </span>
-                                                </li>
-                                            </ng-template>
-                                            <li>
-                                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
-                        <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true"> </i>
-                      </span>
-                                            </li>
-                                            <ng-template #showlike>
-                                                <li>
-                                                    <span (click)="addtolike()">
-                          <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true"
-                            *ngIf="projectpreview._is_Liked_Project == false"></i>
-                          <i class="fa fa-thumbs-up" style="color: #f13b0099" aria-hidden="true"
-                            *ngIf="projectpreview._is_Liked_Project == true"></i>
-                        </span>
-                                                </li>
-                                            </ng-template>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="" [swal]="['Hi', 'Please Login to Remind this project']" (click)="notuser()" *ngIf="userid == null || projectpreview?._is_succeed_ ;else elsepledgecreatorbtnr"></div>
-                                        <ng-template #elsepledgecreatorbtnr>
-                                            <button class="projectremindme" (click)="Onremindme()">{{contentLan.REMINDME}}</button>
-                                        </ng-template>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <ng-template #elseremindcreator>
-                                <div class="col-md-6 col-12">
-                                    <!-- <button class="projectremindme"> Reminder Me</button> -->
-                                </div>
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="left_hr_line">
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <p class="project_num">{{projectpreview?._pledged_count_}}</p>
-                                <p class="project_pend_name">{{ contentLan.BACKERS }}</p>
-                            </div>
-                            <div class="col-md-6 col-6" *ngIf="projectpreview?._is_succeed_ == false ">
-                                <p class="project_num">{{inter}}</p>
-                                <p class="project_pend_name">{{ luncont }}</p>
-
-
-                            </div>
-                        </div>
-                        <div *ngIf="projectpreview?._is_Ower_ == true && projectpreview?._is_succeed_ == true;else elsepledgecreator">
-                            <button class="downloadbtn" (click)="filedownload()">{{ contentLan.DOWNLOADINVESTOR || 'Download backer Details'	}}</button>
-                        </div>
-                        <ng-template #elsepledgecreator>
-                            <div *ngIf="userid == null || projectpreview?._is_Ower_ ;else elsepledgecreatorbtnb">
-
-                            </div>
-                            <ng-template #elsepledgecreatorbtnb>
-                                <button class="projectbackbtn" (click)="scrollFn('reward')">{{contentLan.BACKTHISPROJECT}}</button>
-                            </ng-template>
-                        </ng-template>
-                        <ul class="project_social_icon">
-                            <!-- <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=https://fikra.app/projectview/61208c0ea1e7878d03c76649/&layout=button_count&size=large&mobile_iframe=true&width=83&height=28&appId" width="28" height="28"
-                                    style="border:none;overflow:hidden;background:black !important; size: small;" scrolling="no" frameborder="0" allowTransparency="true" size="small"></iframe> -->
-                            <li> <button shareButton="facebook" class="soc_btn"><i class="fab fa-facebook"></i>
-                                </button>
-                            </li>
-                            <li><button shareButton="whatsapp" class="soc_btn"><i class="fa fa-whatsapp"></i>
-                            </button></li>
-                            <li> <a href="https://www.instagram.com/" rel="nofollow noopener" target="_blank"><button class="soc_btn"><i class="fa fa-instagram">
-                            </i> </button></a>
-                            </li>
-                            <li><button shareButton="twitter" class="soc_btn"><i class="fa fa-twitter"></i>
-                                </button></li>
-                            <li><button shareButton="linkedin" class="soc_btn"><i class="fa fa-linkedin"></i>
-                                </button></li>
-                            <!-- <li><button shareButton="email" class="soc_btn"><i class="fa fa-envelope"></i>
-                                </button></li> -->
-                            <!-- <li> <button (cbOnSuccess)="isCopied = true" [cbContent]="'example string'">Copied</button><i class="fas fa-envelope"></i></li> -->
-                            <li><button (click)="copytoast()" cdkCopyToClipboard="fikra.app{{currenturl}}" ngbTooltip="Copy Project link" class="waves-effect waves-light btn">
-                                <>
-                            </button></li>
-
-                            <!-- <li><span style="cursor: pointer;" (click)="saveproject()" ngbTooltip="Save this project"><i class="far fa-bookmark"></i> </span> </li> -->
-                        </ul>
-                    </div>
-                </div>
+                            <span *ngIf="projectpreview?._is_succeed_ == true" class='forSpan'>{{ contentLan.COMPLETED || 'Completed'}}</span> -->
             </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-5">
-                        <ul class="present_ul">
-                            <li>
-                                <p class="projectcircle"><img src="assets/image/project/presentation.svg" alt=""></p>
-                            </li>
-                            <li>{{projectpreview?.basicInfoId?.categoryName}} -> {{projectpreview?.basicInfoId?.subCategoryName}}</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="present_ul">
-                            <li>
-                                <p class="projectcircle"><img src="assets/image/project/compass.svg" alt=""></p>
-                            </li>
-                            <li>{{projectpreview?.basicInfoId?.city}}</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <ul class="present_ul">
-                            <li>
-                                <p class="projectcircle"><img src="assets/image/project/location.svg" alt=""></p>
-                            </li>
-                            <li>{{projectpreview?.basicInfoId?.country}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" *ngIf="projectpreview?._is_Ower_ == false;else elserequestcreator">
-                <ul class="present_ul">
-                    <li>
-                        <button class="projectreport" [swal]="['Hi', 'Please Login to Report this project']" (click)="notuser()" *ngIf="userid == null;else elsepledgecreatorbtn"> Report this project to Fikra</button>
-                        <ng-template #elsepledgecreatorbtn>
-                            <button class="projectreport" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="openModal()">{{contentLan.REPORTTHISPROJECTTOFIKRA}}</button>
-                        </ng-template>
-                    </li>
-                </ul>
-            </div>
-            <ng-template #elserequestcreator>
-                <div class="col-md-3">
-                    <ul class="present_ul">
-                        <li>
-                            <!-- <button class="projectreport" data-bs-toggle="modal" data-bs-target="#exampleModal">Report this project to Fikra</button> </li> -->
-                    </ul>
-                </div>
-            </ng-template>
-            <form [formGroup]="reportprojectform" name="form">
-                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabe2" aria-hidden="true" [ngStyle]="{'display':display}">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabe2">{{contentLan.REPORTTHISPROJECTTOFIKRA}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCloseHandled()"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="col-md-12">
-                                    <label>{{ contentLan.COMMENT }}:</label>
-                                    <textarea formControlName="reportComment" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.reportComment.errors }"></textarea>
-                                    <div *ngIf="submitted && f.reportComment.errors" class="invalid-feedback">
-                                        <div *ngIf="f.reportComment.errors.required">Give Comment</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <p class="text-center"><button type="button" (click)="Onreportproject()" class="btn btn-primary submit_req_btn">{{ contentLan.SUBMITREQ }}</button></p>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <section class="proj_ban1" id="reward">
-        <div class="container">
+            <p class="projectcontent">
+              {{ projectpreview?.basicInfoId?.decription }}
+            </p>
             <div class="row">
-                <div class="col-md-3">
-                   <div class="left_scroll">
-                    <div class="left_tab_head">
-                        <button (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary ': displayMode === 1}">{{ contentLan.CAMPAIGN }}</button>
-                        <button (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary ': displayMode === 2}">{{ contentLan.FAQ }}
-                            <!-- <label class="numcountfaq">10</label> -->
-                        </button>
-                        <button (click)="onDisplayModeChange(3)" [ngClass]="{'btn-primary ': displayMode === 3}">{{ contentLan.UPDATE }}
-                            <!-- <label class="numcountfaq">45</label> -->
-                        </button>
-                        <button (click)="onDisplayModeChange(4)" [ngClass]="{'btn-primary ': displayMode === 4}">{{ contentLan.COMMENT }}
-                            <!--  <label  class="numcountfaq">195</label> -->
-                        </button>
-                        <!-- <button (click)="onDisplayModeChange(5)" [ngClass]="{'btn-primary ': displayMode === 5}">Community <label
-                            class="numcountfaq">1</label></button> -->
-                        <button (click)="onDisplayModeChange(6)" [ngClass]="{'btn-primary ': displayMode === 6}">{{ contentLan.RISKANDCHALLENGE }}</button>
+              <div class="col-md-6 col-12">
+                <h3 class="projectamt">
+                  <label class="projectcurrency">SAR</label>
+                  {{ projectpreview?._amount_Pleadged_ }}
+                </h3>
+                <h4 class="projectpleged">
+                  {{ contentLan.PLEDGE }} SAR
+                  {{ projectpreview?.basicInfoId?.goalAmount }}
+                  {{ contentLan.GOAL }} {{ contentLan.AMOUNT }}
+                </h4>
+                <span
+                  *ngIf="projectpreview?._is_Keep_It_All_ == true; else nothing"
+                >
+                  <h4 class="bussmodel">
+                    {{ contentLan.BUSINESSMODEL }}:
+                    <span class="bussmodespan">Keep it all</span>
+                    <i
+                      class="fas fa-info-circle"
+                      ngbTooltip="{{ buskiades }}"
+                      style="
+                        color: #5c82d4;
+                        margin-left: 1%;
+                        font-size: 14px;
+                        cursor: pointer;
+                      "
+                      *ngIf="dir == 'ltr'"
+                    ></i>
+                  </h4>
+                </span>
+                <ng-template #nothing>
+                  <h4 class="bussmodel">
+                    {{ contentLan.BUSINESSMODEL }}:
+                    <span class="bussmodespan">All or Nothing</span
+                    ><i
+                      class="fas fa-info-circle"
+                      ngbTooltip="{{ busarndes }}"
+                      style="
+                        color: #5c82d4;
+                        margin-left: 1%;
+                        font-size: 14px;
+                        cursor: pointer;
+                      "
+                      *ngIf="dir == 'ltr'"
+                    ></i>
+                  </h4>
+                </ng-template>
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        [style.width.%]="featurelastper"
+                        aria-valuenow="featurelastper"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
                     </div>
-                    <div class="scroll">
-                        <div class="box">
-                            <div class="row">
-                                <div class="col-md-8 col-6">
-                                    <div class="tab_div">
-                                        <h4 class="projectauthorname">
-                                            <a [routerLink]="['/profile_view',projectpreview?.userId._id]">{{projectpreview?.userId.fullName}}</a></h4>
-                                        <ul>
-                                            <li>{{projectpreview?._is_Created_Project_Count_}}</li>
-                                            <li>{{projectpreview?._is_Pledged_Count_}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6">
-                                    <img src={{profileLogo}} style=" border-radius: 50%; width: 100%; height: 80%; " class="img-fluid proj_user_img">
-                                </div>
-                            </div>
-
-                            <p class="projectauthordesc">{{projectpreview?.userId?.profileStory}}</p>
-
-                            <!-- <button class="projectauthorseemore" (click)="popup = true">SEE MORE</button> -->
-                            <ng-container *ngIf="userid == null;else elsepledgecreatorbtnf">
-                                <button class="projectauthorseemore" [swal]="['Hi', 'Please Login to Follow this Creator']" (click)="notuser()">{{contentLan.FOLLOW}}</button>
-                            </ng-container>
-                            <ng-template #elsepledgecreatorbtnf>
-                                <ng-container *ngIf="projectpreview?._is_Ower_ == false;else pledgecreatorfollow">
-                                    <button class="projectauthorseemore" (click)="followcreator(projectpreview?._creatorId_)" *ngIf="projectpreview?._is_Followed == false">{{contentLan.FOLLOW}}</button>
-                                    <button class="projectauthoruf" (click)="followcreator(projectpreview?._creatorId_)" *ngIf="projectpreview?._is_Followed == true">{{contentLan.UNFOLLOW}}</button>
-                                </ng-container>
-                            </ng-template>
-                            <ng-template #pledgecreatorfollow>
-                                <button class="projectauthorseemore" (click)="editprojectredirect(projectpreview?._id)">{{contentLan.EDIT}}</button>
-                            </ng-template>
-
-                        </div>
-                        <h4 class="projectsupport"> {{ contentLan.REWARDS }}</h4>
-                        <hr class="projectsupporthr">
-
-                        <div class="box">
-                            <form [formGroup]="pledgeform" ngNativeValidate>
-                                <div class="row">
-                                    <p class="projectpledgenot">{{ contentLan.PLEDGEWITHOUTREWARD }}</p>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label class="projectpledgecurrency">SAR</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="number" formControlName="pledgeAmount" [min]="1" class="form-control" required>
-                                            <!-- <input type="hidden" formControlName="projectId" value={{projectpreview._id}}> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="pledgebox">
-                                        <h4 class="pledgeboxhead">{{contentLan.BACKTHISPROJECT}}.</h4>
-                                        <hr class="pledgeboxhr">
-                                        <p class="pledgeboxdesc">{{contentLan.SUPPORTTHEPROJECT}}</p>
-                                    </div>
-                                </div>
-
-                                <button class="projectauthorseemore" [swal]="['Hi', 'Please Login to Back this project']" (click)="notuser()" *ngIf="userid == null;else elsepledgecreatorbtnc" type="submit">{{ contentLan.CONTINUE }}</button>
-                                <ng-template #elsepledgecreatorbtnc>
-                                    <button class="projectauthorseemore" (click)="pledgewithoutreward()" type="submit">{{ contentLan.CONTINUE }}</button>
-                                </ng-template>
-                            </form>
-                        </div>
-                        <ol class="reward_ol">
-                            <form [formGroup]="pledgeform" ngNativeValidate>
-                                <li>
-                                    <div class="box1" *ngFor='let rewardsshow of showreward'>
-                                        <p class="pledge" style="color: red">{{contentLan.DISCOUNT}} <span style="text-decoration: line-through;"> {{+rewardsshow.amount +
-                                                +originalvalue}} SAR</span></p>
-                                        <p class="pledge" style="color: green; font-weight: bold">{{ contentLan.PLEDGE }} {{+totalshow + +originalvalue}} SAR</p>
-                                        <!-- <input type="hidden" formControlName="rewardId" value={{rewardsshow._id}} [(ngModel)]="rewardsshow._id"> -->
-                                        <input type="hidden" formControlName="pledgeAmount" value="{{rewardsshow.amount}}">
-                                        <h3 class="pledgetitle">{{rewardsshow.title}}</h3>
-                                        <p class="pledgedesc">{{rewardsshow.description}}</p>
-                                        <h5 class="pledgeinclude">Includes :</h5>
-                                        <span *ngFor='let rewardsshowitem of rewardsshow.items'>
-                                            <label class="includeround"></label>
-
-                                            <p class="includepoints">{{rewardsshowitem.title}}</p>
-                                        </span>
-                                        <p class="pledgeestimated">{{ contentLan.ESTIMATEDELIVERY }} : <label class="pledgeestimatedop">{{rewardsshow.estimateDelivery | date: 'MMMM , y'}}</label></p>
-                                        <p class="pledgeestimated">{{ contentLan.SHIPSTO }} : <label class="pledgeestimatedop">{{rewardsshow.sippingType}}</label>
-                                        </p>
-                                        <span *ngFor='let rewardsship of rewardsshow.sipping'>
-                                            <p class="pledgebackers">{{rewardsship.destination}} <span
-                                                    style=" margin-left: 60%; "> SA{{rewardsship.cost}} </span></p>
-                                        </span>
-                                        <p class="rewardpreviewproject">{{contentLan.TIMELIMIT}} : <span class="rewardpreviewprojecttitle">{{rewardsshow.timeLimit}}  <br> {{rewardsshow.limitDate | date: 'MMMM d, y'}}  </span></p>
-                                        <p class="rewardpreviewproject">{{contentLan.QTY}} : <span class="rewardpreviewprojecttitle">{{rewardsshow.quantityType}}  &nbsp;&nbsp; {{rewardsshow.quantityCount }}  </span></p>
-
-
-                                        <!-- <p class="pledgelimited">Limited (124 left of 3000 )</p> -->
-
-                                        <!-- <p class="pledgeaddons">Add-ons</p> -->
-
-                                        <div class="pledgehover">
-                                            <!-- <a (click)="Onpledge(rewardsshow)" class="pledgehovertext">Select This Reward</a> -->
-
-                                            <a (click)="notuser()" [swal]="['Hi', 'Please Login to Backs this project']" *ngIf="userid == null;else elsepledgecreatorbtns" class="pledgehovertext">{{ contentLan.SELECTTHISREWARD }}</a>
-                                            <ng-template #elsepledgecreatorbtns>
-                                                    <a (click)=rewardpopu(rewardsshow) class="pledgehovertext">{{ contentLan.SELECTTHISREWARD }} </a>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                </li>
-                            </form>
-                        </ol>
-
-                    </div>
+                  </div>
+                  <div class="col-md-2 col-2">
+                    {{ featurelastpercentage | number: "1.0-0" }}%
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div
+                class="col-md-6"
+                *ngIf="
+                  projectpreview?._is_Ower_ == false;
+                  else elseremindcreator
+                "
+              >
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul class="icons_sec">
+                      <li>
+                        <span
+                          [swal]="['Hi', 'Login required for this activity']"
+                          *ngIf="userver == null; else showsave"
+                          (click)="notuser()"
+                        >
+                          <i
+                            class="fa fa-bookmark-o"
+                            style="color: #f13b0099"
+                            aria-hidden="true"
+                          ></i
+                        ></span>
+                      </li>
 
-                <div class="col-md-9 proj_story_risk" *ngIf="displayMode === 1">
-                    <div class="row" style=" margin-left: 5%; ">
-                        <div class="col-md-12">
-                            <h2 id="story">{{ contentLan.STORY }}</h2>
-                            <p [innerHtml]='projectpreview?.storyTableId?.description'>
-                            </p>
-                        </div>
-                        <!-- <div class="col-md-6">
+                      <ng-template #showsave>
+                        <li>
+                          <span (click)="addtosave()">
+                            <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
+                            <i
+                              class="fa fa-bookmark-o"
+                              style="color: #f13b0099"
+                              aria-hidden="true"
+                              *ngIf="projectpreview._is_Saved_Project == false"
+                            ></i>
+                            <i
+                              class="fa fa-bookmark"
+                              style="color: #f13b0099"
+                              aria-hidden="true"
+                              *ngIf="projectpreview._is_Saved_Project == true"
+                            ></i>
+                          </span>
+                        </li>
+                      </ng-template>
+                      <li>
+                        <span
+                          [swal]="['Hi', 'Login required for this activity']"
+                          *ngIf="userver == null; else showlike"
+                          (click)="notuser()"
+                        >
+                          <i
+                            class="fa fa-thumbs-o-up"
+                            style="color: #f13b0099"
+                            aria-hidden="true"
+                          >
+                          </i>
+                        </span>
+                      </li>
+                      <ng-template #showlike>
+                        <li>
+                          <span (click)="addtolike()">
+                            <i
+                              class="fa fa-thumbs-o-up"
+                              style="color: #f13b0099"
+                              aria-hidden="true"
+                              *ngIf="projectpreview._is_Liked_Project == false"
+                            ></i>
+                            <i
+                              class="fa fa-thumbs-up"
+                              style="color: #f13b0099"
+                              aria-hidden="true"
+                              *ngIf="projectpreview._is_Liked_Project == true"
+                            ></i>
+                          </span>
+                        </li>
+                      </ng-template>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <div
+                      class=""
+                      [swal]="['Hi', 'Please Login to Remind this project']"
+                      (click)="notuser()"
+                      *ngIf="
+                        userid == null || projectpreview?._is_succeed_;
+                        else elsepledgecreatorbtnr
+                      "
+                    ></div>
+                    <ng-template #elsepledgecreatorbtnr>
+                      <button
+                        class="projectremindme"
+                        *ngIf="projectpreview._isRemembered_ == false"
+                        (click)="Onremindme()"
+                      >
+                        {{ contentLan.REMINDME }}
+                      </button>
+                      <button
+                        class="projectremindme"
+                        *ngIf="projectpreview._isRemembered_ == true"
+                        (click)="Onremindme()"
+                      >
+                        {{ contentLan.REMINDME }}ss
+                      </button>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <ng-template #elseremindcreator>
+                <div class="col-md-6 col-12">
+                  <!-- <button class="projectremindme"> Reminder Me</button> -->
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="left_hr_line">
+            <div class="row">
+              <div class="col-md-6 col-6">
+                <p class="project_num">{{ projectpreview?._pledged_count_ }}</p>
+                <p class="project_pend_name">{{ contentLan.BACKERS }}</p>
+              </div>
+              <div
+                class="col-md-6 col-6"
+                *ngIf="projectpreview?._is_succeed_ == false"
+              >
+                <p class="project_num">{{ inter }}</p>
+                <p class="project_pend_name">{{ luncont }}</p>
+              </div>
+            </div>
+            <div
+              *ngIf="
+                projectpreview?._is_Ower_ == true &&
+                  projectpreview?._is_succeed_ == true;
+                else elsepledgecreator
+              "
+            >
+              <button class="downloadbtn" (click)="filedownload()">
+                {{ contentLan.DOWNLOADINVESTOR || "Download backer Details" }}
+              </button>
+            </div>
+            <ng-template #elsepledgecreator>
+              <div
+                *ngIf="
+                  userid == null || projectpreview?._is_Ower_;
+                  else elsepledgecreatorbtnb
+                "
+              ></div>
+              <ng-template #elsepledgecreatorbtnb>
+                <button class="projectbackbtn" (click)="scrollFn('reward')">
+                  {{ contentLan.BACKTHISPROJECT }}
+                </button>
+              </ng-template>
+            </ng-template>
+            <ul class="project_social_icon">
+              <!-- <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=https://fikra.app/projectview/61208c0ea1e7878d03c76649/&layout=button_count&size=large&mobile_iframe=true&width=83&height=28&appId" width="28" height="28"
+                                    style="border:none;overflow:hidden;background:black !important; size: small;" scrolling="no" frameborder="0" allowTransparency="true" size="small"></iframe> -->
+              <li>
+                <button shareButton="facebook" class="soc_btn">
+                  <i class="fab fa-facebook"></i>
+                </button>
+              </li>
+              <li>
+                <button shareButton="whatsapp" class="soc_btn">
+                  <i class="fa fa-whatsapp"></i>
+                </button>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  rel="nofollow noopener"
+                  target="_blank"
+                  ><button class="soc_btn">
+                    <i class="fa fa-instagram"> </i></button
+                ></a>
+              </li>
+              <li>
+                <button shareButton="twitter" class="soc_btn">
+                  <i class="fa fa-twitter"></i>
+                </button>
+              </li>
+              <li>
+                <button shareButton="linkedin" class="soc_btn">
+                  <i class="fa fa-linkedin"></i>
+                </button>
+              </li>
+              <!-- <li><button shareButton="email" class="soc_btn"><i class="fa fa-envelope"></i>
+                                </button></li> -->
+              <!-- <li> <button (cbOnSuccess)="isCopied = true" [cbContent]="'example string'">Copied</button><i class="fas fa-envelope"></i></li> -->
+              <li>
+                <button
+                  (click)="copytoast()"
+                  cdkCopyToClipboard="fikra.app{{ currenturl }}"
+                  ngbTooltip="Copy Project link"
+                  class="waves-effect waves-light btn"
+                >
+                  <>
+                </button>
+              </li>
+
+              <!-- <li><span style="cursor: pointer;" (click)="saveproject()" ngbTooltip="Save this project"><i class="far fa-bookmark"></i> </span> </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-5">
+            <ul class="present_ul">
+              <li>
+                <p class="projectcircle">
+                  <img src="assets/image/project/presentation.svg" alt="" />
+                </p>
+              </li>
+              <li>
+                {{ projectpreview?.basicInfoId?.categoryName }} ->
+                {{ projectpreview?.basicInfoId?.subCategoryName }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="present_ul">
+              <li>
+                <p class="projectcircle">
+                  <img src="assets/image/project/compass.svg" alt="" />
+                </p>
+              </li>
+              <li>{{ projectpreview?.basicInfoId?.city }}</li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <ul class="present_ul">
+              <li>
+                <p class="projectcircle">
+                  <img src="assets/image/project/location.svg" alt="" />
+                </p>
+              </li>
+              <li>{{ projectpreview?.basicInfoId?.country }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-3"
+        *ngIf="projectpreview?._is_Ower_ == false; else elserequestcreator"
+      >
+        <ul class="present_ul">
+          <li>
+            <button
+              class="projectreport"
+              [swal]="['Hi', 'Please Login to Report this project']"
+              (click)="notuser()"
+              *ngIf="userid == null; else elsepledgecreatorbtn"
+            >
+              Report this project to Fikra
+            </button>
+            <ng-template #elsepledgecreatorbtn>
+              <button
+                class="projectreport"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+                (click)="openModal()"
+              >
+                {{ contentLan.REPORTTHISPROJECTTOFIKRA }}
+              </button>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+      <ng-template #elserequestcreator>
+        <div class="col-md-3">
+          <ul class="present_ul">
+            <li>
+              <!-- <button class="projectreport" data-bs-toggle="modal" data-bs-target="#exampleModal">Report this project to Fikra</button> </li> -->
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+      <form [formGroup]="reportprojectform" name="form">
+        <div
+          class="modal fade"
+          id="exampleModal2"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabe2"
+          aria-hidden="true"
+          [ngStyle]="{ display: display }"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabe2">
+                  {{ contentLan.REPORTTHISPROJECTTOFIKRA }}
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  (click)="onCloseHandled()"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12">
+                  <label>{{ contentLan.COMMENT }}:</label>
+                  <textarea
+                    formControlName="reportComment"
+                    class="form-control"
+                    [ngClass]="{
+                      'is-invalid': submitted && f.reportComment.errors
+                    }"
+                  ></textarea>
+                  <div
+                    *ngIf="submitted && f.reportComment.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.reportComment.errors.required">
+                      Give Comment
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <p class="text-center">
+                <button
+                  type="button"
+                  (click)="Onreportproject()"
+                  class="btn btn-primary submit_req_btn"
+                >
+                  {{ contentLan.SUBMITREQ }}
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <section class="proj_ban1" id="reward">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="left_scroll">
+            <div class="left_tab_head">
+              <button
+                (click)="onDisplayModeChange(1)"
+                [ngClass]="{ 'btn-primary ': displayMode === 1 }"
+              >
+                {{ contentLan.CAMPAIGN }}
+              </button>
+              <button
+                (click)="onDisplayModeChange(2)"
+                [ngClass]="{ 'btn-primary ': displayMode === 2 }"
+              >
+                {{ contentLan.FAQ }}
+                <!-- <label class="numcountfaq">10</label> -->
+              </button>
+              <button
+                (click)="onDisplayModeChange(3)"
+                [ngClass]="{ 'btn-primary ': displayMode === 3 }"
+              >
+                {{ contentLan.UPDATE }}
+                <!-- <label class="numcountfaq">45</label> -->
+              </button>
+              <button
+                (click)="onDisplayModeChange(4)"
+                [ngClass]="{ 'btn-primary ': displayMode === 4 }"
+              >
+                {{ contentLan.COMMENT }}
+                <!--  <label  class="numcountfaq">195</label> -->
+              </button>
+              <!-- <button (click)="onDisplayModeChange(5)" [ngClass]="{'btn-primary ': displayMode === 5}">Community <label
+                            class="numcountfaq">1</label></button> -->
+              <button
+                (click)="onDisplayModeChange(6)"
+                [ngClass]="{ 'btn-primary ': displayMode === 6 }"
+              >
+                {{ contentLan.RISKANDCHALLENGE }}
+              </button>
+            </div>
+            <div class="scroll">
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-8 col-6">
+                    <div class="tab_div">
+                      <h4 class="projectauthorname">
+                        <a
+                          [routerLink]="[
+                            '/profile_view',
+                            projectpreview?.userId._id
+                          ]"
+                          >{{ projectpreview?.userId.fullName }}</a
+                        >
+                      </h4>
+                      <span>
+                        {{ projectpreview?.userId?.projectCount }}
+                        {{ contentLan.CREATEDPROJECTS }}</span
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-6">
+                    <img
+                      src="{{ profileLogo }}"
+                      style="border-radius: 50%; width: 100%; height: 100%"
+                      class="img-fluid proj_user_img"
+                    />
+                  </div>
+                </div>
+
+                <p class="projectauthordesc">
+                  {{ projectpreview?.userId?.profileStory }}
+                </p>
+
+                <!-- <button class="projectauthorseemore" (click)="popup = true">SEE MORE</button> -->
+                <ng-container
+                  *ngIf="userid == null; else elsepledgecreatorbtnf"
+                >
+                  <button
+                    class="projectauthorseemore"
+                    [swal]="['Hi', 'Please Login to Follow this Creator']"
+                    (click)="notuser()"
+                  >
+                    {{ contentLan.FOLLOW }}
+                  </button>
+                </ng-container>
+                <ng-template #elsepledgecreatorbtnf>
+                  <ng-container
+                    *ngIf="
+                      projectpreview?._is_Ower_ == false;
+                      else pledgecreatorfollow
+                    "
+                  >
+                    <button
+                      class="projectauthorseemore"
+                      (click)="followcreator(projectpreview?._creatorId_)"
+                      *ngIf="projectpreview?._is_Followed == false"
+                    >
+                      {{ contentLan.FOLLOW }}
+                    </button>
+                    <button
+                      class="projectauthoruf"
+                      (click)="followcreator(projectpreview?._creatorId_)"
+                      *ngIf="projectpreview?._is_Followed == true"
+                    >
+                      {{ contentLan.UNFOLLOW }}
+                    </button>
+                  </ng-container>
+                </ng-template>
+                <ng-template #pledgecreatorfollow>
+                  <button
+                    class="projectauthorseemore"
+                    (click)="editprojectredirect(projectpreview?._id)"
+                  >
+                    {{ contentLan.EDIT }}
+                  </button>
+                </ng-template>
+              </div>
+              <h4 class="projectsupport">{{ contentLan.REWARDS }}</h4>
+              <hr class="projectsupporthr" />
+
+              <div class="box">
+                <form [formGroup]="pledgeform" ngNativeValidate>
+                  <div class="row">
+                    <p class="projectpledgenot">
+                      {{ contentLan.PLEDGEWITHOUTREWARD }}
+                    </p>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="projectpledgecurrency">SAR</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input
+                          type="number"
+                          formControlName="pledgeAmount"
+                          [min]="1"
+                          class="form-control"
+                          required
+                        />
+                        <!-- <input type="hidden" formControlName="projectId" value={{projectpreview._id}}> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="pledgebox">
+                      <h4 class="pledgeboxhead">
+                        {{ contentLan.BACKTHISPROJECT }}.
+                      </h4>
+                      <hr class="pledgeboxhr" />
+                      <p class="pledgeboxdesc">
+                        {{ contentLan.SUPPORTTHEPROJECT }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    class="projectauthorseemore"
+                    [swal]="['Hi', 'Please Login to Back this project']"
+                    (click)="notuser()"
+                    *ngIf="userid == null; else elsepledgecreatorbtnc"
+                    type="submit"
+                  >
+                    {{ contentLan.CONTINUE }}
+                  </button>
+                  <ng-template #elsepledgecreatorbtnc>
+                    <button
+                      class="projectauthorseemore"
+                      (click)="pledgewithoutreward()"
+                      type="submit"
+                    >
+                      {{ contentLan.CONTINUE }}
+                    </button>
+                  </ng-template>
+                </form>
+              </div>
+              <ol class="reward_ol">
+                <form [formGroup]="pledgeform" ngNativeValidate>
+                  <li>
+                    <div class="box1" *ngFor="let rewardsshow of showreward">
+                      <p
+                        class="pledge"
+                        style="color: red"
+                        *ngIf="originalvalue != 0"
+                      >
+                        {{ contentLan.DISCOUNT }}
+                        <span style="text-decoration: line-through">
+                          {{ +rewardsshow.amount + +originalvalue }} SAR</span
+                        >
+                      </p>
+                      <p class="pledge" style="color: green; font-weight: bold">
+                        {{ contentLan.PLEDGE }}
+                        {{ +totalshow + +originalvalue }} SAR
+                      </p>
+                      <!-- <input type="hidden" formControlName="rewardId" value={{rewardsshow._id}} [(ngModel)]="rewardsshow._id"> -->
+                      <input
+                        type="hidden"
+                        formControlName="pledgeAmount"
+                        value="{{ rewardsshow.amount }}"
+                      />
+                      <h3 class="pledgetitle">{{ rewardsshow.title }}</h3>
+                      <p class="pledgedesc">{{ rewardsshow.description }}</p>
+                      <h5 class="pledgeinclude">Includes :</h5>
+                      <span *ngFor="let rewardsshowitem of rewardsshow.items">
+                        <label class="includeround"></label>
+
+                        <p class="includepoints">{{ rewardsshowitem.title }}</p>
+                      </span>
+                      <p class="pledgeestimated">
+                        {{ contentLan.ESTIMATEDELIVERY }} :
+                        <label class="pledgeestimatedop">{{
+                          rewardsshow.estimateDelivery | date: "MMMM , y"
+                        }}</label>
+                      </p>
+                      <p class="pledgeestimated">
+                        {{ contentLan.SHIPSTO }} :
+                        <label class="pledgeestimatedop">{{
+                          rewardsshow.sippingType
+                        }}</label>
+                      </p>
+                      <span *ngFor="let rewardsship of rewardsshow.sipping">
+                        <p class="pledgebackers">
+                          {{ rewardsship.destination }}
+                          <span style="margin-left: 60%">
+                            SA{{ rewardsship.cost }}
+                          </span>
+                        </p>
+                      </span>
+                      <p class="rewardpreviewproject">
+                        {{ contentLan.TIMELIMIT }} :
+                        <span class="rewardpreviewprojecttitle"
+                          >{{ rewardsshow.timeLimit }} <br />
+                          {{ rewardsshow.limitDate | date: "MMMM d, y" }}
+                        </span>
+                      </p>
+                      <p class="rewardpreviewproject">
+                        {{ contentLan.QTY }} :
+                        <span class="rewardpreviewprojecttitle"
+                          >{{ rewardsshow.quantityType }} &nbsp;&nbsp;
+                          {{ rewardsshow.quantityCount }}
+                        </span>
+                      </p>
+
+                      <!-- <p class="pledgelimited">Limited (124 left of 3000 )</p> -->
+
+                      <!-- <p class="pledgeaddons">Add-ons</p> -->
+
+                      <div class="pledgehover">
+                        <!-- <a (click)="Onpledge(rewardsshow)" class="pledgehovertext">Select This Reward</a> -->
+
+                        <a
+                          (click)="notuser()"
+                          [swal]="['Hi', 'Please Login to Backs this project']"
+                          *ngIf="userid == null; else elsepledgecreatorbtns"
+                          class="pledgehovertext"
+                          >{{ contentLan.SELECTTHISREWARD }}</a
+                        >
+                        <ng-template #elsepledgecreatorbtns>
+                          <a
+                            (click)="rewardpopu(rewardsshow)"
+                            class="pledgehovertext"
+                            >{{ contentLan.SELECTTHISREWARD }}
+                          </a>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </li>
+                </form>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-9 proj_story_risk" *ngIf="displayMode === 1">
+          <div class="row" style="margin-left: 5%">
+            <div class="col-md-12">
+              <h2 id="story">{{ contentLan.STORY }}</h2>
+              <p [innerHtml]="projectpreview?.storyTableId?.description"></p>
+            </div>
+            <!-- <div class="col-md-6">
                             <ul class="story_risk_tab_head">
                                 <li><a [routerLink]="['/projectview']" fragment="risks" class="risklink">Risks</a></li>
                                 <li><a [routerLink]="['/projectview']" fragment="story" class="storylink">Story</a></li>
                             </ul>
 
                         </div> -->
+          </div>
+        </div>
+        <!-- Frequently Asked Questions -->
+        <div class="col-md-9" *ngIf="displayMode === 2">
+          <h3>Frequently Asked Questions</h3>
+          <section
+            *ngIf="projectpreview?._is_Ower_ == false; else elsefaqcreator"
+          >
+            <div class="container">
+              <div class="row" *ngFor="let faqdata of faqgetquestion">
+                <div *ngIf="faqdata._isVisibleToUser_ === true">
+                  <button
+                    (click)="onclick()"
+                    type="button"
+                    style="width: -webkit-fill-available; text-align: left"
+                    class="btn btn-danger"
+                  >
+                    {{ faqdata.question }}
+                  </button>
+                  <ng-container *ngIf="visible">
+                    <div class="bg-white shadow-sm p-3">
+                      <p>
+                        {{ faqdata.answer }}
+                      </p>
                     </div>
+                  </ng-container>
                 </div>
-                <!-- Frequently Asked Questions -->
-                <div class="col-md-9" *ngIf="displayMode === 2">
-                    <h3>Frequently Asked Questions</h3>
-                    <section *ngIf="projectpreview?._is_Ower_ == false;else elsefaqcreator">
-
-                        <div class="container">
-                            <div class="row" *ngFor='let faqdata of faqgetquestion'>
-                                <div *ngIf="faqdata._isVisibleToUser_ === true">
-                                    <button (click)="onclick()" type="button" style=" width: -webkit-fill-available; text-align: left; " class="btn  btn-danger">
-                                        {{faqdata.question}}
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <p style="margin-top: 10%">
+                    Looks like there aren't any frequently asked questions yet.
+                    Ask the project creator directly.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <button
+                    class="faqask"
+                    *ngIf="!userver; else askopen"
+                    [swal]="[
+                      'Hi',
+                      'Please Login to Ask a question about this project'
+                    ]"
+                  >
+                    Ask a question
+                  </button>
+                  <ng-template #askopen>
+                    <button
+                      class="faqask"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Ask a question
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <form [formGroup]="faqaskform" ngNativeValidate>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5
+                        class="modal-title"
+                        id="exampleModalLabel"
+                        style="
+                          text-overflow: ellipsis;
+                          overflow: hidden;
+                          white-space: nowrap;
+                        "
+                      >
+                        Ask a question about
+                        {{ projectpreview?.basicInfoId?.title }}
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="col-md-12">
+                        <label
+                          >To:{{ projectpreview?.basicInfoId?.title }}</label
+                        >
+                        <div>
+                          <textarea
+                            style="width: -webkit-fill-available; height: 180px"
+                            formControlName="question"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        {{ contentLan.CLOSE }}
+                      </button>
+                      <button
+                        type="button"
+                        (click)="onAsk()"
+                        class="btn btn-primary"
+                      >
+                        Ask a question
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+          <ng-template #elsefaqcreator>
+            <div class="container">
+              <div class="row">
+                <!-- <div class="col-md-2"></div> -->
+                <div class="col-md-12">
+                  <!-- <p style=" margin-top: 10%; ">Looks like there aren't any frequently asked questions yet. Ask the project creator directly.</p> -->
+                  <div>
+                    <form [formGroup]="faqansform" ngNativeValidate>
+                      <div
+                        class="accordion accordion-flush"
+                        id="accordionFlushExample"
+                      >
+                        <div
+                          class="accordion-item"
+                          *ngFor="let faqdata of faqgetquestion"
+                        >
+                          <h2
+                            class="accordion-header"
+                            [id]="'flush-headingOne' + faqdata._id"
+                          >
+                            <button
+                              style="color: black; background: #13131308"
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              [attr.data-bs-target]="
+                                '#flush-collapseOne' + faqdata._id
+                              "
+                              aria-expanded="false"
+                              [attr.aria-controls]="
+                                'flush-collapseOne' + faqdata._id
+                              "
+                            >
+                              {{ faqdata.question }}
+                              <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
+                            </button>
+                          </h2>
+                          <div
+                            [id]="'flush-collapseOne' + faqdata._id"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne"
+                            data-bs-parent="#accordionFlushExample"
+                          >
+                            <div class="accordion-body">
+                              <textarea
+                                style="
+                                  width: -webkit-fill-available;
+                                  height: 180px;
+                                "
+                                placeholder="{{ faqdata.answer }}"
+                                formControlName="answer"
+                              ></textarea>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <button
+                                    class="faqans"
+                                    (click)="Onfaqans(faqdata._id)"
+                                  >
+                                    {{ contentLan.ADVANTAGES }}
+                                  </button>
+                                </div>
+                                <div class="col-md-3">
+                                  <form
+                                    [formGroup]="faqdeleteform"
+                                    ngNativeValidate
+                                  >
+                                    <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
+                                    <button
+                                      class="faqdele"
+                                      (click)="Onfaqdel(faqdata._id)"
+                                    >
+                                      Delete FAQ
                                     </button>
-                                    <ng-container *ngIf="visible">
-                                        <div class="bg-white shadow-sm p-3">
-
-                                            <p>
-                                                {{faqdata.answer}}
-                                            </p>
-                                        </div>
-                                    </ng-container>
+                                  </form>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <p style=" margin-top: 10%; ">Looks like there aren't any frequently asked questions yet. Ask the project creator directly.</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <button class="faqask" *ngIf="!userver;else askopen" [swal]="['Hi', 'Please Login to Ask a question about this project']">Ask a
-                                        question</button>
-                                    <ng-template #askopen>
-                                        <button class="faqask" data-bs-toggle="modal" data-bs-target="#exampleModal">Ask a
-                                                question</button>
-                                    </ng-template>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <form [formGroup]="faqaskform" ngNativeValidate>
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
-                                                Ask a question about {{projectpreview?.basicInfoId?.title}}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="col-md-12">
-                                                <label>To:{{projectpreview?.basicInfoId?.title}}</label>
-                                                <div> <textarea style=" width: -webkit-fill-available;height: 180px; " formControlName="question" required></textarea></div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ contentLan.CLOSE }}</button>
-                                            <button type="button" (click)="onAsk()" class="btn btn-primary">Ask a
-                                                question</button>
-                                        </div>
+                                <div class="col-md-6">
+                                  <!-- <input type="checkbox" formControlName="_isVisibleToUser_">Check If the Faq want visible to all. -->
+                                  <!-- <button class="btn btn-primary me-3" (click)="changeText()">{{btnVal}}</button> -->
+                                  <button class="faqtoogle">
+                                    <div class="form-check form-switch">
+                                      <form
+                                        [formGroup]="faqstatuschange"
+                                        ngNativeValidate
+                                      >
+                                        <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
+                                        <input
+                                          class="form-check-input"
+                                          type="checkbox"
+                                          formControlName="_isVisibleToUser_"
+                                          (change)="
+                                            Onfaqcreatorstactus(faqdata._id)
+                                          "
+                                          id="flexSwitchCheckDefault"
+                                        />
+                                      </form>
+                                      <label
+                                        class="form-check-label"
+                                        for="flexSwitchCheckDefault"
+                                        >Visible to User</label
+                                      >
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-
-                    </section>
-                    <ng-template #elsefaqcreator>
-                        <div class="container">
-                            <div class="row">
-                                <!-- <div class="col-md-2"></div> -->
-                                <div class="col-md-12">
-                                    <!-- <p style=" margin-top: 10%; ">Looks like there aren't any frequently asked questions yet. Ask the project creator directly.</p> -->
-                                    <div>
-                                        <form [formGroup]="faqansform" ngNativeValidate>
-                                            <div class="accordion accordion-flush" id="accordionFlushExample">
-
-                                                <div class="accordion-item" *ngFor='let faqdata of faqgetquestion'>
-
-                                                    <h2 class="accordion-header" [id]="'flush-headingOne'+faqdata._id">
-                                                        <button style=" color: black; background: #13131308; " class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseOne'+faqdata._id" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne'+faqdata._id">
-                                                            {{faqdata.question}}
-                                                            <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
-                                                        </button>
-                                                    </h2>
-                                                    <div [id]="'flush-collapseOne'+faqdata._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                                        <div class="accordion-body">
-                                                            <textarea style=" width: -webkit-fill-available;height: 180px; " placeholder={{faqdata.answer}} formControlName="answer"></textarea>
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <button class="faqans" (click)="Onfaqans(faqdata._id)">{{ contentLan.ADVANTAGES }}</button>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <form [formGroup]="faqdeleteform" ngNativeValidate>
-                                                                        <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
-                                                                        <button class="faqdele" (click)="Onfaqdel(faqdata._id)">Delete
-                                                                            FAQ</button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <!-- <input type="checkbox" formControlName="_isVisibleToUser_">Check If the Faq want visible to all. -->
-                                                                    <!-- <button class="btn btn-primary me-3" (click)="changeText()">{{btnVal}}</button> -->
-                                                                    <button class="faqtoogle">
-                                                                        <div class="form-check form-switch">
-                                                                            <form [formGroup]="faqstatuschange"
-                                                                                ngNativeValidate>
-                                                                                <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
-                                                                                <input class="form-check-input"
-                                                                                    type="checkbox"
-                                                                                    formControlName="_isVisibleToUser_"
-                                                                                    (change)="Onfaqcreatorstactus(faqdata._id)"
-                                                                                    id="flexSwitchCheckDefault" />
-                                                                            </form>
-                                                                            <label class="form-check-label"
-                                                                                for="flexSwitchCheckDefault">Visible to
-                                                                                User</label>
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
+                                  </button>
                                 </div>
+                              </div>
                             </div>
-
+                          </div>
                         </div>
-
-                    </ng-template>
-
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
 
-                <!-- Update -->
-                <div class="col-md-9" *ngIf="displayMode === 3">
-                    <h2 style="margin-bottom: 3%;">{{ contentLan.UPDATE }}</h2>
-                    <section *ngIf="projectpreview?._is_Ower_ == false;else elseupdatecreator">
-                        <div class="container">
-                            <div class="row" style="margin-bottom: 2%;" *ngFor='let updatedata of getupdates.data ; let i=index;'>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img class="upload-img" style=" width: 10%; border-radius: 50%; height: 50px; " *ngIf="updatedata.userId.profileImage === 'null'" src="assets/image/avatar-placeholder.png" />
-                                                <img class="upload-img " style=" width: 50%; border-radius: 50%; height: 50px; " *ngIf="updatedata.userId.profileImage !== 'null'" src="{{updatedata.userId.profileImage}}" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h5 class="updatename">{{updatedata.userId.fullName | uppercase}}</h5>
-                                                <span class="tag-box">{{updatedata.userId._userRole_}}</span>
-                                            </div>
-                                            <div class="col-md-2" style=" text-align: center; ">
-                                                <form [formGroup]="updatelikeform" ngNativeValidate>
-                                                    <span style="font-size: 30px;">
-                                                        <i class="far fa-heart-circle" (click)="Onupdatelike()"></i>
-                                                        <input type="hidden" formControlName="updatePostId"
-                                                            [(ngModel)]="updatedata._id ">
-                                                    </span>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <h3 style=" margin-top: 5%; ">{{updatedata.updateTitle}}</h3>
-                                        <label style=" font-size: 14px;">Updated at:&nbsp;&nbsp;{{updatedata.updatedAt |
-                                            date:'MMM d, y'}}</label>
-                                        <hr style=" width: -webkit-fill-available; ">
-                                        <p [innerHtml]='updatedata.updateMessage'></p>
-                                    </div>
-                                    <hr style="width: 100%;color: #fe8840;margin: 0px 0px 30px 0px;">
-                                    <div class="row">
-                                        <div class="card" *ngFor='let updatecmtdata of updatedata.comments;'>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        {{updatecmtdata.comment}}
-                                                    </div>
-                                                    <!-- <div class="col-md-2" *ngIf="userId == updatecmtdata.userId">
+        <!-- Update -->
+        <div class="col-md-9" *ngIf="displayMode === 3">
+          <h2 style="margin-bottom: 3%">{{ contentLan.UPDATE }}</h2>
+          <section
+            *ngIf="projectpreview?._is_Ower_ == false; else elseupdatecreator"
+          >
+            <div class="container">
+              <div
+                class="row"
+                style="margin-bottom: 2%"
+                *ngFor="let updatedata of getupdates.data; let i = index"
+              >
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img
+                          class="upload-img"
+                          style="width: 10%; border-radius: 50%; height: 50px"
+                          *ngIf="updatedata.userId.profileImage === 'null'"
+                          src="assets/image/avatar-placeholder.png"
+                        />
+                        <img
+                          class="upload-img"
+                          style="width: 50%; border-radius: 50%; height: 50px"
+                          *ngIf="updatedata.userId.profileImage !== 'null'"
+                          src="{{ updatedata.userId.profileImage }}"
+                        />
+                      </div>
+                      <div class="col-md-8">
+                        <h5 class="updatename">
+                          {{ updatedata.userId.fullName | uppercase }}
+                        </h5>
+                        <span class="tag-box">{{
+                          updatedata.userId._userRole_
+                        }}</span>
+                      </div>
+                      <div class="col-md-2" style="text-align: center">
+                        <form [formGroup]="updatelikeform" ngNativeValidate>
+                          <span style="font-size: 30px">
+                            <i
+                              class="far fa-heart-circle"
+                              (click)="Onupdatelike()"
+                            ></i>
+                            <input
+                              type="hidden"
+                              formControlName="updatePostId"
+                              [(ngModel)]="updatedata._id"
+                            />
+                          </span>
+                        </form>
+                      </div>
+                    </div>
+                    <h3 style="margin-top: 5%">{{ updatedata.updateTitle }}</h3>
+                    <label style="font-size: 14px"
+                      >Updated at:&nbsp;&nbsp;{{
+                        updatedata.updatedAt | date: "MMM d, y"
+                      }}</label
+                    >
+                    <hr style="width: -webkit-fill-available" />
+                    <p [innerHtml]="updatedata.updateMessage"></p>
+                  </div>
+                  <hr
+                    style="
+                      width: 100%;
+                      color: #fe8840;
+                      margin: 0px 0px 30px 0px;
+                    "
+                  />
+                  <div class="row">
+                    <div
+                      class="card"
+                      *ngFor="let updatecmtdata of updatedata.comments"
+                    >
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-10">
+                            {{ updatecmtdata.comment }}
+                          </div>
+                          <!-- <div class="col-md-2" *ngIf="userId == updatecmtdata.userId">
                                                         <form [formGroup]="updatedeleteform" ngNativeValidate>
                                                             <img style="width: 25%;float: right;margin-top: 10%;" (click)="Onupdatecmtdelete()" src="assets/image/delete.png">
                                                         </form>
                                                     </div> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <form [formGroup]="updatecommentform" ngNativeValidate>
-                                            <div class="col-md-12">
-                                                <button (click)="onclick()" type="button" class="btnupdatecomment">
-                                                    Add Comment
-                                                </button>
-                                                <ng-container *ngIf="visible">
-                                                    <div class="bg-white shadow-sm p-3">
-                                                        <textarea formControlName="comment" style=" width: -webkit-fill-available;"></textarea>
-                                                        <input type="hidden" formControlName="updatePostId" [(ngModel)]="updatedata._id ">
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-4"></div>
-                                                        <div class="col-md-4"></div>
-                                                        <div class="col-md-4" style=" text-align: -webkit-right; ">
-                                                            <button class="submitupdatecomment" (click)="Onupdatecreatorcomment()">{{ contentLan.SUBMIT }}</button>
-                                                        </div>
-                                                    </div>
-                                                </ng-container>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </section>
-                    <ng-template #elseupdatecreator>
-                        <div class="container">
-                            <div class="row" style="margin-bottom: 2%;" *ngFor='let updatedata of getupdates.data'>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img class="upload-img" style=" width: 10%; border-radius: 50%; height: 50px; " *ngIf="updatedata.userId.profileImage === 'null'" src="assets/image/avatar-placeholder.png" />
-                                                <img class="upload-img " style=" width: 50%; border-radius: 50%; height: 50px; " *ngIf="updatedata.userId.profileImage !== 'null'" src="{{updatedata.userId.profileImage}}" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h5 class="updatename">{{updatedata.userId.fullName | uppercase}}</h5>
-                                                <span class="tag-box">{{updatedata.userId._userRole_}}</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <form [formGroup]="updatedeleteform" ngNativeValidate>
-                                                    <img style="width: 25%;float: right;margin-top: 10%;" (click)="Onupdatedelete()" src="assets/image/delete.png">
-                                                    <input type="hidden" formControlName="updatesId" [(ngModel)]="updatedata._id ">
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <h3 style=" margin-top: 5%; ">{{updatedata.updateTitle}}</h3>
-                                        <label style=" font-size: 14px;">Updated at:&nbsp;&nbsp;{{updatedata.updatedAt |
-                                            date:'MMM d, y'}}</label>
-                                        <hr style=" width: -webkit-fill-available; ">
-                                        <p [innerHtml]='updatedata.updateMessage'></p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="card" *ngFor='let updatecmtdata of updatedata.comments;'>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        {{updatecmtdata.comment}}
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <form [formGroup]="updatecommentdeleteform" ngNativeValidate>
-                                                            <input type="hidden" formControlName="updatesId" [(ngModel)]="updatedata._id ">
-                                                            <input type="hidden" formControlName="commentId" [(ngModel)]="updatecmtdata._id ">
-                                                            <img style="width: 25%;float: right;margin-top: 10%;" (click)="Onupdatecmtdelete()" src="assets/image/delete.png">
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr style="width: 100%;color: #fd082d;">
-                        <div class="container">
-                            <form [formGroup]="creatorupdateform" ngNativeValidate>
-                                <h4 style=" margin-top: 2%; margin-bottom: 1%; ">Add Update :</h4>
-                                <div class="row">
-                                    <label style=" margin-top: 2%; margin-bottom: 1%; ">Update Title:</label>
-                                    <div class="col-md-12">
-                                        <input type="text" formControlName="updateTitle" placeholder="Enter Title" style=" width: 50%;height: 120%; ">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label style=" margin-top: 2%; margin-bottom: 1%; ">Update Message:</label>
-                                    <div class="col-md-12">
-                                        <angular-editor [config]="config" formControlName="updateMessage">
-                                        </angular-editor>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4" style="text-align: end;">
-                                        <button class="submitupdate" (click)="Onupdatecreator()">Submit Update</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </ng-template>
-                </div>
-
-                <!-- Comments -->
-                <div class="col-md-9" *ngIf="displayMode === 4">
-                    <h2>{{ contentLan.COMMENT }}</h2>
-                    <section *ngIf="projectpreview?._is_Ower_ == false;else elsecommetncreator">
-                        <div class="container">
-                            <div class="row" *ngFor='let commentdata of getcomment.data'>
-                                <div class="col-md-12" style=" margin-bottom: 2%; ">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            {{commentdata.comments}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="containter" *ngIf="projectpreview?._is_Pledged_ == true;else elseinvestorcmt">
-                            <div class="row">
-                                <label>Add your Comments:</label>
-                                <form [formGroup]="backerpostform" ngNativeValidate>
-                                    <textarea formControlName="comments" style="width: -webkit-fill-available; height: 180px;"></textarea>
-                                    <div class="col-md-4">
-                                        <button class="commentsub" (click)="Postcomment()">{{ contentLan.SUBMIT }}</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <ng-template #elseinvestorcmt>
-                            <h4 style="text-align: center;margin-top: 5%;">Need to pledge this project to add comment
-                            </h4>
-                        </ng-template>
-                    </section>
-                    <ng-template #elsecommetncreator>
-                        <div class="container">
-                            <div class="row" *ngFor="let commentdata of getcomment.data;">
-                                <div class="col-md-12" style=" margin-bottom: 2%; ">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            {{commentdata.comments}}
-                                            <div class="containter">
-                                                <div class="row">
-                                                    <label style=" margin-top: 2%; ">Add your Comments:</label>
-                                                    <form [formGroup]="creatorcommentform" ngNativeValidate>
-                                                        <input type="hidden" formControlName="commentId" [(ngModel)]="commentdata._id ">
-                                                        <textarea formControlName="comments" style="width: -webkit-fill-available; height: 75px;"></textarea>
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <button class="commentsub" (click)="CreatorPostcomment()">{{ contentLan.SUBMIT }}</button>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <form [formGroup]="commentdeleteform" ngNativeValidate>
-                                                                    <input type="hidden" formControlName="commentId" [(ngModel)]="commentdata._id">
-                                                                    <button class="commentdele" (click)="Creatordeletecomment()">Delete
-                                                                        Comment</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-                </div>
-                <div class="col-md-9" *ngIf="displayMode === 5">
-                    Community
-                </div>
-                <div class="col-md-9" *ngIf="displayMode === 6">
-                    <h2>{{ contentLan.RISKANDCHALLENGE }}</h2>
-                    <p>{{projectpreview?.storyTableId?.risk_chalenges}}</p>
-
-                    <div class="row" style="margin-bottom: 2%;" *ngFor='let updatedata of getupdates.data;'>
-                        <div class="row" *ngFor='let updatecommentdata of updatedata.comments;'>
-                            1. {{updatecommentdata.comment}}
-                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="row">
+                    <form [formGroup]="updatecommentform" ngNativeValidate>
+                      <div class="col-md-12">
+                        <button
+                          (click)="onclick()"
+                          type="button"
+                          class="btnupdatecomment"
+                        >
+                          Add Comment
+                        </button>
+                        <ng-container *ngIf="visible">
+                          <div class="bg-white shadow-sm p-3">
+                            <textarea
+                              formControlName="comment"
+                              style="width: -webkit-fill-available"
+                            ></textarea>
+                            <input
+                              type="hidden"
+                              formControlName="updatePostId"
+                              [(ngModel)]="updatedata._id"
+                            />
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"></div>
+                            <div
+                              class="col-md-4"
+                              style="text-align: -webkit-right"
+                            >
+                              <button
+                                class="submitupdatecomment"
+                                (click)="Onupdatecreatorcomment()"
+                              >
+                                {{ contentLan.SUBMIT }}
+                              </button>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </section>
+          <ng-template #elseupdatecreator>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9">
-                        <!-- <button class="projectreport">Report this project to Fikra</button> -->
+              <div
+                class="row"
+                style="margin-bottom: 2%"
+                *ngFor="let updatedata of getupdates.data"
+              >
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img
+                          class="upload-img"
+                          style="width: 10%; border-radius: 50%; height: 50px"
+                          *ngIf="updatedata.userId.profileImage === 'null'"
+                          src="assets/image/avatar-placeholder.png"
+                        />
+                        <img
+                          class="upload-img"
+                          style="width: 50%; border-radius: 50%; height: 50px"
+                          *ngIf="updatedata.userId.profileImage !== 'null'"
+                          src="{{ updatedata.userId.profileImage }}"
+                        />
+                      </div>
+                      <div class="col-md-8">
+                        <h5 class="updatename">
+                          {{ updatedata.userId.fullName | uppercase }}
+                        </h5>
+                        <span class="tag-box">{{
+                          updatedata.userId._userRole_
+                        }}</span>
+                      </div>
+                      <div class="col-md-2">
+                        <form [formGroup]="updatedeleteform" ngNativeValidate>
+                          <img
+                            style="width: 25%; float: right; margin-top: 10%"
+                            (click)="Onupdatedelete()"
+                            src="assets/image/delete.png"
+                          />
+                          <input
+                            type="hidden"
+                            formControlName="updatesId"
+                            [(ngModel)]="updatedata._id"
+                          />
+                        </form>
+                      </div>
                     </div>
+                    <h3 style="margin-top: 5%">{{ updatedata.updateTitle }}</h3>
+                    <label style="font-size: 14px"
+                      >Updated at:&nbsp;&nbsp;{{
+                        updatedata.updatedAt | date: "MMM d, y"
+                      }}</label
+                    >
+                    <hr style="width: -webkit-fill-available" />
+                    <p [innerHtml]="updatedata.updateMessage"></p>
+                  </div>
+                  <div class="row">
+                    <div
+                      class="card"
+                      *ngFor="let updatecmtdata of updatedata.comments"
+                    >
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-10">
+                            {{ updatecmtdata.comment }}
+                          </div>
+                          <div class="col-md-2">
+                            <form
+                              [formGroup]="updatecommentdeleteform"
+                              ngNativeValidate
+                            >
+                              <input
+                                type="hidden"
+                                formControlName="updatesId"
+                                [(ngModel)]="updatedata._id"
+                              />
+                              <input
+                                type="hidden"
+                                formControlName="commentId"
+                                [(ngModel)]="updatecmtdata._id"
+                              />
+                              <img
+                                style="
+                                  width: 25%;
+                                  float: right;
+                                  margin-top: 10%;
+                                "
+                                (click)="Onupdatecmtdelete()"
+                                src="assets/image/delete.png"
+                              />
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-
+            <hr style="width: 100%; color: #fd082d" />
+            <div class="container">
+              <form [formGroup]="creatorupdateform" ngNativeValidate>
+                <h4 style="margin-top: 2%; margin-bottom: 1%">Add Update :</h4>
+                <div class="row">
+                  <label style="margin-top: 2%; margin-bottom: 1%"
+                    >Update Title:</label
+                  >
+                  <div class="col-md-12">
+                    <input
+                      type="text"
+                      formControlName="updateTitle"
+                      placeholder="Enter Title"
+                      style="width: 50%; height: 120%"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <label style="margin-top: 2%; margin-bottom: 1%"
+                    >Update Message:</label
+                  >
+                  <div class="col-md-12">
+                    <angular-editor
+                      [config]="config"
+                      formControlName="updateMessage"
+                    >
+                    </angular-editor>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4" style="text-align: end">
+                    <button class="submitupdate" (click)="Onupdatecreator()">
+                      Submit Update
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </ng-template>
         </div>
-    </section>
 
-
-    <div class="overlay" *ngIf="popup">
-        <div class="popup">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <h2 class="aboutthecreator">About the creator</h2>
+        <!-- Comments -->
+        <div class="col-md-9" *ngIf="displayMode === 4">
+          <h2>{{ contentLan.COMMENT }}</h2>
+          <section
+            *ngIf="projectpreview?._is_Ower_ == false; else elsecommetncreator"
+          >
+            <div class="container">
+              <div class="row" *ngFor="let commentdata of getcomment.data">
+                <div class="col-md-12" style="margin-bottom: 2%">
+                  <div class="card">
+                    <div class="card-body">
+                      {{ commentdata.comments }}
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4"></div>
+              </div>
             </div>
-
-            <a class="close" (click)="popup = false">&times;</a>
-            <h3 class="aboutcreatorname">Nabeel k</h3>
-            <h4 class="authorcont">Lorem Ipsum</h4>
-            <p class="aboutcreatordesc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply
-                dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of
-                the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <ol class="overlayol">
-                        <li><img src="assets/image/profile.png">Nabeel k </li>
-                        <li><img src="assets/image/lock.png">Last login Aug 4 2021 </li>
-                        <li><img src="assets/image/facebook.svg"> Not connected </li>
-                        <li><img src="assets/image/check.png"><a href="">10 created </a>
-                            <a href="">· 50 backed</a>
-                        </li>
-
-                    </ol>
+            <div
+              class="containter"
+              *ngIf="projectpreview?._is_Pledged_ == true; else elseinvestorcmt"
+            >
+              <div class="row">
+                <label>Add your Comments:</label>
+                <form [formGroup]="backerpostform" ngNativeValidate>
+                  <textarea
+                    formControlName="comments"
+                    style="width: -webkit-fill-available; height: 180px"
+                  ></textarea>
+                  <div class="col-md-4">
+                    <button class="commentsub" (click)="Postcomment()">
+                      {{ contentLan.SUBMIT }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <ng-template #elseinvestorcmt>
+              <h4 style="text-align: center; margin-top: 5%">
+                Need to pledge this project to add comment
+              </h4>
+            </ng-template>
+          </section>
+          <ng-template #elsecommetncreator>
+            <div class="container">
+              <div class="row" *ngFor="let commentdata of getcomment.data">
+                <div class="col-md-12" style="margin-bottom: 2%">
+                  <div class="card">
+                    <div class="card-body">
+                      {{ commentdata.comments }}
+                      <div class="containter">
+                        <div class="row">
+                          <label style="margin-top: 2%"
+                            >Add your Comments:</label
+                          >
+                          <form
+                            [formGroup]="creatorcommentform"
+                            ngNativeValidate
+                          >
+                            <input
+                              type="hidden"
+                              formControlName="commentId"
+                              [(ngModel)]="commentdata._id"
+                            />
+                            <textarea
+                              formControlName="comments"
+                              style="
+                                width: -webkit-fill-available;
+                                height: 75px;
+                              "
+                            ></textarea>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <button
+                                  class="commentsub"
+                                  (click)="CreatorPostcomment()"
+                                >
+                                  {{ contentLan.SUBMIT }}
+                                </button>
+                              </div>
+                              <div class="col-md-4">
+                                <form
+                                  [formGroup]="commentdeleteform"
+                                  ngNativeValidate
+                                >
+                                  <input
+                                    type="hidden"
+                                    formControlName="commentId"
+                                    [(ngModel)]="commentdata._id"
+                                  />
+                                  <button
+                                    class="commentdele"
+                                    (click)="Creatordeletecomment()"
+                                  >
+                                    Delete Comment
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- <div class="col-md-6">
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        <div class="col-md-9" *ngIf="displayMode === 5">Community</div>
+        <div class="col-md-9" *ngIf="displayMode === 6">
+          <h2>{{ contentLan.RISKANDCHALLENGE }}</h2>
+          <p>{{ projectpreview?.storyTableId?.risk_chalenges }}</p>
+
+          <div
+            class="row"
+            style="margin-bottom: 2%"
+            *ngFor="let updatedata of getupdates.data"
+          >
+            <div
+              class="row"
+              *ngFor="let updatecommentdata of updatedata.comments"
+            >
+              1. {{ updatecommentdata.comment }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <!-- <button class="projectreport">Report this project to Fikra</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="overlay" *ngIf="popup">
+    <div class="popup">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <h2 class="aboutthecreator">About the creator</h2>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <a class="close" (click)="popup = false">&times;</a>
+      <h3 class="aboutcreatorname">Nabeel k</h3>
+      <h4 class="authorcont">Lorem Ipsum</h4>
+      <p class="aboutcreatordesc">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply
+        dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is
+        simply dummy text of the printing and typesetting industry. Lorem Ipsum
+        has been the industry's Lorem Ipsum is simply dummy text of the printing
+        and typesetting industry. Lorem Ipsum has been the industry's Lorem
+        Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's
+      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <ol class="overlayol">
+            <li><img src="assets/image/profile.png" />Nabeel k</li>
+            <li><img src="assets/image/lock.png" />Last login Aug 4 2021</li>
+            <li><img src="assets/image/facebook.svg" /> Not connected</li>
+            <li>
+              <img src="assets/image/check.png" /><a href="">10 created </a>
+              <a href="">· 50 backed</a>
+            </li>
+          </ol>
+        </div>
+        <!-- <div class="col-md-6">
                     <p class="collab">Collaborators on this project</p>
                     <div class="row ro_gap">
                         <div class="col-md-2 col-4">
@@ -825,269 +1459,455 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="col-md-2">
-                    <ol class="social_link_proj">
-                        <li><a href="www.youtube.com" class="projectcreatorlink">www.youtube.com</a></li>
-                        <li><a href="www.facebook.com" class="projectcreatorlink">www.facebook.com</a></li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- <button class="aboutcontactme">contact me</button> -->
-                </div>
-
-            </div>
+        <div class="col-md-2">
+          <ol class="social_link_proj">
+            <li>
+              <a href="www.youtube.com" class="projectcreatorlink"
+                >www.youtube.com</a
+              >
+            </li>
+            <li>
+              <a href="www.facebook.com" class="projectcreatorlink"
+                >www.facebook.com</a
+              >
+            </li>
+          </ol>
         </div>
-
-    </div>
-
-    <div class="overlay1" *ngIf="popup1">
-        <div class="popup1">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <h2 class="aboutthecreator">Select Shipping Address and Payment</h2>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" style=" overflow-y: scroll; height: 390px; " *ngIf='!noShipping'>
-                    <div class="card" style=" margin-top: 5%; " *ngFor="let data of shippingaddress; let i=index;">
-                        <div class="card-body">
-                            <div class="mycheckbox" style=" text-align: end; margin-bottom: -45px; ">
-                                <input type="radio" name="address" (change)="click(data)" id="{{data._id}}">
-                                <label for="{{data._id}}"></label>
-                            </div>
-                            <h5 class="card-title">{{data.fullName}}</h5>
-                            <h6 class="card-subtitle  mb-2"><span class="tag-box1">{{data.nickName}}</span></h6>
-                            <p class="card-text" style=" margin-bottom: 0%; ">{{data.Address_one}},{{data.Address_two}}
-                            </p>
-                            <p class="card-text" style=" margin-bottom: 0%; ">{{data.city}},{{data.state}}</p>
-                            <p class="card-text" style=" margin-bottom: 0%; ">{{data.country}},{{data.pin}}</p>
-                            <p class="card-text" style=" margin-bottom: 0%; ">{{data.phone}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 container_X" style=" overflow-y: scroll; height: 390px; " *ngIf='noShipping'>
-                    <div class='vertical-center'>
-                        <h3>No sipping needed</h3>
-                    </div>
-                </div>
-                <div class="col-md-4" style="/* margin-top: 18px; */border-right: 1px solid #ff675385;overflow-y: scroll; height: 390px; ">
-                    <div class="card" style=" border: 1px solid #FF5355; padding: 3px;margin-top: 5%; ">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 style=" color: #FF5355; ">SAR &nbsp;{{walletamt}}</h3>
-                                    <label style=" color: #9A999E; font-size: 14px; ">{{ contentLan.CURRAVAILBALANCE }}</label>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12" style="margin-top: 10%;">
-                                <button class="carer_head" style=" width: inherit; " (click)="openpay()">+ {{ contentLan.ADDMONEYTOWALLET }}</button>
-                                <form [formGroup]="addmoneyform" ngNativeValidate>
-                                    <div *ngIf="popuppay" class="paytext">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h5 style="font-size: 20px;">Select Card Type:</h5>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked="checked"><label for="MADA">&nbsp;MADA</label><br>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA"><label for="VISA">&nbsp;VISA</label><br>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER"><label for="MASTER">&nbsp;MASTER</label>
-                                            </div>
-                                        </div>
-                                        <h5 style="font-size: 20px;margin-top: 5%;">Enter Amount:</h5>
-                                        <input type="number" placeholder="Amount" formControlName="amount">
-
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <button class="wallet_pay" (click)="addmoney()"> {{ contentLan.ADDMONEYTOWALLET }}</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-md-12" style="margin-top: 3%;">
-                                <button class="carer_head" style=" width: inherit; " (click)="paywallet()">Pay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10" style="border: 1px solid #FF5355;padding: 3px;margin-top: 5%;margin-left: 3%;width: 95%;border-radius: 5px;padding: 15px;">
-                            <h4>Select the card type</h4>
-                            <form [formGroup]="pledgeform" ngNativeValidate>
-                                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
-                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" checked><label>MADA</label><br> -->
-                                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
-                                <select (change)="getpaym()" style="width:-webkit-fill-available;margin-bottom: 3%;" [(ngModel)]="cardpay" formControlName="paymentMethod" requireds>
-                                    <option [ngValue]="null" disabled>Select Country</option>
-                                    <option value="Visa" [selected]>Visa</option>
-                                    <option value="Mada">Mada</option>
-                                </select>
-
-                                <button (click)="Onpledge()" [disabled]="!cardpay" class="projectbackbtn" style=" width: inherit; ">Pay</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" style="margin-top: 1%;">
-                    <h4>Payment Details</h4>
-                    <hr style="width: auto;margin-left: 0%;color: #f50905;">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p>Business Model Fee</p>
-                            <p>VAT</p>
-                            <p>Processing fee</p>
-                            <p>Reward Amount</p>
-                            <hr style="width: auto;margin: 1% 0%;color: #f50905;">
-                            <p style="margin-top: 1%;">Grand Total</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p>:&nbsp;&nbsp;&nbsp;{{calkeep}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{calvat}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{calproces}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{pledgeAmount}}</p>
-                            <hr style="width: auto;margin: 1% 0%;color: #f50905;">
-                            <p style="margin-top: 1%;">:&nbsp;&nbsp;&nbsp;{{caltotal}}</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <a class="close " (click)="popup1=false ">&times;</a>
-            <div class="row ">
-                <div class="col-md-8 "></div>
-                <div class="col-md-4 ">
-                    <!-- <button class="aboutcontactme ">contact me</button> -->
-                    <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
-                </div>
-
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <!-- <button class="aboutcontactme">contact me</button> -->
         </div>
-
+      </div>
     </div>
-    <div class="overlay2" *ngIf="popup2">
-        <div class="popup2">
-            <a class="close " (click)="popup2=false ">&times;</a>
-            <div class="col-md-10" style="margin-top: 5%;">
-                <h4 style=" font-size: 18px; ">Request city to creator if Not in City list in Reward</h4>
-                <form [formGroup]="addcityform" ngNativeValidate>
-                    <!-- <input type="text" style=" width: -webkit-fill-available; " formControlName="creatorcity"> -->
-                    <select formControlName="creatorcity" #user class="form-select" style=" width: -webkit-fill-available;">
-                        <option *ngFor="let user of getcity" value="{{user.cityName}}">{{user.cityName}}</option>
-                    </select>
+  </div>
+
+  <div class="overlay1" *ngIf="popup1">
+    <div class="popup1">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <h2 class="aboutthecreator">Select Shipping Address and Payment</h2>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-4"
+          style="overflow-y: scroll; height: 390px"
+          *ngIf="!noShipping"
+        >
+          <div
+            class="card"
+            style="margin-top: 5%"
+            *ngFor="let data of shippingaddress; let i = index"
+          >
+            <div class="card-body">
+              <div
+                class="mycheckbox"
+                style="text-align: end; margin-bottom: -45px"
+              >
+                <input
+                  type="radio"
+                  name="address"
+                  (change)="click(data)"
+                  id="{{ data._id }}"
+                />
+                <label for="{{ data._id }}"></label>
+              </div>
+              <h5 class="card-title">{{ data.fullName }}</h5>
+              <h6 class="card-subtitle mb-2">
+                <span class="tag-box1">{{ data.nickName }}</span>
+              </h6>
+              <p class="card-text" style="margin-bottom: 0%">
+                {{ data.Address_one }},{{ data.Address_two }}
+              </p>
+              <p class="card-text" style="margin-bottom: 0%">
+                {{ data.city }},{{ data.state }}
+              </p>
+              <p class="card-text" style="margin-bottom: 0%">
+                {{ data.country }},{{ data.pin }}
+              </p>
+              <p class="card-text" style="margin-bottom: 0%">
+                {{ data.phone }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 container_X"
+          style="overflow-y: scroll; height: 390px"
+          *ngIf="noShipping"
+        >
+          <div class="vertical-center">
+            <h3>No sipping needed</h3>
+          </div>
+        </div>
+        <div
+          class="col-md-4"
+          style="
+            /* margin-top: 18px; */
+            border-right: 1px solid #ff675385;
+            overflow-y: scroll;
+            height: 390px;
+          "
+        >
+          <div
+            class="card"
+            style="border: 1px solid #ff5355; padding: 3px; margin-top: 5%"
+          >
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Pay with Wallet</h4>
+                  <h3 style="color: #ff5355">SAR &nbsp;{{ walletamt }}</h3>
+                  <label style="color: #9a999e; font-size: 14px">{{
+                    contentLan.CURRAVAILBALANCE
+                  }}</label>
+                </div>
+              </div>
+              <div class="col-md-12" style="margin-top: 10%">
+                <button
+                  class="carer_head"
+                  style="width: inherit"
+                  (click)="openpay()"
+                >
+                  + {{ contentLan.ADDMONEYTOWALLET }}
+                </button>
+                <form [formGroup]="addmoneyform" ngNativeValidate>
+                  <div *ngIf="popuppay" class="paytext">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h5 style="font-size: 20px">Select Card Type:</h5>
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="MADA"
+                          id="MADA"
+                          checked
+                        /><label for="MADA">&nbsp;MADA</label><br />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="VISA"
+                          id="VISA"
+                        /><label for="VISA">&nbsp;VISA</label><br />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="MASTER"
+                          id="MASTER"
+                        /><label for="MASTER">&nbsp;MASTER</label>
+                      </div>
+                    </div>
+                    <h5 style="font-size: 20px; margin-top: 5%">
+                      Enter Amount:
+                    </h5>
+                    <input
+                      type="number"
+                      placeholder="Amount"
+                      formControlName="amount"
+                    />
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button class="wallet_pay" (click)="addmoney()">
+                          {{ contentLan.ADDMONEYTOWALLET }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </form>
-                <span (click)="mailMe()"><button class="cityreqbtn">{{ contentLan.REQUEST }}</button></span>
-
+              </div>
+              <div class="col-md-12" style="margin-top: 3%">
+                <button
+                  class="carer_head"
+                  style="width: inherit"
+                  (click)="paywallet()"
+                >
+                  Pay
+                </button>
+              </div>
             </div>
-
-        </div>
-
-    </div>
-    <div class="overlaywr" *ngIf="popupwr">
-        <div class="popupwr">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <h2 class="aboutthecreator">Payment Process</h2>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6" style="/* margin-top: 18px; */border-right: 1px solid #ff675385;overflow-y: scroll; height: 390px; ">
-                    <div class="card" style=" border: 1px solid #FF5355; padding: 3px;margin-top: 5%; ">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 style=" color: #FF5355; ">SAR &nbsp;{{walletamt}}</h3>
-                                    <label style=" color: #9A999E; font-size: 14px; ">{{ contentLan.CURRAVAILBALANCE }}</label>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12" style="margin-top: 10%;">
-                                <button class="carer_head" style=" width: inherit; " (click)="openpay()">+ {{ contentLan.ADDMONEYTOWALLET }}</button>
-                                <form [formGroup]="addmoneyform" ngNativeValidate>
-                                    <div *ngIf="popuppay" class="paytext">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h5 style="font-size: 20px;">Select Card Type:</h5>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked="checked"><label for="MADA">&nbsp;MADA</label><br>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA"><label for="VISA">&nbsp;VISA</label><br>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER"><label for="MASTER">&nbsp;MASTER</label>
-                                            </div>
-                                        </div>
-                                        <h5 style="font-size: 20px;margin-top: 5%;">Enter Amount:</h5>
-                                        <input type="number" placeholder="Amount" formControlName="amount">
-
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <button class="wallet_pay" (click)="addmoney()">{{ contentLan.ADDMONEYTOWALLET }}</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-md-12" style="margin-top: 3%;">
-                                <button class="carer_head" style=" width: inherit; " (click)="paywalletwithoutreward()">Pay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10" style="border: 1px solid #FF5355;padding: 3px;margin-top: 5%;margin-left: 3%;width: 95%;border-radius: 5px;padding: 15px;">
-                            <h4>Select the card type</h4>
-                            <form [formGroup]="pledgeform" ngNativeValidate>
-                                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-10"
+              style="
+                border: 1px solid #ff5355;
+                padding: 3px;
+                margin-top: 5%;
+                margin-left: 3%;
+                width: 95%;
+                border-radius: 5px;
+                padding: 15px;
+              "
+            >
+              <h4>Select the card type</h4>
+              <form [formGroup]="pledgeform" ngNativeValidate>
+                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
                                 <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" checked><label>MADA</label><br> -->
-                                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
-                                <select (change)="getpaym()" style="width:-webkit-fill-available;margin-bottom: 3%;" [(ngModel)]="cardpay1" formControlName="paymentMethod" required>
-                                    <option value="Visa">Visa</option>
-                                    <option value="Mada">Mada</option>
-                                </select>
-                            </form>
-                            <button type="submit" (click)="Onpledgewithoutreward()" [disabled]="!cardpay1" class="projectbackbtn" style=" width: inherit; ">Pay</button>
+                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
+                <select
+                  (change)="getpaym()"
+                  style="width: -webkit-fill-available; margin-bottom: 3%"
+                  [(ngModel)]="cardpay"
+                  formControlName="paymentMethod"
+                  requireds
+                >
+                  <option [ngValue]="null" disabled>Select Card</option>
+                  <option value="Mada" [selected]="true">Mada</option>
+                  <option value="Visa">Visa</option>
+                </select>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6" style="margin-top: 1%;">
-                    <h4>Payment Details</h4>
-                    <hr style="width: auto;margin-left: 0%;color: #f50905;">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p>Business Model Fee</p>
-                            <p>VAT</p>
-                            <p>Processing fee</p>
-                            <p>Pledge Amount</p>
-                            <hr style="width: auto;margin: 1% 0%;color: #f50905;">
-                            <p style="margin-top: 1%;">Grand Total</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p>:&nbsp;&nbsp;&nbsp;{{calkeepwr}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{calvatwr}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{calproceswr}}</p>
-                            <p>:&nbsp;&nbsp;&nbsp;{{pledgeamt}}</p>
-                            <hr style="width: auto;margin: 1% 0%;color: #f50905;">
-                            <p style="margin-top: 1%;">:&nbsp;&nbsp;&nbsp;{{caltotalwr}}</p>
-                        </div>
-                    </div>
-                </div>
-
+                <button
+                  (click)="Onpledge()"
+                  [disabled]="!cardpay"
+                  class="projectbackbtn"
+                  style="width: -webkit-fill-available"
+                >
+                  Pay
+                </button>
+              </form>
             </div>
-            <a class="close " (click)="popupwr=false ">&times;</a>
-            <div class="row ">
-                <div class="col-md-8 "></div>
-                <div class="col-md-4 ">
-                    <!-- <button class="aboutcontactme ">contact me</button> -->
-                    <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
-                </div>
-
-            </div>
+          </div>
         </div>
-
+        <div class="col-md-4" style="margin-top: 1%">
+          <h4>Payment Details</h4>
+          <hr style="width: auto; margin-left: 0%; color: #f50905" />
+          <div class="row">
+            <div class="col-md-8">
+              <p>Business Model Fee</p>
+              <p>VAT</p>
+              <p>Processing fee</p>
+              <p>Reward Amount</p>
+              <hr style="width: auto; margin: 1% 0%; color: #f50905" />
+              <p style="margin-top: 1%">Grand Total</p>
+            </div>
+            <div class="col-md-4">
+              <p>:&nbsp;&nbsp;&nbsp;{{ calkeep }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ calvat }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ calproces }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ pledgeAmount }}</p>
+              <hr style="width: auto; margin: 1% 0%; color: #f50905" />
+              <p style="margin-top: 1%">:&nbsp;&nbsp;&nbsp;{{ caltotal }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="close" (click)="popup1 = false">&times;</a>
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <!-- <button class="aboutcontactme ">contact me</button> -->
+          <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
+        </div>
+      </div>
     </div>
-    <!-- <div class="projec_recomd_sec ">
+  </div>
+  <div class="overlay2" *ngIf="popup2">
+    <div class="popup2">
+      <a class="close" (click)="popup2 = false">&times;</a>
+      <div class="col-md-10" style="margin-top: 5%">
+        <h4 style="font-size: 18px">
+          Request city to creator if Not in City list in Reward
+        </h4>
+        <form [formGroup]="addcityform" ngNativeValidate>
+          <!-- <input type="text" style=" width: -webkit-fill-available; " formControlName="creatorcity"> -->
+          <select
+            formControlName="creatorcity"
+            #user
+            class="form-select"
+            style="width: -webkit-fill-available"
+          >
+            <option *ngFor="let user of getcity" value="{{ user.cityName }}">
+              {{ user.cityName }}
+            </option>
+          </select>
+        </form>
+        <span (click)="mailMe()"
+          ><button class="cityreqbtn">{{ contentLan.REQUEST }}</button></span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="overlaywr" *ngIf="popupwr">
+    <div class="popupwr">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <h2 class="aboutthecreator">Payment Process</h2>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-6"
+          style="
+            /* margin-top: 18px; */
+            border-right: 1px solid #ff675385;
+            overflow-y: scroll;
+            height: 390px;
+          "
+        >
+          <div
+            class="card"
+            style="border: 1px solid #ff5355; padding: 3px; margin-top: 5%"
+          >
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 style="color: #ff5355">SAR &nbsp;{{ walletamt }}</h3>
+                  <label style="color: #9a999e; font-size: 14px">{{
+                    contentLan.CURRAVAILBALANCE
+                  }}</label>
+                </div>
+              </div>
+              <div class="col-md-12" style="margin-top: 10%">
+                <button
+                  class="carer_head"
+                  style="width: inherit"
+                  (click)="openpay()"
+                >
+                  + {{ contentLan.ADDMONEYTOWALLET }}
+                </button>
+                <form [formGroup]="addmoneyform" ngNativeValidate>
+                  <div *ngIf="popuppay" class="paytext">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h5 style="font-size: 20px">Select Card Type:</h5>
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="MADA"
+                          id="MADA"
+                          checked="checked"
+                        /><label for="MADA">&nbsp;MADA</label><br />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="VISA"
+                          id="VISA"
+                        /><label for="VISA">&nbsp;VISA</label><br />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          name="paymentMethod"
+                          value="MASTER"
+                          id="MASTER"
+                        /><label for="MASTER">&nbsp;MASTER</label>
+                      </div>
+                    </div>
+                    <h5 style="font-size: 20px; margin-top: 5%">
+                      Enter Amount:
+                    </h5>
+                    <input
+                      type="number"
+                      placeholder="Amount"
+                      formControlName="amount"
+                    />
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button class="wallet_pay" (click)="addmoney()">
+                          {{ contentLan.ADDMONEYTOWALLET }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-12" style="margin-top: 3%">
+                <button
+                  class="carer_head"
+                  style="width: inherit"
+                  (click)="paywalletwithoutreward()"
+                >
+                  Pay
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-10"
+              style="
+                border: 1px solid #ff5355;
+                padding: 3px;
+                margin-top: 5%;
+                margin-left: 3%;
+                width: 95%;
+                border-radius: 5px;
+                padding: 15px;
+              "
+            >
+              <h4>Select the card type</h4>
+              <form [formGroup]="pledgeform" ngNativeValidate>
+                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
+                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" checked><label>MADA</label><br> -->
+                <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
+                <select
+                  (change)="getpaym()"
+                  style="width: -webkit-fill-available; margin-bottom: 3%"
+                  [(ngModel)]="cardpay1"
+                  formControlName="paymentMethod"
+                  required
+                >
+                  <option value="Visa">Visa</option>
+                  <option value="Mada">Mada</option>
+                </select>
+              </form>
+              <button
+                type="submit"
+                (click)="Onpledgewithoutreward()"
+                [disabled]="!cardpay1"
+                class="projectbackbtn"
+                style="width: inherit"
+              >
+                Pay
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" style="margin-top: 1%">
+          <h4>Payment Details</h4>
+          <hr style="width: auto; margin-left: 0%; color: #f50905" />
+          <div class="row">
+            <div class="col-md-8">
+              <p>Business Model Fee</p>
+              <p>VAT</p>
+              <p>Processing fee</p>
+              <p>Pledge Amount</p>
+              <hr style="width: auto; margin: 1% 0%; color: #f50905" />
+              <p style="margin-top: 1%">Grand Total</p>
+            </div>
+            <div class="col-md-4">
+              <p>:&nbsp;&nbsp;&nbsp;{{ calkeepwr }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ calvatwr }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ calproceswr }}</p>
+              <p>:&nbsp;&nbsp;&nbsp;{{ pledgeamt }}</p>
+              <hr style="width: auto; margin: 1% 0%; color: #f50905" />
+              <p style="margin-top: 1%">:&nbsp;&nbsp;&nbsp;{{ caltotalwr }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="close" (click)="popupwr = false">&times;</a>
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <!-- <button class="aboutcontactme ">contact me</button> -->
+          <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="projec_recomd_sec ">
         <div class="container ">
             <div class="row ">
                 <div class="col-md-12 ">
@@ -1168,7 +1988,6 @@
             </div>
         </div>
     </div> -->
-
 </div>
 
 <ng-template #elseStatement></ng-template>

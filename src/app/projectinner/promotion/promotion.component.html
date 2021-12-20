@@ -10,11 +10,16 @@
           <button class="nextbtn">
             {{ contentLan.PROJECTOVERVIEW }}
             <i class="far fa-angle-right" *ngIf="dir == 'ltr'"></i>
-            <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button></a>
+            <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button
+        ></a>
         <a [routerLink]="['../projectpreview']">
           <button class="projectpreview">
             {{ contentLan.PREVIEW
-            }}<img src="assets/image/visibility.png" class="img-fluid projectpreviewimg" /></button></a>
+            }}<img
+              src="assets/image/visibility.png"
+              class="img-fluid projectpreviewimg"
+            /></button
+        ></a>
       </div>
     </div>
     <div class="row">
@@ -28,67 +33,86 @@
     <div class="col-md-12">
       <ol class="projectfeaturelist">
         <li>
-          <a [routerLink]="['../basic']"><button class="basicbtn">
+          <a [routerLink]="['../basic']"
+            ><button class="basicbtn">
               <span>{{ contentLan.BASICS }}</span>
-              <span class="basiccircle"></span></button></a>
+              <span class="basiccircle"></span></button
+          ></a>
         </li>
         <li>
           <a [routerLink]="['../rewards']">
             <button class="rewardbtn">
               <span>{{ contentLan.REWARDS }}</span>
-              <span class="rewardcircle"></span></button></a>
+              <span class="rewardcircle"></span></button
+          ></a>
         </li>
         <li>
           <a [routerLink]="['../story']">
             <button class="storybtn">
               <span>{{ contentLan.STORY }}</span>
-              <span class="storycircle"></span></button></a>
+              <span class="storycircle"></span></button
+          ></a>
         </li>
         <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a></li> -->
         <li>
-          <a [routerLink]="['../payment']"><button class="paymentbtn">
+          <a [routerLink]="['../payment']"
+            ><button class="paymentbtn">
               <span>{{ contentLan.PAYMENT }}</span>
-              <span class="paymentcircle"></span></button></a>
+              <span class="paymentcircle"></span></button
+          ></a>
         </li>
         <li>
-          <a [routerLink]="['../promotion']"><button class="promotionbtn btn_active">
+          <a [routerLink]="['../promotion']"
+            ><button class="promotionbtn btn_active">
               <span>{{ contentLan.PROMOTION }}</span>
-              <span class="promotioncircle active_circle"></span></button></a>
+              <span class="promotioncircle active_circle"></span></button
+          ></a>
         </li>
       </ol>
       <div class="projectfeaturedselect" dropdown>
         <p class="text-center">
-          <button id="button-basic" dropdownToggle type="button" class="projectfeaturedselectbtn dropdown-toggle"
-            aria-controls="dropdown-basic">
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="projectfeaturedselectbtn dropdown-toggle"
+            aria-controls="dropdown-basic"
+          >
             Button dropdown <span class="caret"></span>
           </button>
         </p>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
           <li role="menuitem">
             <a class="dropdown-item" [routerLink]="['../basic']">{{
               contentLan.BASICS
-              }}</a>
+            }}</a>
           </li>
           <li role="menuitem">
             <a class="dropdown-item" [routerLink]="['../rewards']">{{
               contentLan.REWARDS
-              }}</a>
+            }}</a>
           </li>
           <li role="menuitem">
             <a class="dropdown-item" [routerLink]="['../story']">{{
               contentLan.STORY
-              }}</a>
+            }}</a>
           </li>
           <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
           <li role="menuitem">
             <a class="dropdown-item" [routerLink]="['../payment']">{{
               contentLan.PAYMENT
-              }}</a>
+            }}</a>
           </li>
           <li role="menuitem">
             <a class="dropdown-item" [routerLink]="['../promotion']">{{
               contentLan.PROMOTION
-              }}</a>
+            }}</a>
           </li>
         </ul>
       </div>
@@ -105,10 +129,12 @@
         <p class="startbasicpara" *ngIf="dir == 'rtl'">{{ description_Ar }}</p>
       </div>
       <div class="col-md-2 col-3">
-        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'ltr'">{{ contentLan.SKIP }} <i
-            class="fas fa-arrow-right"></i></a>
-        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'rtl'">{{ contentLan.SKIP }} <i
-            class="fas fa-arrow-left"></i></a>
+        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'ltr'"
+          >{{ contentLan.SKIP }} <i class="fas fa-arrow-right"></i
+        ></a>
+        <a [routerLink]="['..']" class="skip_btn" *ngIf="dir == 'rtl'"
+          >{{ contentLan.SKIP }} <i class="fas fa-arrow-left"></i
+        ></a>
       </div>
     </div>
   </section>
@@ -196,7 +222,12 @@
                         <input type="text" class="form-control" placeholder="UA - 000000-0">
                     </div> -->
         <!-- </div> -->
-        <button class="activatemypages" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal()">
+        <button
+          class="activatemypages"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          (click)="openModal()"
+        >
           {{ contentLan.REQUEST }}
         </button>
         <p class="you_cant">{{ contentLan.YOUCANREQUESTCONTENT }}</p>
@@ -219,37 +250,61 @@
   </button> -->
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true" [ngStyle]="{ display: display }">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    [ngStyle]="{ display: display }"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
             Request to Admin For Project Campagin
           </h5>
-          <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal" aria-label="Close"
-            (click)="onCloseHandled()"></button>
+          <button
+            type="button"
+            class="btn-close"
+            #myModalClose
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="onCloseHandled()"
+          ></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="specialrequestform" name="form">
             <div class="col-md-12">
               <label>Services</label><span style="color: red">*</span>
               <div>
-                <select class="form-select" #mySelect formControlName="serviceType" [ngClass]="{
+                <select
+                  class="form-select"
+                  #mySelect
+                  formControlName="serviceType"
+                  [ngClass]="{
                     'is-invalid': submitted && f.serviceType.errors
-                  }">
+                  }"
+                >
                   <option>Select Service</option>
-                  <option *ngFor="let allcountry of requestspecial" class="form-control"
-                    value="{{ allcountry.specialReqestName }}">
+                  <option
+                    *ngFor="let allcountry of requestspecial"
+                    class="form-control"
+                    value="{{ allcountry.specialReqestName }}"
+                  >
                     <span *ngIf="dir == 'ltr'">{{
                       allcountry.specialReqestName
-                      }}</span>
+                    }}</span>
                     <span *ngIf="dir == 'rtl'">{{
                       allcountry.specialReqestNameAr
-                      }}</span>
+                    }}</span>
                   </option>
                 </select>
-                <div *ngIf="submitted && f.serviceType.errors" class="invalid-feedback">
+                <div
+                  *ngIf="submitted && f.serviceType.errors"
+                  class="invalid-feedback"
+                >
                   <div *ngIf="f.serviceType.errors.required">
                     Select any Service
                   </div>
@@ -260,13 +315,20 @@
             <div class="col-md-12">
               <label>{{ contentLan.COMMENT }}:</label>
               <div>
-                <textarea style="width: -webkit-fill-available" class="form-control"
-                  formControlName="comments"></textarea>
+                <textarea
+                  style="width: -webkit-fill-available"
+                  class="form-control"
+                  formControlName="comments"
+                ></textarea>
               </div>
             </div>
             <br />
             <p class="text-center">
-              <button type="button" (click)="onSubmit()" class="btn btn-primary submit_req_btn">
+              <button
+                type="button"
+                (click)="onSubmit()"
+                class="btn btn-primary submit_req_btn"
+              >
                 {{ contentLan.SUBMITREQ }}
               </button>
             </p>

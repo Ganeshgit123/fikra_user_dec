@@ -22,6 +22,9 @@ export class TakingOffComponent implements OnInit {
   projectdate: any;
   inter: any;
   luncont: any;
+  takinggoalAmount:any;
+  takingamountPleadged:any;
+  takingpercentage:any;
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
@@ -57,7 +60,21 @@ export class TakingOffComponent implements OnInit {
     this.authService.takingoffhome().subscribe((res: any) => {
       if (res.error === false) {
         this.takingoffhome = res.data;
+        this.takingoffhome.forEach((element: any) => {
+          this.takinggoalAmount = element.basicInfoId.goalAmount;
 
+          this.takingamountPleadged = element._amount_Pleadged_;
+          this.takingpercentage =
+            this.takingamountPleadged / this.takinggoalAmount;
+          var taktotPercent = this.takingpercentage * 100;
+          if (taktotPercent >= 100) {
+            element.takinglastper = 100;
+          } else {
+            element.takinglastper = taktotPercent;
+          }
+
+          element.takinglastpercentage = taktotPercent;
+        });
         this.takingoffhome.forEach((value: any, key: any) => {
           this.currentdate = new Date();
           this.projectdate = new Date(value.basicInfoId.launchDate);

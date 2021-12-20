@@ -25,6 +25,9 @@ export class HomeStretchComponent implements OnInit {
   projectdate: any;
   inter:any;
   luncont:any;
+  featuregoalAmount:any;
+  featureamountPleadged:any;
+  featurepercentage:any;
   constructor(public authService: AuthService,private route: ActivatedRoute,    private toaster: ToastrService,    public fb: FormBuilder,) { }
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -59,6 +62,21 @@ export class HomeStretchComponent implements OnInit {
       if (res.error === false) {
         this.homestretch = res.data;
         console.log('homestretch',this.homestretch);
+        this.homestretch.forEach((elementss: any) => {
+          this.featuregoalAmount = elementss.basicInfoId.goalAmount;
+
+          this.featureamountPleadged = elementss._amount_Pleadged_;
+          this.featurepercentage =
+            this.featureamountPleadged / this.featuregoalAmount;
+          var totPercent = this.featurepercentage * 100;
+          if (totPercent >= 100) {
+            elementss.featurelastper = 100;
+          } else {
+            elementss.featurelastper = totPercent;
+          }
+
+          elementss.featurelastpercentage = totPercent;
+        });
         this.homestretch.forEach((value: any, key: any) => {
           this.currentdate = new Date();
           this.projectdate = new Date(value.basicInfoId.launchDate);

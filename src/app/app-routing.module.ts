@@ -231,6 +231,7 @@ const routes: Routes = [
   },
   {
     path: "help",
+    
     component: HelpguideComponent,
   },
   {
@@ -276,10 +277,15 @@ const routes: Routes = [
   },
   {
     path: "projectinner",
+    canActivate: [AuthGuard, RolebaseGuard],
+    data: {
+      expectedRole: "creator",
+    },
     loadChildren: () =>
       import("./projectinner/projectinner.module").then(
         (m) => m.ProjectinnerModule
       ),
+      
   },
 ];
 

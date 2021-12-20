@@ -359,7 +359,6 @@ export class ProjectviewComponent implements OnInit {
       this.discount = res.data.rewardTableId;
       this.discount.forEach((value: any, key: any) => {
         this.originalvalue = (value.amount * value.discountAmount) / 100;
-
         this.totalshow = value.amount - Math.round(this.originalvalue);
 
         this.finialshow = +this.totalshow + +this.pledgeform.value.pledgeAmount;
@@ -594,6 +593,7 @@ export class ProjectviewComponent implements OnInit {
 
   Onremindme() {
     this.authService.remdinme(this.remindmeform.value);
+    this.ngOnInit();
   }
   click(value: any) {
     this.selectedadd = true;

@@ -121,6 +121,7 @@ export class BasicComponent implements OnInit {
       campaignDuation: [''],
       launchDate: [''],
       projectImage: [''],
+      projectVideo:[''],
       userId: JSON.parse(localStorage.getItem('userId')!),
       userType: 'creator',
       projectId: this.params,
@@ -341,6 +342,9 @@ selectduration(value:any){
   }
 }
 
+canclevideo(){
+  this.videourl = null;
+}
   uploadVideoFile(event: any) {
     var reader = new FileReader();
     reader.onload = (event: any) => {
@@ -358,14 +362,14 @@ selectduration(value:any){
         this.videourl=res.data.Location;
       }else{
         this.videoSizeError = true;
-        this.toastr.warning('*Too big Upload Video maximum 30sec, and the size of the video should be less than 5MB');
+        this.toastr.warning('*Too big Upload Video maximum 2mins, and the size of the video should be less than 15MB');
       }
     })
   }
 
   getDuration(e:any) {
     const duration = e.target.duration;
-    this.videoSizeError = duration > 31 || this.videoSizeError;
+    this.videoSizeError = duration > 120 || this.videoSizeError;
   }
 
   onSubmit() {
@@ -376,34 +380,22 @@ selectduration(value:any){
       // this.fileUpload = this.projectImage;
       this.basicForm.value.projectImage=this.projectImage;
       this.basicForm.value.projectId =this.params;
+      this.basicForm.value.projectVideo =this.videourl;
       this.authService.basicedit(this.basicForm.value);
     }else{
       console.log('sss');
-      this.basicForm.value.projectImage=this.urlloc;
-      this.basicForm.value.projectId =this.params;
-      this.authService.basicedit(this.basicForm.value);
-    }
-    if(this.videoSizeError == true){
-      this.toastr.warning('Check the Video Length');
-        }else{
-    const fd = new FormData();
-    // fd.append('projectImage', this.basicForm.get('projectImage').value);
-    // fd.append('projectVideo', this.videourl);
-    // fd.append('title', this.basicForm.get('title').value);
-    // fd.append('subTitle', this.basicForm.get('subTitle').value);
-    // fd.append('goalAmount', this.basicForm.get('goalAmount').value);
-    // fd.append('decription', this.basicForm.get('decription').value);
-    // fd.append('categoryName', this.basicForm.get('categoryName').value);
-    // fd.append('subCategoryName', this.basicForm.get('subCategoryName').value);
-    // fd.append('city', this.basicForm.get('city').value);
-    // fd.append('country', this.basicForm.get('country').value);
-    // fd.append('campaignDuation', this.basicForm.get('campaignDuation').value);
-    // fd.append('launchDate', this.basicForm.get('launchDate').value);
-    // fd.append('userId', JSON.parse(localStorage.getItem('userId')!));
-    // fd.append('userType', JSON.parse(localStorage.getItem('role')!));
-    // fd.append('projectId', this.params);
+      if(this.videoSizeError == true){
+        this.toastr.warning('Check the Video Length');
+          }else{
+  
+            this.basicForm.value.projectImage=this.urlloc;
+            this.basicForm.value.projectId =this.params;
+            this.basicForm.value.projectVideo =this.videourl;
+            this.authService.basicedit(this.basicForm.value);
+      }
   
     }
+ 
   }
   navigateToLogin() {
     this.router.navigateByUrl('/projectinner/rewards');

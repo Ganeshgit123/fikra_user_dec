@@ -159,9 +159,15 @@
               Save
             </button>
                         <ng-template #nothing>
-                            <button type="submit" class="savereward">
+                            <button type="submit" disabled='true' *ngIf="loading" class="savereward">
+                                <i class="fa fa-spinner fa-spin" ></i>
                 {{ contentLan.ALREADYSAVE }}
               </button>
+                            <button type="submit" *ngIf="!loading" class="savereward">
+               
+{{ contentLan.ALREADYSAVE }}
+</button>
+
                         </ng-template>
                         <!-- </a> -->
                     </div>
