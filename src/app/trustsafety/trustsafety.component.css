@@ -1,5 +1,5 @@
 .sec1 {
-    margin: 5%;
+    margin: 2%;
 }
 
 .container_sec1 {
@@ -44,7 +44,7 @@
 
 .sec3div {
     text-align: center;
-    padding: 100px;
+    padding: 40px;
 }
 
 .sec3div h3 {
@@ -88,6 +88,19 @@ h2 {
     }
     .sec3div {
         text-align: justify;
-        padding: 50px;
+        padding: 20px;
     }
+}
+.tab-content p{
+    padding: 20px;
+    border: 1px solid #7070702E;
+}
+.nav-link{
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.nav-tabs{
+    padding-left: 0;
+    padding-right: 0;
 }

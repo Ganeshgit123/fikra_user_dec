@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "../shared/auth.service";
 import { ToastrService } from "ngx-toastr";
+import Swal, { SweetAlertOptions } from "sweetalert2";
 
 @Component({
   selector: "app-specicalrequest",
@@ -17,6 +18,7 @@ export class SpecicalrequestComponent implements OnInit {
   dir: any;
   contentLan: any = {};
   requestspeciallist:any;
+  addressCheck:any;
   constructor(
     private fb: FormBuilder,
     public authService: AuthService,
@@ -63,6 +65,8 @@ export class SpecicalrequestComponent implements OnInit {
     this.dir = localStorage.getItem("dir") || "ltr";
     this.authService.specialrequestlist().subscribe((res: any) => {
       this.requestspecial = res.data;
+      this.addressCheck = res._isAddressExist_;
+      // console.log("dd",this.addressCheck)
     });
     this.authService.requestbycreator().subscribe((res: any) => {
       this.requestspeciallist = res.data;
@@ -72,6 +76,7 @@ export class SpecicalrequestComponent implements OnInit {
     this.sreq = val;
   }
   onSubmit() {
+    if(this.addressCheck == true){
     this.authService
       .specialrequest(this.specialrequestform.value)
       .subscribe((res: any) => {
@@ -84,5 +89,17 @@ export class SpecicalrequestComponent implements OnInit {
         }
       });
     this.ngOnInit();
+  }else{
+    Swal.fire({
+      text: "Please add Default Shipping Address",
+      icon: "warning",
+    }).then((result) => {
+      if (result.value){
+        this.router.navigateByUrl("/account/5");
+
+      }
+    });
   }
+}
+
 }

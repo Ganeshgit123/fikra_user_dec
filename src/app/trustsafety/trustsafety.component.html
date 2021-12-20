@@ -53,33 +53,19 @@
                     <li class="nav-item" role="presentation" *ngFor='let data of accordCont;let i = index'>
                         <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}"
                             id="home-tab" data-bs-toggle="tab"  type="button"
-                            role="tab" aria-controls="home" aria-selected="true">{{data.Header}}</button>
+                            role="tab" aria-controls="home" aria-selected="true">
+                            <span *ngIf=" dir == 'ltr'">{{data.Header}}</span>
+                            <span *ngIf=" dir == 'rtl'">{{data.Header_Ar}}</span>
+                        </button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent" *ngFor="let data of accordCont;let i = index">
                     <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" 
                         role="tabpanel" aria-labelledby="home-tab">
-                        <h4>{{data.Description}}</h4>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='data.Description'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='data.Description_Ar'></p>
                     </div>
                 </div>
-
-
-                <!-- <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" *ngFor="let item of ruless.accordian" data-bs-target="'#nav-home'+item._id" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><h4>{{item.Header}}</h4></button>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="'#nav-home'+item._id" role="tabpanel" aria-labelledby="nav-home-tab" style=" border: 1px solid #7070702E; margin-top: 3px; padding: 15px; ">
-                        <div class="row">
-                            <div class="col-md-5" style=" margin: 3% 5% 0% 0%; ">
-                                <h4 *ngFor="let item of ruless.accordian">{{item.Description}}</h4>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div> -->
             </div>
         </div>
     </div>

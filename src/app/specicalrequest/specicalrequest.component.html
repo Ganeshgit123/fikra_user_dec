@@ -34,7 +34,8 @@
                             <textarea class="form-control" formControlName="comments" required></textarea>
                         </div>
                     </div>
-                    <p class="text-center" *ngIf="sreq"><button type="button" (click)="onSubmit()" class="btn btn-primary submit_btn">{{contentLan.SUBMITREQ}}</button></p>
+                    <p class="text-center" *ngIf="sreq">
+                        <button type="button" (click)="onSubmit()" class="btn btn-primary submit_btn">{{contentLan.SUBMITREQ}}</button></p>
                 </form>
 
                 <section>
