@@ -113,7 +113,7 @@
                 </li>
               </ul>
               <h6 *ngIf="obj.likedProjectId._is_All_Nothing_ == true">
-                {{ contentLan.BUSINESSMODEL }}:
+                {{ contentLan.BUSINESSMODEL }} :
                 <span style="color: #ff4264"
                   >{{ contentLan.ALLORNOTHING }}
                   <i
@@ -129,7 +129,7 @@
                 ></span>
               </h6>
               <h6 *ngIf="obj.likedProjectId._is_Keep_It_All_ == true">
-                {{ contentLan.BUSINESSMODEL }}:
+                {{ contentLan.BUSINESSMODEL }} :
                 <span style="color: #ff4264"
                   >{{ contentLan.KEEPALL
                   }}<i
@@ -306,7 +306,7 @@
           </p>
         </div>
       </div>
-      <section class="saved_cont_sec" *ngFor="let datas of created.data">
+      <section class="saved_cont_sec" *ngFor="let datas of created">
         <!-- <div class="row" style="margin-top: 2%;" *ngFor="let datas of created.data">
 
                     <div class="col-md-3">
@@ -568,7 +568,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let datas of created.data">
+                  <tr *ngFor="let datas of created">
                     <!-- <th scope="row">1</th> -->
                     <td *ngIf="datas._is_succeed_ == true">
                       {{ datas.title }}
@@ -604,7 +604,9 @@
                   </tr>
                 </tbody>
               </table>
+              <span *ngIf = "paymenthistCount == false">
               <h4 style="text-align: center">No pledgeds are done yet</h4>
+            </span>
             </div>
           </div>
         </div>

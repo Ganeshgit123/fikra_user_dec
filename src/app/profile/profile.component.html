@@ -132,16 +132,14 @@
               </h4>
             </div>
             <div class="col-md-8">
-              <p *ngIf="webSiteURL" class="profileboxcontent">
+              <p *ngIf="webSiteURL" class="profilewebsitecontent">
                 {{ webSiteURL }}
               </p>
               <a
                 (click)="popup2 = true"
                 *ngIf="webSiteURL"
                 type="submit"
-                class="profileaddbio"
-                >Edit website</a
-              >
+                class="profileaddbio"> {{ contentLan.EDIT }} {{ contentLan.WEBSITE }}</a>
               <a
                 (click)="popup2 = true"
                 type="submit"
@@ -284,7 +282,7 @@
                         value="true"
                         (click)="radioValueCheck(1)"
                       />
-                        <label for="css">Yes</label>&nbsp;
+                      <label for="css">Yes</label>&nbsp;
                       <input
                         type="radio"
                         id="No"
@@ -294,7 +292,7 @@
                         value="false"
                         (click)="radioValueCheck(2)"
                       />
-                        <label for="css">No</label><br />
+                     <label for="css">No</label><br />
                       <!-- <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">yes<br>
                                             <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">no -->
                     </div>

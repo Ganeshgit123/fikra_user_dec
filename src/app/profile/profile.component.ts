@@ -151,7 +151,7 @@ export class ProfileComponent implements OnInit {
       this.bio = res.data.userBio;
       this.webSiteURL=res.data.webSiteURL;
       this.web =res.data.webSiteURL;
-      console.log("hi",this.web);
+      // console.log("hi",this.web);
       this.savebiographyform.patchValue({
         userBio: this.about.userBio,
         _isUserBio_On_: this.about._isUserBio_On_,

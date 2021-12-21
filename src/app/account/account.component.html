@@ -456,7 +456,6 @@
                                 type="text"
                                 [formControlName]="controls.fieldId"
                                 placeholder="{{ controls.placeholder }}"
-                                required
                                 class="form-control"
                               />
                             </div>
@@ -475,7 +474,6 @@
                             [formControlName]="controls.fieldId"
                             readonly
                             placeholder="{{ controls.placeholder }}"
-                            required
                             class="form-control"
                           />
                         </div>
@@ -501,7 +499,6 @@
                                 [formControlName]="controls.fieldId"
                                 placeholder="{{ controls.placeholder }}"
                                 pattern="^[1-9][0-9]*$"
-                                required
                                 oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';"
                                 class="form-control"
                               />
@@ -521,7 +518,6 @@
                               class="form-control"
                               #mySelect
                               [formControlName]="controls.fieldId"
-                              required
                               (change)="oncountrySelected(mySelect.value)"
                             >
                               <option [selected]="true" [disabled]="true">
@@ -561,6 +557,21 @@
                             </select>
                           </div>
                         </div>
+                        <div *ngIf="controls.fieldName == 'Is Business Exist'">
+                          <div class="col-md-12 form_group_left">
+                            <label class="comlabel">{{
+                              controls.fieldName
+                            }}</label>
+                          </div>
+                          <div class="col-md-10 form_group_left">
+                            <select class="form-control" #mybus [formControlName]="controls.fieldId">
+                              <option disabled selected>Select </option>
+                              <option *ngFor="let datas of controls.dropDown"
+                                  [value]="datas.displayName">
+                                  {{datas.displayName}}</option>
+                          </select>
+                          </div>
+                        </div>
                       </div>
                       <div *ngSwitchCase="'hidden'">
                         <div class="col-md-6 colhide" nghide>
@@ -572,19 +583,20 @@
                         </div>
                       </div>
                       <div *ngSwitchCase="'date'">
-                        <div class="col-md-12 form_group_left">
-                          <label class="comlabel">{{
-                            controls.fieldName
-                          }}</label>
-                        </div>
-                        <div class="col-md-10 form_group_left">
-                          <input
+                        <div *ngIf="controls.fieldName == 'DOB'">
+                          <div class="col-md-12 form_group_left">
+                            <label class="comlabel">{{
+                              controls.fieldName
+                            }}</label>
+                          </div>
+                          <div class="col-md-10 form_group_left">
+                            <input
                             type="date"
                             [formControlName]="controls.fieldId"
                             placeholder="{{ controls.placeholder }}"
-                            required
                             class="form-control"
                           />
+                          </div>
                         </div>
                       </div>
 
@@ -597,7 +609,6 @@
                             type="radio"
                             [formControlName]="controls.fieldId"
                             placeholder="{{ controls.placeholder }}"
-                            required
                             class="form-control"
                           />
                         </div>
@@ -616,7 +627,6 @@
                                 uploadImageFile($event, controls.fieldId)
                               "
                               readonly
-                              required
                               placeholder="{{ controls.placeholder }}"
                               class="form-control"
                             />
@@ -633,7 +643,6 @@
                           <textarea
                             [formControlName]="controls.fieldId"
                             placeholder="{{ controls.placeholder }}"
-                            required
                             class="form-control"
                           ></textarea>
                         </div>

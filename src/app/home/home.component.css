@@ -920,7 +920,11 @@ background-size: contain;
 .feat_proj_sec {
     padding: 60px 0 40px 0;
 }
-
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .feat_proj_sec {
+        padding: 60px 0 0 0;
+    }
+}
 .feat_proj_sec h2 {
     color: #8a8a8a;
     font-size: 30px;
@@ -1017,7 +1021,7 @@ background-size: contain;
 }
 
 .feat_carousel {
-    padding: 60px 0;
+    padding: 60px 0 20px 0;
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1499px) {
@@ -1057,6 +1061,7 @@ background-size: contain;
     padding: 30px 15px 15px 15px;
     text-align: left;
     margin-bottom: 10px;
+    direction: ltr;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -1068,12 +1073,18 @@ background-size: contain;
 
 .feat_proj_slider:lang(ar) {
     text-align: right;
+    direction: rtl;
 }
 
 .feat_proj_slider h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #8a8a8a;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 44px;
 }
 
 .feat_proj_slider .feat_cont {
@@ -1084,6 +1095,7 @@ background-size: contain;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    height: 40px;
 }
 
 .feat_proj_slider .by_bame {
@@ -1097,7 +1109,7 @@ background-size: contain;
 /* Long Story Section */
 
 .long_story_sec {
-    padding: 0 0 40px 0;
+    padding: 0;
 }
 
 .long_story_sec img {
@@ -1232,6 +1244,11 @@ background-size: contain;
 .home_stretch_sec {
     padding: 40px 0;
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .home_stretch_sec{
+        padding: 0px 0 40px 0;
+    }
+}
 
 .home_stretch_sec h2 {
     color: #8a8a8a;
@@ -1264,9 +1281,7 @@ background-size: contain;
     background: url("/assets/image/stretch_right.svg") no-repeat;
     background-position: right;
     background-size: contain;
-    /* height: 450px; */
     position: relative;
-    /* top: -60px; */
 }
 
 .stretch_carou:lang(ar) {
@@ -1276,13 +1291,10 @@ background-size: contain;
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .stretch_carou {
-        /* top: 20px; */
         background: none;
-        /* height: 350px; */
-        /* margin-bottom: 150px; */
+        padding: 0;
     }
     .stretch_carou:lang(ar) {
-        /* background-size: contain; */
         background: none;
     }
 }
@@ -1337,7 +1349,7 @@ background-size: contain;
 /* Creator's Corner Section */
 
 .creator_sec {
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1499px) {
@@ -1348,7 +1360,7 @@ background-size: contain;
 
 @media only screen and (min-width: 320px) and (max-width: 1023px) {
     .creator_sec {
-        padding: 40px 0;
+        padding: 40px 0 0 0;
     }
 }
 
@@ -1438,27 +1450,10 @@ background-size: contain;
     height: 350px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
     .creat_independent_sec .left_img {
         height: 250px;
         display: none;
-    }
-}
-
-
-/* @media only screen and (min-width: 320px) and (max-width: 767px) {
-    .creative_row {
-        text-align: center;
-    }
-    .creative_row h5 {
-        margin-top: 5%;
-        margin-left: 0%;
-    }
-} */
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .creat_independent_sec .left_img {
-        height: 300px;
     }
 }
 
@@ -1487,7 +1482,7 @@ background-size: contain;
     text-align: -webkit-left;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
     .creat_independent_sec .people_img {
         position: relative;
         left: 5rem;
@@ -1566,7 +1561,7 @@ background-size: contain;
 /* Client Slider Section */
 
 .client_sec {
-    padding: 80px 0 40px 0;
+    padding: 40px 0 40px 0;
 }
 
 .tag-box {
@@ -2044,7 +2039,7 @@ a {
 
 @media only screen and (min-width: 320px) and (max-width: 1023px) {
     .looking_sec {
-        padding: 20px;
+        padding: 40px;
         margin: 10px 0;
     }
 }

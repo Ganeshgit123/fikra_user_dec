@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,ViewChild } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -19,6 +19,7 @@ import Swal, { SweetAlertOptions } from "sweetalert2";
   styleUrls: ["./account.component.css"],
 })
 export class AccountComponent implements OnInit {
+  @ViewChild("myModalClose") modalClose: any;
   displayMode!: any;
   showSelected: boolean;
   isAddMode: boolean | undefined;
@@ -240,8 +241,12 @@ errors:any
       this.creator = res.data;
       this.authService.userprofile().subscribe((res: any) => {
         this.user = res.data;
+        var dobData = new Date(this.user.dob).toISOString().split("T")[0];
         this.email = res.data.email;
         this.editForm.patchValue(this.user);
+        this.editForm.patchValue({
+          dob: dobData
+        });
         // this.paymentForm.patchValue(this.user);
       });
 
@@ -264,9 +269,6 @@ errors:any
       this.getcity = res.data;
     });
 
-    this.authService.getcities().subscribe((res: any) => {
-      this.getcity = res.data;
-    });
 
     this.authService.userprofile().subscribe((res: any) => {
       this.user = res.data;
@@ -345,6 +347,8 @@ errors:any
     this.authService.creatoredit(this.editForm.value).subscribe((res: any) => {
       if (res.error == false) {
         this.toastr.success("Success ", res.message);
+        this.modalClose.nativeElement.click();
+        this.ngOnInit();
       }
     });
   }

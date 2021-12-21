@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
-    autoplay: true,
+    autoplay: false,
     pullDrag: true,
     dots: false,
     margin: 40,
@@ -139,7 +139,7 @@ export class HomeComponent implements OnInit {
         items: 1,
       },
       400: {
-        items: 1,
+        items: 3,
       },
       740: {
         items: 3,

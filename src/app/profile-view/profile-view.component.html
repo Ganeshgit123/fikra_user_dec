@@ -5,24 +5,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img class="upload-img" *ngIf="profileImage === 'undefined'" src="assets/image/avatar-placeholder.png" />
+                <img class="upload-img" *ngIf="profileImage === 'undefined'"
+                    src="assets/image/avatar-placeholder.png" />
                 <img class="upload-img" *ngIf="profileImage !== 'undefined'" src="{{ profileLogo }}" />
             </div>
             <div class="col-md-7">
                 <h4 class="profilename">{{ user }}</h4>
                 <span class="tag-box">{{
-          role == "investor"
-            ? capitalize(contentLan.BACKER || "Backer")
-            : capitalize(role)
-        }}</span>
+                    role == "investor"
+                    ? capitalize(contentLan.BACKER || "Backer")
+                    : capitalize(role)
+                    }}</span>
 
                 <p class="profiledetail">
                     {{ contentLan.BACKED }}
-                    <span style="font-weight: 600; color: #000000c4">{{ backed }}</span> {{ contentLan.PROJECTS }} · {{ contentLan.JOINED }} {{ dob | date: "MMM d, y" }}
+                    <span style="font-weight: 600; color: #000000c4">{{ backed }}</span> {{ contentLan.PROJECTS }} · {{
+                    contentLan.JOINED }} {{ dob | date: "MMM d, y" }}
                 </p>
-                <button class="profileabout" (click)="onDisplayModeChange(1)" [ngClass]="{ 'btn-primary active': displayMode === 1 }">
-          {{ contentLan.ABOUT || "ABOUT" }}
-        </button>
+                <button class="profileabout" (click)="onDisplayModeChange(1)"
+                    [ngClass]="{ 'btn-primary active': displayMode === 1 }">
+                    {{ contentLan.ABOUT || "ABOUT" }}
+                </button>
                 <section class="profice_down_sec" *ngIf="displayMode === 1">
                     <div class="row profileabtbox">
                         <div class="row">
@@ -45,7 +48,7 @@
                             <h4 class="profileboxbio">{{ contentLan.WEBSITE }}</h4>
                         </div>
                         <div class="col-md-8">
-                            <p class="profileboxcontent">
+                            <p class="profilewebsitecontent">
                                 {{ bio?._isWebURL_On_ ? bio?.webSiteURL : "NA" }}
                             </p>
                         </div>

@@ -20,10 +20,10 @@
     color: black;
     text-decoration: auto;
 }
-
+/* 
 .saved_cont_sec:hover {
     transform: scale(1.1);
-}
+} */
 
 .onHover:hover {
     color: #FF5959;

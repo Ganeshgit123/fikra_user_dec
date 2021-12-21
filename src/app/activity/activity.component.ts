@@ -22,7 +22,7 @@ export class ActivityComponent implements OnInit {
   rewardpopup:any;
   role: any;
   lastdate:any;
-  created:any;
+  created:any = [];
   value:any;
   billdetail:any;
   billAddress:any;
@@ -49,6 +49,7 @@ export class ActivityComponent implements OnInit {
   contentLan: any = {};
   popuppay = false;
   createdcount = 0;
+  paymenthistCount:any;
   featuregoalAmount:any;
   featureamountPleadged:any;
   featurepercentage:any;
@@ -96,9 +97,12 @@ this.onclick(this.value);
     this.authService.activitycreated().subscribe(
     
       (res: any) =>{
-       this.created = res;
+       this.created = res.data;
+      //  console.log("cc",this.created)
         this.createdcount = res.data.length;
         this.created.forEach((elementss: any) => {
+          this.paymenthistCount = elementss._is_succeed_;
+          console.log("ss",this.paymenthistCount)
           this.featuregoalAmount = elementss.basicInfoId.goalAmount;
 
           this.featureamountPleadged = elementss._amount_Pleadged_;
@@ -118,7 +122,7 @@ this.onclick(this.value);
     this.authService.likedproject().subscribe(
     
       (res: any)=>{
-        console.log('like',res);
+        // console.log('like',res);
        this.likedata = res.data;
        this.likedata.forEach((elementss: any) => {
         this.likegoalAmount = elementss.likedProjectId.basicInfoId.goalAmount;
@@ -154,7 +158,7 @@ this.onclick(this.value);
     );
     this.authService.getbill().subscribe(
       (res: any)=>{
-        console.log('getbill',res);
+        // console.log('getbill',res);
        this.getbilldata = res.data;
       }
     );
@@ -271,6 +275,7 @@ this.onclick(this.value);
       .subscribe((res: any) => {
         if (res.error == false) {
           this.getadmin = res.data;
+          console.log("adm",this.getadmin)
           this.getadmincount =res.data.length;
         } else {
         }

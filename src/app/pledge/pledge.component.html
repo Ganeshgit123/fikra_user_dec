@@ -18,8 +18,10 @@
 </section>
 
 <section *ngIf="saveddata == '';else showsaved">
-    <div class="row" style="text-align: center;margin-top: 4%;">
+    <div class="container">
+    <div class="row" style="text-align: center;margin-top: 2%;">
         <h4>No data available</h4>
+    </div>
     </div>
 </section>
 <ng-template #showsaved>

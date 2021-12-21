@@ -148,7 +148,7 @@ export class CreateaccountComponent implements OnInit {
 
     this.authService.country().subscribe((res: any) => {
       this.country = res.data;
-      console.log('country', this.country);
+      // console.log('country', this.country);
     });
 
     //Mandatory key validation
@@ -238,7 +238,7 @@ export class CreateaccountComponent implements OnInit {
               this.router.navigate(['/login']);
               this.toastr.success(res.message);
             } else {
-              this.toastr.warning(res.errMessage.message);
+              this.toastr.warning(res.message);
             }
           });
       } else {
@@ -305,7 +305,7 @@ export class CreateaccountComponent implements OnInit {
 
   onchangeusername() {
     // this.registercreatorform.value.userName =value;
-    console.log('search',this.valuesearch);
+    // console.log('search',this.valuesearch);
         this.registeruserform =this.fb.group({
           queryString:this.valuesearch,
     
