@@ -235,7 +235,7 @@ this.newdate = ("0" + (now.getMonth() + 1)).slice(-2);
 
   newQuantitycountry(): FormGroup {
     return this.fb.group({
-      destination: '',
+      city: '',
       cost: '',
     });
   }
@@ -299,7 +299,7 @@ this.newdate = ("0" + (now.getMonth() + 1)).slice(-2);
   dropDownEditArrayship(objship: any): FormGroup {
     // console.log("droparray",obj)
     return this.fb.group({
-      destination: [objship.destination],
+      city: [objship.city],
       cost: [objship.cost],
     });
   }

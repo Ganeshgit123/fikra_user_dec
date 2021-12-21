@@ -56,6 +56,7 @@ export class ActivityComponent implements OnInit {
   likegoalAmount:any;
   likeamountPleadged:any;
   likepercentage:any;
+  createddata:any;
   addmoneyform = this.fb.group({
     userId: JSON.parse(localStorage.getItem('userId')!),
     userType: JSON.parse(localStorage.getItem('role')!),
@@ -97,8 +98,8 @@ this.onclick(this.value);
     this.authService.activitycreated().subscribe(
     
       (res: any) =>{
-       this.created = res.data;
-      //  console.log("cc",this.created)
+       this.created = res;
+       this.createddata= res.data;
         this.createdcount = res.data.length;
         this.created.forEach((elementss: any) => {
           this.paymenthistCount = elementss._is_succeed_;
@@ -276,7 +277,7 @@ this.onclick(this.value);
         if (res.error == false) {
           this.getadmin = res.data;
           console.log("adm",this.getadmin)
-          this.getadmincount =res.data.length;
+          this.getadmincount =res.data.transactionHistory.length;
         } else {
         }
       });

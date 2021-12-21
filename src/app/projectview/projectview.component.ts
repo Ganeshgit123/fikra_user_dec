@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AngularEditorConfig } from "@kolkov/angular-editor";
@@ -10,14 +10,14 @@ import { ClipboardModule } from "@angular/cdk/clipboard";
 import { ToastrService } from "ngx-toastr";
 import { ViewportScroller } from "@angular/common";
 import { interval } from "rxjs";
-import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: "app-projectview",
   templateUrl: "./projectview.component.html",
   styleUrls: ["./projectview.component.css"],
 })
 export class ProjectviewComponent implements OnInit {
-  @ViewChild('myModalClose') modalClose:any;
+  @ViewChild('myModalClose') modalClose: any;
   ReadMore: boolean = true;
   links: any[] = ["link1.com", "link2.com", "link3.com"];
   //hiding info box
@@ -131,10 +131,10 @@ export class ProjectviewComponent implements OnInit {
   noShipping = false;
   popuppay = false;
   pledgeamt: any;
-  date1:any;
-  date2:any;
-  projectpreviewvideo:any;
-  videourl:any;
+  date1: any;
+  date2: any;
+  projectpreviewvideo: any;
+  videourl: any;
   addmoneyform = this.formBuilder.group({
     userId: JSON.parse(localStorage.getItem("userId")!),
     userType: JSON.parse(localStorage.getItem("role")!),
@@ -180,9 +180,11 @@ export class ProjectviewComponent implements OnInit {
   featureamountPleadged: any;
   featurepercentage: any;
   featuregoalAmount: any;
-  inter:any;
-  luncont:any;
-  userver:any;
+  inter: any;
+  luncont: any;
+  userver: any;
+  getinvestorform: any;
+  data: any = [];
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -191,8 +193,8 @@ export class ProjectviewComponent implements OnInit {
     private _clipboardService: ClipboardService,
     private toastr: ToastrService,
     private _vps: ViewportScroller,
-    private sanitizer: DomSanitizer, 
-  ) {}
+    private sanitizer: DomSanitizer,
+  ) { }
 
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -203,19 +205,19 @@ export class ProjectviewComponent implements OnInit {
   });
 
   async arabicCotent() {
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
   ngOnInit(): void {
     this.myPromise
@@ -374,48 +376,48 @@ export class ProjectviewComponent implements OnInit {
       this.currentdate = new Date();
       this.projectdate = new Date(this.projectpreview.basicInfoId.launchDate);
       var Days = Math.abs(this.projectdate - this.currentdate);
-      if(this.projectdate <= this.currentdate){
+      if (this.projectdate <= this.currentdate) {
         // console.log("bye")
         this.lastdate = "0";
-      }else{ this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));}
-     
-      
+      } else { this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24)); }
+
+
       this.featuregoalAmount = this.projectpreview.basicInfoId.goalAmount;
 
-          this.featureamountPleadged = this.projectpreview._amount_Pleadged_;
-          this.featurepercentage =
-            this.featureamountPleadged / this.featuregoalAmount;
-          var totPercent = this.featurepercentage * 100;
-          // console.log("lastda",totPercent)
-          if (totPercent >= 100) {
-            this.featurelastper = 100;
-          } else {
-            this.featurelastper = totPercent;
-          }
-          this.featurelastpercentage = totPercent;
+      this.featureamountPleadged = this.projectpreview._amount_Pleadged_;
+      this.featurepercentage =
+        this.featureamountPleadged / this.featuregoalAmount;
+      var totPercent = this.featurepercentage * 100;
+      // console.log("lastda",totPercent)
+      if (totPercent >= 100) {
+        this.featurelastper = 100;
+      } else {
+        this.featurelastper = totPercent;
+      }
+      this.featurelastpercentage = totPercent;
 
-          var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-          this.date1 =this.currentdate;
-         this.date2 = this.projectdate;
-          if(this.lastdate <= 1){
-            var timediff = this.date2 - this.date1;
-            this.inter="hours";
-          }else{
-            var timediff = this.date2 - this.date1;
-            this.inter="days";
-          }
-          switch (this.inter) {
-            case "days"   :  this.inter =  Math.floor(timediff / day)
-            this.luncont=  this.contentLan.DAYSTOGO || "days to go"; 
-            break;
-            case "minutes"   :  this.inter =  Math.floor(timediff / minute); 
-            break;
-            case "hours"  : this.inter =  Math.floor(timediff / hour)
-            this.luncont= this.contentLan.HOURSTOGO || "Hours to go"; 
-            break;
-            default: return undefined;
-          }
-          
+      var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+      this.date1 = this.currentdate;
+      this.date2 = this.projectdate;
+      if (this.lastdate <= 1) {
+        var timediff = this.date2 - this.date1;
+        this.inter = "hours";
+      } else {
+        var timediff = this.date2 - this.date1;
+        this.inter = "days";
+      }
+      switch (this.inter) {
+        case "days": this.inter = Math.floor(timediff / day)
+          this.luncont = this.contentLan.DAYSTOGO || "days to go";
+          break;
+        case "minutes": this.inter = Math.floor(timediff / minute);
+          break;
+        case "hours": this.inter = "Ending Today"
+          this.luncont = "";
+          break;
+        default: return undefined;
+      }
+
     });
     this.authService.creatorfaqget().subscribe((res: any) => {
       this.faqgetquestion = res.data;
@@ -430,13 +432,13 @@ export class ProjectviewComponent implements OnInit {
       this.getupdates = res;
     });
 
-    if(this.userid){
+    if (this.userid) {
       this.authService.getwalletstatus().subscribe((res: any) => {
         this.walletstatus = res.data._history_;
         this.walletamt = res.data.walletAmount;
       });
     }
-    
+
     this.authService.percentage().subscribe((res: any) => {
       this.VAT = res.data.VAT;
       this.processing_Fees = res.data.processing_Fees;
@@ -507,7 +509,7 @@ export class ProjectviewComponent implements OnInit {
   }
 
   toggleVideo() {
-      //this.videoplayer.nativeElement.play();
+    //this.videoplayer.nativeElement.play();
   }
 
   Onfaqans(id: any) {
@@ -567,28 +569,28 @@ export class ProjectviewComponent implements OnInit {
 
   openModal() {
     this.display = "block";
- }
- onCloseHandled() {
+  }
+  onCloseHandled() {
     this.display = "none";
     this.reportprojectform.reset();
- }
- get f() { return this.reportprojectform.controls; }
+  }
+  get f() { return this.reportprojectform.controls; }
 
   Onreportproject() {
     this.submitted = true;
     if (this.reportprojectform.invalid) {
       return;
-  }
-  const data = this.reportprojectform.value;
-  this.authService.reportproject(data).subscribe((res: any) =>{
-  if (res.error == false) {
-    this.modalClose.nativeElement.click();
-    this.toastr.success('Success ', 'Send To Admin Successfully');
-    this.reportprojectform.reset();
-  } else {
-    this.toastr.warning('Enter valid ', res.message);
-  }
-});
+    }
+    const data = this.reportprojectform.value;
+    this.authService.reportproject(data).subscribe((res: any) => {
+      if (res.error == false) {
+        this.modalClose.nativeElement.click();
+        this.toastr.success('Success ', 'Send To Admin Successfully');
+        this.reportprojectform.reset();
+      } else {
+        this.toastr.warning('Enter valid ', res.message);
+      }
+    });
   }
 
   Onremindme() {
@@ -618,7 +620,7 @@ export class ProjectviewComponent implements OnInit {
     );
     this.calallrnotwr = Math.floor(
       (this.pledgeform.value.pledgeAmount * this.allAreNothingCommissionper) /
-        100
+      100
     );
     this.caltotalwr =
       +this.calvatwr +
@@ -657,7 +659,7 @@ export class ProjectviewComponent implements OnInit {
 
       this.noShipping = true;
     } else {
-      this.popup1 = true;
+
       this.verifyshipform = this.formBuilder.group({
         userId: JSON.parse(localStorage.getItem("userId")!),
         userType: JSON.parse(localStorage.getItem("role")!),
@@ -668,10 +670,12 @@ export class ProjectviewComponent implements OnInit {
         .subscribe((res: any) => {
           if (res.verificationStatus == false) {
             this.popup2 = true;
+            this.popup1 = false;
             this.authService.getcities().subscribe((res: any) => {
               this.getcity = res.data;
             });
           } else {
+            this.popup1 = true;
             this.authService.getAllSippingAddress().subscribe((res: any) => {
               this.shippingaddress = res.data;
               (this.pledgeAmount = [reward["amount"]]),
@@ -895,62 +899,106 @@ export class ProjectviewComponent implements OnInit {
     }
   }
 
-  datae = [
-    {
-      _id: "6149aaf55e4ec709dc0dd06b",
-      backedInvestorId: {
-        _is_Pledged_Count_: 18,
-        _id: "61177a843e36fc3558a41f63",
-        country: "Saudi",
-        city: "Riyadh",
-        street: "Allabe",
-        mobileNumber: "504278039",
-        email: "liai.pasupathi@gmail.com",
-      },
-    },
-    {
-      _id: "6149aaf55e4ec709dc0dd06b",
-      backedInvestorId: {
-        _is_Pledged_Count_: 98,
-        _id: "61177a843e36fc3558a41f63",
-        country: "Saudi",
-        city: "Riyadh",
-        street: "Allabe",
-        mobileNumber: "504278039",
-        email: "pasupathi@gmail.com",
-      },
-    },
-  ];
+  // datae = [
+  //   {
+  //     _id: "6149aaf55e4ec709dc0dd06b",
+  //     backedInvestorId: {
+  //       _is_Pledged_Count_: 18,
+  //       _id: "61177a843e36fc3558a41f63",
+  //       country: "Saudi",
+  //       city: "Riyadh",
+  //       street: "Allabe",
+  //       mobileNumber: "504278039",
+  //       email: "liai.pasupathi@gmail.com",
+  //     },
+  //   },
+  //   {
+  //     _id: "6149aaf55e4ec709dc0dd06b",
+  //     backedInvestorId: {
+  //       _is_Pledged_Count_: 98,
+  //       _id: "61177a843e36fc3558a41f63",
+  //       country: "Saudi",
+  //       city: "Riyadh",
+  //       street: "Allabe",
+  //       mobileNumber: "504278039",
+  //       email: "pasupathi@gmail.com",
+  // name : "pasupathi"
+  //     },
+  //   },
+  // ];
+
   // data=[this.datae[1].backedInvestorId.email,
   // this.datae[0].backedInvestorId.street,
   // this.datae[0].backedInvestorId.city,
   // this.datae[0].backedInvestorId.country,
   // this.datae[1].backedInvestorId._is_Pledged_Count_,];
-  data = [
-    {
-      name: "Test 1",
-      age: 13,
-      average: 8.2,
-      approved: true,
-      description: "using 'Content here, content here' ",
-    },
-    {
-      name: "Test 2",
-      age: 11,
-      average: 8.2,
-      approved: true,
-      description: "using 'Content here, content here' ",
-    },
-    {
-      name: "Test 4",
-      age: 10,
-      average: 8.2,
-      approved: true,
-      description: "using 'Content here, content here' ",
-    },
-  ];
+  // data = [
+  //   {
+  //     name: "Test 1",
+  //     age: 13,
+  //     average: 8.2,
+  //     approved: true,
+  //     description: "using 'Content here, content here' ",
+  //   },
+  //   {
+  //     name: "Test 2",
+  //     age: 11,
+  //     average: 8.2,
+  //     approved: true,
+  //     description: "using 'Content here, content here' ",
+  //   },
+  //   {
+  //     name: "Test 4",
+  //     age: 10,
+  //     average: 8.2,
+  //     approved: true,
+  //     description: "using 'Content here, content here' ",
+  //   },
+  // ];
+  getdata() {
+    let obj = {
+      name: "",
+      email: '',
+      country: '',
+      city: '',
+      street: '',
+      mobile: "",
+      //reward: "",
+      role: ""
+    };
 
+    this.authService
+      .getinvestordetail()
+      .subscribe((res: any) => {
+        if (res.error == false) {
+          this.toastr.success(res.message);
+
+          res.data.forEach((element: any) => {
+            if (element.backedInvestorId != null) {
+              obj = {
+                name: element.backedInvestorId.fullName,
+                email: element.backedInvestorId.email,
+                country: element.backedInvestorId.country,
+                city: element.backedInvestorId.city,
+                street: element.backedInvestorId.street,
+                mobile: element.backedInvestorId.mobileNumber,
+                //reward: element.backedInvestorId.rewardName,
+                role: element.backedInvestorId._userRole_
+              }
+            }
+          });
+
+
+          this.data.push(obj)
+          this.filedownload();
+          console.log("down", this.data)
+        } else {
+          this.toastr.warning(res.message);
+        }
+      });
+  }
   filedownload() {
+    // this.getdata()
     var options = {
       fieldSeparator: ",",
       quoteStrings: '"',
@@ -960,13 +1008,20 @@ export class ProjectviewComponent implements OnInit {
       title: "Investor Details",
       useBom: true,
       noDownload: false,
-      headers: ["Name", "Age", "Average", "approved", "description"],
+      headers: ["Name", "Email", "Country", "City", "Street", "Mobile Number", "Reward Name", "Role"],
       useHeader: false,
       nullToEmptyString: true,
     };
 
+
     new AngularCsv(this.data, "report", options);
   }
+  // filedownloads(){
+  //   this.getdata()
+  //   var myInterval = setInterval(() => this.filedownload(), 1800);
+  //   clearInterval(myInterval),2000;
+
+  // }
 
   saveform: any;
   //function
@@ -983,7 +1038,7 @@ export class ProjectviewComponent implements OnInit {
       .addlikeproject(this.saveform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.toastr.success( res.message);
+          this.toastr.success(res.message);
           this.ngOnInit()
         } else {
           this.toastr.warning(res.message);
@@ -1000,10 +1055,10 @@ export class ProjectviewComponent implements OnInit {
       .addsaveproject(this.saveform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.toastr.success( res.message);
+          this.toastr.success(res.message);
           this.ngOnInit()
         } else {
-          this.toastr.warning( res.message);
+          this.toastr.warning(res.message);
         }
       });
   }
@@ -1040,7 +1095,7 @@ export class ProjectviewComponent implements OnInit {
     this.methodpayed = this.pledgeform.value.paymentMethod;
   }
 
-  editprojectredirect(value:any){
-     this.router.navigate(['/projectinner/'+value+'/projectoverview/basic']);
+  editprojectredirect(value: any) {
+    this.router.navigate(['/projectinner/' + value + '/projectoverview/basic']);
   }
 }

@@ -16,6 +16,7 @@ export class PledgeComponent implements OnInit {
   saveform:any
   pledgeform:any;
   contentLan: any = {};
+  savedatacount:any;
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     private http: HttpClient,
@@ -53,40 +54,10 @@ export class PledgeComponent implements OnInit {
       (res: any)=>{
         console.log('user',res);
        this.saveddata = res.data;
+       this.savedatacount = this.saveddata.length;
       }
     );
-    this.list=[
-      {
-        category:'Product Design',
-        location:'Khobar',
-        title:'Yellostack - Web-App',
-        content:' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy',
-        author:'By Michael Murdock',
-        pledged:'5200 SAR pledged',
-        funded:'170%funded',
-        time:'49hours to go'
-      },
-      {
-        category:'Product Design',
-        location:'Khobar',
-        title:'Yellostack - Web-App',
-        content:' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy',
-        author:'By Michael Murdock',
-        pledged:'5200 SAR pledged',
-        funded:'170%funded',
-        time:'49hours to go'
-      },
-      {
-        category:'Product Design',
-        location:'Khobar',
-        title:'Yellostack - Web-App',
-        content:' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy',
-        author:'By Michael Murdock',
-        pledged:'5200 SAR pledged',
-        funded:'170%funded',
-        time:'49hours to go'
-      }
-        ]
+
   }
 
   addtosave(values:any){

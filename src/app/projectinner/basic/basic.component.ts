@@ -269,7 +269,7 @@ export class BasicComponent implements OnInit {
     console.log('eventimg', event);
     var imgcheck = event.target.files[0].name.split(".").pop();
     if (imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'jpeg' || imgcheck == 'PNG' || imgcheck == 'JPG' || imgcheck == 'JPEG') {
-            if (event.target.files[0].size >= 589824) {
+            if (event.target.files[0].size <= 589824) {
         Swal.fire({
           text: "Please select this  images size below 5MB and in this ratio 1024*576",
           icon: "warning",

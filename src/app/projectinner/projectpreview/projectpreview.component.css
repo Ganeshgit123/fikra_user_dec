@@ -101,19 +101,23 @@
     padding-right: 60px;
     border-right: 5px solid #FF5650;
 }
-.right_hr_line:lang(ar){
+
+.right_hr_line:lang(ar) {
     padding-left: 60px;
     padding-right: auto;
     border-left: 5px solid #FF5650;
     border-right: none;
 }
+
 .left_hr_line {
     padding-left: 40px;
 }
-.left_hr_line:lang(ar){
+
+.left_hr_line:lang(ar) {
     padding-right: 40px;
     padding-left: auto;
 }
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .left_hr_line {
         padding-left: 0px;
@@ -163,7 +167,13 @@
     padding-right: 15px;
 }
 
-.forSpan{
+.videoimg {
+    border-radius: 20px;
+    height: 600px;
+    object-fit: fill;
+}
+
+.forSpan {
     background: green;
     color: white;
     margin: 5px 20px 15px 13px;
@@ -172,11 +182,13 @@
     padding: 0px 10px;
     font-size: 13px;
 }
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .forSpan {
         margin: 5px 0px 35px 13px;
     }
 }
+
 .present_ul {
     list-style: none;
     padding-left: 0;
@@ -194,9 +206,11 @@
 .left_tab_head {
     margin: 0 40px 40px 20px;
 }
-.left_tab_head:lang(ar){
+
+.left_tab_head:lang(ar) {
     margin: 0 20px 40px 40px;
 }
+
 .left_tab_head button {
     background: transparent;
     border: none;
@@ -208,9 +222,11 @@
     color: #8A8A8A;
     padding: 20px 0 10px 0;
 }
-.left_tab_head button:lang(ar){
+
+.left_tab_head button:lang(ar) {
     text-align: right;
 }
+
 .btn-primary:focus {
     box-shadow: #fff !important;
 }
@@ -224,11 +240,13 @@
     margin-right: 20px;
     font-size: 10px;
 }
-.numcountfaq:lang(ar){
+
+.numcountfaq:lang(ar) {
     float: left;
     margin-left: 20px;
     margin-right: auto;
 }
+
 .box {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #9A999E;
@@ -237,10 +255,12 @@
     margin-right: 20px;
     margin-top: 5%;
 }
-.box:lang(ar){
+
+.box:lang(ar) {
     margin-left: 20px;
     margin-right: auto;
 }
+
 .projectauthorname {
     font-size: 20px;
     font-weight: 600;
@@ -257,10 +277,12 @@
     font-size: 10px;
     padding-right: 10px;
 }
-.tab_div ul li:lang(ar){
+
+.tab_div ul li:lang(ar) {
     padding-left: 10px;
     padding-right: auto;
 }
+
 .projectauthordesc {
     font-size: 12px;
     font-weight: 500;
@@ -384,10 +406,12 @@
     margin-top: -20px;
     margin-left: 18px;
 }
-.includepoints:lang(ar){
+
+.includepoints:lang(ar) {
     margin-right: 18px;
     margin-left: auto;
 }
+
 .pledgeestimated {
     font-size: 12px;
     font-weight: 600;

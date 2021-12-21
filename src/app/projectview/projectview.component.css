@@ -143,7 +143,7 @@ img {
 
 .projectbackbtn {
     padding: 5px 20px;
-    background: transparent linear-gradient( 268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
     color: #fff;
     font-size: 16px;
     text-align: center;
@@ -153,7 +153,7 @@ img {
 
 .cityreqbtn {
     padding: 5px 20px;
-    background: transparent linear-gradient( 268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
     color: #fff;
     font-size: 16px;
     text-align: center;
@@ -304,6 +304,38 @@ img {
     background: transparent;
     border: 2px solid #FE953A;
     color: #000;
+}
+
+.projectauthorseemorelive {
+    background: white;
+    box-shadow: 0px 3px 20px #ff595942;
+    color: #ff5658;
+    border: 1px solid #fd595b;
+    width: 100%;
+    cursor: none;
+    padding: 10px 0;
+}
+
+.projectauthorseemorelive:hover {
+    background: transparent;
+    border: 1px solid #fd595b;
+    color: #fd595b;
+}
+
+.projectauthorseemoresuccess {
+    background: white;
+    box-shadow: 0px 3px 20px #ff595942;
+    color: #30db75;
+    border: 1px solid #30db77;
+    width: 100%;
+    cursor: none;
+    padding: 10px 0;
+}
+
+.projectauthorseemoresuccess:hover {
+    background: transparent;
+    border: 1px solid #30db77;
+    color: #30db75;
 }
 
 .projectsupport {
@@ -634,7 +666,7 @@ img {
 
 .carer_head {
     padding: 5px 20px;
-    background: transparent linear-gradient( 268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
     color: #fff;
     font-size: 16px;
     text-align: center;
@@ -674,7 +706,7 @@ img {
     width: 45%;
     position: relative;
     transition: all 5s ease-in-out;
-    height: 700px;
+    height: 250px;
     /* overflow-y: scroll; */
 }
 
@@ -721,6 +753,12 @@ img {
     .popupwr {
         height: auto;
     }
+}
+
+.videoimg {
+    border-radius: 20px;
+    height: 600px;
+    object-fit: fill;
 }
 
 .popup1 .close {
@@ -1301,7 +1339,7 @@ hr {
 }
 
 .submitupdatecomment {
-    background: transparent linear-gradient( 265deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(265deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
     padding: 5px 15px;
     border-radius: 50px;
     color: white;
@@ -1312,12 +1350,13 @@ hr {
 }
 
 .downloadbtn {
-    background: transparent linear-gradient( 260deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(260deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
     border: none;
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 500;
     padding: 10px 45px;
+    border-radius: 20px;
 }
 
 .tag-box1 {
@@ -1352,7 +1391,7 @@ hr {
 }
 
 .wallet_pay {
-    background: transparent linear-gradient( 100deg, #fe953adb 0%, #ff5355e0 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(100deg, #fe953adb 0%, #ff5355e0 100%) 0% 0% no-repeat padding-box;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -1398,7 +1437,8 @@ hr {
     padding-right: 0;
     list-style-type: none;
 }
-.left_scroll{
+
+.left_scroll {
     position: sticky;
     top: 0;
 }

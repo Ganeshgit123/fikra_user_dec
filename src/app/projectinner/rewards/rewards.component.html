@@ -226,7 +226,7 @@ Button dropdown <span class="caret"></span>
                                         <tr *ngFor="let quantity of sipping().controls; let i=index" [formGroupName]="i">
                                             <td style=" width: 40%; ">
                                                 <label> Cities :</label>
-                                                <input type="text" formControlName="destination" class="form-control">
+                                                <input type="text" formControlName="city" class="form-control">
                                             </td>
                                             <td>
                                                 <label> Cost:</label>
@@ -256,7 +256,7 @@ Button dropdown <span class="caret"></span>
                                             <td style=" width: 40%; ">
                                                 <label> Cities :</label>
                                                 <!-- <input type="text" formControlName="destination" class="form-control"> -->
-                                                <select class="form-control" formControlName="destination" required>
+                                                <select class="form-control" formControlName="city" required>
                                                     <option>Select City</option>
                                                     <option *ngFor="let cities of cityList"
                                                         [value]="cities.cityName">
@@ -290,7 +290,7 @@ Button dropdown <span class="caret"></span>
                                         <tr *ngFor="let quantity of sipping().controls; let i=index" [formGroupName]="i">
                                             <td style=" width: 40%; ">
                                                 <label> {{contentLan.COUNTRY}} :</label>
-                                                <input type="text" formControlName="destination" (keyup)="onKeyworld($event)" class="form-control">
+                                                <input type="text" formControlName="city" (keyup)="onKeyworld($event)" class="form-control">
                                             </td>
                                             <td>
                                                 <label> Cost:</label>

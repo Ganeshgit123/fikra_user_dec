@@ -110,16 +110,16 @@ export class AuthService {
   forgetpassword(user: User) {
     return this.http
       .post<any>(`${this.endpoint}/sentActiveLinkforResetPassword`, user)
-      // .subscribe((res: any) => {
-      //   // this.router.navigate(['/login']);
-      //   if (res.error == false) {
-      //     this.toastr.success(res.message);
-      //     // this.router.navigate(['/login']);
-      //   } else {
-      //     this.router.navigate(["/account-recovery" + res.message]);
-      //     this.toastr.warning("Enter valid ", res.message);
-      //   }
-      // });
+    // .subscribe((res: any) => {
+    //   // this.router.navigate(['/login']);
+    //   if (res.error == false) {
+    //     this.toastr.success(res.message);
+    //     // this.router.navigate(['/login']);
+    //   } else {
+    //     this.router.navigate(["/account-recovery" + res.message]);
+    //     this.toastr.warning("Enter valid ", res.message);
+    //   }
+    // });
   }
   mobileotp(user: User) {
     return this.http
@@ -235,17 +235,19 @@ export class AuthService {
         let removeToken = localStorage.removeItem("access_token");
         let removeuser = localStorage.removeItem("userId");
         let removeusertype = localStorage.removeItem("role");
-        let removeisemailverified = localStorage.removeItem(
-          "_is_email_verified_"
-        );
+        let removeisemailverified = localStorage.removeItem("_is_email_verified_");
         let removeisemail = localStorage.removeItem("email");
         let removeisImage = localStorage.removeItem("profileImage");
+        let removeprojectid = localStorage.removeItem("projectid");
+        let removetranskey = localStorage.removeItem("transkey");
         if (removeToken == null) {
           removeuser;
           removeusertype;
           removeisemailverified;
           removeisemail;
           removeisImage;
+          removeprojectid;
+          removetranskey;
           window.location.reload();
           this.router.navigate(["/"]);
         }
@@ -821,7 +823,7 @@ export class AuthService {
     );
   }
 
-  userprofileviewWithout(Value: any,Value1:any): Observable<User[]> {
+  userprofileviewWithout(Value: any, Value1: any): Observable<User[]> {
     let param1 = new HttpParams()
       .set("userId", Value)
       .set("role", Value1);
@@ -848,6 +850,17 @@ export class AuthService {
     });
   }
 
+  getinvestordetail() {
+
+    let param1 = new HttpParams().set(
+      "porjectId",
+      JSON.parse(localStorage.getItem("projectid")!)
+    ).set("userId", JSON.parse(localStorage.getItem("userId")!))
+      .set("userType", JSON.parse(localStorage.getItem("role")!));
+    return this.http.get(`${this.endpoint}/getInvestorForReward`, {
+      params: param1,
+    });
+  }
   projectpreview() {
     let user = JSON.parse(localStorage.getItem("userId")!);
     if (user == null) {
@@ -1001,7 +1014,7 @@ export class AuthService {
         }
       });
   }
-  
+
   sendbankadminrequest(reward: Reward) {
     return this.http
       .post<any>(`${this.endpoint}/sendBankRequestToAdmin`, reward)
@@ -1052,7 +1065,7 @@ export class AuthService {
           this.toastr.success("Success ", res.message);
           // window.location.reload();
         } else {
-          this.toastr.warning( res.message);
+          this.toastr.warning(res.message);
         }
       });
   }
@@ -1303,27 +1316,28 @@ export class AuthService {
   advancesearchapi(value: any): Observable<any> {
     let user = JSON.parse(localStorage.getItem("userId")!);
     if (user == null) {
- 
+
       let param = new HttpParams().set("queryString", value).
-      set("userId", JSON.parse(localStorage.getItem("")!))
-      .set("userType", JSON.parse(localStorage.getItem("")!));
-  
+        set("userId", "")
+        .set("userType", "");
+
       return this.http.get<any>(`${this.getendpoint}/getAdvanceSearch`, {
         params: param,
-     }
-      
-      );}else{
-    let param = new HttpParams().set("queryString", value).
-    set("userId", JSON.parse(localStorage.getItem("userId")!))
-    .set("userType", JSON.parse(localStorage.getItem("role")!));
+      }
 
-    return this.http.get<any>(`${this.getendpoint}/getAdvanceSearch`, {
-      params: param,
-   }
-    
-    );
+      );
+    } else {
+      let param = new HttpParams().set("queryString", value).
+        set("userId", JSON.parse(localStorage.getItem("userId")!))
+        .set("userType", JSON.parse(localStorage.getItem("role")!));
+
+      return this.http.get<any>(`${this.getendpoint}/getAdvanceSearch`, {
+        params: param,
+      }
+
+      );
+    }
   }
-}
 
   recommendededatas(
     value: any,
@@ -1334,33 +1348,34 @@ export class AuthService {
   ): Observable<any> {
     let user = JSON.parse(localStorage.getItem("userId")!);
     if (user == null) {
- 
-     let param = new HttpParams()
-     .set("categories", value)
-     .set("tags", value1)
-     .set("sort", value2)
-     .set("city", value3)
-     .set("subCategory", value4)
-     .set("userId", "")
-     .set("userType", "");
-   return this.http.get<any>(
-     `${this.getendpoint}/investor/getProjectswithFilters`,
-     { params: param }
-   );
-   } else {
-    let param = new HttpParams()
-      .set("categories", value)
-      .set("tags", value1)
-      .set("sort", value2)
-      .set("city", value3)
-      .set("subCategory", value4)
-      .set("userId", JSON.parse(localStorage.getItem("userId")!))
-      .set("userType", JSON.parse(localStorage.getItem("role")!));
-    return this.http.get<any>(
-      `${this.getendpoint}/investor/getProjectswithFilters`,
-      { params: param }
-    );
-  }}
+
+      let param = new HttpParams()
+        .set("categories", value)
+        .set("tags", value1)
+        .set("sort", value2)
+        .set("city", value3)
+        .set("subCategory", value4)
+        .set("userId", "")
+        .set("userType", "");
+      return this.http.get<any>(
+        `${this.getendpoint}/investor/getProjectswithFilters`,
+        { params: param }
+      );
+    } else {
+      let param = new HttpParams()
+        .set("categories", value)
+        .set("tags", value1)
+        .set("sort", value2)
+        .set("city", value3)
+        .set("subCategory", value4)
+        .set("userId", JSON.parse(localStorage.getItem("userId")!))
+        .set("userType", JSON.parse(localStorage.getItem("role")!));
+      return this.http.get<any>(
+        `${this.getendpoint}/investor/getProjectswithFilters`,
+        { params: param }
+      );
+    }
+  }
 
   aboutdetails(): Observable<User[]> {
     let param1 = new HttpParams()
@@ -1590,7 +1605,7 @@ export class AuthService {
   }
   // Continuous Call
   ContinuousCall(): Observable<any> {
-    let param1 = new HttpParams().set("email",JSON.parse(localStorage.getItem("email")!)).set("userType", JSON.parse(localStorage.getItem("role")!)).set("userId", JSON.parse(localStorage.getItem("userId")!))
+    let param1 = new HttpParams().set("email", JSON.parse(localStorage.getItem("email")!)).set("userType", JSON.parse(localStorage.getItem("role")!)).set("userId", JSON.parse(localStorage.getItem("userId")!))
     return this.http.get<any>(`${this.endpoint}/getSesstion`, {
       params: param1,
     }).pipe(catchError(this.logOutWithoutApi));
@@ -1619,25 +1634,25 @@ export class AuthService {
   takingoffhome(): Observable<any> {
     let user = JSON.parse(localStorage.getItem("userId")!);
     if (user == null) {
-     let param1 = new HttpParams().set("userId", "");
-     return this.http.get<any>(
-       `${this.getendpoint}/getTakingoffProjects`,
-       { params: param1 }
-     );
-   } else {
-     let param1 = new HttpParams()
-       .set("userId", JSON.parse(localStorage.getItem("userId")!))
-       .set("startIndex", "0")
-       .set("endIndex", "10");
-     return this.http.get<any>(
-       `${this.getendpoint}/getTakingoffProjects`,
-       { params: param1 }
-     );
-   }
+      let param1 = new HttpParams().set("userId", "");
+      return this.http.get<any>(
+        `${this.getendpoint}/getTakingoffProjects`,
+        { params: param1 }
+      );
+    } else {
+      let param1 = new HttpParams()
+        .set("userId", JSON.parse(localStorage.getItem("userId")!))
+        .set("startIndex", "0")
+        .set("endIndex", "10");
+      return this.http.get<any>(
+        `${this.getendpoint}/getTakingoffProjects`,
+        { params: param1 }
+      );
+    }
   }
   homestretch(): Observable<any> {
     let user = JSON.parse(localStorage.getItem("userId")!);
-     if (user == null) {
+    if (user == null) {
       let param1 = new HttpParams().set("userId", "");
       return this.http.get<any>(
         `${this.getendpoint}/investor/getHomestetch`,
@@ -1653,11 +1668,11 @@ export class AuthService {
         { params: param1 }
       );
     }
-   
+
   }
   featureprojecthome(): Observable<any> {
     let user = JSON.parse(localStorage.getItem("userId")!);
-     if (user == null) {
+    if (user == null) {
       let param1 = new HttpParams().set("userId", "");
       return this.http.get<any>(
         `${this.getendpoint}/getFeatureProjects`,
@@ -1849,18 +1864,20 @@ export class AuthService {
     let removeToken = localStorage.removeItem("access_token");
     let removeuser = localStorage.removeItem("userId");
     let removeusertype = localStorage.removeItem("role");
-    let removeisemailverified = localStorage.removeItem(
-      "_is_email_verified_"
-    );
+    let removeisemailverified = localStorage.removeItem("_is_email_verified_");
     let removeisemail = localStorage.removeItem("email");
+    let removeisImage = localStorage.removeItem("profileImage");
+    let removeprojectid = localStorage.removeItem("projectid");
+    let removetranskey = localStorage.removeItem("transkey");
     if (removeToken == null) {
       removeuser;
       removeusertype;
       removeisemailverified;
       removeisemail;
-  
+      removeprojectid;
+      removetranskey;
       window.location.reload();
-      window.open('/','_self');
+      window.open('/', '_self');
     }
     return throwError(error.error.message);
   }

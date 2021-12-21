@@ -584,20 +584,20 @@
                       </div>
                       <div *ngSwitchCase="'date'">
                         <div *ngIf="controls.fieldName == 'DOB'">
-                          <div class="col-md-12 form_group_left">
-                            <label class="comlabel">{{
-                              controls.fieldName
-                            }}</label>
-                          </div>
-                          <div class="col-md-10 form_group_left">
-                            <input
+                        <div class="col-md-12 form_group_left">
+                          <label class="comlabel">{{
+                            controls.fieldName
+                          }}</label>
+                        </div>
+                        <div class="col-md-10 form_group_left">
+                          <input
                             type="date"
                             [formControlName]="controls.fieldId"
                             placeholder="{{ controls.placeholder }}"
                             class="form-control"
                           />
-                          </div>
                         </div>
+                      </div>
                       </div>
 
                       <div *ngSwitchCase="'radio'">
