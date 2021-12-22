@@ -1,106 +1,83 @@
 <app-right-header></app-right-header>
 
 <div>
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3" style="margin-top: 3%">
-          <button (click)="goBack()" class="projectauthorseemore">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3" style="margin-top: 3%">
+                    <button (click)="goBack()" class="projectauthorseemore">
             {{ contentLan.EXIT }}
           </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <section class="proj_ban1">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="text-align: center">
-          <div
-            class="video"
-            *ngIf="
+    </section>
+    <section class="proj_ban1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="text-align: center">
+                    <div class="video" *ngIf="
               projectpreview?.basicInfoId?.projectVideo == null ||
                 projectpreview?.basicInfoId?.projectVideo == 'undefined';
               else elseVideo
-            "
-          >
-            <img
-              src="{{ projectpreview?.basicInfoId?.projectImage }}"
-              class="img-fluid projectimage"
-            />
-          </div>
-          <ng-template #elseVideo>
-            <video
-              width="100%"
-              src="{{ projectpreview.basicInfoId.projectVideo }}"
-              controls
-              style="border: 1px solid; border-radius: 20px"
-            ></video>
-          </ng-template>
-          <!-- <img src="{{projectpreview?.basicInfoId?.projectImage}}" class="img-fluid projectimage"> -->
+            ">
+                        <img src="{{ projectpreview?.basicInfoId?.projectImage }}" class="img-fluid projectimage" />
+                    </div>
+                    <ng-template #elseVideo>
+                        <video width="100%" src="{{ projectpreview.basicInfoId.projectVideo }}" controls class="videoimg"></video>
+                    </ng-template>
+                    <!-- <img src="{{projectpreview?.basicInfoId?.projectImage}}" class="img-fluid projectimage"> -->
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="proj_ban1">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="right_hr_line">
-            <div style="display: flex">
-              <h3 class="projecttitle">
-                {{ projectpreview?.basicInfoId?.title }}
-              </h3>
-              <span
-                *ngIf="
+    <section class="proj_ban1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="right_hr_line">
+                        <div style="display: flex">
+                            <h3 class="projecttitle">
+                                {{ projectpreview?.basicInfoId?.title }}
+                            </h3>
+                            <span *ngIf="
                   projectpreview._is_Ower_ && projectpreview._is_On_Live_;
                   else either
-                "
-                class="forSpan"
-                >{{ contentLan.ACTIVE || "Active" }}</span
+                " class="forSpan">{{ contentLan.ACTIVE || "Active" }}</span
               >
               <ng-template #either>
                 <span class="forSpan" style="background: red">Inactive</span>
-              </ng-template>
-            </div>
-            <p class="projectcontent">
-              {{ projectpreview?.basicInfoId?.decription }}
-            </p>
-            <div class="row">
-              <div class="col-md-6 col-12">
-                <h3 class="projectamt">
-                  <label class="projectcurrency">SAR</label>
-                  {{ projectpreview?._amount_Pleadged_ }}
-                </h3>
-                <h4 class="projectpleged">
-                  pledged of SAR
-                  {{ projectpreview?.basicInfoId?.goalAmount }} Goal Amount
-                </h4>
-                <span
-                  *ngIf="projectpreview?._is_Keep_It_All_ == true; else nothing"
-                >
+                            </ng-template>
+                        </div>
+                        <p class="projectcontent">
+                            {{ projectpreview?.basicInfoId?.decription }}
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <h3 class="projectamt">
+                                    <label class="projectcurrency">SAR</label> {{ projectpreview?._amount_Pleadged_ }}
+                                </h3>
+                                <h4 class="projectpleged">
+                                    pledged of SAR {{ projectpreview?.basicInfoId?.goalAmount }} Goal Amount
+                                </h4>
+                                <span *ngIf="projectpreview?._is_Keep_It_All_ == true; else nothing">
                   <h4 class="bussmodel">
                     {{ contentLan.BUSINESSMODEL }}:
                     <span class="bussmodespan">Keep it all</span>
-                    <i
-                      class="fas fa-info-circle"
-                      ngbTooltip="{{ buskiades }}"
-                      style="
+                                <i class="fas fa-info-circle" ngbTooltip="{{ buskiades }}" style="
                         color: #5c82d4;
                         margin-left: 1%;
                         font-size: 14px;
                         cursor: pointer;
-                      "
-                      *ngIf="dir == 'ltr'"
-                    ></i>
-                  </h4>
-                </span>
-                <ng-template #nothing>
-                  <h4 class="bussmodel">
-                    {{ contentLan.BUSINESSMODEL }}:
-                    <span class="bussmodespan">All or Nothing</span
+                      " *ngIf="dir == 'ltr'"></i>
+                                </h4>
+                                </span>
+                                <ng-template #nothing>
+                                    <h4 class="bussmodel">
+                                        {{ contentLan.BUSINESSMODEL }}:
+                                        <span class="bussmodespan">All or Nothing</span
                     ><i
                       class="fas fa-info-circle"
                       ngbTooltip="{{ busarndes }}"
@@ -290,75 +267,72 @@
                                     <p class="pledgeboxdesc">{{rewardsshow.description}}</p>
                             </div>
                         </div> -->
-                <ol style="padding-left: 0px; list-style-type: none">
-                  <li>
-                    <div class="box1" *ngFor="let rewardsshow of showreward">
-                      <!-- <p class="pledge" style="color: red">Discount <span style="text-decoration: line-through;"> {{+rewardsshow.amount +
+                        <ol style="padding-left: 0px; list-style-type: none">
+                            <li>
+                                <div class="box1" *ngFor="let rewardsshow of showreward">
+                                    <!-- <p class="pledge" style="color: red">Discount <span style="text-decoration: line-through;"> {{+rewardsshow.amount +
                                                     +originalvalue}} SAR</span></p> -->
-                      <p class="pledge" style="color: green; font-weight: bold">
-                        {{ rewardsshow.amount }} SAR
-                      </p>
-                      <!-- <input type="hidden" formControlName="rewardId" value={{rewardsshow._id}} [(ngModel)]="rewardsshow._id"> -->
-                      <input
-                        type="hidden"
-                        formControlName="pledgeAmount"
-                        value="{{ rewardsshow.amount }}"
-                      />
-                      <h3 class="pledgetitle">{{ rewardsshow.title }}</h3>
-                      <p class="pledgedesc">{{ rewardsshow.description }}</p>
-                      <h5 class="pledgeinclude">Includes :</h5>
-                      <span *ngFor="let rewardsshowitem of rewardsshow.items">
+                                    <p class="pledge" style="color: green; font-weight: bold">
+                                        {{ rewardsshow.amount }} SAR
+                                    </p>
+                                    <!-- <input type="hidden" formControlName="rewardId" value={{rewardsshow._id}} [(ngModel)]="rewardsshow._id"> -->
+                                    <input type="hidden" formControlName="pledgeAmount" value="{{ rewardsshow.amount }}" />
+                                    <h3 class="pledgetitle">{{ rewardsshow.title }}</h3>
+                                    <p class="pledgedesc">{{ rewardsshow.description }}</p>
+                                    <h5 class="pledgeinclude">Includes :</h5>
+                                    <span *ngFor="let rewardsshowitem of rewardsshow.items">
                         <label class="includeround"></label>
 
                         <p class="includepoints">{{ rewardsshowitem.title }}</p>
                       </span>
-                      <p class="pledgeestimated">
-                        {{ contentLan.ESTIMATEDELIVERY }} :
-                        <label class="pledgeestimatedop">{{
+                                    <p class="pledgeestimated">
+                                        {{ contentLan.ESTIMATEDELIVERY }} :
+                                        <label class="pledgeestimatedop">{{
                           rewardsshow.estimateDelivery | date: "MMMM , y"
                         }}</label>
-                      </p>
-                      <p class="pledgeestimated">
-                        {{ contentLan.SHIPSTO }} :
-                        <label class="pledgeestimatedop">{{
+                                    </p>
+                                    <p class="pledgeestimated">
+                                        {{ contentLan.SHIPSTO }} :
+                                        <label class="pledgeestimatedop">{{
                           rewardsshow.sippingType
                         }}</label>
-                      </p>
-                      <span *ngFor="let rewardsship of rewardsshow.sipping">
+                                    </p>
+                                    <span *ngFor="let rewardsship of rewardsshow.sipping">
                         <p class="pledgebackers">
                           {{ rewardsship.destination }}
                           <span style="margin-left: 60%">
                             SA{{ rewardsship.cost }}
                           </span>
-                        </p>
-                      </span>
+                                    </p>
+                                    </span>
 
-                      <!-- <p class="pledgelimited">Limited (124 left of 3000 )</p> -->
+                                    <!-- <p class="pledgelimited">Limited (124 left of 3000 )</p> -->
 
-                      <!-- <p class="pledgeaddons">Add-ons</p> -->
+                                    <!-- <p class="pledgeaddons">Add-ons</p> -->
+                                </div>
+                            </li>
+                        </ol>
+                        <!-- <button class="projectauthorseemore">Continue</button> -->
                     </div>
-                  </li>
-                </ol>
-                <!-- <button class="projectauthorseemore">Continue</button> -->
-              </div>
+                </div>
             </div>
         </div>
 
         <div class="col-md-9 proj_story_risk" *ngIf="displayMode === 1">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 id="story">Story</h2>
-              <p [innerHtml]="projectpreview?.storyTableId?.description"></p>
-            </div>
-            <!-- <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 id="story">Story</h2>
+                    <p [innerHtml]="projectpreview?.storyTableId?.description"></p>
+                </div>
+                <!-- <div class="col-md-6">
                              <ul class="story_risk_tab_head">
                                 <li><a [routerLink]="['../projectpreview']" fragment="risks" class="risklink">Risks</a></li>
                                 <li><a [routerLink]="['../projectpreview']" fragment="story" class="storylink">Story</a></li>
                             </ul> -->
 
-            <!-- </div> -->
-          </div>
-          <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                <!-- </div> -->
+            </div>
+            <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
                     <img src="assets/image/project/story1.svg" alt="" class="img-fluid proj_name">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
                     <img src="assets/image/project/story2.svg" alt="" class="img-fluid proj_name">
@@ -378,10 +352,9 @@
         </div>
 
         <div class="col-md-9" *ngIf="displayMode === 2">
-          <h2>{{ contentLan.FAQ }}</h2>
-          <h3 style="text-align: center">No Records Found</h3>
-          <span style="margin-left: 25%"
-            >This section will be activated once Project goes Live</span
+            <h2>{{ contentLan.FAQ }}</h2>
+            <h3 style="text-align: center">No Records Found</h3>
+            <span style="margin-left: 25%">This section will be activated once Project goes Live</span
           >
         </div>
         <div class="col-md-9" *ngIf="displayMode === 3">

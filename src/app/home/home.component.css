@@ -966,6 +966,7 @@ background-size: contain;
 .feat_proj_slider .icons_sec:lang(ar){
     float: left;
 }
+
 .feat_proj_slider .icons_sec li {
     display: inline-block;
     padding-right: 10px;
@@ -975,6 +976,7 @@ background-size: contain;
     padding-right: auto;
     padding-left: 10px;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     .feat_proj_sec h2:before {
         bottom: 100px;
@@ -1856,6 +1858,7 @@ a {
     box-shadow: -2px 3px 5px 0px #21201e;
     overflow-y: scroll;
 }
+
 @media only screen and (min-width: 320px) and (max-width: 1023px) {
     .popup2 {
         margin: 10px 0px 0px 0px;

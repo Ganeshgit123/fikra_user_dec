@@ -17,14 +17,13 @@
     </div>
 </section>
 
-<section *ngIf="saveddata == '';else showsaved">
-    <div class="container">
-    <div class="row" style="text-align: center;margin-top: 2%;">
+<section *ngIf="savedatacount == '';else showsaved">
+    <div class="row" style="text-align: center;margin-top: 4%;">
         <h4>No data available</h4>
-    </div>
     </div>
 </section>
 <ng-template #showsaved>
+    <div></div>
     <section class="saved_cont_sec" *ngFor="let obj of saveddata">
         <div class="container">
             <div class="row">

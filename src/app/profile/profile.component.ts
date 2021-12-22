@@ -184,10 +184,17 @@ export class ProfileComponent implements OnInit {
     formdata.append("userType", JSON.parse(localStorage.getItem("role")!));
     // console.log('prfimgpro',formdata);
     var imgcheck=this.fileUpload.name.split(".").pop();
-    if(imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'JPG' || imgcheck == 'PNG' || imgcheck == 'JPEG' ||imgcheck == 'jpeg'   ){
-      this.authService.prfimg(formdata);
-      // console.log("ssss",imgcheck);
+    if(imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'JPG' || imgcheck == 'PNG' || imgcheck == 'JPEG' ||imgcheck == 'jpeg' ){
+      if(event.target.files[0].size <= 25600 ){
 
+      this.authService.prfimg(formdata);
+      console.log("ssss",imgcheck);
+      }else{
+        Swal.fire({
+          text: "Please select this size image in 160*160",
+          icon: "warning",
+        });
+      }
     } else {
       // this.toastr.warning("Please select this format images (jpg,png,jpeg)");
       Swal.fire({

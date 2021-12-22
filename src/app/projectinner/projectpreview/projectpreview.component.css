@@ -948,7 +948,8 @@ hr {
     /* font-variant-caps: small-caps; */
     color: #ff6453;
 }
-.left_scroll{
+
+.left_scroll {
     position: sticky;
     top: 0;
 }

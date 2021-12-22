@@ -12,10 +12,10 @@
             <div class="col-md-7">
                 <h4 class="profilename">{{ user }}</h4>
                 <span class="tag-box">{{
-                    role == "investor"
-                    ? capitalize(contentLan.BACKER || "Backer")
-                    : capitalize(role)
-                    }}</span>
+          role == "investor"
+            ? capitalize(contentLan.BACKER || "Backer")
+            : capitalize(role)
+        }}</span>
 
                 <p class="profiledetail">
                     {{ contentLan.BACKED }}
@@ -24,8 +24,8 @@
                 </p>
                 <button class="profileabout" (click)="onDisplayModeChange(1)"
                     [ngClass]="{ 'btn-primary active': displayMode === 1 }">
-                    {{ contentLan.ABOUT || "ABOUT" }}
-                </button>
+          {{ contentLan.ABOUT || "ABOUT" }}
+        </button>
                 <section class="profice_down_sec" *ngIf="displayMode === 1">
                     <div class="row profileabtbox">
                         <div class="row">

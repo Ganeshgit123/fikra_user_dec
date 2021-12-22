@@ -2,9 +2,9 @@
 <app-right-header></app-right-header>
 <!-- Profile -->
 <section class="profice_sec">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-2 col-xl-2 col-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-2 col-xl-2 col-12">
         <img
           class="upload-img"
           *ngIf="profileImage === 'undefined'"
@@ -36,21 +36,21 @@
         >
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
-      </div>
-      <div class="col-md-12 cl-lg-7 col-xl-7 col-12">
-        <h4 class="profilename">{{ user }}</h4>
-        <span class="tag-box">{{
+            </div>
+            <div class="col-md-12 cl-lg-7 col-xl-7 col-12">
+                <h4 class="profilename">{{ user }}</h4>
+                <span class="tag-box">{{
           role == "investor"
             ? capitalize(contentLan.BACKER || "Backer")
             : capitalize(role)
         }}</span>
 
-        <p class="profiledetail" style="margin-top: 6px">
-          {{ contentLan.BACKED }}
+                <p class="profiledetail" style="margin-top: 6px">
+                    {{ contentLan.BACKED }}
           <span style="font-weight: 600; color: #000000c4">{{ backed }}</span>
           {{ contentLan.PROJECTS }} · {{ contentLan.JOINED }}
           {{ dob | date: "MMM d, y" }}
-        </p>
+                </p>
 
         <button
           class="profileabout"
@@ -71,14 +71,14 @@
               role === 'creator' ? ' border-bottom: 2px solid #dedede; ' : ''
             "
           >
-            <div class="col-md-2">
-              <h4 class="profileboxbio">
-                <b>{{ contentLan.BIOGRAPHY }}</b>
-              </h4>
-            </div>
-            <div class="col-md-8">
-              <p *ngIf="bio" class="profileboxcontent">{{ bio }}</p>
-              <a (click)="popup1 = true" type="sumbit" class="profileaddbio">
+                        <div class="col-md-2">
+                            <h4 class="profileboxbio">
+                                <b>{{ contentLan.BIOGRAPHY }}</b>
+                            </h4>
+                        </div>
+                        <div class="col-md-8">
+                            <p *ngIf="bio" class="profileboxcontent">{{ bio }}</p>
+                            <a (click)="popup1 = true" type="sumbit" class="profileaddbio">
                 <span *ngIf="bio === '' || bio == null; else editTemplate"
                   ><img src="assets/image/profile/add-button.png" />{{
                     contentLan.ADD
@@ -104,10 +104,10 @@
               >
                 <div class="form-check form-switch">
                   <span *ngIf="bio === ''; else editcheckTemplate"> </span>
-                  <span class="profileaddbio">
+                                <span class="profileaddbio">
                     {{ contentLan.VISIBILITY }}
                   </span>
-                  <ng-template #editcheckTemplate>
+                                <ng-template #editcheckTemplate>
                     <input
                       class="form-check-input"
                       type="checkbox"
@@ -117,23 +117,24 @@
                       data-placement="top"
                       ngbTooltip="To Visible Biography to Every One"
                     />
-                  </ng-template>
-                </div>
-              </form>
+                                </ng-template>
+                        </div>
+                        </form>
+                    </div>
             </div>
           <div
             class="row prof_next_sec"
             *ngIf="role === 'creator'; else creatorTemplate"
           >
-            <div class="col-md-2">
-              <h4 class="profileboxbio">
-                <b>{{ contentLan.WEBSITE }}</b>
-              </h4>
-            </div>
-            <div class="col-md-8">
+                <div class="col-md-2">
+                    <h4 class="profileboxbio">
+                        <b>{{ contentLan.WEBSITE }}</b>
+                    </h4>
+                </div>
+                <div class="col-md-8">
               <p *ngIf="webSiteURL" class="profilewebsitecontent">
-                {{ webSiteURL }}
-              </p>
+                        {{ webSiteURL }}
+                    </p>
               <a
                 (click)="popup2 = true"
                 *ngIf="webSiteURL"
@@ -191,22 +192,22 @@
           (ngSubmit)="makemecreator()"
           ngNativeValidate
         >
-          <div class="overlay" *ngIf="popup">
-            <div class="popup">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-10"></div>
-                  <div class="col-md-2">
-                    <a class="close" (click)="popup = false">&times;</a>
-                  </div>
+                        <div class="overlay" *ngIf="popup">
+                            <div class="popup">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-10"></div>
+                                        <div class="col-md-2">
+                                            <a class="close" (click)="popup = false">&times;</a>
+                                        </div>
 
-                  <h2>Make Me As Creator</h2>
-                  <div class="col-md-6" style="margin-top: 0%">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label class="cmnlabel">Make Me As Creator</label>
-                      </div>
-                      <div class="col-md-12">
+                                        <h2>Make Me As Creator</h2>
+                                        <div class="col-md-6" style="margin-top: 0%">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="cmnlabel">Make Me As Creator</label>
+                                                </div>
+                                                <div class="col-md-12">
                         <input
                           type="text"
                           placeholder="profileStory"
@@ -214,11 +215,11 @@
                           name="profileStory"
                           formControlName="profileStory"
                         />
-                      </div>
-                      <div class="col-md-6">
-                        <label class="cmnlabel">Business Name</label>
-                      </div>
-                      <div class="col-md-12">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="cmnlabel">Business Name</label>
+                                                </div>
+                                                <div class="col-md-12">
                         <input
                           type="text"
                           placeholder="businessName"
@@ -226,11 +227,11 @@
                           name="businessName"
                           formControlName="businessName"
                         />
-                      </div>
-                      <div class="col-md-6">
-                        <label class="cmnlabel">{{ contentLan.IBAN }}</label>
-                      </div>
-                      <div class="col-md-12">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="cmnlabel">{{ contentLan.IBAN }}</label>
+                                                </div>
+                                                <div class="col-md-12">
                         <input
                           type="number"
                           placeholder="iban"
@@ -238,11 +239,11 @@
                           name="iban"
                           formControlName="iban"
                         />
-                      </div>
-                      <div class="col-md-6">
-                        <label class="cmnlabel">Business Type</label>
-                      </div>
-                      <div class="col-md-12">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="cmnlabel">Business Type</label>
+                                                </div>
+                                                <div class="col-md-12">
                         <input
                           type="text"
                           placeholder="BusinessType"
@@ -250,14 +251,14 @@
                           name="businessType"
                           formControlName="businessType"
                         />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6" style="margin-top: 0%">
-                    <div class="col-md-6">
-                      <label class="cmnlabel">Account Number</label>
-                    </div>
-                    <div class="col-md-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top: 0%">
+                                            <div class="col-md-6">
+                                                <label class="cmnlabel">Account Number</label>
+                                            </div>
+                                            <div class="col-md-12">
                       <input
                         type="number"
                         placeholder="accountNumber"
@@ -265,13 +266,13 @@
                         name="accountNumber"
                         formControlName="accountNumber"
                       />
-                    </div>
+                                            </div>
 
-                    <div class="col-md-6">
-                      <label class="cmnlabel">Is Business Exist</label>
-                    </div>
-                    <div class="col-md-12">
-                      <!-- <input type="radio" placeholder="Business Exist" class="form-control" name="_is_businuss_exist_" formControlName="_is_businuss_exist_"> -->
+                                            <div class="col-md-6">
+                                                <label class="cmnlabel">Is Business Exist</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <!-- <input type="radio" placeholder="Business Exist" class="form-control" name="_is_businuss_exist_" formControlName="_is_businuss_exist_"> -->
                       <input
                         type="radio"
                         id="Yes"
@@ -292,15 +293,15 @@
                         (click)="radioValueCheck(2)"
                       />
                      <label for="css">No</label><br />
-                      <!-- <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">yes<br>
+                                                <!-- <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">yes<br>
                                             <input type="radio" name="_is_businuss_exist_" formControlName="_is_businuss_exist_">no -->
-                    </div>
+                                            </div>
 
-                    <div class="col-md-6">
-                      <label class="cmnlabel">Business Address</label>
-                    </div>
+                                            <div class="col-md-6">
+                                                <label class="cmnlabel">Business Address</label>
+                                            </div>
 
-                    <div class="col-md-12">
+                                            <div class="col-md-12">
                       <input
                         type="text"
                         [disabled]="!showDateInput"
@@ -309,74 +310,74 @@
                         name="businessAddress"
                         formControlName="businessAddress"
                       />
-                    </div>
-                  </div>
-                  <button class="makecreatorreq" type="submit">
+                                            </div>
+                                        </div>
+                                        <button class="makecreatorreq" type="submit">
                     Request to make Creator
                   </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
         <form
           [formGroup]="savebiographyform"
           (ngSubmit)="savebio()"
           ngNativeValidate
         >
-          <div class="overlay" *ngIf="popup1">
-            <div class="popup1">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-10"></div>
-                  <div class="col-md-2">
-                    <a class="close" (click)="popup1 = false">&times;</a>
-                  </div>
+                        <div class="overlay" *ngIf="popup1">
+                            <div class="popup1">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-10"></div>
+                                        <div class="col-md-2">
+                                            <a class="close" (click)="popup1 = false">&times;</a>
+                                        </div>
 
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <label class="cmnlabel">{{
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label class="cmnlabel">{{
                           contentLan.BIOGRAPHY
                         }}</label>
-                      </div>
-                      <div class="col-md-12">
-                        <!-- <input type="text" placeholder="profileStory" class="form-control" name="profileStory" formControlName="profileStory"> -->
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <!-- <input type="text" placeholder="profileStory" class="form-control" name="profileStory" formControlName="profileStory"> -->
                         <textarea
                           class="form-control"
                           style="height: 100px"
                           formControlName="userBio"
                           required
                         ></textarea>
-                      </div>
-                    </div>
-                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                  <button class="addbio" type="submit">
+                                        <button class="addbio" type="submit">
                     {{ contentLan.SAVEBIOGRAPHY }}
                   </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
         <form
           [formGroup]="saveweburlform"
           (ngSubmit)="savewebsite()"
           ngNativeValidate
         >
-          <div class="overlay" *ngIf="popup2">
-            <div class="popup2">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-10"></div>
-                  <div class="col-md-2">
-                    <a class="close" (click)="popup2 = false">&times;</a>
-                  </div>
+                        <div class="overlay" *ngIf="popup2">
+                            <div class="popup2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-10"></div>
+                                        <div class="col-md-2">
+                                            <a class="close" (click)="popup2 = false">&times;</a>
+                                        </div>
 
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-4">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4">
                         <label class="cmnlabel"
                           >{{ contentLan.ADD }} {{ contentLan.WEBSITE }}</label
                         >

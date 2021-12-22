@@ -90,7 +90,6 @@ body:lang(ar) {
     }
 }
 
-
 .banner_sec .owl-theme .owl-nav [class*=owl-]:hover {
     color: #000;
     text-decoration: none
@@ -667,6 +666,19 @@ p {
     float: right;
 }
 
+.projectremindmeactive {
+    border: none;
+    background: transparent linear-gradient( 268deg, #FE953A 0%, #FF5355 100%) 0% 0% no-repeat padding-box;
+    padding: 16px 10px;
+    margin-top: 10px;
+    float: right;
+    color: white;
+}
+
+.projectremindmeactive:lang(ar) {
+    float: left;
+}
+
 .projectremindme:lang(ar) {
     float: left;
 }
@@ -679,12 +691,28 @@ p {
     .projectremindme:lang(ar) {
         float: right;
     }
+    .projectremindmeactive {
+        padding: 15px 10px;
+        float: left;
+    }
+    .projectremindmeactive:lang(ar) {
+        float: right;
+    }
 }
 
 .projectremindme:hover {
     background: transparent linear-gradient(260deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
     border: none;
     color: #fff;
+}
+
+.projectremindmeactive:hover {
+    border: 1px solid #FF594E;
+    background: white;
+    padding: 15px 6px;
+    margin-top: 10px;
+    float: right;
+    color: black;
 }
 
 .projectreport {
@@ -708,7 +736,6 @@ p {
     color: #fff;
 }
 
-
 .skip_btn {
     text-decoration: none;
     color: #FF5F55;
@@ -729,12 +756,15 @@ p {
 .dropdown-item:active {
     background-color: #FF5959;
 }
-.accordion-button:lang(ar){
+
+.accordion-button:lang(ar) {
     text-align: right;
- }
- .owl-carousel.owl-rtl .owl-item{
-     float: left !important;
- }
- .owl-carousel.owl-rtl .owl-item:lang(ar){
-     float: right !important;
- }
+}
+
+.owl-carousel.owl-rtl .owl-item {
+    float: left !important;
+}
+
+.owl-carousel.owl-rtl .owl-item:lang(ar) {
+    float: right !important;
+}
