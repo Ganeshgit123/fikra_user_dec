@@ -33,7 +33,6 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@sweetalert2/ngx-sweetalert2": "^10.0.0",
-    "@w11k/angular-sticky-things": "^1.4.0",
     "angular-csv-ext": "^1.0.5",
     "angular-disable-browser-back-button": "^1.0.2",
     "angular-font-awesome": "^3.1.2",

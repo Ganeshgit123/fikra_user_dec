@@ -4,19 +4,16 @@
     opacity: 1;
     padding: 50px 50px 15px 50px;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
     .box1 {
         padding: 20px 20px 30px 20px;
     }
 }
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
     .box1 {
         padding: 40px 20px 30px 30px;
     }
 }
-
 .projecttitle {
     font-size: 22px;
     font-weight: 500;
@@ -42,7 +39,6 @@
 ::placeholder {
     font-size: 14px;
 }
-
 .title {
     margin-top: 2%;
     background-color: #e7e7e8;
@@ -65,18 +61,17 @@
     opacity: 1;
     padding: 50px 50px 15px 50px;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
     .box2 {
         padding: 20px 20px 30px 20px;
     }
 }
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
     .box2 {
         padding: 40px 20px 30px 30px;
     }
 }
+
 
 .category.form-select {
     margin-top: 2%;
@@ -98,6 +93,7 @@
     color: #6c6c6d;
 }
 
+
 .location {
     margin-top: 7%;
     background-color: #e7e7e8;
@@ -109,7 +105,6 @@
 .image {
     margin-top: 7%;
 }
-
 input[type="file"] {
     height: 38px;
 }
@@ -125,7 +120,6 @@ input[type="file"] {
     margin-top: 3%;
     padding: 0 0 10px 0;
 }
-
 .fundingno {
     background-color: #e7e7e8;
     border: none;
@@ -144,29 +138,25 @@ input[type="file"] {
     width: 15%;
     padding: 8px 20px;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
     .fundsar {
         position: relative;
         /* top: 2.6rem; */
         padding: 10px 15px;
     }
 }
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
     .fundsar {
         position: relative;
         /* top: 2.6rem; */
         padding: 6px 0px 10px 10px;
     }
 }
-
-@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+@media only screen and (min-width: 1024px) and (max-width: 1366px) { 
     .fundsar {
         padding-left: 18px;
     }
 }
-
 .launchdate {
     margin-top: 7%;
     background-color: #e7e7e8;
@@ -178,13 +168,11 @@ input[type="file"] {
 .proj_bottom_cont {
     padding: 40px 0 40px 0;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
     .proj_bottom_cont {
         padding: 20px 0 20px 0;
     }
 }
-
 .nextprojectidea {
     font-size: 16px;
     font-weight: 500;
@@ -199,7 +187,6 @@ input[type="file"] {
 .nextprojectidea:hover {
     background: #353535;
 }
-
 .previousprojectidea {
     font-size: 20px;
     font-weight: 500;
@@ -212,8 +199,7 @@ input[type="file"] {
     float: right;
     transition: transform .2s;
 }
-
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) { 
     .previousprojectidea {
         position: relative;
         right: 50px;
@@ -228,8 +214,8 @@ input[type="file"] {
 }
 
 .previousprojectidea i:lang(ar) {
-    padding-left: 20px;
-    padding-right: auto;
+ padding-left: 20px;
+ padding-right: auto;
 }
 
 .previousprojectidea:hover {

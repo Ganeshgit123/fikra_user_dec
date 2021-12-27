@@ -1,5 +1,5 @@
 <!-- Header -->
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 
 <!-- Project View -->
 <div *ngIf="status == 0; else elseStatement">
@@ -77,12 +77,14 @@
                                     <div class="col-md-10">
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" [style.width.%]="featurelastper" aria-valuenow="featurelastper" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
                                         </div>
-                                    </div>
                                     <div class="col-md-2 col-2">
                                         {{ featurelastpercentage | number: "1.0-0" }}%
                                     </div>
                                 </div>
+
+
                             </div>
                             <div class="col-md-6" *ngIf="
                   projectpreview?._is_Ower_ == false;
@@ -100,14 +102,14 @@
                                             <ng-template #showsave>
                                                 <li>
                                                     <span (click)="addtosave()">
-                                                        <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
+                          <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
                                                         <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                             aria-hidden="true"
-                                                            *ngIf="projectpreview._is_Saved_Project == false"></i>
+                            *ngIf="projectpreview._is_Saved_Project == false"></i>
                                                         <i class="fa fa-bookmark" style="color: #f13b0099"
                                                             aria-hidden="true"
-                                                            *ngIf="projectpreview._is_Saved_Project == true"></i>
-                                                    </span>
+                            *ngIf="projectpreview._is_Saved_Project == true"></i>
+                        </span>
                                                 </li>
                                             </ng-template>
                                             <li>
@@ -115,18 +117,18 @@
                                                     <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                         aria-hidden="true">
                                                     </i>
-                                                </span>
+                      </span>
                                             </li>
                                             <ng-template #showlike>
                                                 <li>
                                                     <span (click)="addtolike()">
                                                         <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                             aria-hidden="true"
-                                                            *ngIf="projectpreview._is_Liked_Project == false"></i>
+                            *ngIf="projectpreview._is_Liked_Project == false"></i>
                                                         <i class="fa fa-thumbs-up" style="color: #f13b0099"
                                                             aria-hidden="true"
-                                                            *ngIf="projectpreview._is_Liked_Project == true"></i>
-                                                    </span>
+                            *ngIf="projectpreview._is_Liked_Project == true"></i>
+                        </span>
                                                 </li>
                                             </ng-template>
                                         </ul>
@@ -146,6 +148,8 @@
                                         </ng-template>
                                     </div>
                                 </div>
+
+
                             </div>
                             <ng-template #elseremindcreator>
                                 <div class="col-md-6 col-12">
@@ -165,6 +169,8 @@
                             <div class="col-md-6 col-6" *ngIf="projectpreview?._is_succeed_ == false">
                                 <p class="project_num">{{ inter }}</p>
                                 <p class="project_pend_name">{{ luncont }}</p>
+
+
                             </div>
                         </div>
                         <div *ngIf="
@@ -220,7 +226,7 @@
                             <!-- <li> <button (cbOnSuccess)="isCopied = true" [cbContent]="'example string'">Copied</button><i class="fas fa-envelope"></i></li> -->
                             <li>
                                 <button (click)="copytoast()" cdkCopyToClipboard="fikra.app{{ currenturl }}" ngbTooltip="Copy Project link" class="waves-effect waves-light btn">
-                                    <>
+                                <>
                                 </button>
                             </li>
 
@@ -329,6 +335,7 @@
         </div>
     </div>
 
+
     <section class="proj_ban1" id="reward">
         <div class="container">
             <div class="row">
@@ -340,16 +347,16 @@
                             </button>
                             <button (click)="onDisplayModeChange(2)" [ngClass]="{ 'btn-primary ': displayMode === 2 }">
                                 {{ contentLan.FAQ }}
-                                <!-- <label class="numcountfaq">10</label> -->
-                            </button>
+                            <!-- <label class="numcountfaq">10</label> -->
+                        </button>
                             <button (click)="onDisplayModeChange(3)" [ngClass]="{ 'btn-primary ': displayMode === 3 }">
                                 {{ contentLan.UPDATE }}
-                                <!-- <label class="numcountfaq">45</label> -->
-                            </button>
+                            <!-- <label class="numcountfaq">45</label> -->
+                        </button>
                             <button (click)="onDisplayModeChange(4)" [ngClass]="{ 'btn-primary ': displayMode === 4 }">
                                 {{ contentLan.COMMENT }}
-                                <!--  <label  class="numcountfaq">195</label> -->
-                            </button>
+                            <!--  <label  class="numcountfaq">195</label> -->
+                        </button>
                             <!-- <button (click)="onDisplayModeChange(5)" [ngClass]="{'btn-primary ': displayMode === 5}">Community <label
                             class="numcountfaq">1</label></button> -->
                             <button (click)="onDisplayModeChange(6)" [ngClass]="{ 'btn-primary ': displayMode === 6 }">
@@ -411,6 +418,7 @@
                                         {{ contentLan.EDIT }}
                                     </button>
                                 </ng-template>
+
                             </div>
                             <h4 class="projectsupport">{{ contentLan.REWARDS }}</h4>
                             <hr class="projectsupporthr" />
@@ -471,10 +479,10 @@
                                             <p class="pledgedesc">{{ rewardsshow.description }}</p>
                                             <h5 class="pledgeinclude">Includes :</h5>
                                             <span *ngFor="let rewardsshowitem of rewardsshow.items">
-                                                <label class="includeround"></label>
+                                            <label class="includeround"></label>
 
                                                 <p class="includepoints">{{ rewardsshowitem.title }}</p>
-                                            </span>
+                                        </span>
                                             <p class="pledgeestimated">
                                                 {{ contentLan.ESTIMATEDELIVERY }} :
                                                 <label class="pledgeestimatedop">{{
@@ -492,7 +500,7 @@
                                                     {{ rewardsship.city | titlecase }}
                                                     <span style="float: right;">
                                                         SAR {{ rewardsship.cost }}
-                                                    </span>
+                                            </span>
                                             </p>
                                             </span>
                                             <p class="rewardpreviewproject" style=" font-size: 14px; ">
@@ -529,6 +537,7 @@
                                     </li>
                                 </form>
                             </ol>
+
                         </div>
                     </div>
                 </div>
@@ -560,6 +569,7 @@
                                     </button>
                                     <ng-container *ngIf="visible">
                                         <div class="bg-white shadow-sm p-3">
+
                                             <p>
                                                 {{ faqdata.answer }}
                                             </p>
@@ -624,6 +634,7 @@
                                 </form>
                             </div>
                         </div>
+
                     </section>
                     <ng-template #elsefaqcreator>
                         <div class="container">
@@ -686,17 +697,22 @@
                                                                         </div>
                                                                     </button>
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </ng-template>
+
                 </div>
 
                 <!-- Update -->
@@ -969,8 +985,10 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
 
     <div class="overlay" *ngIf="popup">
         <div class="popup">
@@ -1000,6 +1018,7 @@
                             <img src="assets/image/check.png" /><a href="">10 created </a>
                             <a href="">· 50 backed</a>
                         </li>
+
                     </ol>
                 </div>
                 <!-- <div class="col-md-6">
@@ -1038,8 +1057,10 @@
                 <div class="col-md-6">
                     <!-- <button class="aboutcontactme">contact me</button> -->
                 </div>
+
             </div>
         </div>
+
     </div>
 
     <div class="overlay1" *ngIf="popup1">
@@ -1099,6 +1120,7 @@
                                         contentLan.CURRAVAILBALANCE
                                         }}</label>
                                 </div>
+
                             </div>
                             <div class="col-md-12" style="margin-top: 10%">
                                 <button class="carer_head" style="width: inherit" (click)="openpay()">
@@ -1186,6 +1208,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <a class="close" (click)="popup1 = false">&times;</a>
             <div class="row">
@@ -1194,8 +1217,10 @@
                     <!-- <button class="aboutcontactme ">contact me</button> -->
                     <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
                 </div>
+
             </div>
         </div>
+
     </div>
     <div class="overlay2" *ngIf="popup2">
         <div class="popup2">
@@ -1213,8 +1238,11 @@
                     </select>
                 </form>
                 <span (click)="mailMe()"><button class="cityreqbtn">{{ contentLan.REQUEST }}</button></span>
+
             </div>
+
         </div>
+
     </div>
     <div class="overlaywr" *ngIf="popupwr">
         <div class="popupwr">
@@ -1241,6 +1269,7 @@
                                         contentLan.CURRAVAILBALANCE
                                         }}</label>
                                 </div>
+
                             </div>
                             <div class="col-md-12" style="margin-top: 10%">
                                 <button class="carer_head" style="width: inherit" (click)="openpay()">
@@ -1326,6 +1355,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <a class="close" (click)="popupwr = false">&times;</a>
             <div class="row">
@@ -1334,8 +1364,10 @@
                     <!-- <button class="aboutcontactme ">contact me</button> -->
                     <!-- <a (click)="Onpledge() ">Select This Reward</a> -->
                 </div>
+
             </div>
         </div>
+
     </div>
     <!-- <div class="projec_recomd_sec ">
         <div class="container ">
@@ -1418,6 +1450,7 @@
             </div>
         </div>
     </div> -->
+
 </div>
 
 <ng-template #elseStatement></ng-template>
@@ -1709,4 +1742,4 @@ world</label>
         </div>
     </section> -->
 <!-- </ng-template> -->
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

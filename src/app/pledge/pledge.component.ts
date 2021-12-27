@@ -11,65 +11,89 @@ import { AuthService } from '../shared/auth.service';
 })
 export class PledgeComponent implements OnInit {
 
-  list:any;
-  saveddata:any;
-  saveform:any
-  pledgeform:any;
+  list: any;
+  pledgeddata: any;
+  saveform: any
+  pledgeform: any;
   contentLan: any = {};
-  savedatacount:any;
+  savedatacount: any;
+  pledgecount = 5;
+  pledgeReduce: any = [];
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     private http: HttpClient,
     private router: Router) {
-     
-     }
-     myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(
-          this.arabicCotent()
-        );
-      }, 2000);
-    });
-  
-    async arabicCotent() {
-        let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
-  
-        const lang = localStorage.getItem("lang") || "en";
-  
-        await sameContent.reduce(async (promise: any, element: any) => {
-          // console.log(element)
-          if (lang == "en") {
-            this.contentLan[element.key] = element.en;
-          } else {
-            this.contentLan[element.key] = element.ar;
-          }
-          await promise;
-        }, Promise.resolve());
-    }
+
+  }
+  myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(
+        this.arabicCotent()
+      );
+    }, 2000);
+  });
+
+  async arabicCotent() {
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+
+    const lang = localStorage.getItem("lang") || "en";
+
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
+  }
 
   ngOnInit(): void {
 
     this.authService.getpledgedetail().subscribe(
-    
-      (res: any)=>{
-        console.log('user',res);
-       this.saveddata = res.data;
-       this.savedatacount = this.saveddata.length;
+
+      (res: any) => {
+        console.log('user', res);
+        this.pledgeddata = res.data;
+        this.pledgeReduce = this.paginate(res.data, this.pledgecount, 1);
+        this.savedatacount = this.pledgeddata.length;
       }
     );
 
   }
+  paginate(array: string | any[], page_size: number, page_number: number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
 
-  addtosave(values:any){
-    console.log('save',values);
+  paginationNext() {
+    this.pledgecount += 5;
+    this.pledgeReduce = this.paginate(
+      this.pledgeddata,
+      this.pledgecount,
+      1
+    );
+    this.ngOnInit();
+  }
+  paginationLess() {
+    this.pledgecount = 5;
+    this.pledgeReduce = this.paginate(
+      this.pledgeddata,
+      this.pledgecount,
+      1
+    );
+    this.ngOnInit();
+  }
+  addtosave(values: any) {
+    console.log('save', values);
     this.saveform = this.fb.group({
       userId: JSON.parse(localStorage.getItem('userId')!),
       userType: JSON.parse(localStorage.getItem('role')!),
-      projectId:[values['_id']],
+      projectId: [values['_id']],
     });
     this.authService.addsaveproject(this.saveform.value);
   }
-  payprocess(value:any){
+  payprocess(value: any) {
     localStorage.setItem(
       'redirection',
       JSON.stringify('pledge')
@@ -94,6 +118,6 @@ export class PledgeComponent implements OnInit {
     this.authService.pledgereward(this.pledgeform.value);
   }
 
-  
+
 
 }

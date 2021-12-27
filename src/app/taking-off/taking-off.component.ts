@@ -22,15 +22,17 @@ export class TakingOffComponent implements OnInit {
   projectdate: any;
   inter: any;
   luncont: any;
-  takinggoalAmount:any;
-  takingamountPleadged:any;
-  takingpercentage:any;
+  takinggoalAmount: any;
+  takingamountPleadged: any;
+  takingpercentage: any;
+  takingCou = 5;
+  takingReduce: any = [];
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
     private toaster: ToastrService,
     public fb: FormBuilder
-  ) {}
+  ) { }
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(this.arabicCotent());
@@ -60,6 +62,7 @@ export class TakingOffComponent implements OnInit {
     this.authService.takingoffhome().subscribe((res: any) => {
       if (res.error === false) {
         this.takingoffhome = res.data;
+        this.takingReduce = this.paginate(res.data, this.takingCou, 1);
         this.takingoffhome.forEach((element: any) => {
           this.takinggoalAmount = element.basicInfoId.goalAmount;
 
@@ -114,6 +117,31 @@ export class TakingOffComponent implements OnInit {
       }
     });
   }
+
+  paginate(array: string | any[], page_size: number, page_number: number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
+
+  paginationNext() {
+    this.takingCou += 5;
+    this.takingReduce = this.paginate(
+      this.takingoffhome,
+      this.takingCou,
+      1
+    );
+    this.ngOnInit();
+  }
+  paginationLess() {
+    this.takingCou = 5;
+    this.takingReduce = this.paginate(
+      this.takingoffhome,
+      this.takingCou,
+      1
+    );
+    this.ngOnInit();
+  }
+
+
   localprojectid() {
     this.route.params.subscribe((params) => {
       this.params = params.id;

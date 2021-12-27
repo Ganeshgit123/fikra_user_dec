@@ -1,0 +1,77 @@
+<!-- <app-right-header></app-right-header> -->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <h2 class="discover">{{ contentLan.DISCOVER }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="activitybox" style="margin-bottom: 0%;">
+                    <!-- <button class="activitybtn" (click)="onDisplayModeChange(3)"
+                        [ngClass]="{'btn-primary active ': displayMode === 3}">Collection </button> -->
+                    <button class="createdbtn" (click)="onDisplayModeChange(1)" [ngClass]="{'btn-primary active': displayMode === 1}"> {{ contentLan.CATEGORY }} </button>
+                </div>
+            </div>
+        </div>
+        <span *ngFor="let data of collection">
+
+            <div class="row" *ngIf="displayMode === 3">
+                <div class="col-md-12">
+                    <div *ngFor="let listData of recommended">
+                        <ul class="cate">
+                            <li>
+                                <button class='listbutton' (click)="listproject('',listData.tagName,'','', '')">
+                                    {{listData.tagName}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayMode === 2">
+                <div class="col-md-12">
+                    <div *ngFor="let listData of data.list">
+                        <ul class="cate">
+                            <li>
+                                <button class='listbutton' (click)="listproject('',listData.tagName,'','', '')">
+                                    {{listData.value}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="displayMode === 1">
+                <div class="col-md-12">
+                    <div *ngFor="let listData of category.list">
+                        <ul class="cate">
+                            <li>
+                                <button (mouseover)='selectCat(listData._id)' class='listbutton' [class]='listData._id == currentCat ? "extended" : ""'>
+                                    {{listData.categorieName}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-12" style="margin-top: 3pc;">
+                    <div *ngFor="let subCat of subCatList">
+                        <ul class="cate">
+                            <li>
+                                <button class='listbutton'
+                                    (click)="listproject('','','','', subCat ? subCat.subCategorieName : null)">
+                                    {{subCat?.subCategorieName}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+
+</section>
+<!-- <app-footer></app-footer> -->

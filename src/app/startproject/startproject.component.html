@@ -1,5 +1,5 @@
 <!-- Header -->
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 <!-- Start a project -->
 
 <section class="start_proj_sec">
@@ -20,7 +20,7 @@
                     <p class="cent" *ngIf=" dir == 'rtl'">
                         <a href="{{data.buttonURL}}">
                             <button class="startaprojectbtn">{{data.buttonNameAr}}</button>
-                        </a>    
+                        </a>
                     </p>
                     <p class="cent">
                         <a [routerLink]="['/startproject']" fragment="createrhandbook">
@@ -30,8 +30,7 @@
                 </div>
                 <ng-template #investorTemplate>
                     <p class="cent" *ngIf='role == "investor";'>
-                        <a [swal]="{ title:'Need to start a project',text: 'Signup as Creator', showCancelButton: true, confirmButtonColor: '#ff5959'}"
-                            (confirm)="redirect()">
+                        <a [swal]="{ title:'Need to start a project',text: 'Signup as Creator', showCancelButton: true, confirmButtonColor: '#ff5959'}" (confirm)="redirect()">
                             <button class="startaprojectbtn" *ngIf=" dir == 'ltr'">{{ data.buttonName }}</button>
                             <button class="startaprojectbtn" *ngIf=" dir == 'rtl'">{{ data.buttonNameAr }}</button>
                         </a>
@@ -119,7 +118,7 @@
             </div>
             <div class="col-md-10" *ngFor='let data of questions'>
                 <section class="proj_cont">
-                <!-- <div class="row bord_bott" *ngFor='let questiondata of data.questionBody'>
+                    <!-- <div class="row bord_bott" *ngFor='let questiondata of data.questionBody'>
                     <div class="col-md-6">
                         <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'ltr'">{{questiondata.question}}</h4>
                         <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'rtl'">{{questiondata.questionAr}}</h4>
@@ -129,27 +128,27 @@
                         <p class="projectanswer1" *ngIf=" dir == 'rtl'">{{questiondata.answerAr}}</p>
                     </div>
                 </div> -->
-                <div *ngFor='let ques of  data.questionBody;let i = index'>
-                    <div class="d-flex align-items-start bord_bott" *ngIf=" ques._is_on_ == true">
-                        <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="'#v-pills-home'+ques._id" type="button" role="tab">
-                            <span *ngIf=" dir == 'ltr'">{{ques.question}}</span>
-                            <span *ngIf=" dir == 'rtl'">{{ques.questionAr}}</span>
-                        </button>
-                        </div>
-                        <div class="tab-content col-md-9" id="v-pills-tabContent" *ngIf=" ques._is_on_ == true">
-                            <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id" role="tabpanel">
-                                <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
-                                <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                    <div *ngFor='let ques of  data.questionBody;let i = index'>
+                        <div class="d-flex align-items-start bord_bott" *ngIf=" ques._is_on_ == true">
+                            <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="'#v-pills-home'+ques._id" type="button" role="tab">
+                                    <span *ngIf=" dir == 'ltr'">{{ques.question}}</span>
+                                    <span *ngIf=" dir == 'rtl'">{{ques.questionAr}}</span>
+                                </button>
+                            </div>
+                            <div class="tab-content col-md-9" id="v-pills-tabContent" *ngIf=" ques._is_on_ == true">
+                                <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id" role="tabpanel">
+                                    <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
+                                    <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 <!-- Video -->
 <div *ngIf="videoSecShow == true">
     <section class="videobox">
@@ -175,6 +174,7 @@
         </div>
     </div>
 </div>
+
 <!-- Question -->
 <section class="why_fikra_sec" *ngIf="whyFikraSecShow == true">
     <div class="container">
@@ -185,16 +185,13 @@
             <div class="accordion accordion-flush" id="accordionFlushExample" *ngIf=" data._is_on_ == true">
                 <div class="accordion-item">
                     <h2 class="accordion-header" [id]="'flush-headingOne'+data._id">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            [attr.data-bs-target]="'#flush-collapseOne'+data._id" aria-expanded="false"
-                            [attr.aria-controls]="'flush-collapseOne'+data._id">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseOne'+data._id" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne'+data._id">
                             <label class="circle1"></label>
                             <span *ngIf=" dir == 'ltr'">{{data.why_Head}}</span>
                             <span *ngIf=" dir == 'rtl'">{{data.why_HeadAr}}</span>
                         </button>
                     </h2>
-                    <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse"
-                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <span *ngIf=" dir == 'ltr'">{{data.solution}}</span>
                             <span *ngIf=" dir == 'rtl'">{{data.solutionAr}}</span>
@@ -229,13 +226,13 @@
         <section class="creater_option">
             <div class="row">
                 <div class="col-md-6 col-lg-4 col-xl-4" *ngFor='let data of creatorhandbook'>
-                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12"
-                        *ngIf=" dir == 'ltr'">{{data.handBookHead}}</button>
-                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12"
-                        *ngIf=" dir == 'rtl'">{{data.handBookHeadAr}}</button>
+                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12" *ngIf=" dir == 'ltr'">{{data.handBookHead}}</button>
+                    <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12" *ngIf=" dir == 'rtl'">{{data.handBookHeadAr}}</button>
                 </div>
+                <div class="col-md-4">
+                    <button [routerLink]="'/communciating-backers'" class="btn col-12">{{data.title18}}</button>
+                </div>
+                <!-- </section> -->
             </div>
         </section>
-    </div>
-</section>
-<app-footer></app-footer>
+        <!-- <app-footer></app-footer> -->

@@ -42,8 +42,6 @@ export class AboutusComponent implements OnInit {
        this.middleHead=res.data.middleHead;
        this.mission = res.data.Sections;
        this.middleHeadar=res.data.middleHeadAr;
-       console.log('about',this.middileContend);
-
       //  this.vision = res.data.Sections;
        this._is_Sec_On_=res.data.Sections[0]._is_Sec_On_;
       }

@@ -1,5 +1,5 @@
 <!-- Header -->
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 
 <!-- Activity -->
 <section class="activity_sec" *ngIf="role !== 'investor'; else creatorTemplate">
@@ -8,25 +8,25 @@
             <div class="col-md-10">
                 <div class="activitybox">
                     <button class="activitybtn" (click)="onDisplayModeChange(1)" [ngClass]="{ 'btn-primary ': displayMode === 1 }">
-            {{ contentLan.ACTIVITY }}
-          </button>
+                        {{ contentLan.ACTIVITY }}
+                    </button>
                     <!-- <button class="backedbtn" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary ': displayMode === 2}"> Backed projects </button> -->
                     <button class="createdbtn" (click)="onDisplayModeChange(3)" [ngClass]="{ 'btn-primary ': displayMode === 3 }">
-            {{ contentLan.CREATEDPROJECTS }}
-          </button>
+                        {{ contentLan.CREATEDPROJECTS }}
+                    </button>
                     <button class="createdbtn" (click)="onDisplayModeChange(5)" [ngClass]="{ 'btn-primary ': displayMode === 5 }">
-            {{ contentLan.MYBILLS }}
-          </button>
+                        {{ contentLan.MYBILLS }}
+                    </button>
                     <button class="createdbtn" (click)="onDisplayModeChange(6)" [ngClass]="{ 'btn-primary ': displayMode === 6 }">
-            {{ contentLan.PAYMENTHISTORY }}
-          </button>
+                        {{ contentLan.PAYMENTHISTORY }}
+                    </button>
                     <!-- <a href="/account" class="settinghref"><button class="settingbtn" > Settings </button></a> -->
                     <!-- <a href="/profile" class="profilehref"><button class="profilebtn" >Profile</button></a> -->
                 </div>
             </div>
         </div>
 
-        <!-- Activity description -->
+        <!-- creator Activity description -->
         <div class="row" *ngIf="displayMode === 1">
             <div class="col-md-12">
                 <!-- <h4 class="activityhead">{{ contentLan.ACTIVITY }} </h4> -->
@@ -34,16 +34,13 @@
                 <p class="activitypara" *ngIf="likedata == ''">
                     You haven't Liked anything —
                     <a [routerLink]="['/featureproject']"><span class="activitparahl">
-              check out some of projects we love
-            </span> </a>and help bring them to life today.
+                            check out some of projects we love
+                        </span> </a>and help bring them to life today.
                 </p>
-                <div *ngFor="let obj of likedata">
+                <div *ngFor="let obj of likeReduce">
                     <section class="saved_cont_sec" *ngIf="obj.likedProjectId != null">
                         <div class="row">
-                            <diV class="col-md-3" *ngIf="
-                obj.likedProjectId.basicInfoId.projectImage;
-                else nextImages
-              ">
+                            <diV class="col-md-3" *ngIf=" obj.likedProjectId.basicInfoId.projectImage; else nextImages ">
                                 <img src="{{ obj.likedProjectId.basicInfoId.projectImage }}" class="img-fluid" style="height: 90% !important" />
                             </diV>
 
@@ -58,47 +55,43 @@
                             <div class="col-md-9">
                                 <ul class="cont_sec_pro">
                                     <li style="padding: 0px">
-                                    <i class="fa fa-list-alt" aria-hidden="true"></i>{{ obj.likedProjectId.basicInfoId.categoryName }}
+                                        <i class="fa fa-list-alt" aria-hidden="true"></i>{{ obj.likedProjectId.basicInfoId.categoryName }}
                                     </li>
                                     <li>
                                         <i class="fa fa-map-marker"></i>{{ obj.likedProjectId.basicInfoId.city }}
                                     </li>
                                     <li>
-                                        <span *ngIf="obj.likedProjectId._is_On_Live_; else either" class="forSpan">{{ contentLan.ACTIVE ||
-                      "Active" }}</span>
+                                        <span *ngIf="obj.likedProjectId._is_On_Live_; else either" class="forSpan">{{
+                                            contentLan.ACTIVE ||
+                                            "Active" }}</span>
                                     </li>
                                     <ng-template #either>
                                         <span class="forSpan">{{ contentLan.INACTIVE }}</span>
                                     </ng-template>
                                     <li style="float: right">
                                         <button style="border: none; background: none" (click)="addtolike(obj.likedProjectId._id)">
-                      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                    </button>
+                                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                        </button>
                                     </li>
                                 </ul>
                                 <h6 *ngIf="obj.likedProjectId._is_All_Nothing_ == true">
-                                {{ contentLan.BUSINESSMODEL }} :
+                                    {{ contentLan.BUSINESSMODEL }} :
                                     <span style="color: #ff4264">{{ contentLan.ALLORNOTHING }}
-                    <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}" style="
-                      color: #5c82d4;
-                      margin-left: 1%;
-                      font-size: 14px;
-                      cursor: pointer;
-                    "></i></span>
+                                        <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}"
+                                            style=" color: #5c82d4; margin-left: 1%; font-size: 14px; cursor: pointer; "></i></span>
                                 </h6>
                                 <h6 *ngIf="obj.likedProjectId._is_Keep_It_All_ == true">
-                                {{ contentLan.BUSINESSMODEL }} :
+                                    {{ contentLan.BUSINESSMODEL }} :
                                     <span style="color: #ff4264">{{ contentLan.KEEPALL
-                    }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}" style="
-                      color: #5c82d4;
-                      margin-left: 1%;
-                      font-size: 14px;
-                      cursor: pointer;
-                    "></i></span>
+                                        }}
+                                        <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}"
+                                            style=" color: #5c82d4; margin-left: 1%; font-size: 14px; cursor: pointer; "></i>
+                                    </span>
                                 </h6>
                                 <h3 style="padding: 0%">
-                                    <a class="onHover" [routerLink]="['/projectview', obj.likedProjectId._id]">{{ obj.likedProjectId.title
-                    }}</a>
+                                    <a class="onHover" [routerLink]="['/projectview', obj.likedProjectId._id]">{{
+                                        obj.likedProjectId.title
+                                        }}</a>
                                 </h3>
                                 <p *ngIf="obj.likedProjectId.basicInfoId.decription?.length >= 121">
                                     {{ obj.likedProjectId.basicInfoId.decription.slice(0, 120) }}
@@ -112,7 +105,7 @@
                                     <li>
                                         {{ contentLan.GOAL }}:
                                         <span class="coloured">
-                      {{ obj.likedProjectId.basicInfoId.goalAmount }}</span>
+                                            {{ obj.likedProjectId.basicInfoId.goalAmount }}</span>
                                     </li>
                                     <li>
                                         {{ contentLan.LAUNCH }} : {{ obj.likedProjectId.basicInfoId.launchDate | date: "MMM d, y" }}
@@ -126,10 +119,22 @@
                                 </ul>
                             </div>
                         </div>
+
                     </section>
+
                 </div>
+                <section *ngIf="likedata.length > 5">
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length != likedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">Show
+                            More</button>
+                    </div>
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length == likedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">Show
+                            Less</button>
+                    </div>
+                </section>
                 <h4 class="activityhead">{{ contentLan.DELETEDPROJECTS }}</h4>
-                <section class="saved_cont_sec" *ngFor="let delobj of deletedata">
+                <section class="saved_cont_sec" *ngFor="let delobj of deleteReduce">
                     <div class="row">
                         <diV class="col-md-3" *ngIf="delobj.basicInfoId.projectImage; else nextImage">
                             <img src="{{ delobj.basicInfoId.projectImage }}" class="img-fluid" style="height: 90% !important" />
@@ -167,13 +172,23 @@
                                 <li>
                                     {{ contentLan.GOAL }}:
                                     <span class="coloured">
-                    {{ delobj.basicInfoId.goalAmount || "NA" }}</span>
+                                        {{ delobj.basicInfoId.goalAmount || "NA" }}</span>
                                 </li>
                                 <li>
                                     {{ contentLan.LAUNCH }} : {{ delobj.basicInfoId.launchDate ? (delobj.basicInfoId.launchDate | date: "MMM d, y") : "NA" }}
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                </section>
+                <section *ngIf="deletedata.length > 5">
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='deleteReduce.length != deletedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('deleted')">Show
+                            More</button>
+                    </div>
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='deleteReduce.length == deletedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('deleted')">Show
+                            Less</button>
                     </div>
                 </section>
             </div>
@@ -186,7 +201,7 @@
                 <p class="activitypara">
                     You haven't backed anything —
                     <span class="activitparahl">
-            check out some popular projects we love </span>and help bring them to life today.
+                        check out some popular projects we love </span>and help bring them to life today.
                 </p>
             </div>
         </div>
@@ -204,11 +219,11 @@
                 <div class="col-md-12" style="text-align: center">
                     <p>
                         {{ contentLan.NOTYETCREATEAPROJECT }} -<a [routerLink]="['/startproject']" routerLinkActive="router-link-active" class="activitparahl">
-              Go For It!</a>
+                            Go For It!</a>
                     </p>
                 </div>
             </div>
-            <section class="saved_cont_sec" *ngFor="let datas of created">
+            <section class="saved_cont_sec" *ngFor="let datas of createReduce">
                 <!-- <div class="row" style="margin-top: 2%;" *ngFor="let datas of created.data">
 
                     <div class="col-md-3">
@@ -257,22 +272,23 @@
                             </li>
                             <li>
                                 <span *ngIf="datas._is_On_Live_; else either" class="forSpan">{{
-                  contentLan.ACTIVE || "Active"
-                  }}</span>
+                                    contentLan.ACTIVE || "Active"
+                                    }}</span>
                             </li>
                             <ng-template #either>
-                                <span class="forSpanno" style="background: red; color: #fff; border: 0">{{ contentLan.INACTIVE }}</span>
+                                <span class="forSpanno" style="background: red; color: #fff; border: 0">{{
+                                    contentLan.INACTIVE }}</span>
                             </ng-template>
                             <li>
                                 <span class="forSpan">{{
-                  capitalize(datas.aproval_Status)
-                  }}</span>
+                                    capitalize(datas.aproval_Status)
+                                    }}</span>
                             </li>
                         </ul>
                         <h6 *ngIf="datas._is_All_Nothing_ == true">
                             {{ contentLan.BUSINESSMODEL }}:
                             <span style="color: #ff4264">{{ contentLan.ALLORNOTHING }}
-                <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}" style="
+                                <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}" style="
                     color: #5c82d4;
                     margin-left: 1%;
                     font-size: 14px;
@@ -282,7 +298,7 @@
                         <h6 *ngIf="datas._is_Keep_It_All_ == true">
                             {{ contentLan.BUSINESSMODEL }}:
                             <span style="color: #ff4264">{{ contentLan.KEEPALL
-                }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}" style="
+                                }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}" style="
                     color: #5c82d4;
                     margin-left: 1%;
                     font-size: 14px;
@@ -291,12 +307,13 @@
                         </h6>
                         <h3 style="padding: 0%">
                             <a class="onHover" [routerLink]="['/projectview', datas._id]">{{
-                datas.title
-                }}</a>
+                                datas.title
+                                }}</a>
                         </h3>
                         <p *ngIf="datas.basicInfoId.decription?.length >= 121">
                             {{ datas.basicInfoId.decription.slice(0, 120) }}
-                            <a [routerLink]="['/projectview', datas._id]" style="font-size: 15px; cursor: pointer">Read more</a>
+                            <a [routerLink]="['/projectview', datas._id]" style="font-size: 15px; cursor: pointer">Read
+                                more</a>
                         </p>
                         <p *ngIf="121 >= datas.basicInfoId.decription?.length">
                             {{ datas.basicInfoId.decription }}
@@ -306,7 +323,7 @@
                             <li>
                                 {{ contentLan.GOAL }}:&nbsp;
                                 <span class="coloured">
-                  SAR {{ datas.basicInfoId.goalAmount || "NA" }}</span>
+                                    SAR {{ datas.basicInfoId.goalAmount || "NA" }}</span>
                             </li>
                             <li>
                                 {{ contentLan.LAUNCH }}:&nbsp; {{ datas.basicInfoId.launchDate ? (datas.basicInfoId.launchDate | date: "MMM d, y") : "NA" }}
@@ -321,15 +338,25 @@
                     </div>
                 </div>
             </section>
+            <section *ngIf="createddata.length > 5">
+                <div class="col-xl-12" style="text-align: center;" *ngIf='createReduce.length != createddata.length'>
+                    <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('created')">Show
+                        More</button>
+                </div>
+                <div class="col-xl-12" style="text-align: center;" *ngIf='createReduce.length == createddata.length'>
+                    <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('created')">Show
+                        Less</button>
+                </div>
+            </section>
         </section>
         <section *ngIf="displayMode === 6" class="career_desc_sec">
             <div class="container">
                 <button class="createdbtn" (click)="onDisplayModeinChange(1)" [ngClass]="{ 'btn-primary ': displayModein === 1 }">
-          {{ contentLan.ADMINPAYMENTHISTORY }}
-        </button>
+                    {{ contentLan.ADMINPAYMENTHISTORY }}
+                </button>
                 <button class="createdbtn" (click)="onDisplayModeinChange(2)" [ngClass]="{ 'btn-primary ': displayModein === 2 }">
-          {{ contentLan.PROJECTPAYMENTHISTORY }}
-        </button>
+                    {{ contentLan.PROJECTPAYMENTHISTORY }}
+                </button>
             </div>
             <section *ngIf="displayModein === 1">
                 <div class="container">
@@ -369,35 +396,35 @@
                     <!-- <ng-container *ngIf="visible">
                         <div class="shadow-sm p-3" style="background: whitesmoke; margin-top: -2%">
                             <div class="row" *ngFor="let datas of getadmin.transactionHistory">
-                                <div class="col-md-6">
-                                    <p style="font-size: 18px; font-weight: 500">
-                                        Payed Amount:
+                <div class="col-md-6">
+                  <p style="font-size: 18px; font-weight: 500">
+                    Payed Amount:
                                         <span style="color: #00b500; font-size: 18px; font-weight: 600">{{ datas.payedAmount }}</span>
-                                    </p>
-                                    <p style="font-size: 18px; font-weight: 400">
-                                        {{ contentLan.DESCRIPTION }}:
-                                        <span style="font-size: 18px; font-weight: 500">{{
+                  </p>
+                  <p style="font-size: 18px; font-weight: 400">
+                    {{ contentLan.DESCRIPTION }}:
+                    <span style="font-size: 18px; font-weight: 500">{{
                       datas.description
                     }}</span>
-                                    </p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="font-size: 18px; font-weight: 600">
-                                        Balance Amount:
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p style="font-size: 18px; font-weight: 600">
+                    Balance Amount:
                                         <span style="color: red; font-size: 18px; font-weight: 600">{{ datas.balancePayable }}</span>
-                                    </p>
-                                    <p style="font-size: 18px; font-weight: 400">
-                                        Date Transfer:
-                                        <span style="font-size: 18px; font-weight: 500">{{
+                  </p>
+                  <p style="font-size: 18px; font-weight: 400">
+                    Date Transfer:
+                    <span style="font-size: 18px; font-weight: 500">{{
                       datas.dateTransfer | date: "MMM d, y"
                     }}</span>
-                                    </p>
-                                </div>
-                                <div class="row">
+                  </p>
+                </div>
+                <div class="row">
                                     <a href="{{ datas.document }}" download="Bill">Download Invoice</a>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
     </ng-container> -->
                 </div>
             </section>
@@ -418,7 +445,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let datas of created">
+                                    <tr *ngFor="let datas of createddata">
                                         <!-- <th scope="row">1</th> -->
                                         <td *ngIf="datas._is_succeed_ == true">
                                             {{ datas.title }}
@@ -427,8 +454,8 @@
                                             <div class="row" *ngFor="let rewards of datas.rewardTableId">
                                                 <div class="col-md-12">
                                                     <button class="rewardtitle" (click)="openreward(rewards, datas)">
-                            {{ rewards.title }}
-                          </button>
+                                                        {{ rewards.title }}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </td>
@@ -436,7 +463,8 @@
                                             {{ datas._pledged_count_ }}
                                         </td>
                                         <td *ngIf="datas._is_succeed_ == true">
-                                            <span *ngIf="datas._is_All_Nothing_ == true; else keepitall">All or Nothing</span>
+                                            <span *ngIf="datas._is_All_Nothing_ == true; else keepitall">All or
+                                                Nothing</span>
                                             <ng-template #keepitall> Keep it All </ng-template>
                                         </td>
                                         <td *ngIf="datas._is_succeed_ == true">
@@ -446,8 +474,8 @@
                                 </tbody>
                             </table>
                             <span *ngIf="paymenthistCount == false">
-                            <h4 style="text-align: center">No pledgeds are done yet</h4>
-              </span>
+                                <h4 style="text-align: center">No pledgeds are done yet</h4>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -466,8 +494,9 @@
                             <hr />
                         </div>
                         <h5 style="font-weight: 200; margin: 0% 0% 3% 0%">
-                            Number of Pledges done:<span style="padding: 5px; color: #ff6354; font-weight: 500">{{ pledgecount
-                }}</span>
+                            Number of Pledges done:<span style="padding: 5px; color: #ff6354; font-weight: 500">{{
+                                pledgecount
+                                }}</span>
                         </h5>
                         <div class="row">
                             <div class="col-md-3">
@@ -486,7 +515,7 @@
                         <div class="row">
                             <div class="col-md-12" style="margin-top: 3%" *ngFor="let datas of getreward">
                                 <div class="row">
-                                    <div class="col-md-3" *ngIf="datas._is_Paid_ == false">
+                                    <div class="col-md-3">
                                         <img src="{{ datas.userDetails.investorImage }}" style="
                         margin-top: -7%;
                         width: 50px;
@@ -494,15 +523,15 @@
                         border-radius: 25px;
                       " />
                                     </div>
-                                    <div class="col-md-4" *ngIf="datas._is_Paid_ == false">
+                                    <div class="col-md-4">
                                         <h4 style="font-size: 18px">
                                             {{ datas.userDetails.fullName }}
                                         </h4>
                                     </div>
-                                    <div class="col-md-2" *ngIf="datas._is_Paid_ == false">
+                                    <div class="col-md-2">
                                         <p>{{ datas.pledgeAmount }}</p>
                                     </div>
-                                    <div class="col-md-3" *ngIf="datas._is_Paid_ == false">
+                                    <div class="col-md-3">
                                         <p>{{ datas.createdAt | date: "MMM d, y" }}</p>
                                     </div>
                                 </div>
@@ -512,7 +541,6 @@
                 </div>
             </div>
         </section>
-
         <section *ngIf="displayMode === 4">
             <div class="row">
                 <div class="col-md-8">
@@ -584,25 +612,25 @@
                       color: green;
                       cursor: pointer;
                     ">
-                    {{ billdata.invoiceNo }}
-                  </a>
+                                        {{ billdata.invoiceNo }}
+                                    </a>
                                 </td>
                                 <td>
                                     <span *ngIf="
                       billdata.billStatus === 'pending';
                       else successTemplate
                     ">
-                    <button class="billstatus">
-                      {{ billdata.billStatus }}
-                    </button>
-                    <button class="billpay" (click)="paybill(billdata)">
-                      {{ contentLan.PAY }}
-                    </button>
-                  </span>
+                                        <button class="billstatus">
+                                            {{ billdata.billStatus }}
+                                        </button>
+                                        <button class="billpay" (click)="paybill(billdata)">
+                                            {{ contentLan.PAY }}
+                                        </button>
+                                    </span>
                                     <ng-template #successTemplate>
                                         <button class="billstatusg" disabled>
-                      {{ billdata.billStatus }}
-                    </button>
+                                            {{ billdata.billStatus }}
+                                        </button>
                                     </ng-template>
                                 </td>
                             </tr>
@@ -613,6 +641,7 @@
                     <div class="row" *ngIf="getbilldata == null || getbilldata.length == 0" style="text-align: center">
                         <h5 class="text-center">No Bill Found</h5>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -632,8 +661,9 @@
                     <div class="row">
                         <div class="col-md-6" style="text-align: -webkit-center; border: 1px solid #fb6e0c80">
                             <h5 style="font-size: 24px; font-weight: 400; margin-top: 15%">
-                                Total:<span style="padding: 10px; color: #ff0000c4; font-weight: 500">SAR {{ billdetail.totalAmount
-                  }}</span>
+                                Total:<span style="padding: 10px; color: #ff0000c4; font-weight: 500">SAR {{
+                                    billdetail.totalAmount
+                                    }}</span>
                             </h5>
                         </div>
                         <div class="col-md-1"></div>
@@ -656,8 +686,8 @@
                                                 <div class="col-md-12">
                                                     <h3 style="color: #ff5355">SAR &nbsp;900</h3>
                                                     <label style="color: #9a999e; font-size: 14px">{{
-                            contentLan.CURRAVAILBALANCE
-                            }}</label>
+                                                        contentLan.CURRAVAILBALANCE
+                                                        }}</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="margin-top: 10%">
@@ -690,8 +720,8 @@
                                             </div>
                                             <div class="col-md-12" style="margin-top: 3%">
                                                 <button class="carer_head" style="width: inherit" (click)="paywallet()">
-                          Pay
-                        </button>
+                                                    Pay
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -702,8 +732,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <button class="billpayment" (click)="billpayment()">
-                Process to Payment
-              </button>
+                                Process to Payment
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -843,13 +873,13 @@
                                                         </h4>
                                                         <p class="centers">
                                                             <strong>{{
-                                billdetail.invoiceData | date: "MMM d, y"
-                                }}</strong>
+                                                                billdetail.invoiceData | date: "MMM d, y"
+                                                                }}</strong>
                                                         </p>
                                                         <p class="centers">
                                                             <strong>{{ contentLan.INVOICENO }} :{{
-                                billdetail.invoiceNo
-                                }}</strong>
+                                                                billdetail.invoiceNo
+                                                                }}</strong>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -862,10 +892,11 @@
                                                             <p>
                                                                 Payment terms (due on
                                                                 <span style="font-size: 16px; font-weight: 600">{{
-                                  billdetail.dueDate | date: "MMM d, y"
-                                  }}</span>, due in
-                                                                <span style="font-size: 16px; font-weight: 600">{{ lastdate }}
-                                </span> days)
+                                                                    billdetail.dueDate | date: "MMM d, y"
+                                                                    }}</span>, due in
+                                                                <span style="font-size: 16px; font-weight: 600">{{
+                                                                    lastdate }}
+                                                                </span> days)
                                                             </p>
                                                         </div>
                                                     </div>
@@ -946,14 +977,14 @@
                                                                 Remarks / Payment Instructions:
                                                             </h5>
                                                             <small>
-                                All accounts are to be paid within 7 days from
-                                receipt of invoice. To be paid by cheque or
-                                credit card or direct payment online. If
-                                account is not paid within 7 days the credits
-                                details supplied as confirmation of work
-                                undertaken will be charged the agreed quoted
-                                fee noted above.
-                              </small>
+                                                                All accounts are to be paid within 7 days from
+                                                                receipt of invoice. To be paid by cheque or
+                                                                credit card or direct payment online. If
+                                                                account is not paid within 7 days the credits
+                                                                details supplied as confirmation of work
+                                                                undertaken will be charged the agreed quoted
+                                                                fee noted above.
+                                                            </small>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-4 col-6 offset-xl-4">
@@ -1036,12 +1067,12 @@
                 <div class="col-md-6">
                     <div class="activitybox">
                         <button class="activitybtn" (click)="onDisplayModeChange(1)" [ngClass]="{ 'btn-primary ': displayMode === 1 }">
-              {{ contentLan.ACTIVITY }}
-            </button>
+                            {{ contentLan.ACTIVITY }}
+                        </button>
                         <!-- <button class="backedbtn" (click)="onDisplayModeChange(2)" [ngClass]="{'btn-primary ': displayMode === 2}"> Backed projects </button> -->
-                        <button class="createdbtn" (click)="onDisplayModeChange(3)" [ngClass]="{ 'btn-primary ': displayMode === 3 }">
-              {{ contentLan.MYBILLS }}
-            </button>
+                        <!-- <button class="createdbtn" (click)="onDisplayModeChange(3)" [ngClass]="{ 'btn-primary ': displayMode === 3 }">
+                            {{ contentLan.MYBILLS }}
+                        </button> -->
                         <!-- <a href="/account" class="settinghref"><button class="settingbtn" > Settings </button></a> -->
                         <a href="/profile" class="profilehref"><button class="profilebtn">Profile</button></a>
                     </div>
@@ -1055,11 +1086,11 @@
                     <p class="activitypara" *ngIf="likedata == ''">
                         You haven't Liked anything —
                         <a [routerLink]="['/featureproject']"><span class="activitparahl">
-                check out some of projects we love
-              </span> </a>and help bring them to life today.
+                                check out some of projects we love
+                            </span> </a>and help bring them to life today.
                     </p>
                 </div>
-                <div *ngFor="let obj of likedata">
+                <div *ngFor="let obj of likeReduce">
                     <section class="saved_cont_sec" *ngIf="obj.likedProjectId != null">
                         <div class="row">
                             <diV class="col-md-3" *ngIf="
@@ -1086,22 +1117,24 @@
                                         <i class="fa fa-map-marker"></i>{{ obj.likedProjectId.basicInfoId.city }}
                                     </li>
                                     <li>
-                                        <span *ngIf="obj.likedProjectId._is_On_Live_; else either" class="forSpan">{{ contentLan.ACTIVE
-                      }}</span>
+                                        <span *ngIf="obj.likedProjectId._is_On_Live_; else either" class="forSpan">{{
+                                            contentLan.ACTIVE
+                                            }}</span>
                                     </li>
                                     <ng-template #either>
                                         <span class="forSpanno">{{ contentLan.INACTIVE }}</span>
                                     </ng-template>
                                     <li style="float: right">
                                         <button style="border: none; background: none" (click)="addtolike(obj.likedProjectId._id)">
-                      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                    </button>
+                                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                        </button>
                                     </li>
                                 </ul>
                                 <h6 *ngIf="obj.likedProjectId._is_All_Nothing_ == true">
                                     {{ contentLan.BUSINESSMODEL }}:
                                     <span style="color: #ff4264">{{ contentLan.ALLORNOTHING }}
-                    <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}" style="
+                                        <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}"
+                                            style="
                       color: #5c82d4;
                       margin-left: 1%;
                       font-size: 14px;
@@ -1111,7 +1144,8 @@
                                 <h6 *ngIf="obj.likedProjectId._is_Keep_It_All_ == true">
                                     {{ contentLan.BUSINESSMODEL }}:
                                     <span style="color: #ff4264">{{ contentLan.KEEPALL
-                    }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}" style="
+                                        }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}"
+                                            style="
                       color: #5c82d4;
                       margin-left: 1%;
                       font-size: 14px;
@@ -1119,8 +1153,9 @@
                     "></i></span>
                                 </h6>
                                 <h3 style="padding: 0%">
-                                    <a class="onHover" [routerLink]="['/projectview', obj.likedProjectId._id]">{{ obj.likedProjectId.title
-                    }}</a>
+                                    <a class="onHover" [routerLink]="['/projectview', obj.likedProjectId._id]">{{
+                                        obj.likedProjectId.title
+                                        }}</a>
                                 </h3>
                                 <p *ngIf="obj.likedProjectId.basicInfoId.decription?.length >= 121">
                                     {{ obj.likedProjectId.basicInfoId.decription.slice(0, 120) }}
@@ -1134,8 +1169,8 @@
                                     <li>
                                         {{ contentLan.GOAL }}:
                                         <span class="coloured">
-                      &nbsp;SAR &nbsp;
-                      {{ obj.likedProjectId.basicInfoId.goalAmount }}</span>
+                                            &nbsp;SAR &nbsp;
+                                            {{ obj.likedProjectId.basicInfoId.goalAmount }}</span>
                                     </li>
                                     <li>
                                         {{ contentLan.LAUNCH }} : {{ obj.likedProjectId.basicInfoId.launchDate | date: "MMM d, y" }}
@@ -1150,7 +1185,18 @@
                             </div>
                         </div>
                     </section>
+
                 </div>
+                <section *ngIf="likedata.length > 5">
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length != likedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">Show
+                            More</button>
+                    </div>
+                    <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length == likedata.length'>
+                        <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">Show
+                            Less</button>
+                    </div>
+                </section>
             </div>
 
             <!-- Backed description -->
@@ -1243,4 +1289,4 @@
     </section>
 </ng-template>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

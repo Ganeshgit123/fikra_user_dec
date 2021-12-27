@@ -1,10 +1,11 @@
-
+<app-right-header *ngIf="headerFooter"></app-right-header>
 <router-outlet>
-    <div class="my-overlay" *ngIf="ShowOverlays">
-        <!-- <i class="fa fa-hurricane fa-spin" aria-hidden="true"></i> -->
-        <i class="fa fa-spinner fa-pulse" aria-hidden="true"></i> 
-    </div>
+
+    <!-- <div class="my-overlay" *ngIf="ShowOverlays">
+        <i class="fa fa-hurricane fa-spin" aria-hidden="true"></i>
+        <i class="fa fa-spinner fa-pulse" aria-hidden="true"></i>
+    </div> -->
 </router-outlet>
 
 
-<!-- <app-footer></app-footer> -->
+<app-footer *ngIf="Footer"></app-footer>

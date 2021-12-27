@@ -82,8 +82,8 @@ export class AppComponent implements OnInit {
   translateKey: any;
   content: any;
   ShowOverlays = true
-
-  
+  headerFooter:any;
+  Footer:any;
 
   ngOnInit(): void {
     let transkey = JSON.parse(localStorage.getItem("transkey")!)
@@ -92,6 +92,18 @@ export class AppComponent implements OnInit {
         await localStorage.setItem("transkey", JSON.stringify(res.data));
       });
     }
+    this.router.events
+    .subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.headerFooter = (event.url !== '/' && event.url !== '/login' && event.url !== '/createaccount' && event.url !== '/account-recovery'  )
+      }
+    });
+    this.router.events
+    .subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.Footer = (event.url !== '/login' && event.url !== '/createaccount' && event.url !== '/account-recovery'  )
+      }
+    });
   }
   
   // Shows and hides the loading spinner during RouterEvent changes

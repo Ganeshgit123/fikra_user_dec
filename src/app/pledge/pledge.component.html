@@ -1,4 +1,4 @@
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 <section class="saved_sec">
     <div class="container">
         <div class="row">
@@ -24,7 +24,7 @@
 </section>
 <ng-template #showsaved>
     <div></div>
-    <section class="saved_cont_sec" *ngFor="let obj of saveddata">
+    <section class="saved_cont_sec" *ngFor="let obj of pledgeReduce">
         <div class="container">
             <div class="row">
                 <diV class="col-md-3">
@@ -36,83 +36,88 @@
                         <li><i class="fa fa-map-marker"></i>{{obj.projectId.basicInfoId.city}}</li>
                         <li>
                             <span *ngIf="obj.projectId._is_On_Live_; else either" class="forSpan">{{
-                      contentLan.ACTIVE || "Active"
-                    }}</span>
+                                contentLan.ACTIVE || "Active"
+                                }}</span>
                         </li>
                         <ng-template #either>
-                            <span class="forSpanno" style="background: red; color: #fff; border: 0">{{ contentLan.INACTIVE }}</span
-                    >
-                  </ng-template>
-                  <li>
-                        <li class="pay_bbbtn">
-                            <button class="paybtn" (click)="payprocess(obj)" *ngIf="obj.checkoutVerifyed === false && obj._is_Paid_ === false;">{{contentLan.PAY}}</button>
-                        </li>
+                            <span class="forSpanno" style="background: red; color: #fff; border: 0">{{
+                                contentLan.INACTIVE }}</span>
+                        </ng-template>
+                        <li>
+                            <li class="pay_bbbtn">
+                                <button class="paybtn" (click)="payprocess(obj)" *ngIf="obj.checkoutVerifyed === false && obj._is_Paid_ === false;">{{contentLan.PAY}}</button>
+                            </li>
                     </ul>
                     <h6 *ngIf="obj.projectId._is_All_Nothing_ == true">
                         {{ contentLan.BUSINESSMODEL }}:
                         <span style="color: #ff4264">{{ contentLan.ALLORNOTHING }}
-                    <i
-                      class="fas fa-info-circle"
-                     ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}"
-                      style="
+                            <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}" style="
                         color: #5c82d4;
                         margin-left: 1%;
                         font-size: 14px;
                         cursor: pointer;
-                      "
-                    ></i
-                  ></span>
-                            </h6>
-                            <h6 *ngIf="obj.projectId._is_Keep_It_All_ == true">
-                                {{ contentLan.BUSINESSMODEL }}:
-                                <span style="color: #ff4264">{{ contentLan.KEEPALL
-                    }}<i
-                      class="fas fa-info-circle"
-                      ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}"
-                      style="
+                      "></i></span>
+                    </h6>
+                    <h6 *ngIf="obj.projectId._is_Keep_It_All_ == true">
+                        {{ contentLan.BUSINESSMODEL }}:
+                        <span style="color: #ff4264">{{ contentLan.KEEPALL
+                            }}<i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}" style="
                         color: #5c82d4;
                         margin-left: 1%;
                         font-size: 14px;
                         cursor: pointer;
-                      "
-                    ></i
-                  ></span>
-                            </h6>
-                            <h3 style="padding: 0%;"><a class="onHover" [routerLink]="['/projectview',obj.projectId._id]">{{obj.projectId.title}}</a></h3>
+                      "></i></span>
+                    </h6>
+                    <h3 style="padding: 0%;"><a class="onHover" [routerLink]="['/projectview',obj.projectId._id]">{{obj.projectId.title}}</a></h3>
 
-                            <p *ngIf="obj.projectId.basicInfoId.decription?.length >= 121">{{obj.projectId.basicInfoId.decription.slice(0, 120)}} <a [routerLink]="['/projectview',obj.projectId._id]" class="read_mre_btn">Read more</a></p>
-                            <p *ngIf="121 >= obj.projectId.basicInfoId.decription?.length">{{obj.projectId.basicInfoId.decription}}</p>
+                    <p *ngIf="obj.projectId.basicInfoId.decription?.length >= 121">
+                        {{obj.projectId.basicInfoId.decription.slice(0, 120)}} <a [routerLink]="['/projectview',obj.projectId._id]" class="read_mre_btn">Read more</a></p>
+                    <p *ngIf="121 >= obj.projectId.basicInfoId.decription?.length">
+                        {{obj.projectId.basicInfoId.decription}}</p>
 
-                            <!-- <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6"></div>
                         <div class="col-md-4" style="text-align: end;">
                             <button class="paybtn" (click)="payprocess(obj)" *ngIf="obj.checkoutVerifyed === false;">Pay</button>
                         </div>
                         <div class="col-md-2"></div>
                     </div> -->
-                            <hr class="cont_sec_hr">
-                            <ul class="save_last_sec">
-                                <span *ngIf="obj.checkoutVerifyed === false; else trueTemplate">
-                        <li class="coloured"><span style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}</li>
-                                </span>
-                                <ng-template #trueTemplate>
-                                    <li class="coloured1"><span style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}</li>
-                                </ng-template>
-                                <span *ngIf="obj._is_Paid_ === false; else truepledgeTemplate">
-                        <li class="coloured"><span style="color: black;">{{contentLan.PAID}}: &nbsp;</span>{{contentLan.NOTPAID}}</li>
-                                </span>
-                                <ng-template #truepledgeTemplate>
-                                    <li class="coloured1"><span style="color: black;">{{contentLan.PAID}}:&nbsp;</span>{{contentLan.PAID}}</li>
-                                </ng-template>
-                                <li>{{contentLan.PLEDGE}} {{contentLan.AMOUNT}}: <span style=" font-size: 14px; font-weight: 600; ">SAR&nbsp;{{obj.totalAmount}}</span></li>
-                                <li>{{contentLan.PLEDGE}} {{contentLan.AT}}: {{obj.createdAt | date:'MMM d, y'}}</li>
+                    <hr class="cont_sec_hr">
+                    <ul class="save_last_sec">
+                        <span *ngIf="obj.checkoutVerifyed === false; else trueTemplate">
+                            <li class="coloured"><span
+                                    style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}
+                        </li>
+                        </span>
+                        <ng-template #trueTemplate>
+                            <li class="coloured1"><span style="color: black;">{{contentLan.CHECKOUT}}:&nbsp;</span>{{obj.checkoutVerifyed}}
+                            </li>
+                        </ng-template>
+                        <span *ngIf="obj._is_Paid_ === false; else truepledgeTemplate">
+                            <li class="coloured"><span style="color: black;">{{contentLan.PAID}}:
+                                    &nbsp;</span>{{contentLan.NOTPAID}}</li>
+                        </span>
+                        <ng-template #truepledgeTemplate>
+                            <li class="coloured1"><span style="color: black;">{{contentLan.PAID}}:&nbsp;</span>{{contentLan.PAID}}</li>
+                        </ng-template>
+                        <li>{{contentLan.PLEDGE}} {{contentLan.AMOUNT}}: <span style=" font-size: 14px; font-weight: 600; ">SAR&nbsp;{{obj.totalAmount}}</span></li>
+                        <li>{{contentLan.PLEDGE}} {{contentLan.AT}}: {{obj.createdAt | date:'MMM d, y'}}</li>
 
-                            </ul>
+                    </ul>
                 </div>
             </div>
         </div>
+
+    </section>
+    <section *ngIf="pledgeddata.length >5">
+        <div class="col-xl-12" style="text-align: center;" *ngIf='pledgeReduce.length != pledgeddata.length'>
+            <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext()">Show More</button>
+        </div>
+        <div class="col-xl-12" style="text-align: center;" *ngIf='pledgeReduce.length == pledgeddata.length'>
+            <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess()">Show Less</button>
+        </div>
     </section>
 
-    </ng-template>
+</ng-template>
 
-    <app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

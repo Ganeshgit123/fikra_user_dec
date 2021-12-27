@@ -804,4 +804,8 @@ searchenable(){
   redirectstart() {
     this.router.navigateByUrl("/startproject");
   }
+  closeSearch(){
+    this.opensearch = false;
+    this.popup1 = false;
+  }
 }

@@ -1,13 +1,13 @@
 <!-- Header -->
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 
 <div class="container">
-  <!-- Preview & Next -->
-  <section class="preview_sec">
-    <div class="row">
-      <div class="col-md-12">
-        <a [routerLink]="['../rewards']">
-          <button class="nextbtn">
+    <!-- Preview & Next -->
+    <section class="preview_sec">
+        <div class="row">
+            <div class="col-md-12">
+                <a [routerLink]="['../rewards']">
+                    <button class="nextbtn">
             {{ contentLan.NEXT }}
             <i class="far fa-angle-right" *ngIf="dir == 'ltr'"></i>
             <i class="far fa-angle-left" *ngIf="dir == 'rtl'"></i></button
@@ -57,23 +57,23 @@
         </li>
         <!-- <li> <a [routerLink]="['../people']"><button class="peoplebtn"><span >People</span> <span class="peoplecircle"></span></button></a>
                 </li> -->
-        <li>
+                <li>
           <a [routerLink]="['../payment']"
             ><button class="paymentbtn">
               <span>{{ contentLan.PAYMENT }}</span>
               <span class="paymentcircle"></span></button
           ></a>
-        </li>
-        <li>
+                </li>
+                <li>
           <a [routerLink]="['../promotion']"
             ><button class="promotionbtn">
               <span>{{ contentLan.PROMOTION }}</span>
               <span class="promotioncircle"></span></button
           ></a>
-        </li>
-      </ol>
-      <div class="projectfeaturedselect" dropdown>
-        <p class="text-center">
+                </li>
+                </ol>
+                <div class="projectfeaturedselect" dropdown>
+                    <p class="text-center">
           <button
             id="button-basic"
             dropdownToggle
@@ -83,7 +83,7 @@
           >
             Button dropdown <span class="caret"></span>
           </button>
-        </p>
+                    </p>
         <ul
           id="dropdown-basic"
           *dropdownMenu
@@ -91,73 +91,73 @@
           role="menu"
           aria-labelledby="button-basic"
         >
-          <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['../basic']">
-              <span *ngIf="dir == 'ltr'">{{ tabName }}</span>
-              <span *ngIf="dir == 'rtl'">{{ tabName_Ar }}</span>
-            </a>
-          </li>
-          <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['../rewards']">{{
+                        <li role="menuitem">
+                            <a class="dropdown-item" [routerLink]="['../basic']">
+                                <span *ngIf="dir == 'ltr'">{{ tabName }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ tabName_Ar }}</span>
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" [routerLink]="['../rewards']">{{
               contentLan.REWARDS
             }}</a>
-          </li>
-          <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['../story']">{{
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" [routerLink]="['../story']">{{
               contentLan.STORY
             }}</a>
-          </li>
-          <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['../payment']">{{
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" [routerLink]="['../payment']">{{
               contentLan.PAYMENT
             }}</a>
-          </li>
-          <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['../promotion']">{{
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" [routerLink]="['../promotion']">{{
               contentLan.PROMOTION
             }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-  <!-- Start with the basics -->
-  <section class="start_basic_sec">
-    <div class="row">
-      <div class="col-md-12" *ngIf="dir == 'ltr'">
-        <h3 class="startbasictitle">{{ tabHead }}</h3>
-        <p class="startbasicpara">{{ description }}</p>
-      </div>
-      <div class="col-md-12" *ngIf="dir == 'rtl'">
-        <h3 class="startbasictitle">{{ tabHead_Ar }}</h3>
-        <p class="startbasicpara">{{ description_Ar }}</p>
-      </div>
-    </div>
-  </section>
-  <form [formGroup]="basicForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <div class="box1">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
+        <!-- Start with the basics -->
+        <section class="start_basic_sec">
+            <div class="row">
+                <div class="col-md-12" *ngIf="dir == 'ltr'">
+                    <h3 class="startbasictitle">{{ tabHead }}</h3>
+                    <p class="startbasicpara">{{ description }}</p>
+                </div>
+                <div class="col-md-12" *ngIf="dir == 'rtl'">
+                    <h3 class="startbasictitle">{{ tabHead_Ar }}</h3>
+                    <p class="startbasicpara">{{ description_Ar }}</p>
+                </div>
+            </div>
+        </section>
+        <form [formGroup]="basicForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+            <div class="box1">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'"
               >{{ prjtitle }}<span style="color: red">*</span>
             </span>
             <span *ngIf="dir == 'rtl'"
               >{{ prjtitle_Ar }}<span style="color: red">*</span>
             </span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <label style="font-weight: 500">{{ contentLan.TITLE }}</label>
+                        </h4>
+                        <p class="projecttitlepara">
+                            <span *ngIf="dir == 'ltr'">{{ prjdes }}</span>
+                            <span *ngIf="dir == 'rtl'">{{ prjdes_Ar }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <hr class="projecttitlehr" />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <label style="font-weight: 500">{{ contentLan.TITLE }}</label>
             <input
               type="text"
               class="title form-control"
@@ -166,9 +166,9 @@
               placeholder=""
               required
             />
-          </div>
-          <div class="row">
-            <label style="font-weight: 500">{{ contentLan.SUBTITLE }}</label>
+                        </div>
+                        <div class="row">
+                            <label style="font-weight: 500">{{ contentLan.SUBTITLE }}</label>
             <input
               type="text"
               class="subtitle form-control"
@@ -176,111 +176,111 @@
               formControlName="subTitle"
               required
             />
-          </div>
-        </div>
-      </div>
-    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="box2">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
+            <div class="box2">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'"
               >{{ prjtitle1 }}<span style="color: red">*</span>
             </span>
             <span *ngIf="dir == 'rtl'"
               >{{ prjtitle1_Ar }}<span style="color: red">*</span>
             </span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes1 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes1_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
-            <h5 class="title form-control">{{ categorieName }}</h5>
-            <!-- <select formControlName="categoryName" #user class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
+                        </h4>
+                        <p class="projecttitlepara">
+                            <span *ngIf="dir == 'ltr'">{{ prjdes1 }}</span>
+                            <span *ngIf="dir == 'rtl'">{{ prjdes1_Ar }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <hr class="projecttitlehr" />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
+                            <h5 class="title form-control">{{ categorieName }}</h5>
+                            <!-- <select formControlName="categoryName" #user class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
 <option value="" disabled>Select Category</option>
 <option *ngFor="let user of category" value="{{user.categorieName}}">
 {{user.categorieName}}</option>
 </select> -->
-          </div>
-          <div class="row">
-            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
-            <h5 class="title form-control">{{ subcategorieName }}</h5>
-            <!-- <select formControlName="subCategoryName" class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
+                        </div>
+                        <div class="row">
+                            <label style="font-weight: 500">{{ contentLan.CATEGORY }}</label>
+                            <h5 class="title form-control">{{ subcategorieName }}</h5>
+                            <!-- <select formControlName="subCategoryName" class="form-select" style="margin-top: 5px;margin-bottom: 5px;">
 <option value="" disabled>Select SubCategory</option>
 <option *ngFor="let user of subcategory" value="{{user.subCategorieName}}">
 {{user.subCategorieName}}</option>
 
 </select> -->
-            <!-- <input type="text" class="categoryId form-control" formControlName="subCategoryName"> -->
-          </div>
-        </div>
-      </div>
-    </div>
+                            <!-- <input type="text" class="categoryId form-control" formControlName="subCategoryName"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="box1">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
+            <div class="box1">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'"
               >{{ prjtitle2 }}<span style="color: red">*</span>
             </span>
             <span *ngIf="dir == 'rtl'"
               >{{ prjtitle2_Ar }}<span style="color: red">*</span>
             </span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes2 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes2_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <!-- <input type="text" class="location form-control" placeholder="" disabled formControlName="country"> -->
-            <label style="font-weight: 500">{{ contentLan.COUNTRY }}</label>
-            <h5 class="title form-control">{{ country }}</h5>
-          </div>
-          <div class="row">
-            <!-- <input type="search" class="location form-control" placeholder="" formControlName="city"> -->
-            <label style="font-weight: 500">{{ contentLan.CITY }}</label>
-            <h5 class="title form-control">{{ city }}</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+                        </h4>
+                        <p class="projecttitlepara">
+                            <span *ngIf="dir == 'ltr'">{{ prjdes2 }}</span>
+                            <span *ngIf="dir == 'rtl'">{{ prjdes2_Ar }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <hr class="projecttitlehr" />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <!-- <input type="text" class="location form-control" placeholder="" disabled formControlName="country"> -->
+                            <label style="font-weight: 500">{{ contentLan.COUNTRY }}</label>
+                            <h5 class="title form-control">{{ country }}</h5>
+                        </div>
+                        <div class="row">
+                            <!-- <input type="search" class="location form-control" placeholder="" formControlName="city"> -->
+                            <label style="font-weight: 500">{{ contentLan.CITY }}</label>
+                            <h5 class="title form-control">{{ city }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="box2">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
+            <div class="box2">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'"
               >{{ prjtitle3 }}<span style="color: red">*</span>
             </span>
             <span *ngIf="dir == 'rtl'"
               >{{ prjtitle3_Ar }}<span style="color: red">*</span>
             </span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes3 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes3_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row" *ngIf="projectImage == ''; else showimage">
-            <!-- <span>Choose image</span>  -->
+                        </h4>
+                        <p class="projecttitlepara">
+                            <span *ngIf="dir == 'ltr'">{{ prjdes3 }}</span>
+                            <span *ngIf="dir == 'rtl'">{{ prjdes3_Ar }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <hr class="projecttitlehr" />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row" *ngIf="projectImage == ''; else showimage">
+                            <!-- <span>Choose image</span>  -->
 
             <input
               type="file"
@@ -289,8 +289,8 @@
               (change)="uploadImageFile($event, '')"
               required
             />
-            <img class="upload-img" src="{{ imgfile }}" />
-            <!-- <img class="upload-img" src="{{projectImage}}" /> -->
+                            <img class="upload-img" src="{{ imgfile }}" />
+                            <!-- <img class="upload-img" src="{{projectImage}}" /> -->
             <span style="color: red"
               >Please select this images size below 5MB and in this ratio
               1024*576</span
@@ -310,9 +310,9 @@
                 src="{{ imgfile }}"
                 *ngIf="showimgon == true; else imgpre"
               />
-              <ng-template #imgpre>
-                <img class="upload-img" src="{{ projectImage }}" />
-              </ng-template>
+                            <ng-template #imgpre>
+                                <img class="upload-img" src="{{ projectImage }}" />
+                            </ng-template>
 
               <span style="color: red"
                 >Please select this images size below 5MB and in this ratio
@@ -329,19 +329,19 @@
         <div class="col-md-5">
           <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'">{{ prjtitle4 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjtitle4_Ar }}</span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes4 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes4_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <!-- <span>Choose Video</span>  -->
+                            <span *ngIf="dir == 'rtl'">{{ prjtitle4_Ar }}</span>
+                            </h4>
+                            <p class="projecttitlepara">
+                                <span *ngIf="dir == 'ltr'">{{ prjdes4 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjdes4_Ar }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <hr class="projecttitlehr" />
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <!-- <span>Choose Video</span>  -->
             <input
               type="file"
               class="video form-control"
@@ -350,15 +350,15 @@
               [disabled]="loading"
             />
 
-            <p *ngIf="videoSizeError" style="color: red">
+                                <p *ngIf="videoSizeError" style="color: red">
               *Too big Upload Video maximum 2mins, and the size of the video
               should be less than 15MB
-            </p>
+                                </p>
 
-            <span *ngIf="loading; else durationVideo" style="padding: 2pc 13pc">
+                                <span *ngIf="loading; else durationVideo" style="padding: 2pc 13pc">
               <i class="fal fa-sync fa-pulse"></i>
             </span>
-            <ng-template #durationVideo>
+                                <ng-template #durationVideo>
               <button (click)="canclevideo()" class="closevideo">X</button>
               <video
                 *ngIf="videourl"
@@ -370,36 +370,36 @@
               >
                 <!-- <source src="{{ videourl }}" /> -->
               </video>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="box2">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
+                <div class="box2">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4 class="projecttitle">
             <span *ngIf="dir == 'ltr'"
               >{{ prjtitle5 }}<span style="color: red">*</span>
             </span>
             <span *ngIf="dir == 'rtl'"
               >{{ prjtitle5_Ar }}<span style="color: red">*</span>
             </span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes5 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes5_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <!-- <span>Choose image</span>  -->
-            <h6 class="fundamt">{{ contentLan.AMOUNT }}</h6>
-            <span class="fundsar">SAR</span>
+                            </h4>
+                            <p class="projecttitlepara">
+                                <span *ngIf="dir == 'ltr'">{{ prjdes5 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjdes5_Ar }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <hr class="projecttitlehr" />
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <!-- <span>Choose image</span>  -->
+                                <h6 class="fundamt">{{ contentLan.AMOUNT }}</h6>
+                                <span class="fundsar">SAR</span>
             <input
               type="text"
               maxlength="22"
@@ -410,30 +410,30 @@
               formControlName="goalAmount"
               required
             />
-          </div>
-        </div>
-      </div>
-    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="box1">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
-            <span *ngIf="dir == 'ltr'">{{ prjtitle6 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjtitle6_Ar }}</span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes6 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes6_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <h5>{{ launchdates | date: "EEEE, MMMM d, y" }}</h5>
-            <p style="margin-bottom: 0">
+                <div class="box1">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4 class="projecttitle">
+                                <span *ngIf="dir == 'ltr'">{{ prjtitle6 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjtitle6_Ar }}</span>
+                            </h4>
+                            <p class="projecttitlepara">
+                                <span *ngIf="dir == 'ltr'">{{ prjdes6 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjdes6_Ar }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <hr class="projecttitlehr" />
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h5>{{ launchdates | date: "EEEE, MMMM d, y" }}</h5>
+                                <p style="margin-bottom: 0">
               <input
                 type="date"
                 class="form-control launchdate"
@@ -445,30 +445,30 @@
               <span class="calender_icon"
                 ><i class="fas fa-calendar-alt"></i
               ></span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="box2">
-      <div class="row">
-        <div class="col-md-5">
-          <h4 class="projecttitle">
-            <span *ngIf="dir == 'ltr'">{{ prjtitle7 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjtitle7_Ar }}</span>
-          </h4>
-          <p class="projecttitlepara">
-            <span *ngIf="dir == 'ltr'">{{ prjdes7 }}</span>
-            <span *ngIf="dir == 'rtl'">{{ prjdes7_Ar }}</span>
-          </p>
-        </div>
-        <div class="col-md-1">
-          <hr class="projecttitlehr" />
-        </div>
-        <div class="col-md-5">
-          <div class="row">
-            <h5>{{ campaignDuation | date: "EEEE, MMMM d, y" }}</h5>
+                <div class="box2">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4 class="projecttitle">
+                                <span *ngIf="dir == 'ltr'">{{ prjtitle7 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjtitle7_Ar }}</span>
+                            </h4>
+                            <p class="projecttitlepara">
+                                <span *ngIf="dir == 'ltr'">{{ prjdes7 }}</span>
+                                <span *ngIf="dir == 'rtl'">{{ prjdes7_Ar }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <hr class="projecttitlehr" />
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h5>{{ campaignDuation | date: "EEEE, MMMM d, y" }}</h5>
             <select
               class="category form-select"
               #Myselect
@@ -480,56 +480,56 @@
               <option value="1">End on a specific date & time</option>
             </select>
 
-            <div class="subcategory" *ngIf="selectedValue1">
+                                <div class="subcategory" *ngIf="selectedValue1">
               <input
                 formControlName="campaignDuation"
                 [min]="newdate"
                 [max]="dateFormated"
                 type="date"
               />
-            </div>
-          </div>
-          <div class="subcategory" *ngIf="selectedValue2">
+                                </div>
+                            </div>
+                            <div class="subcategory" *ngIf="selectedValue2">
             <input
               formControlName="campaignDuation"
               [(ngModel)]="dateFormated"
               type="date"
               readonly
             />
-          </div>
-          <div class="subcategory" *ngIf="selectedValue3">
+                            </div>
+                            <div class="subcategory" *ngIf="selectedValue3">
             <input
               formControlName="campaignDuation"
               [(ngModel)]="dateFormatedthree"
               type="date"
               readonly
             />
-          </div>
-          <div class="row"></div>
-        </div>
-      </div>
-    </div>
+                            </div>
+                            <div class="row"></div>
+                        </div>
+                    </div>
+                </div>
 
-    <section class="proj_bottom_cont">
-      <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-2 col-6">
-          <button class="previousprojectidea">
+                <section class="proj_bottom_cont">
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-2 col-6">
+                            <button class="previousprojectidea">
             <span *ngIf="dir == 'ltr'"><i class="far fa-angle-left"></i></span>
             <span *ngIf="dir == 'rtl'"><i class="far fa-angle-right"></i></span
             >{{ contentLan.BACK }}
           </button>
-        </div>
-        <div class="col-md-2 col-6">
-          <!-- <a [routerLink]="['../rewards']"> -->
-          <button type="submit" class="nextprojectidea">
+                        </div>
+                        <div class="col-md-2 col-6">
+                            <!-- <a [routerLink]="['../rewards']"> -->
+                            <button type="submit" class="nextprojectidea">
             {{ contentLan.NEXT }}
           </button>
-          <!-- </a> -->
-        </div>
-      </div>
-    </section>
-  </form>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                </section>
+        </form>
 </div>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

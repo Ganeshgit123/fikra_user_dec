@@ -94,7 +94,6 @@ errors:any
     amount: ["", Validators.required],
     paymentMethod: ["", Validators.required],
   });
-
   fragment!: string;
   fullName!: string;
   des1: any;
@@ -440,12 +439,12 @@ errors:any
       this.authService.shippingadd(this.shippingaddressForm.value).subscribe((res: any) => {
         if (res.error == false) {
           this.toastr.success('Success ', res.message);
-          this.shippingaddressForm.reset();
-          this.ngOnInit();
+      this.shippingaddressForm.reset();
+      this.ngOnInit();
           this.submitted = false;
-        } else {
+    } else {
           this.toastr.warning('Enter valid ', res.message);
-        }
+    }
       });
   }
 
@@ -474,7 +473,6 @@ errors:any
     this.authService.shippingdelete(this.deleteshippingform.value);
     this.shippingaddressForm.reset();
     this.ngOnInit();
-    
   }
 
   onbankdelete(values: any) {

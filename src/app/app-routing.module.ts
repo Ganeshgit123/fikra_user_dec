@@ -1,102 +1,96 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AccountComponent } from "./account/account.component";
-import { ActivityComponent } from "./activity/activity.component";
-import { CreateaccountComponent } from "./createaccount/createaccount.component";
-import { CreateprojectComponent } from "./createproject/createproject.component";
-import { DiscoverComponent } from "./discover/discover.component";
-import { FollowingComponent } from "./following/following.component";
 import { FollowinginnerComponent } from "./followinginner/followinginner.component";
-import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
-import { ProfileComponent } from "./profile/profile.component";
-import { ProjectviewComponent } from "./projectview/projectview.component";
-import { RecommendedComponent } from "./recommended/recommended.component";
-import { SavedprojectsComponent } from "./savedprojects/savedprojects.component";
-import { StartprojectComponent } from "./startproject/startproject.component";
 import { AuthGuard } from "./shared/auth.guard";
-import { AboutusComponent } from "./aboutus/aboutus.component";
 import { VerifyotpComponent } from "./verifyotp/verifyotp.component";
-import { ForgetpasswordComponent } from "./forgetpassword/forgetpassword.component";
-import { CookiepolicyComponent } from "./cookiepolicy/cookiepolicy.component";
-import { PrivacypolicyComponent } from "./privacypolicy/privacypolicy.component";
-import { TermsofuseComponent } from "./termsofuse/termsofuse.component";
 import { GettingStartedComponent } from "./getting-started/getting-started.component";
 import { BuildingrewardsComponent } from "./buildingrewards/buildingrewards.component";
-import { CommunicatingbackersComponent } from "./communicatingbackers/communicatingbackers.component";
 import { FullfillmentComponent } from "./fullfillment/fullfillment.component";
 import { FundingComponent } from "./funding/funding.component";
 import { FurtherreadingComponent } from "./furtherreading/furtherreading.component";
 import { TellingstoryComponent } from "./tellingstory/tellingstory.component";
 import { PromotioncreaterComponent } from "./promotioncreater/promotioncreater.component";
-import { FaqComponent } from "./faq/faq.component";
-import { ContactUsComponent } from "./contact-us/contact-us.component";
-import { CareersComponent } from "./careers/careers.component";
-import { CareerFormComponent } from "./careers/career-form/career-form.component";
-import { InvestorComponent } from "./login/investor/investor.component";
 import { CretorComponent } from "./login/cretor/cretor.component";
 import { CreateprojectinnerComponent } from "./createprojectinner/createprojectinner.component";
-import { PledgeComponent } from "./pledge/pledge.component";
-import { SpecicalrequestComponent } from "./specicalrequest/specicalrequest.component";
-import { ForgotpasswordcodeComponent } from "./forgotpasswordcode/forgotpasswordcode.component";
-import { HelpguideComponent } from "./helpguide/helpguide.component";
-import { HelpguidecategoryComponent } from "./helpguidecategory/helpguidecategory.component";
 import { VerifypaymentComponent } from "./verifypayment/verifypayment.component";
-import { ProfileViewComponent } from "./profile-view/profile-view.component";
 import { VerifymobileotpComponent } from "./verifymobileotp/verifymobileotp.component";
 import { RolebaseGuard } from "./shared/rolebase.guard";
-import { FeatureProjectComponent } from "./feature-project/feature-project.component";
-import { TakingOffComponent } from "./taking-off/taking-off.component";
-import { HomeStretchComponent } from "./home-stretch/home-stretch.component";
-import { RulesComponent } from "./rules/rules.component";
-import { FeesComponent } from "./fees/fees.component";
-import { TrustsafetyComponent } from "./trustsafety/trustsafety.component";
-import { WhatwedoComponent } from './whatwedo/whatwedo.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent,
+    loadChildren: () =>
+      import("./home/home.module").then(
+        (m) => m.HomeModule
+      ),
   },
   {
     path: "discover",
-    component: DiscoverComponent,
+    loadChildren: () =>
+      import("./discover/discover.module").then(
+        (m) => m.DiscoverModule
+      ),
   },
   {
     path: "recommended/:text",
-    component: RecommendedComponent,
+    loadChildren: () =>
+      import("./recommended/recommended.module").then(
+        (m) => m.RecommendedModule
+      ),
   },
   {
     path: "recommended/:cat/:subCat",
-    component: RecommendedComponent,
+    loadChildren: () =>
+      import("./recommended/recommended.module").then(
+        (m) => m.RecommendedModule
+      ),
   },
   {
     path: "projectview/:id",
-    component: ProjectviewComponent,
+    loadChildren: () =>
+      import("./projectview/projectview.module").then(
+        (m) => m.ProjectviewModule
+      ),
   },
   {
     path: "account",
-    component: AccountComponent,
+    loadChildren: () =>
+      import("./account/account.module").then(
+        (m) => m.AccountModule
+      ),
     canActivate: [AuthGuard],
   },
   {
     path: "account/:code",
-    component: AccountComponent,
+    loadChildren: () =>
+      import("./account/account.module").then(
+        (m) => m.AccountModule
+      ),
     canActivate: [AuthGuard],
   },
   {
     path: "profile",
-    component: ProfileComponent,
+    loadChildren: () =>
+      import("./profile/profile.module").then(
+        (m) => m.ProfileModule
+      ),
     canActivate: [AuthGuard],
   },
   {
     path: "activity",
-    component: ActivityComponent,
+    loadChildren: () =>
+      import("./activity/activity.module").then(
+        (m) => m.ActivityModule
+      ),
     canActivate: [AuthGuard],
   },
   {
     path: "following",
-    component: FollowingComponent,
+    loadChildren: () =>
+      import("./following/following.module").then(
+        (m) => m.FollowingModule
+      ),
     canActivate: [AuthGuard],
   },
   {
@@ -106,12 +100,18 @@ const routes: Routes = [
   },
   {
     path: "savedproject",
-    component: SavedprojectsComponent,
+    loadChildren: () =>
+      import("./savedprojects/savedprojects.module").then(
+        (m) => m.SavedprojectsModule
+      ),
     canActivate: [AuthGuard],
   },
   {
     path: "startproject",
-    component: StartprojectComponent,
+    loadChildren: () =>
+      import("./startproject/startproject.module").then(
+        (m) => m.StartprojectModule
+      ),
   },
   {
     path: "ilogin",
@@ -119,7 +119,10 @@ const routes: Routes = [
   },
   {
     path: "createproject",
-    component: CreateprojectComponent,
+    loadChildren: () =>
+      import("./createproject/createproject.module").then(
+        (m) => m.CreateprojectModule
+      ),
     canActivate: [AuthGuard, RolebaseGuard],
     data: {
       expectedRole: "creator",
@@ -127,11 +130,17 @@ const routes: Routes = [
   },
   {
     path: "createaccount",
-    component: CreateaccountComponent,
+    loadChildren: () =>
+      import("./createaccount/createaccount.module").then(
+        (m) => m.CreateaccountModule
+      ),
   },
   {
     path: "aboutus",
-    component: AboutusComponent,
+    loadChildren: () =>
+      import("./aboutus/aboutus.module").then(
+        (m) => m.AboutusModule
+      ),
   },
   {
     path: "user/verify/:id/:role",
@@ -143,23 +152,38 @@ const routes: Routes = [
   },
   {
     path: "user/resetPass/:email/:code",
-    component: ForgotpasswordcodeComponent,
+    loadChildren: () =>
+      import("./forgotpasswordcode/forgotpasswordcode.module").then(
+        (m) => m.ForgotpasswordcodeModule
+      ),
   },
   {
     path: "account-recovery",
-    component: ForgetpasswordComponent,
+    loadChildren: () =>
+      import("./forgetpassword/forgetpassword.module").then(
+        (m) => m.ForgetpasswordModule
+      ),
   },
   {
     path: "privacypolicy",
-    component: PrivacypolicyComponent,
+    loadChildren: () =>
+      import("./privacypolicy/privacypolicy.module").then(
+        (m) => m.PrivacypolicyModule
+      ),
   },
   {
     path: "termsofuse",
-    component: TermsofuseComponent,
+    loadChildren: () =>
+      import("./termsofuse/termsofuse.module").then(
+        (m) => m.TermsofuseModule
+      ),
   },
   {
     path: "cookiepolicy",
-    component: CookiepolicyComponent,
+    loadChildren: () =>
+      import("./cookiepolicy/cookiepolicy.module").then(
+        (m) => m.CookiepolicyModule
+      ),
   },
   {
     path: "creatorhandbook/:id",
@@ -190,28 +214,39 @@ const routes: Routes = [
     component: BuildingrewardsComponent,
   },
   {
-    path: "communciating-backers",
-    component: CommunicatingbackersComponent,
-  },
-  {
     path: "faq",
-    component: FaqComponent,
+    loadChildren: () =>
+      import("./faq/faq.module").then(
+        (m) => m.FaqModule
+      ),
   },
   {
     path: "contact_us",
-    component: ContactUsComponent,
+    loadChildren: () =>
+      import("./contact-us/contact-us.module").then(
+        (m) => m.ContactUsModule
+      ),
   },
   {
     path: "career",
-    component: CareersComponent,
+    loadChildren: () =>
+      import("./careers/careers.module").then(
+        (m) => m.CareersModule
+      ),
   },
   {
     path: "career_form/:id",
-    component: CareerFormComponent,
+    loadChildren: () =>
+      import("./careers/career-form/career-form.module").then(
+        (m) => m.CareerFormModule
+      ),
   },
   {
     path: "login",
-    component: InvestorComponent,
+    loadChildren: () =>
+      import("./login/investor/investor.module").then(
+        (m) => m.InvestorModule
+      ),
   },
   {
     path: "creator_login",
@@ -223,20 +258,32 @@ const routes: Routes = [
   },
   {
     path: "mypledge",
-    component: PledgeComponent,
+    loadChildren: () =>
+      import("./pledge/pledge.module").then(
+        (m) => m.PledgeModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: "specialrequest",
-    component: SpecicalrequestComponent,
+    loadChildren: () =>
+      import("./specicalrequest/specicalrequest.module").then(
+        (m) => m.SpecicalrequestModule
+      ),
   },
   {
     path: "help",
-    
-    component: HelpguideComponent,
+    loadChildren: () =>
+      import("./helpguide/helpguide.module").then(
+        (m) => m.HelpguideModule
+      ),
   },
   {
     path: "help/cat/:id",
-    component: HelpguidecategoryComponent,
+    loadChildren: () =>
+      import("./helpguidecategory/helpguidecategory.module").then(
+        (m) => m.HelpguidecategoryModule
+      ),
   },
   {
     path: "verifypayment",
@@ -245,47 +292,66 @@ const routes: Routes = [
 
   {
     path: "profile_view/:id/:role",
-    component: ProfileViewComponent,
+    loadChildren: () =>
+      import("./profile-view/profile-view.module").then(
+        (m) => m.ProfileViewModule
+      ),
   },
   {
     path: "featureproject",
-    component: FeatureProjectComponent,
+    loadChildren: () =>
+      import("./feature-project/feature-project.module").then(
+        (m) => m.FeatureProjectModule
+      ),
   },
   {
     path: "takingoff",
-    component: TakingOffComponent,
+    loadChildren: () =>
+      import("./taking-off/taking-off.module").then(
+        (m) => m.TakingOffModule
+      ),
   },
   {
     path: "homestretch",
-    component: HomeStretchComponent,
+    loadChildren: () =>
+      import("./home-stretch/home-stretch.module").then(
+        (m) => m.HomeStretchModule
+      ),
   },
-   {
+  {
     path: "ourrules",
-    component: RulesComponent,
+    loadChildren: () =>
+      import("./rules/rules.module").then(
+        (m) => m.RulesModule
+      ),
   },
   {
     path: "fees",
-    component: FeesComponent,
+    loadChildren: () =>
+      import("./fees/fees.module").then(
+        (m) => m.FeesModule
+      ),
   },
   {
     path: "trustandsafety",
-    component: TrustsafetyComponent,
+    loadChildren: () =>
+      import("./trustsafety/trustsafety.module").then(
+        (m) => m.TrustsafetyModule
+      ),
   },
   {
     path: "what_we_do",
-    component: WhatwedoComponent,
+    loadChildren: () =>
+      import("./whatwedo/whatwedo.module").then(
+        (m) => m.WhatwedoModule
+      ),
   },
   {
-    path: "projectinner",
-    canActivate: [AuthGuard, RolebaseGuard],
-    data: {
-      expectedRole: "creator",
-    },
+    path: "projectinner/:id",
     loadChildren: () =>
       import("./projectinner/projectinner.module").then(
         (m) => m.ProjectinnerModule
       ),
-      
   },
 ];
 
@@ -298,4 +364,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

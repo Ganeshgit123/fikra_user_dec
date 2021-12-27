@@ -10,9 +10,11 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./createprojectinner.component.css']
 })
 export class CreateprojectinnerComponent implements OnInit {
-  notify:any;
-  deleteform:any;
-  visitform:any;
+  notify: any;
+  deleteform: any;
+  visitform: any;
+  messagecount = 5;
+  messageReduce: any = [];
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     private http: HttpClient,
@@ -21,23 +23,46 @@ export class CreateprojectinnerComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getnotification().subscribe((res: any) => {
       this.notify = res.notification;
+      console.log("notify", this.notify.length)
+      this.messageReduce = this.paginate(this.notify, this.messagecount, 1);
       console.log('notify', this.notify);
     });
   }
-  deletenotify(values:any){
+  paginate(array: string | any[], page_size: number, page_number: number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
+
+  paginationNext() {
+    this.messagecount += 5;
+    this.messageReduce = this.paginate(
+      this.notify,
+      this.messagecount,
+      1
+    );
+    this.ngOnInit();
+  }
+  paginationLess() {
+    this.messagecount = 5;
+    this.messageReduce = this.paginate(
+      this.notify,
+      this.messagecount,
+      1
+    );
+    this.ngOnInit();
+  }
+  deletenotify(values: any) {
     this.deleteform = this.fb.group({
-      notificationId:[values],
+      notificationId: [values],
     });
     this.authService.deletenotification(this.deleteform.value);
     this.ngOnInit()
   }
-  verifyenotify(values:any){
-    
+  verifyenotify(values: any) {
+
     this.visitform = this.fb.group({
-      notificationId:[values],
+      notificationId: [values],
     });
-    
+
     this.authService.visitnotification(this.visitform.value);
   }
-  
 }

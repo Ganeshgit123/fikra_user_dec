@@ -5,20 +5,55 @@
             <div class="col-md-12">
                 <button type="button" class="close" (click)="close()">&times;</button>
                 <a routerLink="/message">
-                    <p class="learnpara">You have Notification</p>
+                    <p class="learnpara">{{contentLan.YOUHAVENOTIFICATION}}</p>
                 </a>
             </div>
         </div>
     </div>
 </section>
 <section class="header">
-    <div class="row" *ngIf="opensearch == true" style="width: 100%;">
-        <div class="col-md-12">
-            <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" placeholder="Search" class="form-control search-control w-80 p-3" />
+    <div class="container-fluid">
+        <div class="row" *ngIf="opensearch == true">
+            <div class="col-md-12 search-control">
+                <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" placeholder="{{ contentLan.SEARCH }}" class="form-control w-80 p-3" />
+                <span class="close_search_ico"><i class="fal fa-times search_close" (click)="closeSearch()"></i></span>
+            </div>
         </div>
-        <div class="col-md-11"></div>
-        <span class="searchclose">
-            <i class="fal fa-times search_close" (click)="opensearch = false"></i></span>
+        <div class="overlay1" *ngIf="popup1">
+            <form [formGroup]="WordpressForm">
+                <div class="popup1">
+                    <div class="container-fluid">
+                        <!-- <div class="row">
+                            <div class="col-md-10" style="margin: 10px 0px"></div>
+                            <i class="fal fa-times pop_close" (click)="closeSearch()"></i>
+                        </div> -->
+                        <div class="row" *ngFor="let data of search; let i = index" style="margin-top: 20px">
+                            <a [routerLink]="['/projectview/' + data._id]" style="color: black; text-decoration: none" (click)="closeSearch()">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-2 col-xl-2">
+                                        <img src="{{ data.basicInfoId.projectImage }}" class="img-fluid" />
+                                    </div>
+                                    <div class="col-9 col-md-9 col-lg-10 col-xl-10">
+                                        <h4 class="search_title">{{ data.title }}</h4>
+                                        <p>by&nbsp;{{ data.userId.fullName }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div *ngIf="search?.length == 0" style="text-align: center; padding: 70px; color: red">
+                            <h6>{{ contentLan.NODATAFOUND }}</h6>
+                        </div>
+                        <div class="row" *ngIf="search?.length >= 5">
+                            <div class="col-md-12">
+                                <a [routerLink]="['/recommended', valuesearch]" (click)="closeSearch()">
+                                    <button class="profilemanage">{{ contentLan.SEEMORE }}</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="container">
         <div class="row">
@@ -42,7 +77,8 @@
                     <li class="search_box">
                         <form class="search-form ng-pristine ng-valid">
                             <div class="input-group search-group">
-                                <span (click)="searchenable()"><i class="fa fa-search"></i> {{ contentLan.SEARCH }}</span>
+                                <span (click)="searchenable()"><i class="fa fa-search"></i> {{ contentLan.SEARCH
+                                    }}</span>
                                 <!-- (keydown.enter)='onquerySelected(valuesearch)'  (click)="popup1 = true" -->
                                 <!-- <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" class="form-control search-control" /> -->
                                 <!-- <button (click)='onquerySelected(seetodo.value)'></button> -->
@@ -52,8 +88,8 @@
                     </li>
                     <li *ngIf="role === null">
                         <a routerLink="/login" (click)="logapi()" class="log_btn">{{
-              contentLan.LOGIN
-              }}</a>
+                            contentLan.LOGIN
+                            }}</a>
                     </li>
                     <li *ngIf="lang == 'en'">
                         <button class="singup" (click)="switchLang('ar')">العربية</button>
@@ -82,41 +118,53 @@
                                                         <h3 class="youracccount" style="margin-right: 20px; margin-bottom: 0px">
                                                             {{ user.data.fullName }}
                                                         </h3>
-                                                        <span class="tag-box">{{ role == "investor" ? "Backer" : capitalize(role) }}</span>
+                                                        <span class="tag-box">{{ role == "investor" ? "Backer" :
+                                                            capitalize(role) }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="row" style=" margin-bottom: 2%; border-bottom: 2px solid #fe953a; padding: 20px; opacity: 1; margin-left: 0px; ">
                                                     <div class="col-md-6" style=" text-align: initial; border-right: 2px solid #fe953a; ">
                                                         <ul class="profile_ul">
                                                             <li class="profile_li">
-                                                                <a routerLink="/savedproject">{{ contentLan.SAVEDPROJECTS }}</a>
+                                                                <a routerLink="/savedproject" (click)="popup = false">{{
+                                                                    contentLan.SAVEDPROJECTS }}</a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a routerLink="/mypledge">{{ contentLan.BACKEDPROJECS }}</a>
+                                                                <a routerLink="/mypledge" (click)="popup = false">{{
+                                                                    contentLan.BACKEDPROJECS
+                                                                    }}</a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a routerLink="/following">{{ contentLan.FOLLOWING }}</a>
+                                                                <a routerLink="/following" (click)="popup = false">{{
+                                                                    contentLan.FOLLOWING
+                                                                    }}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="col-md-5" style="text-align: initial">
                                                         <ul class="profile_ul">
                                                             <li class="profile_li">
-                                                                <a routerLink="/profile">{{ contentLan.PROFILE }} </a>
+                                                                <a routerLink="/profile" (click)="popup = false">{{
+                                                                    contentLan.PROFILE }} </a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a routerLink="/account/1">{{ contentLan.SETTINGS }}</a>
+                                                                <a routerLink="/account/1" (click)="popup = false">{{
+                                                                    contentLan.SETTINGS }}</a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a routerLink="/specialrequest" *ngIf=" role === 'creator'; else creatorTemplatemessage ">{{ contentLan.SPECIALREQ }} </a>
+                                                                <a routerLink="/specialrequest" *ngIf=" role === 'creator'; else creatorTemplatemessage " (click)="popup = false">{{
+                                                                    contentLan.SPECIALREQ }} </a>
                                                             </li>
                                                             <ng-template #creatorTemplatemessage>
                                                                 <li class="profile_li" style="padding: 0px 0px">
-                                                                    <a routerLink="/message">{{ contentLan.MESSAGE }} </a>
+                                                                    <a routerLink="/message" (click)="popup = false"> {{
+                                                                        contentLan.MESSAGE }}
+                                                                    </a>
                                                                 </li>
                                                             </ng-template>
                                                             <li class="profile_li">
-                                                                <a routerLink="/activity">{{ contentLan.ACTIVITY }} </a>
+                                                                <a routerLink="/activity" (click)="popup = false">{{
+                                                                    contentLan.ACTIVITY }} </a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -128,10 +176,11 @@
                                                             <h4 class="createdproject" style="margin-top: 7px">
                                                                 <b>{{ contentLan.CREATEDPROJECTS }}</b>
                                                             </h4>
-                                                            <a class="createnewa" routerLink="/createproject"> <button class="createplus">+</button><span class="createnew">{{ contentLan.CREATENEW }}</span> </a>
+                                                            <a class="createnewa" routerLink="/createproject" (click)="popup = false"> <button class="createplus">+</button><span class="createnew">{{ contentLan.CREATENEW }}</span>
+                                                            </a>
                                                         </div>
                                                         <ul *ngFor=" let country of user.projectData; let i = index " style="margin-bottom: 10px; padding: 0px"> <input type="text" placeholder="Title" [(ngModel)]="title" formControlName="title" hidden />
-                                                            <a *ngIf="6 > i" [routerLink]="[ '/projectview/' + country._id ]">
+                                                            <a *ngIf="6 > i" [routerLink]="[ '/projectview/' + country._id ]" (click)="popup = false">
                                                                 <li>
                                                                     {{ country.title }}
                                                                     <span [style]="
@@ -141,10 +190,10 @@
                                         ? 'color: red'
                                         : 'color: #fc9d03'
                                     ">
-                                    -
-                                    {{
-                                    capitalize(country.aproval_Status)
-                                    }}</span>
+                                                                        -
+                                                                        {{
+                                                                        capitalize(country.aproval_Status)
+                                                                        }}</span>
                                                                 </li>
                                                             </a>
                                                         </ul>
@@ -153,7 +202,7 @@
                                 padding: 0px;
                                 margin-bottom: 10px;
                               ">
-                                                            <a [routerLink]="['/activity']">
+                                                            <a [routerLink]="['/activity']" (click)="popup = false">
                                                                 <li class="VewA">View all</li>
                                                             </a>
                                                         </ul>
@@ -171,8 +220,9 @@
                                                     <div class="col-md-12">
                                                         <a routerlink="/">
                                                             <button class="logouticon" (click)="loggedout()">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>{{ contentLan.LOGOUT }}
-                              </button>
+                                                                <i class="fa fa-sign-out" aria-hidden="true"></i>{{
+                                                                contentLan.LOGOUT }}
+                                                            </button>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -188,8 +238,9 @@
               else nologinTemplate
             " [style]="profileImage != 'undefined' ? '' : 'margin-left: 35px;'">
                         <span style="font-size: 25px; color: #fe764a">
-              <a (click)="popup2 = true"> <i class="far fa-bell"></i></a><span class="sec counter counter-lg">{{ cou
-                }}</span>
+                            <a (click)="popup2 = true"> <i class="far fa-bell"></i></a><span
+                                class="sec counter counter-lg">{{ cou
+                                }}</span>
                         </span>
                     </li>
                     <ng-template #nologinTemplate> </ng-template>
@@ -197,49 +248,13 @@
             </div>
         </div>
     </div>
-    <div class="overlay1" *ngIf="popup1">
-        <form [formGroup]="WordpressForm">
-            <div class="popup1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10" style="margin: 10px 0px"></div>
-                        <i class="fal fa-times" (click)="popup1 = false" style="cursor: pointer; text-align: right; padding: 0px 25px"></i>
-                    </div>
-                    <div class="row" *ngFor="let data of search; let i = index" style="margin-top: 1%">
-                        <a [routerLink]="[
-                '/projectview/' + data._id]" style="color: black; text-decoration: none">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ data.basicInfoId.projectImage }}" />
-                                </div>
-                                <div class="col-md-8 search_tit">
-                                    <h4 class="pop_tit">{{ data.title }}</h4>
-                                    <p>by&nbsp;{{ data.userId.fullName }}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div *ngIf="search?.length == 0" style="text-align: center; padding: 70px; color: red">
-                        <h6>No data found</h6>
-                    </div>
-                    <div class="row" *ngIf="search?.length >= 5">
-                        <div class="col-md-12">
-                            <a [routerLink]="['/recommended', valuesearch]">
-                                <button class="profilemanage">See more</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
     <div class="overlay2" *ngIf="popup2">
         <form [formGroup]="WordpressForm">
             <div class="popup2">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10" style="margin-top: 5%">
-                            <h5 style="font-size: 18px">Notification</h5>
+                            <h5 style="font-size: 18px">{{ contentLan.NOTIFICATIONS }}</h5>
                         </div>
                         <div class="col-md-2" style="margin-top: 5%">
                             <i class="fal fa-times" (click)="popup2 = false" style="cursor: pointer"></i>
@@ -252,39 +267,41 @@
               color: red;
             " *ngIf="notify == ''; else shownot">
                         <div class="col-md-12">
-                            <h6>No Notification</h6>
+                            <h6>{{ contentLan.NONOTIFICATION }}</h6>
                         </div>
                     </div>
                     <ng-template #shownot>
                         <div class="row" *ngFor="let notifyobj of notify">
                             <span *ngIf="notifyobj._is_Visited_ === false; else successTemplate">
-                <a href="/message" style="text-decoration: none; color: black" (click)="verifynotify(notifyobj._id)">
-                  <div class="col-md-12 notifyfull">
-                    <div class="row">
-                      <!-- <h5 *ngIf="cou == 0">No Notification</h5> -->
-                      <div class="col-md-10">
-                        <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
+                                <a href="/message" style="text-decoration: none; color: black"
+                                    (click)="verifynotify(notifyobj._id)">
+                                    <div class="col-md-12 notifyfull">
+                                        <div class="row">
+                                            <!-- <h5 *ngIf="cou == 0">No Notification</h5> -->
+                                            <div class="col-md-10">
+                                                <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
 
-                        <label style="font-size: 14px">Message:</label>
-                        <p *ngIf="notifyobj.notiContent" style="
+                                                <label style="font-size: 14px">{{ contentLan.MESSAGE }} :</label>
+                                                <p *ngIf="notifyobj.notiContent" style="
                             text-overflow: ellipsis;
                             overflow: hidden;
                             white-space: nowrap;
                             font-size: 14px;
                           ">
-                          {{ notifyobj.notiContent }}
-                        </p>
-                      </div>
-                      <div class="col-md-2">
-                        <span style="font-size: 18px; color: #ff495e">
-                          <a (click)="deletenotify(notifyobj._id)">
-                            <i class="fas fa-trash-alt"></i></a>
-                        </span>
+                                                    {{ notifyobj.notiContent }}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <span style="font-size: 18px; color: #ff495e">
+                                                    <a (click)="deletenotify(notifyobj._id)">
+                                                        <i class="fas fa-trash-alt"></i></a>
+                                                </span>
                         </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy, h:mm a'}}</label>
+                        <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
+                                                    h:mm a'}}</label>
                     </div>
                 </div>
             </div>
@@ -308,18 +325,18 @@
                             </div>
                             <div class="col-md-2">
                                 <span style="font-size: 18px; color: #ff495e">
-                          <a (click)="deletenotify(notifyobj._id)">
-                            <i class="fas fa-trash-alt"></i></a>
-                        </span>
+                                                    <a (click)="deletenotify(notifyobj._id)">
+                                                        <i class="fas fa-trash-alt"></i></a>
+                                                </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy, h:mm a'}}</label>
+                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
+                                                    h:mm a'}}</label>
                             </div>
                         </div>
                     </div>
-
                 </a>
             </ng-template>
     </div>

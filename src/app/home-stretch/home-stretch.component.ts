@@ -11,24 +11,26 @@ import { FormBuilder } from '@angular/forms';
 })
 export class HomeStretchComponent implements OnInit {
 
-  homestretch:any;
-  params:any;
-  dir:any;
+  homestretch: any;
+  params: any;
+  dir: any;
   userver: any;
 
   contentLan: any = {};
   saveform: any;
-  date1:any;
-  date2:any;
+  date1: any;
+  date2: any;
   lastdate: any;
   currentdate: any;
   projectdate: any;
-  inter:any;
-  luncont:any;
-  featuregoalAmount:any;
-  featureamountPleadged:any;
-  featurepercentage:any;
-  constructor(public authService: AuthService,private route: ActivatedRoute,    private toaster: ToastrService,    public fb: FormBuilder,) { }
+  inter: any;
+  luncont: any;
+  featuregoalAmount: any;
+  featureamountPleadged: any;
+  featurepercentage: any;
+  homecount = 5;
+  homeReduce: any = [];
+  constructor(public authService: AuthService, private route: ActivatedRoute, private toaster: ToastrService, public fb: FormBuilder,) { }
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(
@@ -38,30 +40,32 @@ export class HomeStretchComponent implements OnInit {
   });
 
   async arabicCotent() {
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
   ngOnInit(): void {
 
     this.userver = JSON.parse(localStorage.getItem("userId")!);
     this.myPromise
-    this.dir=localStorage.getItem('dir') || 'ltr';
+    this.dir = localStorage.getItem('dir') || 'ltr';
 
     this.authService.homestretch().subscribe((res: any) => {
       if (res.error === false) {
         this.homestretch = res.data;
-        console.log('homestretch',this.homestretch);
+
+        this.homeReduce = this.paginate(res.data, this.homecount, 1);
+        console.log('homestretch', this.homestretch);
         this.homestretch.forEach((elementss: any) => {
           this.featuregoalAmount = elementss.basicInfoId.goalAmount;
 
@@ -82,32 +86,56 @@ export class HomeStretchComponent implements OnInit {
           this.projectdate = new Date(value.basicInfoId.launchDate);
           var Days = Math.abs(this.projectdate - this.currentdate);
           value.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));
-          this.lastdate =Math.ceil(Days / (1000 * 60 * 60 * 24));
-          var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-          this.date1 =this.currentdate;
-         this.date2 = this.projectdate;
-          if(this.lastdate <= 1){
+          this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));
+          var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+          this.date1 = this.currentdate;
+          this.date2 = this.projectdate;
+          if (this.lastdate <= 1) {
             var timediff = this.date2 - this.date1;
-            value.inter="hours";
-          }else{
+            value.inter = "hours";
+          } else {
             var timediff = this.date2 - this.date1;
-            value.inter="days";
+            value.inter = "days";
           }
           switch (value.inter) {
-            case "days"   :  value.inter =  Math.floor(timediff / day)
-            value.luncont="days to go"; 
-            break;
-            case "minutes"   :  value.inter =  Math.floor(timediff / minute); 
-            break;
-            case "hours"  : value.inter =  Math.floor(timediff / hour)
-            value.luncont="hours to go"; ; 
-            break;
+            case "days": value.inter = Math.floor(timediff / day)
+              value.luncont = "days to go";
+              break;
+            case "minutes": value.inter = Math.floor(timediff / minute);
+              break;
+            case "hours": value.inter = Math.floor(timediff / hour)
+              value.luncont = "hours to go";;
+              break;
             default: return undefined;
           }
         });
       }
     });
   }
+  paginate(array: string | any[], page_size: number, page_number: number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
+
+  paginationNext() {
+    this.homecount += 5;
+    this.homeReduce = this.paginate(
+      this.homestretch,
+      this.homecount,
+      1
+    );
+    this.ngOnInit();
+  }
+  paginationLess() {
+    this.homecount = 5;
+    this.homeReduce = this.paginate(
+      this.homestretch,
+      this.homecount,
+      1
+    );
+    this.ngOnInit();
+  }
+
+
   localprojectid() {
     this.route.params.subscribe((params) => {
       this.params = params.id;
@@ -125,7 +153,7 @@ export class HomeStretchComponent implements OnInit {
       .addlikeproject(this.saveform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.toaster.success( res.message);
+          this.toaster.success(res.message);
           this.ngOnInit()
         } else {
           this.toaster.warning(res.message);
@@ -142,10 +170,10 @@ export class HomeStretchComponent implements OnInit {
       .addsaveproject(this.saveform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.toaster.success( res.message);
+          this.toaster.success(res.message);
           this.ngOnInit()
         } else {
-          this.toaster.warning( res.message);
+          this.toaster.warning(res.message);
         }
       });
   }

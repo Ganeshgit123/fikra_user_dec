@@ -1,5 +1,5 @@
 <!-- Header -->
-<app-right-header></app-right-header>
+<!-- <app-right-header></app-right-header> -->
 
 <!-- Saved projects -->
 <section class="saved_sec">
@@ -24,35 +24,46 @@
 </section>
 
 <ng-template #showsaved>
-    <div *ngFor="let obj of saveddata">
-        <section class="saved_cont_sec" *ngIf="obj.savedProjectId !=null">
+    <div *ngFor="let obj of CreatorReduce">
+        <section class="saved_cont_sec">
             <div class="row">
                 <diV class="col-md-3">
                     <img src="{{obj.savedProjectId.basicInfoId.projectImage}}" class="img-fluid" style='height: 90% !important;'>
                 </diV>
                 <div class="col-md-9">
                     <ul class="cont_sec_pro">
-                        <li style="padding: 0px;"><i class="fa fa-list-alt" aria-hidden="true"></i>{{obj.savedProjectId.basicInfoId.categoryName}}-->{{obj.savedProjectId.basicInfoId.subCategoryName}}</li>
+                        <li style="padding: 0px;"><i class="fa fa-list-alt" aria-hidden="true"></i>{{obj.savedProjectId.basicInfoId.categoryName}}-->{{obj.savedProjectId.basicInfoId.subCategoryName}}
+                        </li>
                         <li><i class="fa fa-map-marker"></i>{{obj.savedProjectId.basicInfoId.city}}</li>
                         <li *ngIf="obj.savedProjectId._is_On_Live_ == true"><span class="liveproject">{{contentLan.LIVE}}</span></li>
-                        <li *ngIf="obj.savedProjectId._is_succeed_ == true"><span class="completeproject">{{contentLan.	COMPLETED}}</span></li>
+                        <li *ngIf="obj.savedProjectId._is_succeed_ == true"><span class="completeproject">{{contentLan.
+                                COMPLETED}}</span></li>
                         <li class="proj_del_ico dele"><i class="fa fa-bookmark" ngbTooltip="Unsave" (click)="addtosave(obj.savedProjectId)"></i>
                         </li>
                     </ul>
                     <h6 *ngIf="obj.savedProjectId._is_All_Nothing_ == true">{{contentLan.BUSINESSMODEL}}:
-                        <span style=" color: #ff4264; ">{{contentLan.ALLORNOTHING}} <i class="fas fa-info-circle" ngbTooltip="{{contentLan.ALLORNOTHINGTOOLTIP}}" style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;" ></i></span>
+                        <span style=" color: #ff4264; ">{{contentLan.ALLORNOTHING}} <i class="fas fa-info-circle"
+                                ngbTooltip="{{contentLan.ALLORNOTHINGTOOLTIP}}"
+                                style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;"></i></span>
                     </h6>
                     <h6 *ngIf="obj.savedProjectId._is_Keep_It_All_ == true">{{contentLan.BUSINESSMODEL}}:
-                        <span style=" color: #ff4264; ">{{contentLan. KEEPALL}}<i class="fas fa-info-circle" ngbTooltip="{{contentLan.KEEPALLTOOLTIP}}" style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;" ></i></span>
+                        <span style=" color: #ff4264; ">{{contentLan. KEEPALL}}<i class="fas fa-info-circle"
+                                ngbTooltip="{{contentLan.KEEPALLTOOLTIP}}"
+                                style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;"></i></span>
                     </h6>
                     <h3 style="padding: 0%;"><a class="onHover" [routerLink]="['/projectview',obj.savedProjectId._id]">{{obj.savedProjectId.title}}</a></h3>
-                    <p *ngIf="obj.savedProjectId.basicInfoId.decription?.length >= 121">{{obj.savedProjectId.basicInfoId.decription.slice(0, 120)}} <a [routerLink]="['/projectview',obj.savedProjectId._id]" class="read_mre_btn">Read more</a></p>
-                    <p *ngIf="121 >= obj.savedProjectId.basicInfoId.decription?.length">{{obj.savedProjectId.basicInfoId.decription}}</p>
+                    <p *ngIf="obj.savedProjectId.basicInfoId.decription?.length >= 121">
+                        {{obj.savedProjectId.basicInfoId.decription.slice(0, 120)}} <a [routerLink]="['/projectview',obj.savedProjectId._id]" class="read_mre_btn">Read more</a>
+                    </p>
+                    <p *ngIf="121 >= obj.savedProjectId.basicInfoId.decription?.length">
+                        {{obj.savedProjectId.basicInfoId.decription}}</p>
                     <hr class="cont_sec_hr">
                     <ul class="save_last_sec">
-                        <li>{{contentLan.GOAL}}: SAR<span class="coloured"> {{obj.savedProjectId.basicInfoId.goalAmount}}</span></li>
+                        <li>{{contentLan.GOAL}}: SAR<span class="coloured">
+                                {{obj.savedProjectId.basicInfoId.goalAmount}}</span></li>
                         <li>{{contentLan.LAUNCH}}: {{obj.savedProjectId.basicInfoId.launchDate | date: 'MMM d, y'}}</li>
-                        <li>{{ contentLan.FUNDED }}: {{obj.savedProjectId._amount_Pleadged_ }} <span> ({{ obj.savelastper | number: "1.0-0" }}%)</span></li>
+                        <li>{{ contentLan.FUNDED }}: {{obj.savedProjectId._amount_Pleadged_ }} <span> ({{
+                                obj.savelastper | number: "1.0-0" }}%)</span></li>
                         <!-- <li>{{ contentLan.PLEDGE }}Count:   {{ obj.savelastper | number: "1.0-0" }}%</li> -->
                         <li>{{ contentLan.PLEDGE }}Count: {{obj.savedProjectId._pledged_count_ }}</li>
 
@@ -61,7 +72,17 @@
                 </div>
             </div>
         </section>
+
     </div>
+    <section *ngIf="savedatacount > 5 ">
+        <div class="col-xl-12" style="text-align: center;" *ngIf='CreatorReduce.length != saveddata.length'>
+            <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext()">Show More</button>
+        </div>
+        <div class="col-xl-12" style="text-align: center;" *ngIf='CreatorReduce.length == saveddata.length'>
+            <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess()">Show Less</button>
+        </div>
+    </section>
 </ng-template>
+
 <!-- Footer -->
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

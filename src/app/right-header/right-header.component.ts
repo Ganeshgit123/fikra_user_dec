@@ -193,7 +193,7 @@ export class RightHeaderComponent implements OnInit {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
   }
-  
+
   onquerySelected() {
     // console.log('search',this.valuesearch);
     this.authService
@@ -221,5 +221,9 @@ export class RightHeaderComponent implements OnInit {
     });
     this.authService.deletenotification(this.deleteform.value);
     this.ngOnInit();
+  }
+  closeSearch(){
+    this.opensearch = false;
+    this.popup1 = false;
   }
 }

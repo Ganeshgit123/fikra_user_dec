@@ -10,100 +10,109 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-  data:any;
-  pledgecount:any;
+  data: any;
+  pledgecount: any;
   visible: boolean = false;
-  data1:any;
-  displayMode= 1;
-  getadmincount =0;
-  displayModein=1;
-  popup:any;
-  popup1:any;
-  rewardpopup:any;
+  data1: any;
+  displayMode = 1;
+  getadmincount = 0;
+  displayModein = 1;
+  popup: any;
+  popup1: any;
+  rewardpopup: any;
   role: any;
-  lastdate:any;
-  created:any = [];
-  value:any;
-  billdetail:any;
-  billAddress:any;
-  billName:any;
-  addressOne:any;
-  addressTwo:any;
-  city:any;
-  state:any;
-  pin:any;
-  phone:any;
-  likedata:any;
-  saveform:any;
-  deletedata:any;
-  requestdata:any;
-  getbilldata:any;
-  IsmodelShow:any;
-  billxdate:any;
-  getadmin:any;
-  invoicedate:any;
-  billid:any;
-  paymentvisform:any;
-  rewardgetform:any;
-  getreward:any;
+  lastdate: any;
+  created: any = [];
+  value: any;
+  billdetail: any;
+  billAddress: any;
+  billName: any;
+  addressOne: any;
+  addressTwo: any;
+  city: any;
+  state: any;
+  pin: any;
+  phone: any;
+  likedata: any;
+  saveform: any;
+  deletedata: any;
+  requestdata: any;
+  getbilldata: any;
+  IsmodelShow: any;
+  billxdate: any;
+  getadmin: any;
+  invoicedate: any;
+  billid: any;
+  paymentvisform: any;
+  rewardgetform: any;
+  getreward: any;
   contentLan: any = {};
   popuppay = false;
   createdcount = 0;
-  paymenthistCount:any;
-  featuregoalAmount:any;
-  featureamountPleadged:any;
-  featurepercentage:any;
-  likegoalAmount:any;
-  likeamountPleadged:any;
-  likepercentage:any;
-  createddata:any;
+  paymenthistCount: any;
+  featuregoalAmount: any;
+  featureamountPleadged: any;
+  featurepercentage: any;
+  likegoalAmount: any;
+  likeamountPleadged: any;
+  likepercentage: any;
+  createddata: any;
+  likecount = 5;
+  likeReduce: any = [];
+  deletecount = 5;
+  deleteReduce: any = [];
+  createcount = 5;
+  createReduce: any = [];
+
   addmoneyform = this.fb.group({
     userId: JSON.parse(localStorage.getItem('userId')!),
     userType: JSON.parse(localStorage.getItem('role')!),
     billId: '',
-    paymentMethod:['',Validators.required]
-  });  constructor(  private fb: FormBuilder,
+    paymentMethod: ['', Validators.required]
+  });
+  constructor(private fb: FormBuilder,
     public authService: AuthService,
     private router: Router,
     private toaster: ToastrService,
     private activatedRoute: ActivatedRoute) { }
 
-myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(
-          this.arabicCotent()
-        );
-      }, 2000);
-    });
-  
-    async arabicCotent() {
-        let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
-  
-        const lang = localStorage.getItem("lang") || "en";
-  
-        await sameContent.reduce(async (promise: any, element: any) => {
-          // console.log(element)
-          if (lang == "en") {
-            this.contentLan[element.key] = element.en;
-          } else {
-            this.contentLan[element.key] = element.ar;
-          }
-          await promise;
-        }, Promise.resolve());
-    } 
+  myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(
+        this.arabicCotent()
+      );
+    }, 2000);
+  });
+
+  async arabicCotent() {
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+
+    const lang = localStorage.getItem("lang") || "en";
+
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
+  }
   ngOnInit(): void {
     this.myPromise
-this.onclick(this.value);
+    this.onclick(this.value);
     this.role = this.readLocalStorageValue('role');
     this.authService.activitycreated().subscribe(
-    
-      (res: any) =>{
-       this.created = res;
-       this.createddata= res.data;
+
+      (res: any) => {
+        this.created = res;
+        this.createddata = res.data;
+        this.createReduce = this.paginate(res.data, this.createcount, 1);
         this.createdcount = res.data.length;
-        this.created.forEach((elementss: any) => {
+        this.createddata.forEach((elementss: any) => {
           this.paymenthistCount = elementss._is_succeed_;
-          console.log("ss",this.paymenthistCount)
+          console.log("ss", this.paymenthistCount)
           this.featuregoalAmount = elementss.basicInfoId.goalAmount;
 
           this.featureamountPleadged = elementss._amount_Pleadged_;
@@ -121,51 +130,115 @@ this.onclick(this.value);
       }
     );
     this.authService.likedproject().subscribe(
-    
-      (res: any)=>{
+
+      (res: any) => {
         // console.log('like',res);
-       this.likedata = res.data;
-       this.likedata.forEach((elementss: any) => {
-        this.likegoalAmount = elementss.likedProjectId.basicInfoId.goalAmount;
+        this.likedata = res.data;
+        this.likeReduce = this.paginate(res.data, this.likecount, 1);
+        this.likedata.forEach((elementss: any) => {
+          this.likegoalAmount = elementss.likedProjectId.basicInfoId.goalAmount;
 
-        this.likeamountPleadged = elementss.likedProjectId._amount_Pleadged_;
-        this.likepercentage =
-          this.likeamountPleadged / this.likegoalAmount;
-        var totPercent = this.likepercentage * 100;
-        if (totPercent >= 100) {
-          elementss.likelastper = 100;
-        } else {
-          elementss.likelastper = totPercent;
-        }
+          this.likeamountPleadged = elementss.likedProjectId._amount_Pleadged_;
+          this.likepercentage =
+            this.likeamountPleadged / this.likegoalAmount;
+          var totPercent = this.likepercentage * 100;
+          if (totPercent >= 100) {
+            elementss.likelastper = 100;
+          } else {
+            elementss.likelastper = totPercent;
+          }
 
-        elementss.likelastpercentage = totPercent;
-      });
+          elementss.likelastpercentage = totPercent;
+        });
       }
     );
     this.authService.deletedproject().subscribe(
-    
-      (res: any)=>{
+
+      (res: any) => {
         // console.log('like',res);
-       this.deletedata = res.data;
+        this.deletedata = res.data;
+        this.deleteReduce = this.paginate(res.data, this.deletecount, 1);
+
       }
     );
 
     this.authService.requestbycreator().subscribe(
-    
-      (res: any)=>{
+
+      (res: any) => {
         // console.log('requestget',res);
-       this.requestdata = res.data;
+        this.requestdata = res.data;
       }
     );
     this.authService.getbill().subscribe(
-      (res: any)=>{
+      (res: any) => {
         // console.log('getbill',res);
-       this.getbilldata = res.data;
+        this.getbilldata = res.data;
       }
     );
   }
+  paginate(array: string | any[], page_size: number, page_number: number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
 
-  calLikeAPI(){
+  paginationNext(data: any) {
+    if (data == 'liked') {
+      this.likecount += 5;
+      this.likeReduce = this.paginate(
+        this.likedata,
+        this.likecount,
+        1
+      );
+      this.ngOnInit();
+    }
+    if (data == 'deleted') {
+      this.deletecount += 5;
+      this.deleteReduce = this.paginate(
+        this.deletedata,
+        this.deletecount,
+        1
+      );
+      this.ngOnInit();
+    }
+    if (data == 'created') {
+      this.createcount += 5;
+      this.createReduce = this.paginate(
+        this.createddata,
+        this.createcount,
+        1
+      );
+      this.ngOnInit();
+    }
+  }
+  paginationLess(data: any) {
+    if (data == 'liked') {
+      this.likecount = 5;
+      this.likeReduce = this.paginate(
+        this.likedata,
+        this.likecount,
+        1
+      );
+      this.ngOnInit();
+    }
+    if (data == 'deleted') {
+      this.deletecount = 5;
+      this.deleteReduce = this.paginate(
+        this.deletedata,
+        this.deletecount,
+        1
+      );
+      this.ngOnInit();
+    }
+    if (data == 'created') {
+      this.createcount = 5;
+      this.createReduce = this.paginate(
+        this.createddata,
+        this.createcount,
+        1
+      );
+      this.ngOnInit();
+    }
+  }
+  calLikeAPI() {
     this.authService.likedproject().subscribe((res: any) => {
       this.likedata = res.data;
     });
@@ -263,7 +336,7 @@ this.onclick(this.value);
     this.addmoneyform.value.paymentMethod = "WALLET";
     // localStorage.setItem("redirection", JSON.stringify("wallet"));
     this.authService.makePaymentForBill(this.addmoneyform.value);
-    }
+  }
   onclick(value: any) {
     this.visible = !this.visible;
     this.paymentvisform = this.fb.group({
@@ -276,8 +349,8 @@ this.onclick(this.value);
       .subscribe((res: any) => {
         if (res.error == false) {
           this.getadmin = res.data;
-          console.log("adm",this.getadmin)
-          this.getadmincount =res.data.transactionHistory.length;
+          console.log("adm", this.getadmin)
+          this.getadmincount = res.data.transactionHistory.length;
         } else {
         }
       });
@@ -292,7 +365,7 @@ this.onclick(this.value);
   //   this.authService.addmoneytowallet(this.addmoneyform.value);
   // }
 
-  
+
 
 
   openreward(value: any, datas: any) {

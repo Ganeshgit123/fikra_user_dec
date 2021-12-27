@@ -90,6 +90,7 @@ body:lang(ar) {
     }
 }
 
+
 .banner_sec .owl-theme .owl-nav [class*=owl-]:hover {
     color: #000;
     text-decoration: none
@@ -735,6 +736,7 @@ p {
     background: #131313;
     color: #fff;
 }
+
 
 .skip_btn {
     text-decoration: none;

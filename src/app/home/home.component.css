@@ -278,6 +278,7 @@
     }
 }
 
+
 .head_cont_sec a {
     background: #fff;
     box-shadow: 5px 5px 18px #00000026;
@@ -828,7 +829,6 @@ background-size: contain;
         margin: 0;
     }
 }
-
 .newsletter_sec h3 {
     color: #fff;
     font-size: 30px;
@@ -1628,8 +1628,7 @@ a {
     float: right;
     box-shadow: 1px 2px 5px 0px #21201e;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 1023px) {
+@media only screen and (min-width: 320px) and (max-width: 1023px) { 
     .popup {
         margin: 0px;
         width: 100%;
@@ -1811,13 +1810,6 @@ a {
     margin-top: 1%;
 }
 
-.overlay1 {
-    transition: opacity 499ms;
-    visibility: visible;
-    opacity: 1;
-    margin-left: -11%;
-    margin-top: -96px;
-}
 
 .overlay2 {
     position: absolute;
@@ -1831,22 +1823,6 @@ a {
     opacity: 1;
 }
 
-.popup1 {
-    background: #fff;
-    width: 100%;
-    transition: all 5s ease-in-out;
-    height: auto;
-    position: fixed;
-    z-index: 3;
-}
-
-@media only screen and (min-width: 320px) and (max-width: 1023px) {
-    .popup1 {
-        width: 100%;
-        right: auto;
-    }
-}
-
 .popup2 {
     margin: 85px 85px;
     background: #fff;
@@ -1858,7 +1834,6 @@ a {
     box-shadow: -2px 3px 5px 0px #21201e;
     overflow-y: scroll;
 }
-
 @media only screen and (min-width: 320px) and (max-width: 1023px) {
     .popup2 {
         margin: 10px 0px 0px 0px;
@@ -1867,9 +1842,6 @@ a {
     }
 }
 
-.popup1:lang(ar) {
-    float: left;
-}
 
 .popup2:lang(ar) {
     float: left;
@@ -1881,24 +1853,6 @@ a {
     opacity: 1;
     width: 0px;
     margin-top: 0px;
-}
-
-.popup1 .close {
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 15px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #ffffff;
-    background: transparent linear-gradient(180deg, #ff5959 0%, #fe953a 100%) 0% 0% no-repeat padding-box;
-    opacity: 1;
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 2px 8px 2px 8px;
-    float: right;
-    margin-top: 10%;
 }
 
 .popup2 .close {
@@ -2074,7 +2028,9 @@ a {
     text-align: right;
     margin-top: -28px;
 }
-
+.search_close:lang(ar){
+  text-align: left;
+}
 .pop_close:lang(ar) {
     text-align: left;
 }
@@ -2146,4 +2102,49 @@ a {
 }
 .notifi_ico:lang(ar){
     margin-right: 35px;
+}
+.search_btn{
+    cursor: pointer;
+}
+.search-control{
+    position: fixed;
+    z-index: 3;
+    padding: 0;
+}
+.close_search_ico{
+    float: right;
+    margin-top: -2rem;
+    margin-right: 2rem;
+    position: relative;
+}
+.close_search_ico:lang(ar){
+    float: left;
+    margin-right: auto;
+    margin-left: 2rem;
+}
+.overlay1 {
+    transition: opacity 499ms;
+    visibility: visible;
+    opacity: 1;
+    margin-top: 40px;
+}
+
+.popup1 {
+    background: #fff;
+    width: 100%;
+    transition: all 5s ease-in-out;
+    position: fixed;
+    z-index: 3;
+    right: 0;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.search_title{
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .search_title{
+        font-size: 14px;
+    }
 }

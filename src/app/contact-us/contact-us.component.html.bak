@@ -1,0 +1,190 @@
+<!-- <app-right-header></app-right-header> -->
+<section class="contact_sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" style="height: 400px">
+                    <agm-marker *ngFor="let marker of markers; let i = index" (markerClick)="clickedMarker(infowindow)" [latitude]="marker.lat" [longitude]="marker.long">
+
+                        <agm-info-window #infowindow>
+                            <strong *ngIf=" dir == 'ltr'">{{ contentLan.ADDRESS }} : {{marker.address}}</strong>
+                            <strong *ngIf=" dir == 'rtl'">{{ contentLan.ADDRESS }} : {{marker.addressAr}}</strong>
+                        </agm-info-window>
+
+                    </agm-marker>
+                </agm-map>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info_sec">
+    <div class="container">
+        <!-- <div class="row" style="margin-top: 2%;margin-bottom: 4%;">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div *ngIf=" dir == 'ltr'">
+                    <div class="form-group">
+                        <select class="form-select" style=" width: -webkit-fill-available; " #mycity required
+                            (change)='oncitySelected(mycity.value)'>
+                            <option *ngFor="let marker of markers" [value]="marker._id">{{marker.branchName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf=" dir == 'rtl'">
+                    <div class="form-group">
+                        <select class="form-select" style=" width: -webkit-fill-available; " #mycity required
+                            (change)='oncitySelected(mycity.value)'>
+                            <option *ngFor="let marker of markers" [value]="marker._id">{{marker.branchNameAr}}</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+                <div class="row" *ngFor="let locat of def">
+                    <div class="col-md-3">
+                        <div class="contact_info">
+                            <img src="assets/image/contact/location.svg" class="img_size">
+                            <h6>{{ contentLan.ADDRESS }} :</h6>
+                            <div *ngIf=" dir == 'ltr'">
+                                <p>{{locat.address}}</p>
+                            </div>
+                            <div *ngIf=" dir == 'rtl'">
+                                <p>{{locat.addressAr}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact_info">
+                            <img src="assets/image/contact/mail.svg" class="img_size1">
+                            <h6>{{ contentLan.EMAIL }} :</h6>
+                            <p>{{locat.email}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact_info">
+                            <img src="assets/image/contact/fax.svg" class="img_size1">
+                            <h6>{{ contentLan.FAX }}:</h6>
+                            <p>{{locat.fax}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact_info">
+                            <img src="assets/image/contact/phone.svg" class="img_size1">
+                            <h6>{{ contentLan.PHONENUMBER }}:</h6>
+                            <p>{{locat.phone}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 col-2 col-md-2">
+                <div *ngIf=" dir == 'ltr'">
+                    <img src="assets/image/feature_left.svg" alt="" class="left_img">
+                </div>
+                <div *ngIf=" dir == 'rtl'">
+                    <img src="assets/image/rtl/right_side.svg" alt="" class="left_img">
+                </div>
+            </div>
+            <div class="col-lg-1 col-1 col-md-1"></div>
+            <div class="col-lg-9 col-9 col-md-8">
+                <form [formGroup]="sendcontactform">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" formControlName="name" class="form-control" placeholder="Name *" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" formControlName="email" class="form-control" placeholder="Email *" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" formControlName="phone" class="form-control" placeholder="Phone Number">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select class="form-select" #mySelect formControlName="country" required (change)='oncountrySelected(mySelect.value)'>
+                                    <option value="" disabled>Select Country</option>
+                                    <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
+                                        <span *ngIf=" dir == 'ltr'">{{allcountry.countryName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{allcountry.countryNameAr}}</span>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select formControlName="city" class="form-select">
+                                    <option value="" disabled>Select City</option>
+                                    <option *ngFor="let cities of cityList" [value]="cities.cityName">
+                                        <span *ngIf=" dir == 'ltr'">{{cities.cityName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{cities.cityNameAr}}</span>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control" formControlName="message" placeholder="Message *" cols="40" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+                                <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                                    <div *ngIf="f.message.errors.required">Message is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select formControlName="inqueryType" class="form-select" [ngClass]="{ 'is-invalid': submitted && f.inqueryType.errors }">
+                                    <option value="" disabled>Type of Inquiry *</option>
+                                    <option *ngFor="let enq of enquiryList" [value]="enq.enquiryName">
+                                        <span *ngIf=" dir == 'ltr'">{{enq.enquiryName}}</span>
+                                        <span *ngIf=" dir == 'rtl'">{{enq.enquiryName_Ar}}</span>
+                                    </option>
+                                </select>
+                                <div *ngIf="submitted && f.inqueryType.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inqueryType.errors.required">Select type of Inquiry</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" formControlName="inqueryMessage" class="form-control" placeholder="Other">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <p class="text-center"><button type="button" (click)="onRequest()" class="cont_sub_btn">{{ contentLan.SUBMIT }}</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-1 col-md-1"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- <app-footer></app-footer> -->

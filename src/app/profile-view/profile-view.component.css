@@ -34,7 +34,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #FFFFFF;
-    background: transparent linear-gradient( 180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
     border: none;
     padding: 10px 40px 10px 40px;
 }
@@ -54,7 +54,7 @@
 }
 
 .profilebacked:hover {
-    background: transparent linear-gradient( 180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #FF5959 0%, #FE953A 100%) 0% 0% no-repeat padding-box;
     color: #fff;
 }
 
@@ -82,22 +82,24 @@
     margin-bottom: 10px;
     height: 210px;
     overflow-y: scroll;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
     scrollbar-width: none;
 }
-.profilewebsitecontent{
+
+.profilewebsitecontent {
     font-size: 14px;
     font-weight: 500;
     color: #9a999e;
     margin-bottom: 10px;
 }
 
+
 /* width */
 
 .profileboxcontent::-webkit-scrollbar {
     display: none;
 }
-
 
 .profileaddbio {
     font-size: 14px;
@@ -351,6 +353,7 @@
     width: 150px;
     height: 150px;
     cursor: pointer;
+    border-radius: 75px;
 }
 
 .img_upload {

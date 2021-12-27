@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "../shared/auth.service";
 import { ToastrService } from "ngx-toastr";
-import Swal, { SweetAlertOptions } from "sweetalert2";
+import Swal from "sweetalert2";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -58,12 +58,12 @@ export class ProfileComponent implements OnInit {
   imgfile: any;
   dob: any;
 
-  imgprf: any; 
+  imgprf: any;
   role!: String;
   bio: any;
   backed: any;
   contentLan: any = {};
-  web:any;
+  web: any;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -82,19 +82,19 @@ export class ProfileComponent implements OnInit {
   });
 
   async arabicCotent() {
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
 
   ngOnInit(): void {
@@ -149,8 +149,8 @@ export class ProfileComponent implements OnInit {
     this.authService.aboutdetails().subscribe((res: any) => {
       this.about = res.data;
       this.bio = res.data.userBio;
-      this.webSiteURL=res.data.webSiteURL;
-      this.web =res.data.webSiteURL;
+      this.webSiteURL = res.data.webSiteURL;
+      this.web = res.data.webSiteURL;
       // console.log("hi",this.web);
       this.savebiographyform.patchValue({
         userBio: this.about.userBio,
@@ -164,7 +164,7 @@ export class ProfileComponent implements OnInit {
     // this.authService.prfimg(this.imageuploadform.value);
   }
   readLocalStorageValue(key: string): string {
-    
+
     return JSON.parse(localStorage.getItem(key)!);
   }
 
@@ -183,13 +183,13 @@ export class ProfileComponent implements OnInit {
     formdata.append("userId", JSON.parse(localStorage.getItem("userId")!));
     formdata.append("userType", JSON.parse(localStorage.getItem("role")!));
     // console.log('prfimgpro',formdata);
-    var imgcheck=this.fileUpload.name.split(".").pop();
-    if(imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'JPG' || imgcheck == 'PNG' || imgcheck == 'JPEG' ||imgcheck == 'jpeg' ){
-      if(event.target.files[0].size <= 25600 ){
+    var imgcheck = this.fileUpload.name.split(".").pop();
+    if (imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'JPG' || imgcheck == 'PNG' || imgcheck == 'JPEG' || imgcheck == 'jpeg') {
+      if (event.target.files[0].size <= 25600) {
 
-      this.authService.prfimg(formdata);
-      console.log("ssss",imgcheck);
-      }else{
+        this.authService.prfimg(formdata);
+        console.log("ssss", imgcheck);
+      } else {
         Swal.fire({
           text: "Please select this size image in 160*160",
           icon: "warning",
@@ -216,9 +216,9 @@ export class ProfileComponent implements OnInit {
   }
   gotoprofile() {
     if (this.role == "creator") {
-      this.router.navigate(["/account/1"], { fragment: "editform" }); 
-    }else{
-      this.router.navigate(["/account/7"], { fragment: "editform" }); 
+      this.router.navigate(["/account/1"], { fragment: "editform" });
+    } else {
+      this.router.navigate(["/account/7"], { fragment: "editform" });
     }
   }
   // imageupload(){
@@ -260,8 +260,8 @@ export class ProfileComponent implements OnInit {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  
-  deleteRequest(){
+
+  deleteRequest() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -269,7 +269,7 @@ export class ProfileComponent implements OnInit {
       },
       buttonsStyling: true
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -293,13 +293,13 @@ export class ProfileComponent implements OnInit {
           preConfirm: (login) => {
             this.deleteRequestForm.value['deleteReson'] = login;
             this.authService.deleteRequest(this.deleteRequestForm.value).subscribe((res: any) => {
-              if(res.error == false){
+              if (res.error == false) {
                 swalWithBootstrapButtons.fire(
                   'Request Sent!',
                   'Your request is under process! We will let you know soon :(.',
                   'success'
-                ).then(()=> this.ngOnInit())
-              }else{
+                ).then(() => this.ngOnInit())
+              } else {
                 swalWithBootstrapButtons.fire(
                   'Cancelled',
                   res.message,
@@ -309,7 +309,7 @@ export class ProfileComponent implements OnInit {
             });
           },
           allowOutsideClick: () => !Swal.isLoading()
-          })
+        })
 
       } else if (
         /* Read more about handling dismissals below */

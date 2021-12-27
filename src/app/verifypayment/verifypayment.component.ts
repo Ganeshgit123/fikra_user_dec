@@ -55,7 +55,7 @@ export class VerifypaymentComponent implements OnInit {
     this.redirection = JSON.parse(localStorage.getItem('redirection')!);
     this.updatestatus();
     if (this.redirection == 'wallet'){
-      this.updatewalletsuccess() 
+      this.updatewalletsuccess()
      }if (this.redirection == 'pledge'){
        this.checkoutpledge()
      }if (this.redirection == 'bill'){
