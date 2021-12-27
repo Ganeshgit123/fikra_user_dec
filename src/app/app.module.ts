@@ -24,7 +24,7 @@ import {
 } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule,NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 import { AuthInterceptor } from "./shared/authconfig.interceptor";
 import { ToastrModule } from "ngx-toastr";
 import { VerifyotpComponent } from "./verifyotp/verifyotp.component";
@@ -82,6 +82,7 @@ const ngWizardConfig: NgWizardConfig = {
     BrowserAnimationsModule,
     HttpClientModule,
     NgbModule,
+    NgbPaginationModule,
     MatTabsModule,
     MatGridListModule,
     ToastrModule.forRoot(),

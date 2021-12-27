@@ -31,7 +31,9 @@ export class AccountComponent implements OnInit {
   submitted = false;
   shippingaddressForm:any;
   display = "none";
-
+  page = 1;
+  total: any;
+  paymetTotal : any;
   // paymentForm:any;
 errors:any
   checkoutForm = this.formBuilder.group({
@@ -118,7 +120,7 @@ errors:any
   popup1: any;
   popuppay = false;
   today: any;
-  walletstatus: any;
+  walletstatus: any[] = [];
   businessAddress: any;
   shippingaddress:any = [];
   country: any;
@@ -126,7 +128,7 @@ errors:any
   error!: any;
   imgfile: any;
   pass: any;
-  bankaccount: any;
+  bankaccount: any[] = [];
   _userRole_: any;
   oldpass: any;
   fullname: any;
@@ -218,15 +220,15 @@ errors:any
       this.notificationForm.patchValue(this.notificationstatus);
     });
     this.authService.getAllBankaccount().subscribe((res: any) => {
-      this.bankaccount = res;
+      this.bankaccount = res.data;
+      // console.log("va",this.bankaccount)
+      this.paymetTotal = this.bankaccount.length
     });
 
     this.authService.getwalletstatus().subscribe((res: any) => {
-      this.walletstatus = res.data._history_
-        // .filter((data: any) => {
-        //   return data._isSuccess_;
-        // })
-        .reverse();
+      this.walletstatus = res.data._history_.reverse();
+      // console.log("ss", this.walletstatus)
+      this.total = this.walletstatus.length
       this.walletamt = res.data.walletAmount;
     });
 
@@ -636,6 +638,9 @@ errors:any
     return true;
 }
 openModal() {
+  this.display = "block";
+}
+openMobileModel(){
   this.display = "block";
 }
 onCloseHandled() {

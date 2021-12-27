@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../shared/auth.service";
@@ -10,12 +10,12 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
+  @ViewChild("myModalClose") modalClose: any;
   data: any;
   pledgecount: any;
   visible: boolean = false;
   data1: any;
   displayMode = 1;
-  getadmincount = 0;
   displayModein = 1;
   popup: any;
   popup1: any;
@@ -33,19 +33,19 @@ export class ActivityComponent implements OnInit {
   state: any;
   pin: any;
   phone: any;
-  likedata: any;
+  likedata: any = [];
   saveform: any;
-  deletedata: any;
+  deletedata: any = [];
   requestdata: any;
-  getbilldata: any;
+  getbilldata: any[] = [];
   IsmodelShow: any;
   billxdate: any;
-  getadmin: any;
+  getadmin: any[] = [];
   invoicedate: any;
   billid: any;
   paymentvisform: any;
   rewardgetform: any;
-  getreward: any;
+  getreward: any[] = [];
   contentLan: any = {};
   popuppay = false;
   createdcount = 0;
@@ -56,13 +56,19 @@ export class ActivityComponent implements OnInit {
   likegoalAmount: any;
   likeamountPleadged: any;
   likepercentage: any;
-  createddata: any;
+  createddata: any[] = [];
   likecount = 5;
   likeReduce: any = [];
   deletecount = 5;
   deleteReduce: any = [];
   createcount = 5;
   createReduce: any = [];
+  page = 1;
+  billTotal: any;
+  adminPaymetTotal:any;
+  projectPaymetTotal:any;
+  display = "none";
+  rewardPayment:any;
 
   addmoneyform = this.fb.group({
     userId: JSON.parse(localStorage.getItem('userId')!),
@@ -108,11 +114,13 @@ export class ActivityComponent implements OnInit {
       (res: any) => {
         this.created = res;
         this.createddata = res.data;
+        this.projectPaymetTotal = this.createddata.length
+        console.log("ff",this.projectPaymetTotal)
         this.createReduce = this.paginate(res.data, this.createcount, 1);
         this.createdcount = res.data.length;
         this.createddata.forEach((elementss: any) => {
           this.paymenthistCount = elementss._is_succeed_;
-          console.log("ss", this.paymenthistCount)
+          // console.log("ss", this.paymenthistCount)
           this.featuregoalAmount = elementss.basicInfoId.goalAmount;
 
           this.featureamountPleadged = elementss._amount_Pleadged_;
@@ -173,6 +181,7 @@ export class ActivityComponent implements OnInit {
       (res: any) => {
         // console.log('getbill',res);
         this.getbilldata = res.data;
+        this.billTotal = this.getbilldata.length;
       }
     );
   }
@@ -348,10 +357,11 @@ export class ActivityComponent implements OnInit {
       .getadminpayment(this.paymentvisform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.getadmin = res.data;
-          console.log("adm", this.getadmin)
-          this.getadmincount = res.data.transactionHistory.length;
-        } else {
+          if(res.message != 'Data not found'){
+            console.log("fgg",res.data)
+            this.getadmin = res.data.transactionHistory;
+            this.adminPaymetTotal = this.getadmin.length
+          }
         }
       });
   }
@@ -368,7 +378,8 @@ export class ActivityComponent implements OnInit {
 
 
 
-  openreward(value: any, datas: any) {
+  openModal(value: any, datas: any) {
+    this.display = "block";
     this.rewardpopup = true;
 
     this.rewardgetform = this.fb.group({
@@ -382,6 +393,7 @@ export class ActivityComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.error == false) {
           this.getreward = res.data;
+          this.rewardPayment = this.getreward.length;
           this.pledgecount = res.pledgedCount;
         } else {
         }
@@ -390,5 +402,10 @@ export class ActivityComponent implements OnInit {
   capitalize = (s: any) => {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
+  onCloseHandled() {
+    this.display = "none";
+    // this.specialrequestform.reset();
   }
 }

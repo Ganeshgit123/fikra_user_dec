@@ -15,7 +15,8 @@
     <div class="container-fluid">
         <div class="row" *ngIf="opensearch == true">
             <div class="col-md-12 search-control">
-                <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo" placeholder="{{ contentLan.SEARCH }}" class="form-control w-80 p-3" />
+                <input #seatodo type="text" (keyup)="onquerySelected()" [(ngModel)]="valuesearch" name="seetodo"
+                    placeholder="{{ contentLan.SEARCH }}" class="form-control w-80 p-3" />
                 <span class="close_search_ico"><i class="fal fa-times search_close" (click)="closeSearch()"></i></span>
             </div>
         </div>
@@ -28,7 +29,8 @@
                             <i class="fal fa-times pop_close" (click)="closeSearch()"></i>
                         </div> -->
                         <div class="row" *ngFor="let data of search; let i = index" style="margin-top: 20px">
-                            <a [routerLink]="['/projectview/' + data._id]" style="color: black; text-decoration: none" (click)="closeSearch()">
+                            <a [routerLink]="['/projectview/' + data._id]" style="color: black; text-decoration: none"
+                                (click)="closeSearch()">
                                 <div class="row">
                                     <div class="col-3 col-md-3 col-lg-2 col-xl-2">
                                         <img src="{{ data.basicInfoId.projectImage }}" class="img-fluid" />
@@ -99,9 +101,12 @@
                     </li>
                     <li *ngIf="role === 'investor' || role === 'creator'">
                         <a (click)="popup = true" style="font-size: 25px; margin-left: 10%; cursor: pointer">
-                            <img class="upload-img" style=" width: 50px; height: 50px; border-radius: 50%; cursor: pointer; " *ngIf="profileImage !== 'undefined'" src="{{ profileimg }}" />
+                            <img class="upload-img"
+                                style=" width: 50px; height: 50px; border-radius: 50%; cursor: pointer; "
+                                *ngIf="profileImage !== 'undefined'" src="{{ profileimg }}" />
                         </a>
-                        <i (click)="popup = true" style="cursor: pointer" *ngIf="profileImage === 'undefined'" class="extraCl fa fa-user-circle-o" aria-hidden="true"></i>
+                        <i (click)="popup = true" style="cursor: pointer" *ngIf="profileImage === 'undefined'"
+                            class="extraCl fa fa-user-circle-o" aria-hidden="true"></i>
                         <div>
                             <div class="overlay" *ngIf="popup">
                                 <form [formGroup]="WordpressForm">
@@ -109,21 +114,24 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-10"></div>
-                                                <i class="fal fa-times" (click)="popup = false" style="cursor: pointer; margin: 20px 0px"></i>
+                                                <i class="fal fa-times" (click)="popup = false"
+                                                    style="cursor: pointer; margin: 20px 0px"></i>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 profile_sec"></div>
                                                 <div class="row">
-                                                    <div class="col-md-6" style=" display: -webkit-box; margin-bottom: 30px; display: flex; ">
-                                                        <h3 class="youracccount" style="margin-right: 20px; margin-bottom: 0px">
+                                                    <div class="col-md-6"
+                                                        style=" display: -webkit-box; margin-bottom: 30px; display: flex; ">
+                                                        <h3 class="youracccount">
                                                             {{ user.data.fullName }}
                                                         </h3>
                                                         <span class="tag-box">{{ role == "investor" ? "Backer" :
                                                             capitalize(role) }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="row" style=" margin-bottom: 2%; border-bottom: 2px solid #fe953a; padding: 20px; opacity: 1; margin-left: 0px; ">
-                                                    <div class="col-md-6" style=" text-align: initial; border-right: 2px solid #fe953a; ">
+                                                <div class="row"
+                                                    style=" margin-bottom: 2%; border-bottom: 2px solid #fe953a; padding: 20px; opacity: 1; margin-left: 0px; ">
+                                                    <div class="col-md-6 right_border">
                                                         <ul class="profile_ul">
                                                             <li class="profile_li">
                                                                 <a routerLink="/savedproject" (click)="popup = false">{{
@@ -152,7 +160,9 @@
                                                                     contentLan.SETTINGS }}</a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a routerLink="/specialrequest" *ngIf=" role === 'creator'; else creatorTemplatemessage " (click)="popup = false">{{
+                                                                <a routerLink="/specialrequest"
+                                                                    *ngIf=" role === 'creator'; else creatorTemplatemessage "
+                                                                    (click)="popup = false">{{
                                                                     contentLan.SPECIALREQ }} </a>
                                                             </li>
                                                             <ng-template #creatorTemplatemessage>
@@ -170,17 +180,26 @@
                                                     </div>
                                                 </div>
 
-                                                <div *ngIf="role === 'creator'; else creatorTemplate" class="create_proj_top">
+                                                <div *ngIf="role === 'creator'; else creatorTemplate"
+                                                    class="create_proj_top">
                                                     <div class="col-md-12" style="text-align: initial; padding: 20px">
                                                         <div class="crr_po_to">
                                                             <h4 class="createdproject" style="margin-top: 7px">
                                                                 <b>{{ contentLan.CREATEDPROJECTS }}</b>
                                                             </h4>
-                                                            <a class="createnewa" routerLink="/createproject" (click)="popup = false"> <button class="createplus">+</button><span class="createnew">{{ contentLan.CREATENEW }}</span>
+                                                            <a class="createnewa" routerLink="/createproject"
+                                                                (click)="popup = false"> <button
+                                                                    class="createplus">+</button><span
+                                                                    class="createnew">{{ contentLan.CREATENEW }}</span>
                                                             </a>
                                                         </div>
-                                                        <ul *ngFor=" let country of user.projectData; let i = index " style="margin-bottom: 10px; padding: 0px"> <input type="text" placeholder="Title" [(ngModel)]="title" formControlName="title" hidden />
-                                                            <a *ngIf="6 > i" [routerLink]="[ '/projectview/' + country._id ]" (click)="popup = false">
+                                                        <ul *ngFor=" let country of user.projectData; let i = index "
+                                                            style="margin-bottom: 10px; padding: 0px"> <input
+                                                                type="text" placeholder="Title" [(ngModel)]="title"
+                                                                formControlName="title" hidden />
+                                                            <a *ngIf="6 > i"
+                                                                [routerLink]="[ '/projectview/' + country._id ]"
+                                                                (click)="popup = false">
                                                                 <li>
                                                                     {{ country.title }}
                                                                     <span [style]="
@@ -236,8 +255,8 @@
                     <li *ngIf="
               role === 'investor' || role === 'creator';
               else nologinTemplate
-            " [style]="profileImage != 'undefined' ? '' : 'margin-left: 35px;'">
-                        <span style="font-size: 25px; color: #fe764a">
+            " [style]="profileImage != 'undefined' ? '' : ''">
+                        <span class="notifi_ico">
                             <a (click)="popup2 = true"> <i class="far fa-bell"></i></a><span
                                 class="sec counter counter-lg">{{ cou
                                 }}</span>
@@ -296,54 +315,54 @@
                                                     <a (click)="deletenotify(notifyobj._id)">
                                                         <i class="fas fa-trash-alt"></i></a>
                                                 </span>
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
                                                     h:mm a'}}</label>
-                    </div>
-                </div>
-            </div>
-            </a>
-            </span>
-            <ng-template #successTemplate>
-                <a href="/message" style="text-decoration: none; color: black">
-                    <div class="col-md-12 notifyfullverify">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
-                                <label>{{ contentLan.MESSAGE }} :</label>
-                                <p *ngIf="notifyobj.notiContent" style="
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </span>
+                            <ng-template #successTemplate>
+                                <a href="/message" style="text-decoration: none; color: black">
+                                    <div class="col-md-12 notifyfullverify">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
+                                                <label>{{ contentLan.MESSAGE }} :</label>
+                                                <p *ngIf="notifyobj.notiContent" style="
                             text-overflow: ellipsis;
                             overflow: hidden;
                             white-space: nowrap;
                             font-size: 14px;
                           ">
-                                    {{ notifyobj.notiContent }}
-                                </p>
-                            </div>
-                            <div class="col-md-2">
-                                <span style="font-size: 18px; color: #ff495e">
+                                                    {{ notifyobj.notiContent }}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <span style="font-size: 18px; color: #ff495e">
                                                     <a (click)="deletenotify(notifyobj._id)">
                                                         <i class="fas fa-trash-alt"></i></a>
                                                 </span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label style="font-size: 12px;">{{notifyobj.createdAt | date: 'M/d/yy,
                                                     h:mm a'}}</label>
-                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </ng-template>
                         </div>
-                    </div>
-                </a>
-            </ng-template>
-    </div>
-    </ng-template>
-    </div>
-    </div>
-    </form>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
     </div>
 
 </section>

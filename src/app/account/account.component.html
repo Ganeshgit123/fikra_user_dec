@@ -17,24 +17,28 @@
             <div class="col-md-12">
                 <a [routerLink]="['/account/1']" fragment="checkoutForm">
                     <button class="account" [ngClass]="{ 'btn-primary active': displayMode == 1 }">
-            {{ contentLan.ACCOUNG }}
-          </button></a>
+                        {{ contentLan.ACCOUNG }}
+                    </button></a>
                 <a [routerLink]="['/account/2']" fragment="editForm">
                     <button class="editprofile" [ngClass]="{ 'btn-primary active': displayMode == 2 }">
-            {{ contentLan.EDITPROFILE }}
-          </button></a>
-                <button [routerLink]="['/account/3']" class="notification" [ngClass]="{ 'btn-primary active': displayMode == 3 }">
-          {{ contentLan.NOTIFICATIONS }}
-        </button>
-                <button [routerLink]="['/account/4']" class="paymentmethod" [ngClass]="{ 'btn-primary active': displayMode == 4 }">
-          {{ contentLan.PAYMENTMETHOD }}
-        </button>
-                <button [routerLink]="['/account/5']" class="shippingaddress" [ngClass]="{ 'btn-primary active': displayMode == 5 }">
-          {{ contentLan.SHIPPINGADDRESS }}
-        </button>
-                <button [routerLink]="['/account/6']" class="following" [ngClass]="{ 'btn-primary active': displayMode == 6 }">
-          {{ contentLan.MYWALLET }}
-        </button>
+                        {{ contentLan.EDITPROFILE }}
+                    </button></a>
+                <button [routerLink]="['/account/3']" class="notification"
+                    [ngClass]="{ 'btn-primary active': displayMode == 3 }">
+                    {{ contentLan.NOTIFICATIONS }}
+                </button>
+                <button [routerLink]="['/account/4']" class="paymentmethod"
+                    [ngClass]="{ 'btn-primary active': displayMode == 4 }">
+                    {{ contentLan.PAYMENTMETHOD }}
+                </button>
+                <button [routerLink]="['/account/5']" class="shippingaddress"
+                    [ngClass]="{ 'btn-primary active': displayMode == 5 }">
+                    {{ contentLan.SHIPPINGADDRESS }}
+                </button>
+                <button [routerLink]="['/account/6']" class="following"
+                    [ngClass]="{ 'btn-primary active': displayMode == 6 }">
+                    {{ contentLan.MYWALLET }}
+                </button>
             </div>
         </div>
     </div>
@@ -46,25 +50,27 @@
             <div class="col-md-12">
                 <a [routerLink]="['/account/7']" fragment="checkoutForm">
                     <button class="account" [ngClass]="{ 'btn-primary active': displayMode == 7 }">
-            {{ contentLan.ACCOUNG }}
-          </button></a>
+                        {{ contentLan.ACCOUNG }}
+                    </button></a>
                 <a [routerLink]="['/account/8']" fragment="editForm">
                     <button class="editprofile" [ngClass]="{ 'btn-primary active': displayMode == 8 }">
-            {{ contentLan.EDITPROFILE }}
-          </button></a>
+                        {{ contentLan.EDITPROFILE }}
+                    </button></a>
                 <button [routerLink]="['/account/9']" [class]="
             displayMode == 9
               ? 'shippingaddress btn-primary active'
               : 'shippingaddress'
           ">
-          {{ contentLan.NOTIFICATIONS }}
-        </button>
-                <button [routerLink]="['/account/10']" class="shippingaddress" [ngClass]="{ 'btn-primary active': displayMode == 10 }">
-          {{ contentLan.MYWALLET }}
-        </button>
-                <button [routerLink]="['/account/11']" class="following" [ngClass]="{ 'btn-primary active': displayMode == 11 }">
-          {{ contentLan.SHIPPINGADDRESS }}
-        </button>
+                    {{ contentLan.NOTIFICATIONS }}
+                </button>
+                <button [routerLink]="['/account/10']" class="shippingaddress"
+                    [ngClass]="{ 'btn-primary active': displayMode == 10 }">
+                    {{ contentLan.MYWALLET }}
+                </button>
+                <button [routerLink]="['/account/11']" class="following"
+                    [ngClass]="{ 'btn-primary active': displayMode == 11 }">
+                    {{ contentLan.SHIPPINGADDRESS }}
+                </button>
                 <!-- <button class="following" (click)="onDisplayModeChange(12)" [ngClass]="{'btn-primary active': displayMode == 12}">Dashboard</button> -->
             </div>
         </div>
@@ -84,32 +90,35 @@
                 <div class="row">
                     <div class="col-md-3">
                         <button class="changepassword" (click)="ToggleButtonemail()">
-              {{ contentLan.CHANGEEMAIL }}
-            </button>
+                            {{ contentLan.CHANGEEMAIL }}
+                        </button>
                     </div>
                     <div class="col-md-3">
                         <button class="changepassword" (click)="ToggleButton()">
-              {{ contentLan.CHANGEPASSWORD }}
-            </button>
+                            {{ contentLan.CHANGEPASSWORD }}
+                        </button>
                     </div>
                 </div>
                 <div class="row" *ngIf="showSelected">
                     <div class="col-md-6">
                         <label class="cmnlabel">{{ contentLan.OLDPASSWORD }}</label>
-                        <input type="password" placeholder="Old password" class="form-control" [(ngModel)]="des2" name="old_password" formControlName="old_password" />
+                        <input type="password" placeholder="Old password" class="form-control" [(ngModel)]="des2"
+                            name="old_password" formControlName="old_password" />
                     </div>
                     <div class="col-md-6">
                         <label class="cmnlabel">{{ contentLan.PASSWORD }}</label>
-                        <input type="password" placeholder="Password" class="form-control" (keyup)="checkpass($event)" [(ngModel)]="des1" name="password" formControlName="password" />
+                        <input type="password" placeholder="Password" class="form-control" (keyup)="checkpass($event)"
+                            [(ngModel)]="des1" name="password" formControlName="password" />
                         <div *ngIf="passcrt">
                             <label style="font-size: 11px; color: red"> {{ errors }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <button class="savesetting" (click)="onSubmitpassword()" [disabled]="!des1 || !des2" type="submit">
-                {{ contentLan.SAVE }}
-              </button>
+                            <button class="savesetting" (click)="onSubmitpassword()" [disabled]="!des1 || !des2"
+                                type="submit">
+                                {{ contentLan.SAVE }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -117,23 +126,27 @@
                     <form [formGroup]="emailform" id="checkoutForm" *ngIf="displayMode == 1">
                         <div class="col-md-6">
                             <label class="cmnlabel">{{ contentLan.OLDEMAIL }}</label>
-                            <input type="email" placeholder="Old Email" class="form-control" value="{{ email }}" [(ngModel)]="des2" name="old_email" formControlName="old_email" />
+                            <input type="email" placeholder="Old Email" class="form-control" value="{{ email }}"
+                                [(ngModel)]="des2" name="old_email" formControlName="old_email" />
                         </div>
                         <div class="col-md-6">
                             <label class="cmnlabel">{{ contentLan.PASSWORD }}</label>
-                            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="des1" name="password" formControlName="password" />
+                            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="des1"
+                                name="password" formControlName="password" />
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="cmnlabel">{{ contentLan.NEWEMAIL }}</label>
-                                <input type="email" placeholder="New Email" class="form-control" [(ngModel)]="des3" name="email" formControlName="email" />
+                                <input type="email" placeholder="New Email" class="form-control" [(ngModel)]="des3"
+                                    name="email" formControlName="email" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <button class="savesetting" (click)="onEmailupdate()" [disabled]="!des1 || !des3" type="submit">
-                  {{ contentLan.SAVE }}
-                </button>
+                                <button class="savesetting" (click)="onEmailupdate()" [disabled]="!des1 || !des3"
+                                    type="submit">
+                                    {{ contentLan.SAVE }}
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -149,50 +162,52 @@
         <div class="acc_email">
             <div class="col-md-4">
                 <label class="cmnlabel">{{ contentLan.MOBILENUMBER }}</label>
-                <input type="number" placeholder="Mobile Number" class="form-control" value="{{ mobileNumber }}" name="mobileNumber" readonly formControlName="mobileNumber" />
+                <input type="number" placeholder="Mobile Number" class="form-control" value="{{ mobileNumber }}"
+                    name="mobileNumber" readonly formControlName="mobileNumber" />
             </div>
         </div>
         <!-- <button class="savesetting" type="submit" (click)="popup = true">Send otp to verify Mobile</button> -->
-        <button class="savesetting" type="submit" (click)="popup1 = true">
-      {{ contentLan.CHANGEMOBILENUMBER }}
-    </button>
+        <button class="savesetting" type="submit" data-bs-toggle="modal" data-bs-target="#changeModileModal" (click)="openMobileModel()">
+            {{ contentLan.CHANGEMOBILENUMBER }}
+        </button>
         <form [formGroup]="verifymobile">
-            <div class="overlay" *ngIf="popup1">
-                <div class="popup1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10"></div>
-                            <div class="col-md-2">
-                                <a class="close" (click)="popup1 = false">&times;</a>
+            <div class="modal fade" id="changeModileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" [ngStyle]="{ display: display }">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal"
+                            aria-label="Close" (click)="onCloseHandled()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="sendmobileupdateform">
+                            <div class="col-md-12">
+                                <label style="margin-bottom: 2%">{{ contentLan.MOBILENUMBER }}:</label>
+                                <span class="chng_mob_field">+966</span>
+                                <input type="tel" placeholder="Enter Mobile Number" class="form-control mob_ffed"
+                                    name="mobile" formControlName="mobile"
+                                    maxlength="9" max="999999999"
+                                    onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$"
+                                    required oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" />
                             </div>
-                            <form [formGroup]="sendmobileupdateform">
-                                <div class="col-md-12" style="margin-top: 5%">
-                                    <label>{{ contentLan.MOBILENUMBER }}:</label>
-                                    <label style="
-                      font-size: 14px;
-                      position: relative;
-                      top: 32px;
-                      right: 115px;
-                    ">+966</label>
-                                    <input type="tel" placeholder="Enter Mobile NUmber" class="form-control" name="mobile" style="padding: 10px 10px 10px 60px" formControlName="mobile" maxlength="9" max="999999999" onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$"
-                                        required oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" />
-                                </div>
-                                <button class="savesetting" (click)="onSubmitsendotpupdate()">
-                  {{ contentLan.SENDOTP }}
-                </button>
-                            </form>
+                            <button class="savesetting" (click)="onSubmitsendotpupdate()">
+                                {{ contentLan.SENDOTP }}
+                            </button>
+                        </form>
 
-                            <div class="col-md-12" style="margin-top: 5%">
-                                <label> {{ contentLan.ENTEROTP }}</label>
-                                <input type="text" placeholder="Enter OTP" class="form-control" name="otp_mobile" formControlName="otp_mobile" />
-                            </div>
-                            <button class="savesetting" (click)="onSubmitverifymobileotp()">
-                {{ contentLan.VERIFYOTP }}
-              </button>
+                        <div class="col-md-12" style="margin-top: 5%">
+                            <label style="margin-bottom: 2%"> {{ contentLan.ENTEROTP }}</label>
+                            <input type="text" placeholder="Enter OTP" class="form-control" name="otp_mobile"
+                                formControlName="otp_mobile" />
                         </div>
+                        <button class="savesetting" (click)="onSubmitverifymobileotp()">
+                            {{ contentLan.VERIFYOTP }}
+                        </button>
+  
                     </div>
                 </div>
             </div>
+        </div>
         </form>
     </section>
 
@@ -205,9 +220,10 @@
                     </h2>
                 </div>
                 <div class="col-md-6">
-                    <button class="savesetting" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal()">
-            {{ contentLan.EDITPROFILE }}
-          </button>
+                    <button class="savesetting" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="openModal()">
+                        {{ contentLan.EDITPROFILE }}
+                    </button>
                 </div>
             </div>
 
@@ -231,7 +247,7 @@
                     <div class="row" style="display: flex">
                         <div class="col-md-6 col-6 col-lg-3 col-xl-3">
                             <label class="comlabel">{{ capitalizeFirstLetter(item.key) }}:
-              </label>
+                            </label>
                         </div>
                         <div class="col-md-6 col-6 col-lg-3 col-xl-3" *ngIf="
                 item.key == 'certificateUpload' ||
@@ -241,28 +257,30 @@
               ">
                             <a href="{{ item?.value }}">
                                 <label class="comlabel" style="cursor: pointer">{{
-                  item.value ? "Download" : "-NA-"
-                  }}</label>
+                                    item.value ? "Download" : "-NA-"
+                                    }}</label>
                             </a>
                         </div>
                         <ng-template #nextAfter>
                             <div class="col-md-6 col-6 col-lg-3 col-xl-3">
                                 <label class="comlabel">{{
-                  (item.key == "dob"
-                  ? item.value?.split("T")[0]
-                  : item.value) || "-NA-"
-                  }}
-                </label>
+                                    (item.key == "dob"
+                                    ? item.value?.split("T")[0]
+                                    : item.value) || "-NA-"
+                                    }}
+                                </label>
                             </div>
                         </ng-template>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{ display: display }">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true" [ngStyle]="{ display: display }">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal" aria-label="Close" (click)="onCloseHandled()"></button>
+                            <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal"
+                                aria-label="Close" (click)="onCloseHandled()"></button>
                         </div>
                         <div class="modal-body">
                             <form [formGroup]="editForm" id="editForm" (ngSubmit)="editCreator()" ngNativeValidate>
@@ -288,11 +306,13 @@
                                                     <div>
                                                         <div class="col-md-12 form_group_left">
                                                             <label class="comlabel">{{
-                                controls.fieldName
-                                }}</label>
+                                                                controls.fieldName
+                                                                }}</label>
                                                         </div>
                                                         <div class="col-md-10 form_group_left">
-                                                            <input type="text" [formControlName]="controls.fieldId" placeholder="{{ controls.placeholder }}" class="form-control" />
+                                                            <input type="text" [formControlName]="controls.fieldId"
+                                                                placeholder="{{ controls.placeholder }}"
+                                                                class="form-control" />
                                                         </div>
                                                     </div>
                                                 </ng-template>
@@ -300,11 +320,12 @@
                                             <div *ngSwitchCase="'email'">
                                                 <div class="col-md-12 form_group_left">
                                                     <label class="comlabel">{{
-                            controls.fieldName
-                            }}</label>
+                                                        controls.fieldName
+                                                        }}</label>
                                                 </div>
                                                 <div class="col-md-10 form_group_left">
-                                                    <input type="email" [formControlName]="controls.fieldId" readonly placeholder="{{ controls.placeholder }}" class="form-control" />
+                                                    <input type="email" [formControlName]="controls.fieldId" readonly
+                                                        placeholder="{{ controls.placeholder }}" class="form-control" />
                                                 </div>
                                             </div>
                                             <div *ngSwitchCase="'number'">
@@ -317,11 +338,15 @@
                                                     <div>
                                                         <div class="col-md-12 form_group_left">
                                                             <label class="comlabel">{{
-                                controls.fieldName
-                                }}</label>
+                                                                controls.fieldName
+                                                                }}</label>
                                                         </div>
                                                         <div class="col-md-10 form_group_left">
-                                                            <input type="tel" [formControlName]="controls.fieldId" placeholder="{{ controls.placeholder }}" pattern="^[1-9][0-9]*$" oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control" />
+                                                            <input type="tel" [formControlName]="controls.fieldId"
+                                                                placeholder="{{ controls.placeholder }}"
+                                                                pattern="^[1-9][0-9]*$"
+                                                                oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';"
+                                                                class="form-control" />
                                                         </div>
                                                     </div>
                                                 </ng-template>
@@ -330,66 +355,77 @@
                                                 <div *ngIf="controls.fieldName == 'Country'">
                                                     <div class="col-md-12 form_group_left">
                                                         <label class="comlabel">{{
-                              controls.fieldName
-                              }}</label>
+                                                            controls.fieldName
+                                                            }}</label>
                                                     </div>
                                                     <div class="col-md-10 form_group_left">
-                                                        <select class="form-control" #mySelect [formControlName]="controls.fieldId" (change)="oncountrySelected(mySelect.value)">
-                              <option [selected]="true" [disabled]="true">
-                                Select Country
-                              </option>
-                              <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
-                                {{ allcountry.countryName }}
-                              </option>
-                            </select>
+                                                        <select class="form-control" #mySelect
+                                                            [formControlName]="controls.fieldId"
+                                                            (change)="oncountrySelected(mySelect.value)">
+                                                            <option [selected]="true" [disabled]="true">
+                                                                Select Country
+                                                            </option>
+                                                            <option *ngFor="let allcountry of country"
+                                                                [value]="allcountry.countryName">
+                                                                {{ allcountry.countryName }}
+                                                            </option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="controls.fieldName == 'City'">
                                                     <div class="col-md-12 form_group_left">
                                                         <label class="comlabel">{{
-                              controls.fieldName
-                              }}</label>
+                                                            controls.fieldName
+                                                            }}</label>
                                                     </div>
                                                     <div class="col-md-10 form_group_left">
-                                                        <select #mycity class="form-control" value="{{ controls.value }}" [formControlName]="controls.fieldId">
-                              <option [selected]="true" [disabled]="true">
-                                Select City
-                              </option>
-                              <option *ngFor="let cities of getcity" [value]="cities.cityName">
-                                {{ cities.cityName }}
-                              </option>
-                            </select>
+                                                        <select #mycity class="form-control"
+                                                            value="{{ controls.value }}"
+                                                            [formControlName]="controls.fieldId">
+                                                            <option [selected]="true" [disabled]="true">
+                                                                Select City
+                                                            </option>
+                                                            <option *ngFor="let cities of getcity"
+                                                                [value]="cities.cityName">
+                                                                {{ cities.cityName }}
+                                                            </option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="controls.fieldName == 'Is Business Exist'">
                                                     <div class="col-md-12 form_group_left">
                                                         <label class="comlabel">{{
-                              controls.fieldName
-                              }}</label>
+                                                            controls.fieldName
+                                                            }}</label>
                                                     </div>
                                                     <div class="col-md-10 form_group_left">
-                                                        <select class="form-control" #mybus [formControlName]="controls.fieldId">
-                              <option disabled selected>Select </option>
-                              <option *ngFor="let datas of controls.dropDown" [value]="datas.displayName">
-                                {{datas.displayName}}</option>
-                            </select>
+                                                        <select class="form-control" #mybus
+                                                            [formControlName]="controls.fieldId">
+                                                            <option disabled selected>Select </option>
+                                                            <option *ngFor="let datas of controls.dropDown"
+                                                                [value]="datas.displayName">
+                                                                {{datas.displayName}}</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div *ngSwitchCase="'hidden'">
                                                 <div class="col-md-6 colhide" nghide>
-                                                    <input type="hidden" [formControlName]="controls.fieldId" class="form-control" />
+                                                    <input type="hidden" [formControlName]="controls.fieldId"
+                                                        class="form-control" />
                                                 </div>
                                             </div>
                                             <div *ngSwitchCase="'date'">
                                                 <div *ngIf="controls.fieldName == 'DOB'">
                                                     <div class="col-md-12 form_group_left">
                                                         <label class="comlabel">{{
-                              controls.fieldName
-                              }}</label>
+                                                            controls.fieldName
+                                                            }}</label>
                                                     </div>
                                                     <div class="col-md-10 form_group_left">
-                                                        <input type="date" [formControlName]="controls.fieldId" placeholder="{{ controls.placeholder }}" class="form-control" />
+                                                        <input type="date" [formControlName]="controls.fieldId"
+                                                            placeholder="{{ controls.placeholder }}"
+                                                            class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -399,15 +435,16 @@
                                                     <label>{{ controls.fieldName }}</label>
                                                 </div>
                                                 <div class="col-md-10 form_group_left">
-                                                    <input type="radio" [formControlName]="controls.fieldId" placeholder="{{ controls.placeholder }}" class="form-control" />
+                                                    <input type="radio" [formControlName]="controls.fieldId"
+                                                        placeholder="{{ controls.placeholder }}" class="form-control" />
                                                 </div>
                                             </div>
                                             <div *ngSwitchCase="'file'">
                                                 <div *ngIf="controls.fieldId != 'profileImage'">
                                                     <div class="col-md-12 form_group_left">
                                                         <label class="comlabel">{{
-                              controls.fieldName
-                              }}</label>
+                                                            controls.fieldName
+                                                            }}</label>
                                                     </div>
                                                     <div class="col-md-10 form_group_left">
                                                         <input type="file" (change)="
@@ -419,11 +456,13 @@
                                             <div *ngSwitchCase="'textarea'">
                                                 <div class="col-md-12 form_group_left">
                                                     <label class="comlabel">{{
-                            controls.fieldName
-                            }}</label>
+                                                        controls.fieldName
+                                                        }}</label>
                                                 </div>
                                                 <div class="col-md-10 form_group_left">
-                                                    <textarea [formControlName]="controls.fieldId" placeholder="{{ controls.placeholder }}" class="form-control"></textarea>
+                                                    <textarea [formControlName]="controls.fieldId"
+                                                        placeholder="{{ controls.placeholder }}"
+                                                        class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -431,8 +470,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <button class="savesetting" type="submit">
-                    Save Updates
-                  </button>
+                                        Save Updates
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -451,10 +490,12 @@
                     <div class="noti_cont_sec">
                         <h4>{{ contentLan.EMAIL }}</h4>
                         <div class="form-check">
-                            <input type="checkbox" formControlName="emailNotification" (change)="onSubmitnotificationForm()" class="form-check-input" id="exampleCheck1" style="cursor: pointer" />
+                            <input type="checkbox" formControlName="emailNotification"
+                                (change)="onSubmitnotificationForm()" class="form-check-input" id="exampleCheck1"
+                                style="cursor: pointer" />
                             <label class="form-check-label" for="exampleCheck1">{{
-                contentLan.RECEIVEALLNOTIFICATIONTHROUGHEMAIL
-                }}</label>
+                                contentLan.RECEIVEALLNOTIFICATIONTHROUGHEMAIL
+                                }}</label>
                         </div>
                     </div>
                 </div>
@@ -471,8 +512,10 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.BANKACNO }}</label>
-                                <input type="text" placeholder="Account Number" class="form-control" maxlength="14" max="999999999" onKeyPress="if(this.value.length==14)  return false;" oninput="if(!this.value.match('^[0-9]*$'))this.value='';" formControlName="accountNumber" [(ngModel)]="banks"
-                                />
+                                <input type="text" placeholder="Account Number" class="form-control" maxlength="14"
+                                    max="999999999" onKeyPress="if(this.value.length==14)  return false;"
+                                    oninput="if(!this.value.match('^[0-9]*$'))this.value='';"
+                                    formControlName="accountNumber" [(ngModel)]="banks" />
                                 <!-- <h4 style="color: black;"> {{ banknumber }}</h4> -->
                             </div>
                         </div>
@@ -480,15 +523,10 @@
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.IBAN }}</label>
                                 <!-- <h4 style="color: black;"> {{banknumber}}</h4> -->
-                                <span style="
-                    background: #fe7447;
-                    color: white;
-                    padding: 8px 10px;
-                    position: absolute;
-                    margin-top: 2.5%;
-                    margin-left: -3.5%;
-                  ">SA</span>
-                                <input type="text" style="padding-left: 50px" placeholder="IBAN" class="form-control" maxlength="22" max="999999999" onKeyPress="if(this.value.length==22)  return false;" oninput="if(!this.value.match('^[0-9]*$'))this.value='';" formControlName="iban"
+                                <span class="sa_style">SA</span>
+                                <input type="text" placeholder="IBAN" class="form-control sa_txt"
+                                    maxlength="22" max="999999999" onKeyPress="if(this.value.length==22)  return false;"
+                                    oninput="if(!this.value.match('^[0-9]*$'))this.value='';" formControlName="iban"
                                     [(ngModel)]="ibans" />
                             </div>
                         </div>
@@ -496,7 +534,8 @@
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.BANKNAME }}</label>
                                 <!-- <h4 style="color: black;"> {{banknumber}}</h4> -->
-                                <input type="text" placeholder="Bank Name" class="form-control" [(ngModel)]="accno" formControlName="bankName" required />
+                                <input type="text" placeholder="Bank Name" class="form-control" [(ngModel)]="accno"
+                                    formControlName="bankName" required />
                             </div>
                         </div>
                     </div>
@@ -504,9 +543,10 @@
             </section>
             <div class="row">
                 <div class="col-md-12">
-                    <button class="payment_save_btn" style="width: 23% !important; border-radius: 32px !important" (click)="bankadminrequest()" [disabled]="!banks || !ibans || !accno">
-            {{ contentLan.REQTOADMINVERIFYBANK }}
-          </button>
+                    <button class="payment_save_btn" style="width: 23% !important; border-radius: 32px !important"
+                        (click)="bankadminrequest()" [disabled]="!banks || !ibans || !accno">
+                        {{ contentLan.REQTOADMINVERIFYBANK }}
+                    </button>
                     <!-- <p class="payment_cont">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
                 </div>
             </div>
@@ -524,7 +564,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of bankaccount.data; let i = index">
+                        <tr *ngFor="let data of bankaccount|slice: (page-1) * 10 : (page-1) * 10 + 10; let i = index">
                             <td>{{ i + 1 }}</td>
                             <td>{{ data.bankName }}</td>
                             <td>{{ data.accountNumber }}</td>
@@ -534,12 +574,20 @@
                             </td>
                             <td>
                                 <span (click)="onbankdelete(data)" style="cursor: pointer">
-                  <i class="far fa-trash-alt"></i>
-                </span>
+                                    <i class="far fa-trash-alt"></i>
+                                </span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                  <!-- Pagination -->
+<div class="col-sm-12 col-md-12">
+    <div class="pagenate pagination-rounded">
+      <ngb-pagination [collectionSize]="paymetTotal" [(page)]="page" [pageSize]="10">
+      </ngb-pagination>
+  </div>
+  </div>
+  <!-- End Pagination -->
             </div>
         </div>
     </div>
@@ -554,8 +602,10 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.NICKNAME }}
-                  <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.NICKNAME }}" class="form-control" name="nickName" formControlName="nickName" [ngClass]="{ 'is-invalid': submitted && f.nickName.errors }" />
+                                    <span style="color: red">*</span></label>
+                                <input type="text" placeholder="{{ contentLan.NICKNAME }}" class="form-control"
+                                    name="nickName" formControlName="nickName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.nickName.errors }" />
                                 <div *ngIf="submitted && f.nickName.errors" class="invalid-feedback">
                                     <div *ngIf="f.nickName.errors.required">
                                         {{ contentLan.NICKNAMEREQ }}
@@ -566,8 +616,10 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.FULLNAME }}
-                  <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.FULLNAME }}" class="form-control" name="fullName" formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+                                    <span style="color: red">*</span></label>
+                                <input type="text" placeholder="{{ contentLan.FULLNAME }}" class="form-control"
+                                    name="fullName" formControlName="fullName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
                                 <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
                                     <div *ngIf="f.fullName.errors.required">
                                         {{ contentLan.FULLNAMEREQ }}
@@ -578,20 +630,23 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.BUILDINGNO }}</label>
-                                <textarea placeholder="{{ contentLan.BUILDINGNUMBER }}" class="form-control" name="Address_one" formControlName="Address_one" rows="10"></textarea>
+                                <textarea placeholder="{{ contentLan.BUILDINGNUMBER }}" class="form-control"
+                                    name="Address_one" formControlName="Address_one" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.DISTRICTNAME }}</label>
-                                <textarea placeholder="{{ contentLan.DISTRICTNAME }}" class="form-control" name="district_name" formControlName="district_name" rows="10"></textarea>
+                                <textarea placeholder="{{ contentLan.DISTRICTNAME }}" class="form-control"
+                                    name="district_name" formControlName="district_name" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.ADDRESS
-                  }}<span style="color: red">*</span></label>
-                                <textarea placeholder="{{ contentLan.ADDRESS }}" class="form-control" name="Address_two" formControlName="Address_two" rows="10" [ngClass]="{
+                                    }}<span style="color: red">*</span></label>
+                                <textarea placeholder="{{ contentLan.ADDRESS }}" class="form-control" name="Address_two"
+                                    formControlName="Address_two" rows="10" [ngClass]="{
                     'is-invalid': submitted && f.Address_two.errors
                   }"></textarea>
                                 <div *ngIf="submitted && f.Address_two.errors" class="invalid-feedback">
@@ -604,20 +659,22 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.COUNTRY }}
-                  <span style="color: red">*</span></label>
-                                <select class="form-select" #mySelect formControlName="country" (change)="oncountrySelected(mySelect.value)" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
-                  <option value="" disabled>
-                    {{ contentLan.SELECTCOUNTRY }}
-                  </option>
-                  <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
-                    <span *ngIf="dir == 'ltr'">{{
-                      allcountry.countryName
-                      }}</span>
-                    <span *ngIf="dir == 'rtl'">{{
-                      allcountry.countryNameAr
-                      }}</span>
-                  </option>
-                </select>
+                                    <span style="color: red">*</span></label>
+                                <select class="form-select" #mySelect formControlName="country"
+                                    (change)="oncountrySelected(mySelect.value)"
+                                    [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                                    <option value="" disabled>
+                                        {{ contentLan.SELECTCOUNTRY }}
+                                    </option>
+                                    <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
+                                        <span *ngIf="dir == 'ltr'">{{
+                                            allcountry.countryName
+                                            }}</span>
+                                        <span *ngIf="dir == 'rtl'">{{
+                                            allcountry.countryNameAr
+                                            }}</span>
+                                    </option>
+                                </select>
                                 <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                                     <div *ngIf="f.country.errors.required">
                                         {{ contentLan.SELECTCOUNTRY }}
@@ -628,14 +685,15 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.CITY }}
-                  <span style="color: red">*</span></label>
-                                <select formControlName="city" class="form-select" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
-                  <option value="" disabled>{{ contentLan.SELECTCITY }}</option>
-                  <option *ngFor="let cities of cityList" [value]="cities.cityName">
-                    <span *ngIf="dir == 'ltr'">{{ cities.cityName }}</span>
-                    <span *ngIf="dir == 'rtl'">{{ cities.cityNameAr }}</span>
-                  </option>
-                </select>
+                                    <span style="color: red">*</span></label>
+                                <select formControlName="city" class="form-select"
+                                    [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                    <option value="" disabled>{{ contentLan.SELECTCITY }}</option>
+                                    <option *ngFor="let cities of cityList" [value]="cities.cityName">
+                                        <span *ngIf="dir == 'ltr'">{{ cities.cityName }}</span>
+                                        <span *ngIf="dir == 'rtl'">{{ cities.cityNameAr }}</span>
+                                    </option>
+                                </select>
                                 <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                                     <div *ngIf="f.city.errors.required">
                                         {{ contentLan.SELECTCITY }}
@@ -646,13 +704,16 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.STATE }}</label>
-                                <input placeholder="{{ contentLan.STATE }}" type="text" class="form-control" formControlName="state" />
+                                <input placeholder="{{ contentLan.STATE }}" type="text" class="form-control"
+                                    formControlName="state" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.PIN }} <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.PIN }}" maxlength="6" max="999999" class="form-control" name="pin" formControlName="pin" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" />
+                                <input type="text" placeholder="{{ contentLan.PIN }}" maxlength="6" max="999999"
+                                    class="form-control" name="pin" formControlName="pin"
+                                    [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" />
                             </div>
                             <div *ngIf="submitted && f.pin.errors" class="invalid-feedback">
                                 <div *ngIf="f.pin.errors.required">{{ contentLan.PINREQ }}</div>
@@ -661,20 +722,25 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.ADDITIONALNO }}</label>
-                                <input type="text" placeholder="{{ contentLan.ADDITIONALNO }}" class="form-control" name="aditional" formControlName="aditional" />
+                                <input type="text" placeholder="{{ contentLan.ADDITIONALNO }}" class="form-control"
+                                    name="aditional" formControlName="aditional" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.UNITNO }}</label>
-                                <input type="text" placeholder="{{ contentLan.UNITNO }}" class="form-control" name="unitNo" formControlName="unitNo" />
+                                <input type="text" placeholder="{{ contentLan.UNITNO }}" class="form-control"
+                                    name="unitNo" formControlName="unitNo" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.PHONENUMBER }}
-                  <span style="color: red">*</span></label>
-                                <input type="tel" placeholder="Phone Number" maxlength="9" max="999999999" onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$" oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control" name="phone" formControlName="phone"
+                                    <span style="color: red">*</span></label>
+                                <input type="tel" placeholder="Phone Number" maxlength="9" max="999999999"
+                                    onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$"
+                                    oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control"
+                                    name="phone" formControlName="phone"
                                     [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
                                 <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                                     <div *ngIf="f.phone.errors.required">
@@ -689,8 +755,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button class="payment_save_btn" (click)="onSubmitaddress()">
-              {{ contentLan.SAVE }}
-            </button>
+                            {{ contentLan.SAVE }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -723,8 +789,8 @@
                         </p>
                         <ng-template #makeas>
                             <button class="make_save_btn" (click)="makedefaultshipping(data._id)">
-                {{ contentLan.MAKEASDEFAULTADDRESS }}
-              </button>
+                                {{ contentLan.MAKEASDEFAULTADDRESS }}
+                            </button>
                         </ng-template>
                     </div>
                 </div>
@@ -733,7 +799,7 @@
     </form>
 
     <section *ngIf="displayMode == 6" class="career_desc_sec">
-        <h2>My wallet</h2>
+        <h2>{{ contentLan.MYWALLET }}</h2>
         <br />
         <div class="container">
             <div class="card" style="border: 1px solid #ff5355; padding: 35px">
@@ -742,13 +808,13 @@
                         <div class="col-md-6">
                             <h3 style="color: #ff5355">SAR &nbsp;{{ walletamt }}</h3>
                             <label style="color: #9a999e; font-size: 14px">{{
-                contentLan.CURRAVAILBALANCE
-                }}</label>
+                                contentLan.CURRAVAILBALANCE
+                                }}</label>
                         </div>
                         <div class="col-md-6" style="text-align: end">
                             <button class="carer_head" *ngIf="!popuppay" (click)="openpay()">
-                {{ contentLan.ADDMONEYTOWALLET }}
-              </button>
+                                {{ contentLan.ADDMONEYTOWALLET }}
+                            </button>
                             <div class="row">
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6" style="text-align: left">
@@ -756,27 +822,36 @@
                                         <div *ngIf="popuppay" class="paytext">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5 style="font-size: 20px">Select Card Type:</h5>
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked="checked" /><label for="MADA">&nbsp;MADA</label><br />
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER" /><label for="MASTER">&nbsp;MASTER</label>
+                                                    <h5 style="font-size: 20px">{{ contentLan.SELECTCARDTYPE }}:</h5>
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="MADA" id="MADA"
+                                                        checked="checked" /><label for="MADA">&nbsp;MADA</label><br />
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="VISA" id="VISA" /><label
+                                                        for="VISA">&nbsp;VISA</label><br />
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="MASTER" id="MASTER" /><label
+                                                        for="MASTER">&nbsp;MASTER</label>
                                                 </div>
                                             </div>
                                             <h5 style="font-size: 20px; margin-top: 5%">
-                                                Enter Amount:
+                                                {{ contentLan.ENTERAMT }}:
                                             </h5>
-                                            <input type="number" placeholder="Amount" formControlName="amount" style="width: 100%" />
+                                            <input type="number" placeholder="Amount" formControlName="amount"
+                                                style="width: 100%" />
 
                                             <div class="row">
                                                 <div class="col-md-8" style="margin-top: 20px">
-                                                    <button class="carer_head" style="padding: 7px 20px !important" (click)="addmoney()">
-                            Pay now
-                          </button>
+                                                    <button class="carer_head" style="padding: 7px 20px !important"
+                                                        (click)="addmoney()">
+                                                        {{ contentLan.PAYNOW }}
+                                                    </button>
                                                 </div>
                                                 <div class="col-md-4" style="margin-top: 20px">
-                                                    <button class="carer_head_out" style="padding: 7px 20px !important" (click)="cancelOpe()">
-                            {{ contentLan.CANCEL }}
-                          </button>
+                                                    <button class="carer_head_out" style="padding: 7px 20px !important"
+                                                        (click)="cancelOpe()">
+                                                        {{ contentLan.CANCEL }}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -807,7 +882,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of walletstatus" [class]="data._isSuccess_ ? ' ' : ' colorRed '">
+                            <tr *ngFor="let data of walletstatus |slice: (page-1) * 10 : (page-1) * 10 + 10" [class]="data._isSuccess_ ? ' ' : ' colorRed '">
                                 <td>{{ data.transaction }}</td>
                                 <td>{{ data.paymentId || data.transactionId }}</td>
                                 <td>{{ data._isSuccess_ ? "completed" : "failed" }}</td>
@@ -821,12 +896,15 @@
                                 </td>
                             </tr>
                         </tbody>
-                        <!-- <ng-template #nodata>
-                            <tbody>
-                                <h4>No Transaction</h4>
-                            </tbody>
-                        </ng-template> -->
                     </table>
+     <!-- Pagination -->
+<div class="col-sm-12 col-md-12">
+    <div class="pagenate pagination-rounded">
+      <ngb-pagination [collectionSize]="total" [(page)]="page" [pageSize]="10">
+      </ngb-pagination>
+  </div>
+  </div>
+  <!-- End Pagination -->
                 </div>
             </div>
         </div>
@@ -844,32 +922,35 @@
                 <div class="row">
                     <div class="col-md-3">
                         <button class="changepassword" (click)="ToggleButtonemail()">
-              {{ contentLan.CHANGEEMAIL }}
-            </button>
+                            {{ contentLan.CHANGEEMAIL }}
+                        </button>
                     </div>
                     <div class="col-md-3">
                         <button class="changepassword" (click)="ToggleButton()">
-              {{ contentLan.CHANGEPASSWORD }}
-            </button>
+                            {{ contentLan.CHANGEPASSWORD }}
+                        </button>
                     </div>
                 </div>
                 <div class="row" *ngIf="showSelected">
                     <div class="col-md-6">
-                        <label class="cmnlabel">Old password</label>
-                        <input type="password" placeholder="Old password" class="form-control" [(ngModel)]="des2" name="old_password" formControlName="old_password" />
+                        <label class="cmnlabel">{{ contentLan.OLDPASSWORD }}</label>
+                        <input type="password" placeholder="Old password" class="form-control" [(ngModel)]="des2"
+                            name="old_password" formControlName="old_password" />
                     </div>
                     <div class="col-md-6">
                         <label class="cmnlabel">{{ contentLan.PASSWORD }}</label>
-                        <input type="password" placeholder="Password" class="form-control" (keyup)="checkpass($event)" [(ngModel)]="des1" name="password" formControlName="password" />
+                        <input type="password" placeholder="Password" class="form-control" (keyup)="checkpass($event)"
+                            [(ngModel)]="des1" name="password" formControlName="password" />
                         <div *ngIf="passcrt">
                             <label style="font-size: 11px; color: red"> {{ errors }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <button class="savesetting" (click)="onSubmitpassword()" [disabled]="!des1 || !des2" type="submit">
-                {{ contentLan.SAVE }}
-              </button>
+                            <button class="savesetting" (click)="onSubmitpassword()" [disabled]="!des1 || !des2"
+                                type="submit">
+                                {{ contentLan.SAVE }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -877,24 +958,28 @@
                     <form [formGroup]="emailform" id="checkoutForm" *ngIf="displayMode == 7" ngNativeValidate>
                         <div class="col-md-6">
                             <label class="cmnlabel">{{ contentLan.OLDEMAIL }}</label>
-                            <input type="email" placeholder="{{ email }}" class="form-control" value="{{ user.email }}" readonly name="old_email" formControlName="old_email" />
+                            <input type="email" placeholder="{{ email }}" class="form-control" value="{{ user.email }}"
+                                readonly name="old_email" formControlName="old_email" />
                             <!-- <h4>{{ email }}</h4> -->
                         </div>
                         <div class="col-md-6">
                             <label class="cmnlabel">{{ contentLan.PASSWORD }}</label>
-                            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="des1" name="password" formControlName="password" required />
+                            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="des1"
+                                name="password" formControlName="password" required />
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="cmnlabel">{{ contentLan.NEWEMAIL }}</label>
-                                <input type="email" placeholder="New Email" class="form-control" [(ngModel)]="des3" name="email" formControlName="email" required />
+                                <input type="email" placeholder="New Email" class="form-control" [(ngModel)]="des3"
+                                    name="email" formControlName="email" required />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <button class="savesetting" (click)="onEmailupdate()" [disabled]="!des1 || !des3" type="submit">
-                  {{ contentLan.SAVE }}
-                </button>
+                                <button class="savesetting" (click)="onEmailupdate()" [disabled]="!des1 || !des3"
+                                    type="submit">
+                                    {{ contentLan.SAVE }}
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -910,7 +995,8 @@
                     <div class="col-md-12">
                         <div class="edit_prof_start">
                             <label class="cmnlabel">{{ contentLan.FULLNAME }}</label>
-                            <input type="text" class="form-control" name="fullName" value="{{ user.fullName }}" formControlName="fullName" />
+                            <input type="text" class="form-control" name="fullName" value="{{ user.fullName }}"
+                                formControlName="fullName" />
                         </div>
                     </div>
                 </div>
@@ -919,17 +1005,18 @@
                     <div class="col-md-6">
                         <div class="edit_form_group">
                             <label class="cmnlabel">Date of Birth</label>
-                            <input type="date" class="form-control" name="dob" [ngModel]="today" value="{{ dob | date: 'dd-MM-yyyy,h:mm:ss a zzzz' }}" formControlName="dob" />
+                            <input type="date" class="form-control" name="dob" [ngModel]="today"
+                                value="{{ dob | date: 'dd-MM-yyyy,h:mm:ss a zzzz' }}" formControlName="dob" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="edit_form_group">
                             <label class="cmnlabel">{{ contentLan.COUNTRY }}</label>
                             <select formControlName="country" class="form-select">
-                <option *ngFor="let data of country" [selected]="data.countryName == user.country">
-                  {{ data.countryName }}
-                </option>
-              </select>
+                                <option *ngFor="let data of country" [selected]="data.countryName == user.country">
+                                    {{ data.countryName }}
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -939,16 +1026,17 @@
                         <div class="edit_form_group">
                             <label class="cmnlabel">{{ contentLan.CITY }}</label>
                             <select formControlName="city" class="form-select">
-                <option *ngFor="let data of getcity" [selected]="data.cityName == user.city">
-                  {{ data.cityName }}
-                </option>
-              </select>
+                                <option *ngFor="let data of getcity" [selected]="data.cityName == user.city">
+                                    {{ data.cityName }}
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="edit_form_group">
                             <label class="cmnlabel">{{ contentLan.MOBILENUMBER }}</label>
-                            <input type="number" placeholder="Mobile Number" class="form-control" value="{{ user.mobileNumber }}" name="mobileNumber" formControlName="mobileNumber" />
+                            <input type="number" placeholder="Mobile Number" class="form-control"
+                                value="{{ user.mobileNumber }}" name="mobileNumber" formControlName="mobileNumber" />
                         </div>
                     </div>
                 </div>
@@ -957,15 +1045,16 @@
                     <div class="col-md-12">
                         <div class="edit_form_group">
                             <label class="cmnlabel">{{ contentLan.ADDRESS }}</label>
-                            <textarea placeholder="Address" class="form-control" name="street" value="{{ user.street }}" formControlName="street" rows="10"></textarea>
+                            <textarea placeholder="Address" class="form-control" name="street" value="{{ user.street }}"
+                                formControlName="street" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <button class="savesetting" type="submit">
-            {{ contentLan.SAVESETTINGS }}
-          </button>
+                        {{ contentLan.SAVESETTINGS }}
+                    </button>
                 </div>
             </form>
         </div>
@@ -980,8 +1069,10 @@
                     <div class="noti_cont_sec">
                         <h4>Emails</h4>
                         <div class="form-check">
-                            <input type="checkbox" formControlName="emailNotification" (change)="onSubmitnotificationstatus()" class="form-check-input" id="exampleCheck1" />
-                            <label class="form-check-label" for="exampleCheck1">Receive all notification through Email</label>
+                            <input type="checkbox" formControlName="emailNotification"
+                                (change)="onSubmitnotificationstatus()" class="form-check-input" id="exampleCheck1" />
+                            <label class="form-check-label" for="exampleCheck1">Receive all notification through
+                                Email</label>
                         </div>
                     </div>
                 </div>
@@ -997,13 +1088,13 @@
                         <div class="col-md-6">
                             <h3 style="color: #ff5355">SAR &nbsp;{{ walletamt }}</h3>
                             <label style="color: #9a999e; font-size: 14px">{{
-                contentLan.CURRAVAILBALANCE
-                }}</label>
+                                contentLan.CURRAVAILBALANCE
+                                }}</label>
                         </div>
                         <div class="col-md-6" style="text-align: end">
                             <button class="carer_head" *ngIf="!popuppay" (click)="openpay()">
-                {{ contentLan.ADDMONEYTOWALLET }}
-              </button>
+                                {{ contentLan.ADDMONEYTOWALLET }}
+                            </button>
                             <div class="row">
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6" style="text-align: left">
@@ -1011,27 +1102,36 @@
                                         <div *ngIf="popuppay" class="paytext">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5 style="font-size: 20px">Select Card Type:</h5>
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked="checked" required /><label for="MADA">&nbsp;MADA</label><br />
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
-                                                    <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER" /><label for="MASTER">&nbsp;MASTER</label>
+                                                    <h5 style="font-size: 20px">{{ contentLan.SELECTCARDTYPE }}:</h5>
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="MADA" id="MADA" checked="checked"
+                                                        required /><label for="MADA">&nbsp;MADA</label><br />
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="VISA" id="VISA" /><label
+                                                        for="VISA">&nbsp;VISA</label><br />
+                                                    <input type="radio" formControlName="paymentMethod"
+                                                        name="paymentMethod" value="MASTER" id="MASTER" /><label
+                                                        for="MASTER">&nbsp;MASTER</label>
                                                 </div>
                                             </div>
                                             <h5 style="font-size: 20px; margin-top: 5%">
-                                                Enter Amount:
+                                                {{ contentLan.ENTERAMT }}:
                                             </h5>
-                                            <input type="number" placeholder="Amount" formControlName="amount" style="width: 100%" />
+                                            <input type="number" placeholder="Amount" formControlName="amount"
+                                                style="width: 100%" />
 
                                             <div class="row">
                                                 <div class="col-md-8" style="margin-top: 20px">
-                                                    <button class="carer_head" style="padding: 7px 20px !important" (click)="addmoney()">
-                            Pay now
-                          </button>
+                                                    <button class="carer_head" style="padding: 7px 20px !important"
+                                                        (click)="addmoney()">
+                                                        {{ contentLan.PAYNOW }}
+                                                    </button>
                                                 </div>
                                                 <div class="col-md-4" style="margin-top: 20px">
-                                                    <button class="carer_head_out" style="padding: 7px 20px !important" (click)="cancelOpe()">
-                            {{ contentLan.CANCEL }}
-                          </button>
+                                                    <button class="carer_head_out" style="padding: 7px 20px !important"
+                                                        (click)="cancelOpe()">
+                                                        {{ contentLan.CANCEL }}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1060,15 +1160,15 @@
                         <thead>
                             <tr>
                                 <th>{{ contentLan.TRANSACTION }}</th>
-                                <th>Transaction No</th>
-                                <th>Trans. status</th>
+                                <th>{{ contentLan.TRANSACTIONNO }}</th>
+                                <th>{{ contentLan.TRANSACTIONSTATUS }}</th>
                                 <th>{{ contentLan.DATE }}</th>
                                 <th>{{ contentLan.TIME }}</th>
                                 <th>{{ contentLan.AMOUNT }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of walletstatus" [class]="data._isSuccess_ ? ' ' : ' colorRed '">
+                            <tr *ngFor="let data of walletstatus |slice: (page-1) * 10 : (page-1) * 10 + 10" [class]="data._isSuccess_ ? ' ' : ' colorRed '">
                                 <td>{{ data.transaction }}</td>
                                 <td>{{ data.paymentId || data.transactionId }}</td>
                                 <td>{{ data._isSuccess_ ? "completed" : "failed" }}</td>
@@ -1088,6 +1188,14 @@
                             </tbody>
                         </ng-template> -->
                     </table>
+                     <!-- Pagination -->
+<div class="col-sm-12 col-md-12">
+    <div class="pagenate pagination-rounded">
+      <ngb-pagination [collectionSize]="total" [(page)]="page" [pageSize]="10">
+      </ngb-pagination>
+  </div>
+  </div>
+  <!-- End Pagination -->
                 </div>
             </div>
         </div>
@@ -1103,8 +1211,10 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.NICKNAME }}
-                  <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.NICKNAME }}" class="form-control" name="nickName" formControlName="nickName" [ngClass]="{ 'is-invalid': submitted && f.nickName.errors }" />
+                                    <span style="color: red">*</span></label>
+                                <input type="text" placeholder="{{ contentLan.NICKNAME }}" class="form-control"
+                                    name="nickName" formControlName="nickName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.nickName.errors }" />
                                 <div *ngIf="submitted && f.nickName.errors" class="invalid-feedback">
                                     <div *ngIf="f.nickName.errors.required">
                                         {{ contentLan.NICKNAMEREQ }}
@@ -1115,8 +1225,10 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.FULLNAME }}
-                  <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.FULLNAME }}" class="form-control" name="fullName" formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+                                    <span style="color: red">*</span></label>
+                                <input type="text" placeholder="{{ contentLan.FULLNAME }}" class="form-control"
+                                    name="fullName" formControlName="fullName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
                                 <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
                                     <div *ngIf="f.fullName.errors.required">
                                         {{ contentLan.FULLNAMEREQ }}
@@ -1127,20 +1239,23 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.BUILDINGNUMBER }}</label>
-                                <textarea placeholder="{{ contentLan.BUILDINGNUMBER }}" class="form-control" name="Address_one" formControlName="Address_one" rows="10"></textarea>
+                                <textarea placeholder="{{ contentLan.BUILDINGNUMBER }}" class="form-control"
+                                    name="Address_one" formControlName="Address_one" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.DISTRICTNAME }}</label>
-                                <textarea placeholder="{{ contentLan.DISTRICTNAME }}" class="form-control" name="district_name" formControlName="district_name" required rows="10"></textarea>
+                                <textarea placeholder="{{ contentLan.DISTRICTNAME }}" class="form-control"
+                                    name="district_name" formControlName="district_name" required rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.ADDRESS
-                  }}<span style="color: red">*</span></label>
-                                <textarea placeholder="{{ contentLan.ADDRESS }}" class="form-control" name="Address_two" formControlName="Address_two" rows="10" [ngClass]="{
+                                    }}<span style="color: red">*</span></label>
+                                <textarea placeholder="{{ contentLan.ADDRESS }}" class="form-control" name="Address_two"
+                                    formControlName="Address_two" rows="10" [ngClass]="{
                     'is-invalid': submitted && f.Address_two.errors
                   }"></textarea>
                                 <div *ngIf="submitted && f.Address_two.errors" class="invalid-feedback">
@@ -1153,20 +1268,22 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.COUNTRY }}
-                  <span style="color: red">*</span></label>
-                                <select class="form-select" #mySelect formControlName="country" (change)="oncountrySelected(mySelect.value)" [(ngModel)]="countrySs" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
-                  <option [ngValue]="undefined" selected disabled>
-                    {{ contentLan.SELECTCOUNTRY }}
-                  </option>
-                  <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
-                    <span *ngIf="dir == 'ltr'">{{
-                      allcountry.countryName
-                      }}</span>
-                    <span *ngIf="dir == 'rtl'">{{
-                      allcountry.countryNameAr
-                      }}</span>
-                  </option>
-                </select>
+                                    <span style="color: red">*</span></label>
+                                <select class="form-select" #mySelect formControlName="country"
+                                    (change)="oncountrySelected(mySelect.value)" [(ngModel)]="countrySs"
+                                    [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                                    <option [ngValue]="undefined" selected disabled>
+                                        {{ contentLan.SELECTCOUNTRY }}
+                                    </option>
+                                    <option *ngFor="let allcountry of country" [value]="allcountry.countryName">
+                                        <span *ngIf="dir == 'ltr'">{{
+                                            allcountry.countryName
+                                            }}</span>
+                                        <span *ngIf="dir == 'rtl'">{{
+                                            allcountry.countryNameAr
+                                            }}</span>
+                                    </option>
+                                </select>
                                 <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                                     <div *ngIf="f.country.errors.required">
                                         {{ contentLan.SELECTCOUNTRY }}
@@ -1177,16 +1294,17 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.CITY }}
-                  <span style="color: red">*</span></label>
-                                <select formControlName="city" class="form-select" [(ngModel)]="citySs" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
-                  <option [ngValue]="undefined" selected disabled>
-                    {{ contentLan.SELECTCITY }}
-                  </option>
-                  <option *ngFor="let cities of cityList" [value]="cities.cityName">
-                    <span *ngIf="dir == 'ltr'">{{ cities.cityName }}</span>
-                    <span *ngIf="dir == 'rtl'">{{ cities.cityNameAr }}</span>
-                  </option>
-                </select>
+                                    <span style="color: red">*</span></label>
+                                <select formControlName="city" class="form-select" [(ngModel)]="citySs"
+                                    [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                    <option [ngValue]="undefined" selected disabled>
+                                        {{ contentLan.SELECTCITY }}
+                                    </option>
+                                    <option *ngFor="let cities of cityList" [value]="cities.cityName">
+                                        <span *ngIf="dir == 'ltr'">{{ cities.cityName }}</span>
+                                        <span *ngIf="dir == 'rtl'">{{ cities.cityNameAr }}</span>
+                                    </option>
+                                </select>
                                 <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                                     <div *ngIf="f.city.errors.required">
                                         {{ contentLan.SELECTCITY }}
@@ -1197,13 +1315,15 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.STATE }}</label>
-                                <input placeholder="{{ contentLan.STATE }}" type="text" class="form-control" formControlName="state" required />
+                                <input placeholder="{{ contentLan.STATE }}" type="text" class="form-control"
+                                    formControlName="state" required />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.PIN }} <span style="color: red">*</span></label>
-                                <input type="text" placeholder="{{ contentLan.PIN }}" class="form-control" name="pin" formControlName="pin" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" />
+                                <input type="text" placeholder="{{ contentLan.PIN }}" class="form-control" name="pin"
+                                    formControlName="pin" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" />
                                 <div *ngIf="submitted && f.pin.errors" class="invalid-feedback">
                                     <div *ngIf="f.pin.errors.required">
                                         {{ contentLan.PINREQ }}
@@ -1214,20 +1334,25 @@
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.ADDITIONALNO }}</label>
-                                <input type="text" placeholder="{{ contentLan.ADDITIONALNO }}" class="form-control" required name="aditional" formControlName="aditional" />
+                                <input type="text" placeholder="{{ contentLan.ADDITIONALNO }}" class="form-control"
+                                    required name="aditional" formControlName="aditional" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.UNITNO }}</label>
-                                <input type="text" placeholder="{{ contentLan.UNITNO }}" class="form-control" name="unitNo" formControlName="unitNo" required />
+                                <input type="text" placeholder="{{ contentLan.UNITNO }}" class="form-control"
+                                    name="unitNo" formControlName="unitNo" required />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="edit_form_group">
                                 <label class="cmnlabel">{{ contentLan.PHONENUMBER }}
-                  <span style="color: red">*</span></label>
-                                <input type="tel" placeholder="Phone Number" maxlength="9" max="999999999" onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$" oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control" name="phone" formControlName="phone"
+                                    <span style="color: red">*</span></label>
+                                <input type="tel" placeholder="Phone Number" maxlength="9" max="999999999"
+                                    onKeyPress="if(this.value.length==9) return false;" pattern="^[1-9][0-9]*$"
+                                    oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" class="form-control"
+                                    name="phone" formControlName="phone"
                                     [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
                                 <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                                     <div *ngIf="f.phone.errors.required">
@@ -1242,8 +1367,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button class="payment_save_btn" (click)="onSubmitaddress()">
-              {{ contentLan.SAVE }}
-            </button>
+                            {{ contentLan.SAVE }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1254,7 +1379,8 @@
                 ? 'border: 1px solid green;'
                 : 'border: 1px solid #fd5e90;'
             ">
-                        <a class="card-link" (click)="onshipdelete(data)"><img style="width: 8%; margin-left: 85%; cursor: pointer" src="assets/image/bin.png" /></a>
+                        <a class="card-link" (click)="onshipdelete(data)"><img
+                                style="width: 8%; margin-left: 85%; cursor: pointer" src="assets/image/bin.png" /></a>
                         <h5 class="card-title">{{ data.fullName }}</h5>
 
                         <h6 class="card-subtitle mb-2">
@@ -1270,13 +1396,14 @@
                             {{ data.country }},{{ data.pin }}
                         </p>
                         <p class="card-text" style="margin-bottom: 0%">{{ data.phone }}</p>
-                        <p class="make_select_btn" *ngIf="data._isDefault_ == true; else makeas" disabled="true" style="background-color: green">
+                        <p class="make_select_btn" *ngIf="data._isDefault_ == true; else makeas" disabled="true"
+                            style="background-color: green">
                             {{ contentLan.ACTIVEADDRESS }}
                         </p>
                         <ng-template #makeas>
                             <button class="make_save_btn" (click)="makedefaultshipping(data)">
-                {{ contentLan.MAKEASDEFAULTADDRESS }}
-              </button>
+                                {{ contentLan.MAKEASDEFAULTADDRESS }}
+                            </button>
                         </ng-template>
                     </div>
                 </div>

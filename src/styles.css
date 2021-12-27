@@ -770,3 +770,34 @@ p {
 .owl-carousel.owl-rtl .owl-item:lang(ar) {
     float: right !important;
 }
+.pagenate{
+    float: right !important;
+}
+.pagenate:lang(ar){
+    float: left !important;
+}
+.page-item.active .page-link {
+    background-color: #FF594E !important;
+    border-color: #FF594E !important;
+    color: #fff !important;
+}
+.pagination-rounded .page-link {
+    border-radius: 30px !important;
+    margin: 0 3px;
+    border: none;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+    text-align: center;
+}
+.page-link {
+    padding: 0.3rem 0.9rem !important;
+    color: #212529 !important;
+}
+.page-link:focus{
+    box-shadow: none;
+}
+.page-link:hover{
+    background-color: #F7757626;
+}

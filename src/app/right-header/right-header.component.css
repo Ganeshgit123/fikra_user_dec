@@ -143,6 +143,7 @@
     padding: 0 10px;
     font-size: 18px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 1023px) {
@@ -372,7 +373,17 @@ float: none ! important;
     box-shadow: -2px 3px 5px 0px #21201e;
     overflow-y: scroll;
 }
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+    .popup2 {
+        margin: 10px 0px 0px 0px;
+        width: 100%;
+        height: 500px;
+    }
+}
 
+.popup2:lang(ar) {
+    float: left;
+}
 .profil_hr {
     height: 105px;
     border: 1px solid #FE953A;
@@ -441,8 +452,13 @@ float: none ! important;
     color: #353535;
     opacity: 1;
     text-align: initial;
+    margin-right: 20px;
+    margin-bottom: 0px;
 }
 
+.youracccount:lang(ar){
+    margin-left: 20px;
+}
 .tag-box {
     background-color: #fe5762;
     color: white;
@@ -726,6 +742,14 @@ float: none ! important;
     .search_title{
         font-size: 14px;
     }
+}
+.notifi_ico{
+    font-size: 25px;
+    color: #fe764a;
+    margin-left: 35px;
+}
+.notifi_ico:lang(ar){
+    margin-right: 35px;
 }
 /* .col-md-3{
       width: 25% !important;
