@@ -78,7 +78,15 @@ export class HomeStretchComponent implements OnInit {
           } else {
             elementss.featurelastper = totPercent;
           }
-
+          elementss.categoryName = elementss.basicInfoId.categoryName;
+          elementss.subCategoryName = elementss.basicInfoId.subCategoryName;
+          elementss.city = elementss.basicInfoId.city;
+          elementss.decription = elementss.basicInfoId.decription;
+          elementss.projectImage = elementss.basicInfoId.projectImage;
+          elementss.goalAmount = elementss.basicInfoId.goalAmount;
+          elementss.userName = elementss.userId.fullName;
+          elementss._is_All_Nothing_ = elementss._is_All_Nothing_;
+          elementss._is_Keep_It_All_ = elementss._is_Keep_It_All_;
           elementss.featurelastpercentage = totPercent;
         });
         this.homestretch.forEach((value: any, key: any) => {
@@ -134,7 +142,6 @@ export class HomeStretchComponent implements OnInit {
     );
     this.ngOnInit();
   }
-
 
   localprojectid() {
     this.route.params.subscribe((params) => {

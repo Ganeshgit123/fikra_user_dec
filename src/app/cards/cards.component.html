@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="saved_cont_sec">
+            <div class="row">
+                <diV class="col-md-3">
+                    <img src="{{ obj.projectImage }}" class="img-fluid" />
+                </diV>
+                <div class="col-md-9">
+                    <ul class="icons_sec" *ngIf="userver == null; else accessclick">
+                        <li>
+                            <span [swal]="['Hi', 'Login required for this activity']">
+                                <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"></i></span>
+                        </li>
+
+                        <li>
+                            <span [swal]="['Hi', 'Login required for this activity']">
+                                <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true">
+                                </i>
+                            </span>
+                        </li>
+                    </ul>
+                    <ng-template #accessclick>
+                        <ul class="icons_sec">
+                            <li>
+                                <span (click)="addtosave(obj._id)">
+                                    <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"
+                                        *ngIf="obj._is_Saved_Project == false"></i>
+                                    <i class="fa fa-bookmark" style="color: #f13b0099" aria-hidden="true"
+                                        *ngIf="obj._is_Saved_Project == true"></i>
+                                </span>
+                            </li>
+                            <li>
+                                <span (click)="addtolike(obj._id)">
+                                    <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true"
+                                        *ngIf="obj._is_Liked_Project == false"></i>
+                                    <i class="fa fa-thumbs-up" style="color: #f13b0099" aria-hidden="true"
+                                        *ngIf="obj._is_Liked_Project == true"></i>
+                                    <!-- <span *ngIf="obj._is_Liked_Project == false">🤍</span>
+                                <span *ngIf="obj._is_Liked_Project == true">🧡</span> -->
+                                </span>
+                            </li>
+                        </ul>
+                    </ng-template>
+                    <ul class="cont_sec_pro">
+                        <li style="padding: 0px">
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>{{ obj.categoryName }} {{ obj.subCategoryName }}
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker"></i>{{ obj.city }}
+                        </li>
+                    </ul>
+                    <h6 *ngIf="obj._is_All_Nothing_ == true;else business">
+                        {{ contentLan.BUSINESSMODEL }}:
+                        <span style="color: #ff4264">ALLORNOTHING
+                            <i class="fas fa-info-circle" ngbTooltip=" ALLORNOTHING"
+                                style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;"></i></span>
+                    </h6>
+                    <ng-template #business>
+                        <h6>
+                            {{ contentLan.BUSINESSMODEL }}:
+                            <span style="color: #ff4264">KEEPALL
+                                <i class="fas fa-info-circle" ngbTooltip="KEEPALL "
+                                    style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;"></i></span>
+                        </h6>
+                    </ng-template>
+                    <h3>{{ obj.title }}</h3>
+                    <p class="feat_cont">{{ obj.decription }}</p>
+                    <p class="by_bame">{{ obj.userName }}</p>
+                    <hr class="cont_sec_hr" />
+                    <ul class="save_last_sec">
+                        <li class="coloured">
+                            {{ contentLan.GOAL || "Goal" }}: SAR {{ obj.goalAmount }}
+                        </li>
+                        <li>
+                            {{ contentLan.LAUNCH || "Launch" }} :{{ obj.inter }} {{ obj.luncont }}
+                        </li>
+                        <li>
+                            {{ contentLan.PLEDGE || "Pledge" }} :{{ obj._amount_Pleadged_ }} &nbsp;({{obj.featurelastpercentage | number: "1.0-0" }}%)
+                        </li>
+                        <li>
+                            {{ contentLan.PLEDGE || "Pledge" }} Count:{{ obj._pledged_count_ }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

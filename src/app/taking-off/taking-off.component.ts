@@ -22,9 +22,9 @@ export class TakingOffComponent implements OnInit {
   projectdate: any;
   inter: any;
   luncont: any;
-  takinggoalAmount: any;
-  takingamountPleadged: any;
-  takingpercentage: any;
+  featuregoalAmount: any;
+  featureamountPleadged: any;
+  featurepercentage: any;
   takingCou = 5;
   takingReduce: any = [];
   constructor(
@@ -44,12 +44,12 @@ export class TakingOffComponent implements OnInit {
 
     const lang = localStorage.getItem("lang") || "en";
 
-    await sameContent.reduce(async (promise: any, element: any) => {
-      // console.log(element)
+    await sameContent.reduce(async (promise: any, elementss: any) => {
+      // console.log(elementss)
       if (lang == "en") {
-        this.contentLan[element.key] = element.en;
+        this.contentLan[elementss.key] = elementss.en;
       } else {
-        this.contentLan[element.key] = element.ar;
+        this.contentLan[elementss.key] = elementss.ar;
       }
       await promise;
     }, Promise.resolve());
@@ -63,20 +63,28 @@ export class TakingOffComponent implements OnInit {
       if (res.error === false) {
         this.takingoffhome = res.data;
         this.takingReduce = this.paginate(res.data, this.takingCou, 1);
-        this.takingoffhome.forEach((element: any) => {
-          this.takinggoalAmount = element.basicInfoId.goalAmount;
+        this.takingoffhome.forEach((elementss: any) => {
+          this.featuregoalAmount = elementss.basicInfoId.goalAmount;
 
-          this.takingamountPleadged = element._amount_Pleadged_;
-          this.takingpercentage =
-            this.takingamountPleadged / this.takinggoalAmount;
-          var taktotPercent = this.takingpercentage * 100;
+          this.featureamountPleadged = elementss._amount_Pleadged_;
+          this.featurepercentage =
+            this.featureamountPleadged / this.featuregoalAmount;
+          var taktotPercent = this.featurepercentage * 100;
           if (taktotPercent >= 100) {
-            element.takinglastper = 100;
+            elementss.takinglastper = 100;
           } else {
-            element.takinglastper = taktotPercent;
+            elementss.takinglastper = taktotPercent;
           }
-
-          element.takinglastpercentage = taktotPercent;
+          elementss.categoryName = elementss.basicInfoId.categoryName;
+          elementss.subCategoryName = elementss.basicInfoId.subCategoryName;
+          elementss.city = elementss.basicInfoId.city;
+          elementss.decription = elementss.basicInfoId.decription;
+          elementss.projectImage = elementss.basicInfoId.projectImage;
+          elementss.goalAmount = elementss.basicInfoId.goalAmount;
+          elementss.userName = elementss.userId.fullName;
+          elementss._is_All_Nothing_ = elementss._is_All_Nothing_;
+          elementss._is_Keep_It_All_ = elementss._is_Keep_It_All_;
+          elementss.featurelastpercentage = taktotPercent;
         });
         this.takingoffhome.forEach((value: any, key: any) => {
           this.currentdate = new Date();
