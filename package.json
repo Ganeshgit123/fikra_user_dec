@@ -51,7 +51,7 @@
     "ngx-owl-carousel-o": "^5.0.0",
     "ngx-sharebuttons": "^8.0.5",
     "ngx-spinner": "^12.0.0",
-    "ngx-toastr": "^14.0.0",
+    "ngx-toastr": "^14.2.1",
     "ngx-toggle-switch": "^2.0.5",
     "ngx-videogular": "^10.1.0-0",
     "rxjs": "^6.6.7",
