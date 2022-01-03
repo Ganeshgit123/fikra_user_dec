@@ -735,17 +735,17 @@
                                                 </ng-template>
                                             </ul>
                                             <a [routerLink]="['/projectview', datataking._id]" (click)="localprojectid()">
-                        <h3 *ngIf="datataking.basicInfoId.title?.length >= 50">
-                          {{ datataking.basicInfoId.title.slice(0, 40) }}
+                        <h3 *ngIf="datataking.title?.length >= 50">
+                          {{ datataking.title.slice(0, 40) }}
                         </h3>
-                        <h3 *ngIf="50 >= datataking.basicInfoId.title?.length">
-                          {{ datataking.basicInfoId.title }}
+                        <h3 *ngIf="50 >= datataking.title?.length">
+                          {{ datataking.title }}
                         </h3>
                         <p class="feat_cont" *ngIf="datataking.basicInfoId.decription?.length >= 121">
                           {{ datataking.basicInfoId.decription.slice(0, 50) }}</p>
                         <p class="feat_cont" *ngIf="121 >= datataking.basicInfoId.decription?.length">
                           {{ datataking.basicInfoId.decription }}</p>
-                        <p class="by_bame"> By {{ datataking.userId.fullName }}</p>
+                        <p class="by_bame"> By {{ datataking.userId.userName }}</p>
                                                 <hr style="color: red" />
                                                 <p class="extra_p">
                           <span style="color: #ff5c58ad; font-weight: 400">{{ contentLan.GOAL }}:</span>&nbsp;SAR&nbsp;
@@ -952,11 +952,11 @@
                                                 </ng-template>
                                             </ul>
                                             <a [routerLink]="['/projectview', datatakings._id]" (click)="localprojectid()">
-                        <h3 *ngIf="datatakings.basicInfoId.title?.length >= 50">
-                          {{ datatakings.basicInfoId.title.slice(0, 40) }}
+                        <h3 *ngIf="datatakings.title?.length >= 50">
+                          {{ datatakings.title.slice(0, 40) }}
                         </h3>
-                        <h3 *ngIf="50 >= datatakings.basicInfoId.title?.length">
-                          {{ datatakings.basicInfoId.title }}</h3>
+                        <h3 *ngIf="50 >= datatakings.title?.length">
+                          {{ datatakings.title }}</h3>
 
                         <p class="feat_cont" *ngIf="datatakings.basicInfoId.decription?.length >= 121">
                           {{ datatakings.basicInfoId.decription }}</p>
@@ -964,7 +964,7 @@
                           {{ datatakings.basicInfoId.decription }}</p>
 
                                                     <p class="by_bame">
-                          By {{ datatakings.userId.fullName }}
+                          By {{ datatakings.userId.userName }}
                                                     </p>
                                                 <hr style="color: red" />
                                                 <p class="extra_p">
