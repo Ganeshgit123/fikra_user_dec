@@ -3,9 +3,7 @@
 <!-- content -->
 
 <section *ngFor="let item of topBanner" [style.background]="background">
-    <!-- <img src="/assets/image/rules/Rectangle 419.svg" alt="Snow" style="width:100%;" /> -->
-    <!-- <div ></div> -->
-
+>
     <div class="centered">
         <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
         <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>

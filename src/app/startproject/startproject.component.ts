@@ -73,7 +73,7 @@ export class StartprojectComponent implements OnInit {
     
       (res:any)=>{
         if(res.error === false){
-          console.log("dd",res.data)
+          // console.log("dd",res.data)
           this.handBookSecShow = res.data._is_HandBook_on_;
           this.questionSecShow = res.data._is_question_on_;
           this.quoteSecShow = res.data._is_quotes_on_;

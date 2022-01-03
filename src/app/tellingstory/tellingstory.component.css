@@ -9,13 +9,6 @@
     font-size: 22px;
 }
 
-.header {
-    background: url("/assets/image/createrhandbook/getting_started.jpg") no-repeat;
-    /* background: url("/assets/image/Group_25.png") no-repeat; */
-    /* background-size: contain; */
-    height: 500px;
-}
-
 .getting-btn button {
     border: none;
     padding: 10px 20px 10px 20px;

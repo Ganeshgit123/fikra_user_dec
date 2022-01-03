@@ -1,21 +1,16 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { FollowinginnerComponent } from "./followinginner/followinginner.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./shared/auth.guard";
 import { VerifyotpComponent } from "./verifyotp/verifyotp.component";
 import { GettingStartedComponent } from "./getting-started/getting-started.component";
-import { BuildingrewardsComponent } from "./buildingrewards/buildingrewards.component";
-import { FullfillmentComponent } from "./fullfillment/fullfillment.component";
-import { FundingComponent } from "./funding/funding.component";
-import { FurtherreadingComponent } from "./furtherreading/furtherreading.component";
 import { TellingstoryComponent } from "./tellingstory/tellingstory.component";
-import { PromotioncreaterComponent } from "./promotioncreater/promotioncreater.component";
-import { CretorComponent } from "./login/cretor/cretor.component";
+import { BuildingrewardsComponent } from "./buildingrewards/buildingrewards.component";
 import { CreateprojectinnerComponent } from "./createprojectinner/createprojectinner.component";
 import { VerifypaymentComponent } from "./verifypayment/verifypayment.component";
 import { VerifymobileotpComponent } from "./verifymobileotp/verifymobileotp.component";
 import { RolebaseGuard } from "./shared/rolebase.guard";
+
 
 const routes: Routes = [
   {
@@ -91,11 +86,6 @@ const routes: Routes = [
       import("./following/following.module").then(
         (m) => m.FollowingModule
       ),
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "followinginner",
-    component: FollowinginnerComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -190,24 +180,8 @@ const routes: Routes = [
     component: GettingStartedComponent,
   },
   {
-    path: "funding",
-    component: FundingComponent,
-  },
-  {
-    path: "fullfillment",
-    component: FullfillmentComponent,
-  },
-  {
     path: "paymentcard",
     component: TellingstoryComponent,
-  },
-  {
-    path: "search",
-    component: PromotioncreaterComponent,
-  },
-  {
-    path: "furtherreading",
-    component: FurtherreadingComponent,
   },
   {
     path: "newletter/verify/:id",
@@ -247,10 +221,6 @@ const routes: Routes = [
       import("./login/investor/investor.module").then(
         (m) => m.InvestorModule
       ),
-  },
-  {
-    path: "creator_login",
-    component: CretorComponent,
   },
   {
     path: "message",

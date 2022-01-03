@@ -6,7 +6,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { AppModule } from '../app.module';
 
 
-console.warn("dicover");
 @NgModule({
   declarations: [
     DiscoverComponent,

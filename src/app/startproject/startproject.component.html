@@ -118,16 +118,6 @@
             </div>
             <div class="col-md-10" *ngFor='let data of questions'>
                 <section class="proj_cont">
-                    <!-- <div class="row bord_bott" *ngFor='let questiondata of data.questionBody'>
-                    <div class="col-md-6">
-                        <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'ltr'">{{questiondata.question}}</h4>
-                        <h4 class="projectquestion1" (click)="onclick()" *ngIf=" dir == 'rtl'">{{questiondata.questionAr}}</h4>
-                    </div>
-                    <div class="col-md-6" *ngIf="visible">
-                        <p class="projectanswer1" *ngIf=" dir == 'ltr'">{{questiondata.answer}}</p>
-                        <p class="projectanswer1" *ngIf=" dir == 'rtl'">{{questiondata.answerAr}}</p>
-                    </div>
-                </div> -->
                     <div *ngFor='let ques of  data.questionBody;let i = index'>
                         <div class="d-flex align-items-start bord_bott" *ngIf=" ques._is_on_ == true">
                             <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -218,9 +208,6 @@
                         <span *ngIf=" dir == 'rtl'">{{data.bodyAr}}</span>
                     </p>
                 </div>
-                <!-- <div class="col-md-4">
-                    <button [routerLink]="['/getting-started']" class="creater_jump">Jump in ></button>
-                </div> -->
             </div>
         </section>
         <section class="creater_option">
@@ -228,9 +215,6 @@
                 <div class="col-md-6 col-lg-4 col-xl-4" *ngFor='let data of creatorhandbook'>
                     <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12" *ngIf=" dir == 'ltr'">{{data.handBookHead}}</button>
                     <button [routerLink]="['/creatorhandbook',data._id]" class="btn col-12" *ngIf=" dir == 'rtl'">{{data.handBookHeadAr}}</button>
-                </div>
-                <div class="col-md-4">
-                    <button [routerLink]="'/communciating-backers'" class="btn col-12">{{data.title18}}</button>
                 </div>
                 <!-- </section> -->
             </div>

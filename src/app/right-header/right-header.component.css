@@ -438,11 +438,6 @@ float: none ! important;
     overflow: auto;
 }
 
-.profile_sec {
-    background: url("/assets/image/groups/Mask Group 77.svg") no-repeat;
-    background-size: contain;
-}
-
 .extraCl {
     position: absolute;
     font-size: 40px;

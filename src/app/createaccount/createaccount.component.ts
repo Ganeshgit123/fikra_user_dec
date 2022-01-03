@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
 import { AuthService } from '../shared/auth.service';
 import { FormData } from '../shared/formdata';
 import { ToastrService } from 'ngx-toastr';

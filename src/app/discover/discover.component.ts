@@ -9,9 +9,8 @@ import { AuthService } from "../shared/auth.service";
   styleUrls: ["./discover.component.css"],
 })
 export class DiscoverComponent implements OnInit {
-  collection: any;
   displayMode = 1;
-  category: any;
+  category: any = [];
   property1: any;
   property2: any;
   recommended: any;
@@ -68,51 +67,6 @@ export class DiscoverComponent implements OnInit {
       }
     });
 
-    this.collection = [
-      {
-        title: "Collections",
-        disabled: false,
-        list: [
-          {
-            id: 1,
-            value: "Recomented for you",
-          },
-          {
-            id: 2,
-            value: "Project we love",
-          },
-          {
-            id: 3,
-            value: "Saved project",
-          },
-          {
-            id: 4,
-            value: "Trending",
-          },
-          {
-            id: 5,
-            value: "Nearly Funded",
-          },
-          {
-            id: 6,
-            value: "Just Launched",
-          },
-          {
-            id: 7,
-            value: "Upcoming Projects",
-          },
-          {
-            id: 8,
-            value: "Projects Near You",
-          },
-          {
-            id: 9,
-            value: "Backed By People You Follow",
-          },
-        ],
-        img: "../assets/image/brain-programming.png",
-      },
-    ];
   }
 
   onDisplayModeChange(mode: number): void {

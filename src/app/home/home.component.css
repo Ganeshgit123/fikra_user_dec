@@ -113,13 +113,13 @@
 }
 
 .banner_sec {
-    background: url("/assets/image/banner_img.png") no-repeat;
+    background: url("/assets/image/banner_img.svg") no-repeat;
     background-size: contain;
     height: 800px;
 }
 
 .banner_sec:lang(ar) {
-    background: url("/assets/image/banner_img.png") no-repeat;
+    background: url("/assets/image/banner_img.svg") no-repeat;
     background-size: contain;
     background-position: right;
     height: 800px;
@@ -1667,10 +1667,6 @@ a {
     overflow: auto;
 }
 
-.profile_sec {
-    background: url("/assets/image/groups/Mask Group 77.svg") no-repeat;
-    background-size: contain;
-}
 
 .youracccount {
     font-size: 18px;
