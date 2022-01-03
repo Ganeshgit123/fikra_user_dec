@@ -41,108 +41,21 @@
                             check out some of projects we love
                         </span> </a>and help bring them to life today.
                 </p>
-                <div *ngFor="let obj of likeReduce">
-                    <section class="saved_cont_sec" *ngIf="obj.likedProjectId != null">
-                        <div class="row">
-                            <diV class="col-md-3"
-                                *ngIf=" obj.likedProjectId.basicInfoId.projectImage; else nextImages ">
-                                <img src="{{ obj.likedProjectId.basicInfoId.projectImage }}" class="img-fluid"
-                                    style="height: 90% !important" />
-                            </diV>
 
-                            <ng-template #nextImages>
-                                <diV class="col-md-3">
-                                    <div class="img-fluid" style="background-color: lightgray; height: 90% !important">
-                                        <i class="fas fa-image" style="margin: 91px"></i>
-                                    </div>
-                                </diV>
-                            </ng-template>
-
-                            <div class="col-md-9">
-                                <ul class="cont_sec_pro">
-                                    <li style="padding: 0px">
-                                        <i class="fa fa-list-alt" aria-hidden="true"></i>{{
-                                        obj.likedProjectId.basicInfoId.categoryName }}
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-map-marker"></i>{{ obj.likedProjectId.basicInfoId.city }}
-                                    </li>
-                                    <li>
-                                        <span *ngIf="obj.likedProjectId._is_On_Live_; else either" class="forSpan">{{
-                                            contentLan.ACTIVE ||
-                                            "Active" }}</span>
-                                    </li>
-                                    <ng-template #either>
-                                        <span class="forSpan">{{ contentLan.INACTIVE }}</span>
-                                    </ng-template>
-                                    <li style="float: right">
-                                        <button style="border: none; background: none"
-                                            (click)="addtolike(obj.likedProjectId._id)">
-                                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                                <h6 *ngIf="obj.likedProjectId._is_All_Nothing_ == true">
-                                    {{ contentLan.BUSINESSMODEL }} :
-                                    <span style="color: #ff4264">{{ contentLan.ALLORNOTHING }}
-                                        <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.ALLORNOTHINGTOOLTIP}}"
-                                            style=" color: #5c82d4; margin-left: 1%; font-size: 14px; cursor: pointer; "></i></span>
-                                </h6>
-                                <h6 *ngIf="obj.likedProjectId._is_Keep_It_All_ == true">
-                                    {{ contentLan.BUSINESSMODEL }} :
-                                    <span style="color: #ff4264">{{ contentLan.KEEPALL
-                                        }}
-                                        <i class="fas fa-info-circle" ngbTooltip="{{ contentLan.KEEPALLTOOLTIP}}"
-                                            style=" color: #5c82d4; margin-left: 1%; font-size: 14px; cursor: pointer; "></i>
-                                    </span>
-                                </h6>
-                                <h3 style="padding: 0%">
-                                    <a class="onHover" [routerLink]="['/projectview', obj.likedProjectId._id]">{{
-                                        obj.likedProjectId.title
-                                        }}</a>
-                                </h3>
-                                <p *ngIf="obj.likedProjectId.basicInfoId.decription?.length >= 121">
-                                    {{ obj.likedProjectId.basicInfoId.decription.slice(0, 120) }}
-                                    <a [routerLink]="['/projectview', obj.likedProjectId._id]"
-                                        style="font-size: 15px; cursor: pointer">Read more</a>
-                                </p>
-                                <p *ngIf="121 >= obj.likedProjectId.basicInfoId.decription?.length">
-                                    {{ obj.likedProjectId.basicInfoId.decription }}
-                                </p>
-                                <hr class="cont_sec_hr" />
-                                <ul class="save_last_sec">
-                                    <li>
-                                        {{ contentLan.GOAL }}:
-                                        <span class="coloured">
-                                            {{ obj.likedProjectId.basicInfoId.goalAmount }}</span>
-                                    </li>
-                                    <li>
-                                        {{ contentLan.LAUNCH }} : {{ obj.likedProjectId.basicInfoId.launchDate | date:
-                                        "MMM d, y" }}
-                                    </li>
-                                    <li>
-                                        {{ contentLan.PLEDGE || "Pledge" }}:{{ obj.likedProjectId._amount_Pleadged_ }}
-                                        &nbsp;({{ obj.likelastpercentage | number: "1.0-0" }}%)
-                                    </li>
-                                    <li>
-                                        {{ contentLan.PLEDGE || "Pledge" }}Count:{{ obj.likedProjectId._pledged_count_
-                                        }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </section>
-
+                <div class="row" *ngFor="let data of likeReduce">
+                    <app-cards [obj]='data' (onLike)="addtolike($event)">
+                    </app-cards>
                 </div>
                 <section *ngIf="likedata.length > 5">
                     <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length != likedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">{{ contentLan.SHOWMORE}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">{{
+                            contentLan.SHOWMORE}}</button>
                     </div>
                     <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length == likedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">{{ contentLan.SHOWLESS}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">{{
+                            contentLan.SHOWLESS}}</button>
                     </div>
                 </section>
                 <h4 class="activityhead">{{ contentLan.DELETEDPROJECTS }}</h4>
@@ -200,13 +113,13 @@
                 <section *ngIf="deletedata.length > 5">
                     <div class="col-xl-12" style="text-align: center;" *ngIf='deleteReduce.length != deletedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; "
-                            (click)="paginationNext('deleted')">{{ contentLan.SHOWMORE}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('deleted')">{{
+                            contentLan.SHOWMORE}}</button>
                     </div>
                     <div class="col-xl-12" style="text-align: center;" *ngIf='deleteReduce.length == deletedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; "
-                            (click)="paginationLess('deleted')">{{ contentLan.SHOWLESS}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('deleted')">{{
+                            contentLan.SHOWLESS}}</button>
                     </div>
                 </section>
             </div>
@@ -243,25 +156,6 @@
                 </div>
             </div>
             <section class="saved_cont_sec" *ngFor="let datas of createReduce">
-                <!-- <div class="row" style="margin-top: 2%;" *ngFor="let datas of created.data">
-
-                    <div class="col-md-3">
-                        <img src="{{datas.basicInfoId.projectImage}}" class="img-fluid">
-                    </div>
-                    <div class="col-md-7">
-                        <a [routerLink]="['/projectinner/'+datas._id+'/projectoverview/basic']" style="text-decoration: none;color: black;">
-                            <div class="project_cont">
-                                <h3>{{datas.title}}</h3>
-                                <p>By Michael Murdock</p>
-                            </div>
-                        </a>
-            </div>
-            <div class="col-md-2">
-                <img src="assets/image/right_create_project.svg" class="img-fluid right_img_sec">
-            </div>
-            <hr style="width: 95%;margin-left: 3%;margin-top: 2%;">
-
-        </div> -->
 
                 <div class="row">
                     <diV class="col-md-3" *ngIf="datas.basicInfoId.projectImage; else nextImage">
@@ -364,11 +258,13 @@
             <section *ngIf="createddata.length > 5">
                 <div class="col-xl-12" style="text-align: center;" *ngIf='createReduce.length != createddata.length'>
                     <button type="button" class="btn btn-sm btn-light"
-                        style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('created')">{{ contentLan.SHOWMORE}}</button>
+                        style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('created')">{{
+                        contentLan.SHOWMORE}}</button>
                 </div>
                 <div class="col-xl-12" style="text-align: center;" *ngIf='createReduce.length == createddata.length'>
                     <button type="button" class="btn btn-sm btn-light"
-                        style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('created')">{{ contentLan.SHOWLESS}}</button>
+                        style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('created')">{{
+                        contentLan.SHOWLESS}}</button>
                 </div>
             </section>
         </section>
@@ -408,24 +304,25 @@
                                         <td>{{ datas.description }}</td>
                                         <td>{{ datas.dateTransfer | date: "MMM d, y" }}</td>
                                         <td>
-                                            <a href="{{ datas.document }}" download="Bill">{{ contentLan.DOWNLOADINVOICE }}</a>
+                                            <a href="{{ datas.document }}" download="Bill">{{ contentLan.DOWNLOADINVOICE
+                                                }}</a>
                                         </td>
                                     </tr>
                                     <tr *ngIf="(getadmin==null) || (getadmin.length == 0)">
                                         <td class="text-center" colspan="5">
                                             {{ contentLan.NOPAYMENTISDONE }}
                                         </td>
-                                      </tr>
+                                    </tr>
                                 </tbody>
                             </table>
-                               <!-- Pagination -->
-<div class="col-sm-12 col-md-12" *ngIf = "adminPaymetTotal !== 0">
-    <div class="pagenate pagination-rounded">
-      <ngb-pagination [collectionSize]="adminPaymetTotal" [(page)]="page" [pageSize]="10">
-      </ngb-pagination>
-  </div>
-  </div>
-  <!-- End Pagination -->
+                            <!-- Pagination -->
+                            <div class="col-sm-12 col-md-12" *ngIf="getadmin.length != 0 || dataFound !== true">
+                                <div class="pagenate pagination-rounded">
+                                    <ngb-pagination [collectionSize]="adminPaymetTotal" [(page)]="page" [pageSize]="10">
+                                    </ngb-pagination>
+                                </div>
+                            </div>
+                            <!-- End Pagination -->
                         </div>
                     </div>
                 </div>
@@ -455,7 +352,9 @@
                                         <td *ngIf="datas._is_succeed_ == true">
                                             <div class="row" *ngFor="let rewards of datas.rewardTableId">
                                                 <div class="col-md-12">
-                                                    <button class="rewardtitle"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(rewards, datas)">
+                                                    <button class="rewardtitle" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal"
+                                                        (click)="openModal(rewards, datas)">
                                                         {{ rewards.title }}
                                                     </button>
                                                 </div>
@@ -465,91 +364,94 @@
                                             {{ datas._pledged_count_ }}
                                         </td>
                                         <td *ngIf="datas._is_succeed_ == true">
-                                            <span *ngIf="datas._is_All_Nothing_ == true; else keepitall">{{ contentLan.ALLORNOTHING }}</span>
+                                            <span *ngIf="datas._is_All_Nothing_ == true; else keepitall">{{
+                                                contentLan.ALLORNOTHING }}</span>
                                             <ng-template #keepitall> {{ contentLan.KEEPALL }} </ng-template>
                                         </td>
                                         <td *ngIf="datas._is_succeed_ == true">
                                             {{ datas._amount_Pleadged_ }}
                                         </td>
                                     </tr>
-                                    <tr *ngIf="(createddata==null) || (createddata.length == 0)">
-                                        <td class="text-center" colspan="5"  *ngIf="projectPaymetTotal == 0">
+                                    <tr *ngIf="(projectPaymetTotal==null) || (projectPaymetTotal == 0)">
+                                        <td class="text-center" colspan="5">
                                             {{ contentLan.NOPLEDGESAREDONE }}
                                         </td>
-                                      </tr>
+                                    </tr>
                                 </tbody>
                             </table>
-                                <!-- Pagination -->
-<div class="col-sm-12 col-md-12" *ngIf = "projectPaymetTotal != 0">
-    <div class="pagenate pagination-rounded">
-      <ngb-pagination [collectionSize]="projectPaymetTotal" [(page)]="page" [pageSize]="10">
-      </ngb-pagination>
-  </div>
-  </div>
-  <!-- End Pagination -->
+                            <!-- Pagination -->
+                            <div class="col-sm-12 col-md-12" *ngIf="paymenthistCount == true">
+                                <div class="pagenate pagination-rounded">
+                                    <ngb-pagination [collectionSize]="projectPaymetTotal" [(page)]="page"
+                                        [pageSize]="10">
+                                    </ngb-pagination>
+                                </div>
+                            </div>
+                            <!-- End Pagination -->
                         </div>
                     </div>
                 </div>
             </section>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true" [ngStyle]="{ display: display }">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal"
-                            aria-label="Close" (click)="onCloseHandled()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <h4 style="text-align: center">{{ contentLan.BACKERSLIST }}</h4>
-                            <hr />
+                aria-hidden="true" [ngStyle]="{ display: display }">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal"
+                                aria-label="Close" (click)="onCloseHandled()"></button>
                         </div>
-                        <h5 style="font-weight: 200; margin: 0% 0% 3% 0%">
-                            {{ contentLan.NOPLEDGESDONE }} :<span style="padding: 5px; color: #ff6354; font-weight: 500">{{
-                                pledgecount
-                                }}</span>
-                        </h5>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">{{ contentLan.NAME }}</th>
-                                    <th scope="col">{{ contentLan.AMOUNT }}</th>
-                                    <th scope="col">{{ contentLan.DATE }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let datas of getreward |slice: (page-1) * 10 : (page-1) * 10 + 10">
-                                    <td> <img src="{{ datas.userDetails.investorImage }}" style="
+                        <div class="modal-body">
+                            <div class="row">
+                                <h4 style="text-align: center">{{ contentLan.BACKERSLIST }}</h4>
+                                <hr />
+                            </div>
+                            <h5 style="font-weight: 200; margin: 0% 0% 3% 0%">
+                                {{ contentLan.NOPLEDGESDONE }} :<span
+                                    style="padding: 5px; color: #ff6354; font-weight: 500">{{
+                                    pledgecount
+                                    }}</span>
+                            </h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">{{ contentLan.NAME }}</th>
+                                        <th scope="col">{{ contentLan.AMOUNT }}</th>
+                                        <th scope="col">{{ contentLan.DATE }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let datas of getreward |slice: (page-1) * 10 : (page-1) * 10 + 10">
+                                        <td> <img src="{{ datas.userDetails.investorImage }}" style="
                                         width: 50px;
                                         height: 50px;
                                         border-radius: 25px;
                                       " /></td>
-                                    <td> {{ datas.userDetails.fullName }}</td>
-                                    <td>{{ datas.pledgeAmount }}</td>
-                                    <td>
-                                        {{ datas.createdAt | date: "MMM d, y" }}
-                                    </td>
-                                </tr>
-                                <tr *ngIf="(getreward==null) || (getreward.length == 0)">
-                                    <td class="text-center" colspan="6">
-                                        {{ contentLan.NODATAFOUND }}   
-                                    </td>
-                                  </tr>
-                            </tbody>
-                        </table>
-                             <!-- Pagination -->
-<div class="col-sm-12 col-md-12">
-    <div class="pagenate pagination-rounded">
-      <ngb-pagination [collectionSize]="rewardPayment" [(page)]="page" [pageSize]="10">
-      </ngb-pagination>
-  </div>
-  </div>
-  <!-- End Pagination -->
+                                        <td> {{ datas.userDetails.fullName }}</td>
+                                        <td>{{ datas.pledgeAmount }}</td>
+                                        <td>
+                                            {{ datas.createdAt | date: "MMM d, y" }}
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="(getreward==null) || (getreward.length == 0)">
+                                        <td class="text-center" colspan="6">
+                                            {{ contentLan.NODATAFOUND }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- Pagination -->
+                            <div class="col-sm-12 col-md-12">
+                                <div class="pagenate pagination-rounded">
+                                    <ngb-pagination [collectionSize]="rewardPayment" [(page)]="page" [pageSize]="10">
+                                    </ngb-pagination>
+                                </div>
+                            </div>
+                            <!-- End Pagination -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         </section>
         <section *ngIf="displayMode === 4">
@@ -605,7 +507,8 @@
 
                         <!--Table body-->
                         <tbody>
-                            <tr *ngFor="let billdata of getbilldata |slice: (page-1) * 10 : (page-1) * 10 + 10; let ndx = index">
+                            <tr
+                                *ngFor="let billdata of getbilldata |slice: (page-1) * 10 : (page-1) * 10 + 10; let ndx = index">
                                 <td>{{ ndx + 1 }}.</td>
                                 <td>
                                     {{ billdata.serviceType }}
@@ -618,7 +521,8 @@
                                 </td>
                                 <td>{{ billdata.invoiceData | date: "dd-MM-yyyy" }}</td>
                                 <td>
-                                    <a (click)="billpopup(billdata)" style="
+                                    <a data-bs-toggle="modal" data-bs-target="#invoiceBillModelModal"
+                                        (click)="billpopup(billdata)" style="
                       text-decoration: underline;
                       color: green;
                       cursor: pointer;
@@ -634,7 +538,7 @@
                                         <button class="billstatus">
                                             {{ billdata.billStatus }}
                                         </button>
-                                        <button class="billpay" (click)="paybill(billdata)">
+                                        <button class="billpay" (click)="paybill(billdata)" data-bs-toggle="modal" data-bs-target="#payBillModal" >
                                             {{ contentLan.PAY }}
                                         </button>
                                     </span>
@@ -650,450 +554,456 @@
                     </table>
                     <!--Table-->
                     <div class="row" *ngIf="getbilldata == null || getbilldata.length == 0" style="text-align: center">
-                        <h5 class="text-center">No Bill Found</h5>
+                        <h5 class="text-center">{{ contentLan.NOBILLFOUND }}</h5>
                     </div>
-   <!-- Pagination -->
-   <div class="col-sm-12 col-md-12" *ngIf="billTotal !== 0">
-    <div class="pagenate pagination-rounded">
-      <ngb-pagination [collectionSize]="billTotal" [(page)]="page" [pageSize]="10">
-      </ngb-pagination>
-  </div>
-  </div>
-  <!-- End Pagination -->
+                    <!-- Pagination -->
+                    <div class="col-sm-12 col-md-12" *ngIf="billTotal !== 0">
+                        <div class="pagenate pagination-rounded">
+                            <ngb-pagination [collectionSize]="billTotal" [(page)]="page" [pageSize]="10">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+                    <!-- End Pagination -->
                 </div>
             </div>
-        </section>
-        <div class="overlay1" *ngIf="popup1">
-            <div class="popup1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10"></div>
-                        <div class="col-md-2">
-                            <a class="close" (click)="popup1 = false">&times;</a>
-                        </div>
+            <div class="modal fade" id="invoiceBillModelModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{ display: display }">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal" aria-label="Close"
+                            (click)="onCloseHandled()"></button>
                     </div>
-                    <h4 style="text-align: center; font-size: 24px; font-weight: 500">
-                        Pay the Bill
-                    </h4>
-                    <hr style="color: #ff724c" />
-                    <div class="row">
-                        <div class="col-md-6" style="text-align: -webkit-center; border: 1px solid #fb6e0c80">
-                            <h5 style="font-size: 24px; font-weight: 400; margin-top: 15%">
-                                Total:<span style="padding: 10px; color: #ff0000c4; font-weight: 500">SAR {{
-                                    billdetail.totalAmount
-                                    }}</span>
-                            </h5>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5" style="border: 1px solid #fb6e0c80">
-                            <div class="row">
-                                <form [formGroup]="addmoneyform" ngNativeValidate>
-                                    <div class="col-md-12" style="padding: 10px">
-                                        <h5 style="font-size: 20px">Select Card Type:</h5>
-                                        <input type="radio" formControlName="paymentMethod" name="paymentMethod"
-                                            value="MADA" id="MADA" checked required /><label
-                                            for="MADA">&nbsp;MADA</label><br />
-                                        <input type="radio" formControlName="paymentMethod" name="paymentMethod"
-                                            value="VISA" id="VISA" required /><label for="VISA">&nbsp;VISA</label><br />
-                                        <input type="radio" formControlName="paymentMethod" name="paymentMethod"
-                                            value="MASTER" id="MASTER" required /><label
-                                            for="MASTER">&nbsp;MASTER</label>
-                                    </div>
-                                    <div class="card" style="
-                      border: 1px solid #ff5355;
-                      padding: 3px;
-                      margin-top: 5%;
-                    ">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h3 style="color: #ff5355">SAR &nbsp;900</h3>
-                                                    <label style="color: #9a999e; font-size: 14px">{{
-                                                        contentLan.CURRAVAILBALANCE
-                                                        }}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="margin-top: 10%">
-                                                <!-- <button class="carer_head" style=" width: inherit; " (click)="openpay()">+ {{ contentLan.ADDMONEYTOWALLET }}</button> -->
-                                                <form [formGroup]="addmoneyform" ngNativeValidate>
-                                                    <div *ngIf="popuppay" class="paytext">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5 style="font-size: 20px">
-                                                                    Select Card Type:
-                                                                </h5>
-                                                                <input type="radio" formControlName="paymentMethod"
-                                                                    name="paymentMethod" value="MADA" id="MADA"
-                                                                    checked="checked" /><label
-                                                                    for="MADA">&nbsp;MADA</label><br />
-                                                                <input type="radio" formControlName="paymentMethod"
-                                                                    name="paymentMethod" value="VISA" id="VISA" /><label
-                                                                    for="VISA">&nbsp;VISA</label><br />
-                                                                <input type="radio" formControlName="paymentMethod"
-                                                                    name="paymentMethod" value="MASTER"
-                                                                    id="MASTER" /><label
-                                                                    for="MASTER">&nbsp;MASTER</label>
-                                                            </div>
-                                                        </div>
-                                                        <h5 style="font-size: 20px; margin-top: 5%">
-                                                            Enter Amount:
-                                                        </h5>
-                                                        <input type="number" placeholder="Amount"
-                                                            formControlName="amount" />
+                    <div class="modal-body">
+                        <!DOCTYPE html>
+                        <html lang="en">
 
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <!-- <button class="wallet_pay" (click)="addmoney()"> {{
-                                                                    contentLan.ADDMONEYTOWALLET }}</button> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-12" style="margin-top: 3%">
-                                                <button class="carer_head" style="width: inherit" (click)="paywallet()">
-                                                    Pay
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="billpayment" (click)="billpayment()">
-                                Process to Payment
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overlay" *ngIf="popup">
-            <div class="popup">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10"></div>
-                        <div class="col-md-2">
-                            <a class="close" (click)="popup = false">&times;</a>
-                        </div>
-                    </div>
-                    <!DOCTYPE html>
-                    <html lang="en">
-
-                    <head>
-                        <style>
-                            .panel-body {
-                                padding: 30px;
-                                background-color: #f3f3f3;
-                            }
-
-                            .card-body {
-                                padding: 0;
-                            }
-
-                            p {
-                                margin-bottom: 5px;
-                            }
-
-                            .img-fluid {
-                                max-width: 100%;
-                                height: auto;
-                            }
-
-                            .second_panel_body {
-                                padding: 10px 30px;
-                            }
-
-                            .bill_head {
-                                padding: 5px;
-                                background-color: #f3f3f3;
-                                font-size: 16px;
-                                margin-bottom: 20px;
-                            }
-
-                            table {
-                                border-collapse: collapse;
-                                border-spacing: 0;
-                                width: 100%;
-                            }
-
-                            tr:nth-child(even) {
-                                background-color: #f2f2f2;
-                            }
-
-                            .right {
-                                text-align: right;
-                            }
-
-                            .center {
-                                text-align: center;
-                            }
-
-                            tbody>tr {
-                                border: 1px solid #7f7f7f;
-                            }
-
-                            tbody>tr>td {
-                                border-left: 1px solid #7f7f7f;
-                                border-right: 1px solid #7f7f7f;
-                            }
-
-                            .table-responsive::-webkit-scrollbar {
-                                display: none;
-                            }
-
-                            .table-responsive {
-                                -ms-overflow-style: none;
-                                /* IE and Edge */
-                                scrollbar-width: none;
-                                /* Firefox */
-                            }
-
-                            thead>tr {
-                                background-color: #f47549;
-                                color: #fff;
-                            }
-
-                            @media print {
-                                thead>tr {
-                                    background-color: auto;
-                                    color: #000;
+                        <head>
+                            <style>
+                                .panel-body {
+                                    padding: 30px;
+                                    background-color: #f3f3f3;
                                 }
 
-                                thead>tr>th {
+                                .card-body {
+                                    padding: 0;
+                                }
+
+                                p {
+                                    margin-bottom: 5px;
+                                }
+
+                                .img-fluid {
+                                    max-width: 100%;
+                                    height: auto;
+                                }
+
+                                .second_panel_body {
+                                    padding: 10px 30px;
+                                }
+
+                                .bill_head {
+                                    padding: 5px;
+                                    background-color: #f3f3f3;
+                                    font-size: 16px;
+                                    margin-bottom: 20px;
+                                }
+
+                                table {
+                                    border-collapse: collapse;
+                                    border-spacing: 0;
+                                    width: 100%;
+                                }
+
+                                tr:nth-child(even) {
+                                    background-color: #f2f2f2;
+                                }
+
+                                .right {
+                                    text-align: right;
+                                }
+
+                                .center {
+                                    text-align: center;
+                                }
+
+                                tbody>tr {
                                     border: 1px solid #7f7f7f;
                                 }
-                            }
-                        </style>
-                    </head>
 
-                    <body>
-                        <!-- ============================================================== -->
-                        <!-- Start Page Content here -->
-                        <!-- ============================================================== -->
+                                tbody>tr>td {
+                                    border-left: 1px solid #7f7f7f;
+                                    border-right: 1px solid #7f7f7f;
+                                }
 
-                        <div class="content-page">
-                            <!-- Start Content-->
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card card-body">
-                                            <div style="padding: 10px 0; background-color: #f47549"></div>
-                                            <div class="panel-body">
-                                                <div class="clearfix">
-                                                    <div class="float-left">
-                                                        <div class="row">
-                                                            <div class="col-md-2">
-                                                                <img src="https://fikra.app/assets/image/logo_colored.png"
-                                                                    class="img-fluid" />
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <h6 style="margin-top: 20px">Company Name</h6>
-                                                                <p>Address</p>
-                                                                <p>Contact Details</p>
+                                .table-responsive::-webkit-scrollbar {
+                                    display: none;
+                                }
+
+                                .table-responsive {
+                                    -ms-overflow-style: none;
+                                    /* IE and Edge */
+                                    scrollbar-width: none;
+                                    /* Firefox */
+                                }
+
+                                thead>tr {
+                                    background-color: #f47549;
+                                    color: #fff;
+                                }
+
+                                @media print {
+                                    thead>tr {
+                                        background-color: auto;
+                                        color: #000;
+                                    }
+
+                                    thead>tr>th {
+                                        border: 1px solid #7f7f7f;
+                                    }
+                                }
+                            </style>
+                        </head>
+
+                        <body>
+                            <!-- ============================================================== -->
+                            <!-- Start Page Content here -->
+                            <!-- ============================================================== -->
+
+                            <div class="content-page">
+                                <!-- Start Content-->
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card card-body">
+                                                <div style="padding: 10px 0; background-color: #f47549"></div>
+                                                <div class="panel-body">
+                                                    <div class="clearfix">
+                                                        <div class="float-left">
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <img src="https://fikra.app/assets/image/logo_colored.png"
+                                                                        class="img-fluid" />
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <h6 style="margin-top: 20px">{{ contentLan.COMPANYNAME }}</h6>
+                                                                    <p>{{ contentLan.ADDRESS }}</p>
+                                                                    <p>{{ contentLan.CONTACTDETAILS }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="float-right" style="text-align: end">
-                                                        <h4 style="
+                                                        <div class="float-right" style="text-align: end">
+                                                            <h4 style="
                                   color: #7f7f7f;
                                   font-size: 30px;
                                   margin-top: 25px;
                                 ">
-                                                            INVOICE
-                                                        </h4>
-                                                        <p class="centers">
-                                                            <strong>{{
-                                                                billdetail.invoiceData | date: "MMM d, y"
-                                                                }}</strong>
-                                                        </p>
-                                                        <p class="centers">
-                                                            <strong>{{ contentLan.INVOICENO }} :{{
-                                                                billdetail.invoiceNo
-                                                                }}</strong>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="second_panel_body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="float-right mt-3" style="text-align: end">
-                                                            <p>
-                                                                Payment terms (due on
-                                                                <span style="font-size: 16px; font-weight: 600">{{
-                                                                    billdetail.dueDate | date: "MMM d, y"
-                                                                    }}</span>, due in
-                                                                <span style="font-size: 16px; font-weight: 600">{{
-                                                                    lastdate }}
-                                                                </span> days)
+                                                                {{ contentLan.INVOICE }}
+                                                            </h4>
+                                                            <p class="centers">
+                                                                <strong>{{
+                                                                    billdetailRet.invoiceData | date: "MMM d, y"
+                                                                    }}</strong>
+                                                            </p>
+                                                            <p class="centers">
+                                                                <strong>{{ contentLan.INVOICENO }} :{{
+                                                                    billdetailRet.invoiceNo
+                                                                    }}</strong>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-5 mt-3">
-                                                        <h6 class="bill_head">BILL TO</h6>
-                                                        <p>{{ contentLan.NAME }} : {{ billName }}</p>
-                                                        <p>
-                                                            {{ contentLan.ADDRESS }} : {{ addressOne }}, {{ addressTwo
-                                                            }}
-                                                        </p>
-                                                        <p>{{ contentLan.CITY }} : {{ city }}</p>
-                                                        <p>
-                                                            {{ contentLan.STATE }} : {{ state }} - {{ pin }}
-                                                        </p>
-                                                        <p>{{ contentLan.PHONENUMBER }} : {{ phone }}</p>
+
+                                                <div class="second_panel_body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="float-right mt-3" style="text-align: end">
+                                                                <p>
+                                                                {{ contentLan.INVOICE }}
+                                                                {{ contentLan.PAYMENTTERMS }} (due on
+                                                                    <span style="font-size: 16px; font-weight: 600">{{
+                                                                        billdetailRet.dueDate | date: "MMM d, y"
+                                                                        }}</span>, {{ contentLan.DUEIN }}
+                                                                    <span style="font-size: 16px; font-weight: 600">{{
+                                                                        lastdate }}
+                                                                    </span> days)
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2"></div>
-                                                    <div class="col-md-5 mt-3">
-                                                        <h6 class="bill_head">SHIP TO</h6>
-                                                        <p>{{ contentLan.NAME }} : {{ billName }}</p>
-                                                        <!-- <p>Client Company Name</p> -->
-                                                        <p>
-                                                            {{ contentLan.ADDRESS }} : {{ addressOne }}, {{ addressTwo
-                                                            }}
-                                                        </p>
-                                                        <p>{{ contentLan.CITY }} : {{ city }}</p>
-                                                        <p>
-                                                            {{ contentLan.STATE }} : {{ state }} - {{ pin }}
-                                                        </p>
-                                                        <p>{{ contentLan.PHONENUMBER }} : {{ phone }}</p>
+                                                    <div class="row">
+                                                        <div class="col-md-5 mt-3">
+                                                            <h6 class="bill_head">BILL TO</h6>
+                                                            <p>{{ contentLan.NAME }} : {{ billName }}</p>
+                                                            <p>
+                                                                {{ contentLan.ADDRESS }} : {{ addressOne }}, {{
+                                                                addressTwo
+                                                                }}
+                                                            </p>
+                                                            <p>{{ contentLan.CITY }} : {{ city }}</p>
+                                                            <p>
+                                                                {{ contentLan.STATE }} : {{ state }} - {{ pin }}
+                                                            </p>
+                                                            <p>{{ contentLan.PHONENUMBER }} : {{ phone }}</p>
+                                                        </div>
+                                                        <div class="col-md-2"></div>
+                                                        <div class="col-md-5 mt-3">
+                                                            <h6 class="bill_head">SHIP TO</h6>
+                                                            <p>{{ contentLan.NAME }} : {{ billName }}</p>
+                                                            <!-- <p>Client Company Name</p> -->
+                                                            <p>
+                                                                {{ contentLan.ADDRESS }} : {{ addressOne }}, {{
+                                                                addressTwo
+                                                                }}
+                                                            </p>
+                                                            <p>{{ contentLan.CITY }} : {{ city }}</p>
+                                                            <p>
+                                                                {{ contentLan.STATE }} : {{ state }} - {{ pin }}
+                                                            </p>
+                                                            <p>{{ contentLan.PHONENUMBER }} : {{ phone }}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- end row -->
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="table-responsive">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr style="
+                                                    <!-- end row -->
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr style="
                                         background-color: #f47549 !important;
                                       ">
-                                                                        <th>{{ contentLan.SNO }}</th>
-                                                                        <th>{{ contentLan.DESCRIPTION }}</th>
-                                                                        <th class="center">
-                                                                            {{ contentLan.QTY }}
-                                                                        </th>
-                                                                        <th class="center">UNIT PRICE</th>
-                                                                        <th class="center">TOTAL</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr *ngFor="
-                                        let includedata of billdetail.includes;
+                                                                            <th>{{ contentLan.SNO }}</th>
+                                                                            <th>{{ contentLan.DESCRIPTION }}</th>
+                                                                            <th class="center">
+                                                                                {{ contentLan.QTY }}
+                                                                            </th>
+                                                                            <th class="center">{{ contentLan.UNITPRICE }}</th>
+                                                                            <th class="center">{{ contentLan.TOTAL }}</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr *ngFor="
+                                        let includedata of billDetailInclude;
+                                        ;
                                         let ndx = index
                                       ">
-                                                                        <td>{{ ndx + 1 }}.</td>
-                                                                        <td>{{ includedata.description }}.</td>
-                                                                        <td class="center">
-                                                                            {{ includedata.quantity }}
-                                                                        </td>
-                                                                        <td class="center">
-                                                                            {{ includedata.unitPrice }}
-                                                                        </td>
-                                                                        <td class="right">
-                                                                            {{ includedata.total }}
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-6">
-                                                        <div class="clearfix mt-4">
-                                                            <h5 class="small text-dark">
-                                                                Remarks / Payment Instructions:
-                                                            </h5>
-                                                            <small>
-                                                                All accounts are to be paid within 7 days from
-                                                                receipt of invoice. To be paid by cheque or
-                                                                credit card or direct payment online. If
-                                                                account is not paid within 7 days the credits
-                                                                details supplied as confirmation of work
-                                                                undertaken will be charged the agreed quoted
-                                                                fee noted above.
-                                                            </small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-4 col-6 offset-xl-4">
-                                                        <div class="row">
-                                                            <div class="col-md-8 col-8">
-                                                                <p class="text-right"><b>SUBTOTAL : </b></p>
-                                                                <p class="text-right">
-                                                                    <b>PROCESSING FEES : </b>
-                                                                </p>
-                                                                <p class="text-right"><b>VAT RATE : </b></p>
-                                                                <p class="text-right">
-                                                                    <b>PAYMENT MODEL FEES : </b>
-                                                                </p>
-                                                                <p class="text-right"><b>DISCOUNT :</b></p>
-                                                                <p class="text-right"><b>GRAND TOTAL :</b></p>
-                                                            </div>
-                                                            <div class="col-md-4 col-4">
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.dueAmount }}</b>
-                                                                </p>
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.processing_Fees }}</b>
-                                                                </p>
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.VAT }}</b>
-                                                                </p>
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.paymentModel }}</b>
-                                                                </p>
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.discount }}</b>
-                                                                </p>
-                                                                <p class="text-right">
-                                                                    <b>{{ billdetail.totalAmount }}</b>
-                                                                </p>
+                                                                            <td>{{ ndx + 1 }}.</td>
+                                                                            <td>{{ includedata.description }}.</td>
+                                                                            <td class="center">
+                                                                                {{ includedata.quantity }}
+                                                                            </td>
+                                                                            <td class="center">
+                                                                                {{ includedata.unitPrice }}
+                                                                            </td>
+                                                                            <td class="right">
+                                                                                {{ includedata.total }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-6">
+                                                            <div class="clearfix mt-4">
+                                                                <h5 class="small text-dark">
+                                                                    {{ contentLan.REMARKS }}:
+                                                                </h5>
+                                                                <small>
+                                                                    All accounts are to be paid within 7 days from
+                                                                    receipt of invoice. To be paid by cheque or
+                                                                    credit card or direct payment online. If
+                                                                    account is not paid within 7 days the credits
+                                                                    details supplied as confirmation of work
+                                                                    undertaken will be charged the agreed quoted
+                                                                    fee noted above.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-6 offset-xl-4">
+                                                            <div class="row">
+                                                                <div class="col-md-8 col-8">
+                                                                    <p class="text-right"><b> {{ contentLan.SUBTOTAL }} : </b></p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ contentLan.PROCESSFEES }} : </b>
+                                                                    </p>
+                                                                    <p class="text-right"><b>{{ contentLan.VATRATE }} : </b></p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ contentLan.PAYMENTMODELFEE }} : </b>
+                                                                    </p>
+                                                                    <p class="text-right"><b>{{ contentLan.DDISCOUNT }} :</b></p>
+                                                                    <p class="text-right"><b>{{ contentLan.GRANDTOT }} :</b></p>
+                                                                </div>
+                                                                <div class="col-md-4 col-4">
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.dueAmount }}</b>
+                                                                    </p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.processing_Fees }}</b>
+                                                                    </p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.VAT }}</b>
+                                                                    </p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.paymentModel }}</b>
+                                                                    </p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.discount }}</b>
+                                                                    </p>
+                                                                    <p class="text-right">
+                                                                        <b>{{ billdetailRet.totalAmount }}</b>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
 
-                                                        <hr />
-                                                        <h3 class="text-right">
-                                                            SAR {{ billdetail.totalAmount }}
-                                                        </h3>
+                                                            <hr />
+                                                            <h3 class="text-right">
+                                                                SAR {{ billdetailRet.totalAmount }}
+                                                            </h3>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <br />
-                                                <div style="padding: 10px 0; background-color: #f47549"></div>
-                                                <br />
-                                                <div class="d-print-none">
-                                                    <div class="float-right">
-                                                        <!-- <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light"><i -->
-                                                        <!-- class="fa fa-print"></i></a>&nbsp;&nbsp; -->
-                                                        <!-- <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a> -->
+                                                    <br />
+                                                    <div style="padding: 10px 0; background-color: #f47549"></div>
+                                                    <br />
+                                                    <div class="d-print-none">
+                                                        <div class="float-right">
+                                                            <!-- <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light"><i -->
+                                                            <!-- class="fa fa-print"></i></a>&nbsp;&nbsp; -->
+                                                            <!-- <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a> -->
+                                                        </div>
+                                                        <div class="clearfix"></div>
                                                     </div>
-                                                    <div class="clearfix"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end row -->
                                 </div>
-                                <!-- end row -->
+                                <!-- container-fluid -->
                             </div>
-                            <!-- container-fluid -->
-                        </div>
 
-                        <!-- ============================================================== -->
-                        <!-- End Page content -->
-                        <!-- ============================================================== -->
-                    </body>
+                            <!-- ============================================================== -->
+                            <!-- End Page content -->
+                            <!-- ============================================================== -->
+                        </body>
 
-                    </html>
+                        </html>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="payBillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" [ngStyle]="{ display: display }">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" #myModalClose data-bs-dismiss="modal"
+                            aria-label="Close" (click)="onCloseHandled()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 style="text-align: center; font-size: 24px; font-weight: 500">
+                            {{ contentLan.PAYTHEBILL }}
+                        </h4>
+                        <hr style="color: #ff724c" />
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: -webkit-center; border: 1px solid #fb6e0c80">
+                                <h5 style="font-size: 24px; font-weight: 400; margin-top: 15%">
+                                    Total:<span style="padding: 10px; color: #ff0000c4; font-weight: 500">SAR {{
+                                        billdetailRet.totalAmount
+                                        }}</span>
+                                </h5>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5" style="border: 1px solid #fb6e0c80">
+                                <div class="row">
+                                    <form [formGroup]="addmoneyform" ngNativeValidate>
+                                        <div class="col-md-12" style="padding: 10px">
+                                            <h5 style="font-size: 20px">{{ contentLan.SELECTCARDTYPE }}:</h5>
+                                            <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                value="MADA" id="MADA" checked required /><label
+                                                for="MADA">&nbsp;MADA</label><br />
+                                            <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                value="VISA" id="VISA" required /><label for="VISA">&nbsp;VISA</label><br />
+                                            <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                value="MASTER" id="MASTER" required /><label
+                                                for="MASTER">&nbsp;MASTER</label>
+                                        </div>
+                                        <div class="card" style="
+                          border: 1px solid #ff5355;
+                          padding: 3px;
+                          margin-top: 5%;
+                        ">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <!-- <h3 style="color: #ff5355">SAR &nbsp;900</h3> -->
+                                                        <label style="color: #9a999e; font-size: 14px">{{
+                                                            contentLan.CURRAVAILBALANCE
+                                                            }}</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10%">
+                                                    <!-- <button class="carer_head" style=" width: inherit; " (click)="openpay()">+ {{ contentLan.ADDMONEYTOWALLET }}</button> -->
+                                                    <form [formGroup]="addmoneyform" ngNativeValidate>
+                                                        <div *ngIf="popuppay" class="paytext">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <h5 style="font-size: 20px">
+                                                                        {{ contentLan.SELECTCARDTYPE }}:
+                                                                    </h5>
+                                                                    <input type="radio" formControlName="paymentMethod"
+                                                                        name="paymentMethod" value="MADA" id="MADA"
+                                                                        checked="checked" /><label
+                                                                        for="MADA">&nbsp;MADA</label><br />
+                                                                    <input type="radio" formControlName="paymentMethod"
+                                                                        name="paymentMethod" value="VISA" id="VISA" /><label
+                                                                        for="VISA">&nbsp;VISA</label><br />
+                                                                    <input type="radio" formControlName="paymentMethod"
+                                                                        name="paymentMethod" value="MASTER"
+                                                                        id="MASTER" /><label
+                                                                        for="MASTER">&nbsp;MASTER</label>
+                                                                </div>
+                                                            </div>
+                                                            <h5 style="font-size: 20px; margin-top: 5%">
+                                                                {{ contentLan.ENTERAMT }}:
+                                                            </h5>
+                                                            <input type="number" placeholder="Amount"
+                                                                formControlName="amount" />
+    
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <!-- <button class="wallet_pay" (click)="addmoney()"> {{
+                                                                        contentLan.ADDMONEYTOWALLET }}</button> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 3%">
+                                                    <button type="button" class="carer_head" #myModalClose data-bs-dismiss="modal" aria-label="Close" style="width: inherit" (click)="paywallet()">
+                                                        {{ contentLan.PAY }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="billpayment" #myModalClose data-bs-dismiss="modal" aria-label="Close"
+                                (click)="billpayment()">{{ contentLan.PROCESSTOPAYMENT }}</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
     </div>
 </section>
 <ng-template #creatorTemplate>
@@ -1111,7 +1021,7 @@
                             {{ contentLan.MYBILLS }}
                         </button> -->
                         <!-- <a href="/account" class="settinghref"><button class="settingbtn" > Settings </button></a> -->
-                        <a href="/profile" class="profilehref"><button class="profilebtn">Profile</button></a>
+                        <a href="/profile" class="profilehref"><button class="profilebtn">{{ contentLan.PROFILE }}</button></a>
                     </div>
                 </div>
             </div>
@@ -1235,11 +1145,13 @@
                 <section *ngIf="likedata.length > 5">
                     <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length != likedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">{{ contentLan.SHOWMORE}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext('liked')">{{
+                            contentLan.SHOWMORE}}</button>
                     </div>
                     <div class="col-xl-12" style="text-align: center;" *ngIf='likeReduce.length == likedata.length'>
                         <button type="button" class="btn btn-sm btn-light"
-                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">{{ contentLan.SHOWLESS}}</button>
+                            style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess('liked')">{{
+                            contentLan.SHOWLESS}}</button>
                     </div>
                 </section>
             </div>

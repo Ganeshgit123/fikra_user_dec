@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class SavedprojectsComponent implements OnInit {
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     private http: HttpClient,
-    private router: Router) {
+    private router: Router,
+    private toaster: ToastrService,) {
 
   }
   myPromise = new Promise((resolve, reject) => {
@@ -54,7 +56,6 @@ export class SavedprojectsComponent implements OnInit {
     this.myPromise
 
     this.authService.savedproject().subscribe(
-
       (res: any) => {
         // console.log('user', res);
         this.saveddatas = res.data;
@@ -62,9 +63,9 @@ export class SavedprojectsComponent implements OnInit {
         this.saveddata = res.data;
         this.savedatacount = this.saveddata.length;
         this.saveddata.forEach((elementss: any) => {
-          this.savegoalAmount = elementss.savedProjectId.basicInfoId.goalAmount;
+          this.savegoalAmount = elementss.basicInfoId.goalAmount;
 
-          this.saveamountPleadged = elementss.savedProjectId._amount_Pleadged_;
+          this.saveamountPleadged = elementss._amount_Pleadged_;
           this.savepercentage =
             this.saveamountPleadged / this.savegoalAmount;
           var totPercent = this.savepercentage * 100;
@@ -73,8 +74,18 @@ export class SavedprojectsComponent implements OnInit {
           } else {
             elementss.savelastper = totPercent;
           }
-
-          elementss.savelastpercentage = totPercent;
+          elementss.categoryName = elementss.basicInfoId.categoryName;
+          elementss.subCategoryName = elementss.basicInfoId.subCategoryName;
+          elementss.city = elementss.basicInfoId.city;
+          elementss.decription = elementss.basicInfoId.decription;
+          elementss.projectImage = elementss.basicInfoId.projectImage;
+          elementss.goalAmount = elementss.basicInfoId.goalAmount;
+          elementss.userName = elementss.userId.fullName;
+          elementss._is_All_Nothing_ = elementss._is_All_Nothing_;
+          elementss._is_Keep_It_All_ = elementss._is_Keep_It_All_;
+          elementss.launchDate = elementss.basicInfoId.launchDate;
+          elementss._is_Saved_Project = true;
+          elementss.featurelastpercentage = totPercent;
         });
       }
     );
@@ -145,12 +156,13 @@ export class SavedprojectsComponent implements OnInit {
     this.saveform = this.fb.group({
       userId: JSON.parse(localStorage.getItem('userId')!),
       userType: JSON.parse(localStorage.getItem('role')!),
-      projectId: [values['_id']],
+      projectId: [values],
     });
     console.log(this.saveform)
     this.authService.addsaveproject(this.saveform.value).subscribe((res: any) => {
       this.ngOnInit()
     });
   }
+
 
 }

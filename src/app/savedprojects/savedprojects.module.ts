@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SavedprojectsComponent } from './savedprojects.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CardsModule } from '../cards/cards.module';
 
 
 console.warn("save")
@@ -13,6 +14,7 @@ console.warn("save")
   imports: [
     CommonModule,
     NgbModule,
+    CardsModule,
     RouterModule.forChild([
       {
         path: "",

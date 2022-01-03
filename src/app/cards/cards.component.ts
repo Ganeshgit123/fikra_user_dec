@@ -9,8 +9,8 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  @Input() obj: { title: String, projectImage: String, decription: String, categoryName: String, city: String, userName: String, goalAmount: any, _amount_Pleadged_: any, _pledged_count_: any, subCategoryName: String, inter: any, luncont: any, _is_Liked_Project: Boolean, _id: String, _is_Saved_Project: Boolean, featurelastpercentage: any, _is_All_Nothing_: Boolean, _is_Keep_It_All_: Boolean } =
-    { title: '', projectImage: '', decription: '', categoryName: '', city: '', userName: '', goalAmount: '', _amount_Pleadged_: '', _pledged_count_: '', subCategoryName: '', inter: '', luncont: '', _is_Liked_Project: true, _id: '', _is_Saved_Project: true, featurelastpercentage: '', _is_All_Nothing_: false, _is_Keep_It_All_: false };
+  @Input() obj: { title: String, projectImage: String, decription: String, categoryName: String, city: String, userName: String, goalAmount: any, _amount_Pleadged_: any, _pledged_count_: any, subCategoryName: String, inter: any, luncont: any, _is_Liked_Project: Boolean, _id: String, _is_Saved_Project: Boolean, featurelastpercentage: any, _is_All_Nothing_: Boolean, _is_Keep_It_All_: Boolean, launchDate: any } =
+    { title: '', projectImage: '', decription: '', categoryName: '', city: '', userName: '', goalAmount: '', _amount_Pleadged_: '', _pledged_count_: '', subCategoryName: '', inter: '', luncont: '', _is_Liked_Project: true, _id: '', _is_Saved_Project: true, featurelastpercentage: '', _is_All_Nothing_: false, _is_Keep_It_All_: false, launchDate: '' };
   contentLan: any = {};
   userver: any;
   constructor(public fb: FormBuilder, public authService: AuthService) { }

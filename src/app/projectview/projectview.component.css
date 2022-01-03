@@ -385,7 +385,11 @@ img {
     margin-bottom: 0px;
     margin-top: 0px;
 }
-
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .pledgeboxhr {
+        width: 123px;
+    } 
+}
 .pledgeboxdesc {
     font-size: 14px;
     color: #fff;
@@ -542,8 +546,13 @@ img {
 .scroll {
     height: 850px;
     overflow-y: scroll;
+    padding-bottom: 20rem;
 }
-
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .scroll {
+        padding-bottom: 0;
+    }
+}
 .scroll::-webkit-scrollbar-thumb {
     background-color: #FF5959;
     border-radius: 10px;

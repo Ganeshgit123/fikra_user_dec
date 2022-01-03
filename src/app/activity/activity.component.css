@@ -371,7 +371,11 @@
     margin-left: 15%;
     border-radius: 5px;
 }
-
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .billpay {
+        margin-top: 5px;
+    }
+}
 .billpayment {
     background-color: #1fa969;
     border: none;

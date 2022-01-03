@@ -4,6 +4,7 @@ import { ActivityComponent } from './activity.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { CardsModule } from '../cards/cards.module';
 
 
 console.warn("activity")
@@ -16,6 +17,7 @@ console.warn("activity")
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    CardsModule,
     NgbPaginationModule,
     RouterModule.forChild([
       {

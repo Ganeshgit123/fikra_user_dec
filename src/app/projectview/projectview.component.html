@@ -48,24 +48,26 @@
                                     <label class="projectcurrency">SAR</label> {{ projectpreview?._amount_Pleadged_ }}
                                 </h3>
                                 <h4 class="projectpleged">
-                                    {{ contentLan.PLEDGE }} SAR {{ projectpreview?.basicInfoId?.goalAmount }} {{ contentLan.GOAL }} {{ contentLan.AMOUNT }}
+                                    {{ contentLan.PLEDGE }} SAR {{ projectpreview?.basicInfoId?.goalAmount }} {{
+                                    contentLan.GOAL }} {{ contentLan.AMOUNT }}
                                 </h4>
                                 <span *ngIf="projectpreview?._is_Keep_It_All_ == true; else nothing">
                                     <h4 class="bussmodel">
                                         {{ contentLan.BUSINESSMODEL }}:
-                                        <span class="bussmodespan">Keep it all</span>
-                                <i class="fas fa-info-circle" ngbTooltip="{{ buskiades }}" style="
+                                        <span class="bussmodespan">{{ contentLan.KEEPALL }}</span>
+                                        <i class="fas fa-info-circle" ngbTooltip="{{ buskiades }}" style="
                         color: #5c82d4;
                         margin-left: 1%;
                         font-size: 14px;
                         cursor: pointer;
                       " *ngIf="dir == 'ltr'"></i>
-                                </h4>
+                                    </h4>
                                 </span>
                                 <ng-template #nothing>
                                     <h4 class="bussmodel">
                                         {{ contentLan.BUSINESSMODEL }}:
-                                        <span class="bussmodespan">All or Nothing</span><i class="fas fa-info-circle" ngbTooltip="{{ busarndes }}" style="
+                                        <span class="bussmodespan">{{ contentLan.ALLORNOTHINGTOOLTIP }}</span><i class="fas fa-info-circle"
+                                            ngbTooltip="{{ busarndes }}" style="
                         color: #5c82d4;
                         margin-left: 1%;
                         font-size: 14px;
@@ -76,9 +78,11 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" [style.width.%]="featurelastper" aria-valuenow="featurelastper" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+                                            <div class="progress-bar" role="progressbar"
+                                                [style.width.%]="featurelastper" aria-valuenow="featurelastper"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
+                                    </div>
                                     <div class="col-md-2 col-2">
                                         {{ featurelastpercentage | number: "1.0-0" }}%
                                     </div>
@@ -94,7 +98,8 @@
                                     <div class="col-md-6">
                                         <ul class="icons_sec">
                                             <li>
-                                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
+                                                <span [swal]="['Hi', 'Login required for this activity']"
+                                                    *ngIf="userver == null; else showsave" (click)="notuser()">
                                                     <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                         aria-hidden="true"></i></span>
                                             </li>
@@ -102,47 +107,51 @@
                                             <ng-template #showsave>
                                                 <li>
                                                     <span (click)="addtosave()">
-                          <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
+                                                        <!-- <img src="assets/image/project/bookmark.svg " style="cursor: pointer;margin-top: 20%; "> -->
                                                         <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                             aria-hidden="true"
-                            *ngIf="projectpreview._is_Saved_Project == false"></i>
+                                                            *ngIf="projectpreview._is_Saved_Project == false"></i>
                                                         <i class="fa fa-bookmark" style="color: #f13b0099"
                                                             aria-hidden="true"
-                            *ngIf="projectpreview._is_Saved_Project == true"></i>
-                        </span>
+                                                            *ngIf="projectpreview._is_Saved_Project == true"></i>
+                                                    </span>
                                                 </li>
                                             </ng-template>
                                             <li>
-                                                <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
+                                                <span [swal]="['Hi', 'Login required for this activity']"
+                                                    *ngIf="userver == null; else showlike" (click)="notuser()">
                                                     <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                         aria-hidden="true">
                                                     </i>
-                      </span>
+                                                </span>
                                             </li>
                                             <ng-template #showlike>
                                                 <li>
                                                     <span (click)="addtolike()">
                                                         <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                             aria-hidden="true"
-                            *ngIf="projectpreview._is_Liked_Project == false"></i>
+                                                            *ngIf="projectpreview._is_Liked_Project == false"></i>
                                                         <i class="fa fa-thumbs-up" style="color: #f13b0099"
                                                             aria-hidden="true"
-                            *ngIf="projectpreview._is_Liked_Project == true"></i>
-                        </span>
+                                                            *ngIf="projectpreview._is_Liked_Project == true"></i>
+                                                    </span>
                                                 </li>
                                             </ng-template>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="" [swal]="['Hi', 'Please Login to Remind this project']" (click)="notuser()" *ngIf="
+                                        <div class="" [swal]="['Hi', 'Please Login to Remind this project']"
+                                            (click)="notuser()" *ngIf="
                         userid == null || projectpreview?._is_succeed_;
                         else elsepledgecreatorbtnr
                       "></div>
                                         <ng-template #elsepledgecreatorbtnr>
-                                            <button class="projectremindme" *ngIf="projectpreview._isRemembered_ == false" (click)="Onremindme()">
+                                            <button class="projectremindme"
+                                                *ngIf="projectpreview._isRemembered_ == false" (click)="Onremindme()">
                                                 {{ contentLan.REMINDME }}
                                             </button>
-                                            <button class="projectremindmeactive" *ngIf="projectpreview._isRemembered_ == true" (click)="Onremindme()">
+                                            <button class="projectremindmeactive"
+                                                *ngIf="projectpreview._isRemembered_ == true" (click)="Onremindme()">
                                                 {{ contentLan.REMINDMEACTIVE }}
                                             </button>
                                         </ng-template>
@@ -225,8 +234,9 @@
                                 </button></li> -->
                             <!-- <li> <button (cbOnSuccess)="isCopied = true" [cbContent]="'example string'">Copied</button><i class="fas fa-envelope"></i></li> -->
                             <li>
-                                <button (click)="copytoast()" cdkCopyToClipboard="fikra.app{{ currenturl }}" ngbTooltip="Copy Project link" class="waves-effect waves-light btn">
-                                <>
+                                <button (click)="copytoast()" cdkCopyToClipboard="fikra.app{{ currenturl }}"
+                                    ngbTooltip="Copy Project link" class="waves-effect waves-light btn">
+                                    <>
                                 </button>
                             </li>
 
@@ -250,7 +260,8 @@
                                 </p>
                             </li>
                             <li>
-                                {{ projectpreview?.basicInfoId?.categoryName }} -> {{ projectpreview?.basicInfoId?.subCategoryName }}
+                                {{ projectpreview?.basicInfoId?.categoryName }} -> {{
+                                projectpreview?.basicInfoId?.subCategoryName }}
                             </li>
                         </ul>
                     </div>
@@ -279,11 +290,13 @@
             <div class="col-md-3" *ngIf="projectpreview?._is_Ower_ == false; else elserequestcreator">
                 <ul class="present_ul">
                     <li>
-                        <button class="projectreport" [swal]="['Hi', 'Please Login to Report this project']" (click)="notuser()" *ngIf="userid == null; else elsepledgecreatorbtn">
+                        <button class="projectreport" [swal]="['Hi', 'Please Login to Report this project']"
+                            (click)="notuser()" *ngIf="userid == null; else elsepledgecreatorbtn">
                             Report this project to Fikra
                         </button>
                         <ng-template #elsepledgecreatorbtn>
-                            <button class="projectreport" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="openModal()">
+                            <button class="projectreport" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+                                (click)="openModal()">
                                 {{ contentLan.REPORTTHISPROJECTTOFIKRA }}
                             </button>
                         </ng-template>
@@ -300,14 +313,16 @@
                 </div>
             </ng-template>
             <form [formGroup]="reportprojectform" name="form">
-                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabe2" aria-hidden="true" [ngStyle]="{ display: display }">
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabe2"
+                    aria-hidden="true" [ngStyle]="{ display: display }">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabe2">
                                     {{ contentLan.REPORTTHISPROJECTTOFIKRA }}
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCloseHandled()"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    (click)="onCloseHandled()"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="col-md-12">
@@ -317,14 +332,15 @@
                     }"></textarea>
                                     <div *ngIf="submitted && f.reportComment.errors" class="invalid-feedback">
                                         <div *ngIf="f.reportComment.errors.required">
-                                            Give Comment
+                                            {{ contentLan.GIVECOMMENT }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <br />
                             <p class="text-center">
-                                <button type="button" (click)="Onreportproject()" class="btn btn-primary submit_req_btn">
+                                <button type="button" (click)="Onreportproject()"
+                                    class="btn btn-primary submit_req_btn">
                                     {{ contentLan.SUBMITREQ }}
                                 </button>
                             </p>
@@ -339,7 +355,7 @@
     <section class="proj_ban1" id="reward">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-lg-3 col-xl-3 col-md-4">
                     <div class="left_scroll">
                         <div class="left_tab_head">
                             <button (click)="onDisplayModeChange(1)" [ngClass]="{ 'btn-primary ': displayMode === 1 }">
@@ -347,16 +363,16 @@
                             </button>
                             <button (click)="onDisplayModeChange(2)" [ngClass]="{ 'btn-primary ': displayMode === 2 }">
                                 {{ contentLan.FAQ }}
-                            <!-- <label class="numcountfaq">10</label> -->
-                        </button>
+                                <!-- <label class="numcountfaq">10</label> -->
+                            </button>
                             <button (click)="onDisplayModeChange(3)" [ngClass]="{ 'btn-primary ': displayMode === 3 }">
                                 {{ contentLan.UPDATE }}
-                            <!-- <label class="numcountfaq">45</label> -->
-                        </button>
+                                <!-- <label class="numcountfaq">45</label> -->
+                            </button>
                             <button (click)="onDisplayModeChange(4)" [ngClass]="{ 'btn-primary ': displayMode === 4 }">
                                 {{ contentLan.COMMENT }}
-                            <!--  <label  class="numcountfaq">195</label> -->
-                        </button>
+                                <!--  <label  class="numcountfaq">195</label> -->
+                            </button>
                             <!-- <button (click)="onDisplayModeChange(5)" [ngClass]="{'btn-primary ': displayMode === 5}">Community <label
                             class="numcountfaq">1</label></button> -->
                             <button (click)="onDisplayModeChange(6)" [ngClass]="{ 'btn-primary ': displayMode === 6 }">
@@ -380,7 +396,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-6">
-                                        <img src="{{ profileLogo }}" style="border-radius: 50%; width: 100%; height: 100%" class="img-fluid proj_user_img" />
+                                        <img src="{{ profileLogo }}"
+                                            style="border-radius: 50%; width: 100%; height: 100%"
+                                            class="img-fluid proj_user_img" />
                                     </div>
                                 </div>
 
@@ -390,7 +408,8 @@
 
                                 <!-- <button class="projectauthorseemore" (click)="popup = true">SEE MORE</button> -->
                                 <ng-container *ngIf="userid == null; else elsepledgecreatorbtnf">
-                                    <button class="projectauthorseemore" [swal]="['Hi', 'Please Login to Follow this Creator']" (click)="notuser()">
+                                    <button class="projectauthorseemore"
+                                        [swal]="['Hi', 'Please Login to Follow this Creator']" (click)="notuser()">
                                         {{ contentLan.FOLLOW }}
                                     </button>
                                 </ng-container>
@@ -399,22 +418,30 @@
                       projectpreview?._is_Ower_ == false;
                       else pledgecreatorfollow
                     ">
-                                        <button class="projectauthorseemore" (click)="followcreator(projectpreview?._creatorId_)" *ngIf="projectpreview?._is_Followed == false">
+                                        <button class="projectauthorseemore"
+                                            (click)="followcreator(projectpreview?._creatorId_)"
+                                            *ngIf="projectpreview?._is_Followed == false">
                                             {{ contentLan.FOLLOW }}
                                         </button>
-                                        <button class="projectauthoruf" (click)="followcreator(projectpreview?._creatorId_)" *ngIf="projectpreview?._is_Followed == true">
+                                        <button class="projectauthoruf"
+                                            (click)="followcreator(projectpreview?._creatorId_)"
+                                            *ngIf="projectpreview?._is_Followed == true">
                                             {{ contentLan.UNFOLLOW }}
                                         </button>
                                     </ng-container>
                                 </ng-template>
                                 <ng-template #pledgecreatorfollow>
-                                    <button class="projectauthorseemorelive" *ngIf="projectpreview?._is_On_Live_ == true">
-                                        Live
+                                    <button class="projectauthorseemorelive"
+                                        *ngIf="projectpreview?._is_On_Live_ == true">
+                                        {{ contentLan.LIVE }}
                                     </button>
-                                    <button class="projectauthorseemoresuccess" *ngIf="projectpreview?._is_succeed_ == true">
-                                        Completed
+                                    <button class="projectauthorseemoresuccess"
+                                        *ngIf="projectpreview?._is_succeed_ == true">
+                                        {{ contentLan.COMPLETED }}
                                     </button>
-                                    <button class="projectauthorseemore" (click)="editprojectredirect(projectpreview?._id)" *ngIf="projectpreview?._is_On_Live_ == false &&projectpreview?._is_succeed_ == false ">
+                                    <button class="projectauthorseemore"
+                                        (click)="editprojectredirect(projectpreview?._id)"
+                                        *ngIf="projectpreview?._is_On_Live_ == false &&projectpreview?._is_succeed_ == false ">
                                         {{ contentLan.EDIT }}
                                     </button>
                                 </ng-template>
@@ -434,7 +461,8 @@
                                                 <label class="projectpledgecurrency">SAR</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="number" formControlName="pledgeAmount" [min]="1" class="form-control" required />
+                                                <input type="number" formControlName="pledgeAmount" [min]="1"
+                                                    class="form-control" required />
                                                 <!-- <input type="hidden" formControlName="projectId" value={{projectpreview._id}}> -->
                                             </div>
                                         </div>
@@ -451,11 +479,14 @@
                                         </div>
                                     </div>
 
-                                    <button class="projectauthorseemore" [swal]="['Hi', 'Please Login to Back this project']" (click)="notuser()" *ngIf="userid == null; else elsepledgecreatorbtnc" type="submit">
+                                    <button class="projectauthorseemore"
+                                        [swal]="['Hi', 'Please Login to Back this project']" (click)="notuser()"
+                                        *ngIf="userid == null; else elsepledgecreatorbtnc" type="submit">
                                         {{ contentLan.CONTINUE }}
                                     </button>
                                     <ng-template #elsepledgecreatorbtnc>
-                                        <button class="projectauthorseemore" (click)="pledgewithoutreward()" type="submit">
+                                        <button class="projectauthorseemore" (click)="pledgewithoutreward()"
+                                            type="submit">
                                             {{ contentLan.CONTINUE }}
                                         </button>
                                     </ng-template>
@@ -474,15 +505,16 @@
                                                 {{ contentLan.PLEDGE }} {{ +totalshow + +originalvalue }} SAR
                                             </p>
                                             <!-- <input type="hidden" formControlName="rewardId" value={{rewardsshow._id}} [(ngModel)]="rewardsshow._id"> -->
-                                            <input type="hidden" formControlName="pledgeAmount" value="{{ rewardsshow.amount }}" />
+                                            <input type="hidden" formControlName="pledgeAmount"
+                                                value="{{ rewardsshow.amount }}" />
                                             <h3 class="pledgetitle">{{ rewardsshow.title }}</h3>
                                             <p class="pledgedesc">{{ rewardsshow.description }}</p>
-                                            <h5 class="pledgeinclude">Includes :</h5>
+                                            <h5 class="pledgeinclude">{{ contentLan.INCLUDES }} :</h5>
                                             <span *ngFor="let rewardsshowitem of rewardsshow.items">
-                                            <label class="includeround"></label>
+                                                <label class="includeround"></label>
 
                                                 <p class="includepoints">{{ rewardsshowitem.title }}</p>
-                                        </span>
+                                            </span>
                                             <p class="pledgeestimated">
                                                 {{ contentLan.ESTIMATEDELIVERY }} :
                                                 <label class="pledgeestimatedop">{{
@@ -498,10 +530,10 @@
                                             <span *ngFor="let rewardsship of rewardsshow.sipping">
                                                 <p class="pledgebackers">
                                                     {{ rewardsship.city | titlecase }}
-                                                    <span style="float: right;">
+                                                    <span>
                                                         SAR {{ rewardsship.cost }}
-                                            </span>
-                                            </p>
+                                                    </span>
+                                                </p>
                                             </span>
                                             <p class="rewardpreviewproject" style=" font-size: 14px; ">
                                                 {{ contentLan.TIMELIMIT }} :
@@ -525,10 +557,14 @@
                                             <div class="pledgehover">
                                                 <!-- <a (click)="Onpledge(rewardsshow)" class="pledgehovertext">Select This Reward</a> -->
 
-                                                <a (click)="notuser()" [swal]="['Hi', 'Please Login to Backs this project']" *ngIf="userid == null; else elsepledgecreatorbtns" class="pledgehovertext">{{
+                                                <a (click)="notuser()"
+                                                    [swal]="['Hi', 'Please Login to Backs this project']"
+                                                    *ngIf="userid == null; else elsepledgecreatorbtns"
+                                                    class="pledgehovertext">{{
                                                     contentLan.SELECTTHISREWARD }}</a>
                                                 <ng-template #elsepledgecreatorbtns>
-                                                    <a (click)="rewardpopu(rewardsshow)" class="pledgehovertext" *ngIf="projectpreview?._is_Ower_ == false">{{
+                                                    <a (click)="rewardpopu(rewardsshow)" class="pledgehovertext"
+                                                        *ngIf="projectpreview?._is_Ower_ == false">{{
                                                         contentLan.SELECTTHISREWARD }}
                                                     </a>
                                                 </ng-template>
@@ -542,7 +578,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-9 proj_story_risk" *ngIf="displayMode === 1">
+                <div class="col-lg-9 col-xl-9 col-md-8 proj_story_risk" *ngIf="displayMode === 1">
                     <div class="row" style="margin-left: 5%">
                         <div class="col-md-12">
                             <h2 id="story">{{ contentLan.STORY }}</h2>
@@ -558,13 +594,14 @@
                     </div>
                 </div>
                 <!-- Frequently Asked Questions -->
-                <div class="col-md-9" *ngIf="displayMode === 2">
-                    <h3>Frequently Asked Questions</h3>
+                <div class="col-lg-9 col-xl-9 col-md-8" *ngIf="displayMode === 2">
+                    <h3>{{contentLan.FREQUENTASKEDQUES }}</h3>
                     <section *ngIf="projectpreview?._is_Ower_ == false; else elsefaqcreator">
                         <div class="container">
                             <div class="row" *ngFor="let faqdata of faqgetquestion">
                                 <div *ngIf="faqdata._isVisibleToUser_ === true">
-                                    <button (click)="onclick()" type="button" style="width: -webkit-fill-available; text-align: left" class="btn btn-danger">
+                                    <button (click)="onclick()" type="button"
+                                        style="width: -webkit-fill-available; text-align: left" class="btn btn-danger">
                                         {{ faqdata.question }}
                                     </button>
                                     <ng-container *ngIf="visible">
@@ -580,7 +617,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <p style="margin-top: 10%">
-                                        Looks like there aren't any frequently asked questions yet. Ask the project creator directly.
+                                        {{contentLan.LOOKSLIKESTHEREARENOTFAQ }} 
                                     </p>
                                 </div>
                             </div>
@@ -589,18 +626,17 @@
                                     <button class="faqask" *ngIf="!userver; else askopen" [swal]="[
                       'Hi',
                       'Please Login to Ask a question about this project'
-                    ]">
-                                        Ask a question
-                                    </button>
+                    ]">{{contentLan.ASKAQUES }} </button>
                                     <ng-template #askopen>
                                         <button class="faqask" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Ask a question
+                                            {{contentLan.ASKAQUES }}
                                         </button>
                                     </ng-template>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog">
                                 <form [formGroup]="faqaskform" ngNativeValidate>
                                     <div class="modal-content">
@@ -610,15 +646,17 @@
                           overflow: hidden;
                           white-space: nowrap;
                         ">
-                                                Ask a question about {{ projectpreview?.basicInfoId?.title }}
+                                                {{contentLan.ASKAQUESABOUT }} {{ projectpreview?.basicInfoId?.title }}
                                             </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="col-md-12">
-                                                <label>To:{{ projectpreview?.basicInfoId?.title }}</label>
+                                                <label>{{contentLan.TO }}:{{ projectpreview?.basicInfoId?.title }}</label>
                                                 <div>
-                                                    <textarea style="width: -webkit-fill-available; height: 180px" formControlName="question" required></textarea>
+                                                    <textarea style="width: -webkit-fill-available; height: 180px"
+                                                        formControlName="question" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -627,7 +665,7 @@
                                                 {{ contentLan.CLOSE }}
                                             </button>
                                             <button type="button" (click)="onAsk()" class="btn btn-primary">
-                                                Ask a question
+                                                {{contentLan.ASKAQUES }}
                                             </button>
                                         </div>
                                     </div>
@@ -646,8 +684,11 @@
                                         <form [formGroup]="faqansform" ngNativeValidate>
                                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                                 <div class="accordion-item" *ngFor="let faqdata of faqgetquestion">
-                                                    <h2 class="accordion-header" [id]="'flush-headingOne' + faqdata._id">
-                                                        <button style="color: black; background: #13131308" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="
+                                                    <h2 class="accordion-header"
+                                                        [id]="'flush-headingOne' + faqdata._id">
+                                                        <button style="color: black; background: #13131308"
+                                                            class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse" [attr.data-bs-target]="
                                 '#flush-collapseOne' + faqdata._id
                               " aria-expanded="false" [attr.aria-controls]="
                                 'flush-collapseOne' + faqdata._id
@@ -656,7 +697,10 @@
                                                             <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
                                                         </button>
                                                     </h2>
-                                                    <div [id]="'flush-collapseOne' + faqdata._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                    <div [id]="'flush-collapseOne' + faqdata._id"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="flush-headingOne"
+                                                        data-bs-parent="#accordionFlushExample">
                                                         <div class="accordion-body">
                                                             <textarea style="
                                   width: -webkit-fill-available;
@@ -664,15 +708,17 @@
                                 " placeholder="{{ faqdata.answer }}" formControlName="answer"></textarea>
                                                             <div class="row">
                                                                 <div class="col-md-3">
-                                                                    <button class="faqans" (click)="Onfaqans(faqdata._id)">
+                                                                    <button class="faqans"
+                                                                        (click)="Onfaqans(faqdata._id)">
                                                                         {{ contentLan.ADVANTAGES }}
                                                                     </button>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form [formGroup]="faqdeleteform" ngNativeValidate>
                                                                         <!-- <input type="hidden" formControlName="faqId" [(ngModel)]="faqdata._id"> -->
-                                                                        <button class="faqdele" (click)="Onfaqdel(faqdata._id)">
-                                                                            Delete FAQ
+                                                                        <button class="faqdele"
+                                                                            (click)="Onfaqdel(faqdata._id)">
+                                                                            {{ contentLan.DELETEFAQ }}
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -692,8 +738,7 @@
                                           " id="flexSwitchCheckDefault" />
                                                                             </form>
                                                                             <label class="form-check-label"
-                                                                                for="flexSwitchCheckDefault">Visible to
-                                                                                User</label>
+                                                                                for="flexSwitchCheckDefault">{{ contentLan.VISIBLETOUSER }}</label>
                                                                         </div>
                                                                     </button>
                                                                 </div>
@@ -716,17 +761,24 @@
                 </div>
 
                 <!-- Update -->
-                <div class="col-md-9" *ngIf="displayMode === 3">
+                <div class="col-lg-9 col-xl-9 col-md-8" *ngIf="displayMode === 3">
                     <h2 style="margin-bottom: 3%">{{ contentLan.UPDATE }}</h2>
                     <section *ngIf="projectpreview?._is_Ower_ == false; else elseupdatecreator">
                         <div class="container">
-                            <div class="row" style="margin-bottom: 2%" *ngFor="let updatedata of getupdates.data; let i = index">
+                            <div class="row" style="margin-bottom: 2%"
+                                *ngFor="let updatedata of getupdates.data; let i = index">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img class="upload-img" style="width: 10%; border-radius: 50%; height: 50px" *ngIf="updatedata.userId.profileImage === 'null'" src="assets/image/avatar-placeholder.png" />
-                                                <img class="upload-img" style="width: 50%; border-radius: 50%; height: 50px" *ngIf="updatedata.userId.profileImage !== 'null'" src="{{ updatedata.userId.profileImage }}" />
+                                                <img class="upload-img"
+                                                    style="width: 10%; border-radius: 50%; height: 50px"
+                                                    *ngIf="updatedata.userId.profileImage === 'null'"
+                                                    src="assets/image/avatar-placeholder.png" />
+                                                <img class="upload-img"
+                                                    style="width: 50%; border-radius: 50%; height: 50px"
+                                                    *ngIf="updatedata.userId.profileImage !== 'null'"
+                                                    src="{{ updatedata.userId.profileImage }}" />
                                             </div>
                                             <div class="col-md-8">
                                                 <h5 class="updatename">
@@ -747,7 +799,7 @@
                                             </div>
                                         </div>
                                         <h3 style="margin-top: 5%">{{ updatedata.updateTitle }}</h3>
-                                        <label style="font-size: 14px">Updated at:&nbsp;&nbsp;{{
+                                        <label style="font-size: 14px">{{ contentLan.UPDARTEDAT }}:&nbsp;&nbsp;{{
                                             updatedata.updatedAt | date: "MMM d, y"
                                             }}</label>
                                         <hr style="width: -webkit-fill-available" />
@@ -778,18 +830,21 @@
                                         <form [formGroup]="updatecommentform" ngNativeValidate>
                                             <div class="col-md-12">
                                                 <button (click)="onclick()" type="button" class="btnupdatecomment">
-                                                    Add Comment
+                                                    {{ contentLan.ADDCOMMENT }} 
                                                 </button>
                                                 <ng-container *ngIf="visible">
                                                     <div class="bg-white shadow-sm p-3">
-                                                        <textarea formControlName="comment" style="width: -webkit-fill-available"></textarea>
-                                                        <input type="hidden" formControlName="updatePostId" [(ngModel)]="updatedata._id" />
+                                                        <textarea formControlName="comment"
+                                                            style="width: -webkit-fill-available"></textarea>
+                                                        <input type="hidden" formControlName="updatePostId"
+                                                            [(ngModel)]="updatedata._id" />
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-4"></div>
                                                         <div class="col-md-4"></div>
                                                         <div class="col-md-4" style="text-align: -webkit-right">
-                                                            <button class="submitupdatecomment" (click)="Onupdatecreatorcomment()">
+                                                            <button class="submitupdatecomment"
+                                                                (click)="Onupdatecreatorcomment()">
                                                                 {{ contentLan.SUBMIT }}
                                                             </button>
                                                         </div>
@@ -809,8 +864,14 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img class="upload-img" style="width: 10%; border-radius: 50%; height: 50px" *ngIf="updatedata.userId.profileImage === 'null'" src="assets/image/avatar-placeholder.png" />
-                                                <img class="upload-img" style="width: 50%; border-radius: 50%; height: 50px" *ngIf="updatedata.userId.profileImage !== 'null'" src="{{ updatedata.userId.profileImage }}" />
+                                                <img class="upload-img"
+                                                    style="width: 10%; border-radius: 50%; height: 50px"
+                                                    *ngIf="updatedata.userId.profileImage === 'null'"
+                                                    src="assets/image/avatar-placeholder.png" />
+                                                <img class="upload-img"
+                                                    style="width: 50%; border-radius: 50%; height: 50px"
+                                                    *ngIf="updatedata.userId.profileImage !== 'null'"
+                                                    src="{{ updatedata.userId.profileImage }}" />
                                             </div>
                                             <div class="col-md-8">
                                                 <h5 class="updatename">
@@ -822,13 +883,15 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <form [formGroup]="updatedeleteform" ngNativeValidate>
-                                                    <img style="width: 25%; float: right; margin-top: 10%" (click)="Onupdatedelete()" src="assets/image/delete.png" />
-                                                    <input type="hidden" formControlName="updatesId" [(ngModel)]="updatedata._id" />
+                                                    <img style="width: 25%; float: right; margin-top: 10%"
+                                                        (click)="Onupdatedelete()" src="assets/image/delete.png" />
+                                                    <input type="hidden" formControlName="updatesId"
+                                                        [(ngModel)]="updatedata._id" />
                                                 </form>
                                             </div>
                                         </div>
                                         <h3 style="margin-top: 5%">{{ updatedata.updateTitle }}</h3>
-                                        <label style="font-size: 14px">Updated at:&nbsp;&nbsp;{{
+                                        <label style="font-size: 14px">{{ contentLan.UPDARTEDAT }}:&nbsp;&nbsp;{{
                                             updatedata.updatedAt | date: "MMM d, y"
                                             }}</label>
                                         <hr style="width: -webkit-fill-available" />
@@ -843,8 +906,10 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <form [formGroup]="updatecommentdeleteform" ngNativeValidate>
-                                                            <input type="hidden" formControlName="updatesId" [(ngModel)]="updatedata._id" />
-                                                            <input type="hidden" formControlName="commentId" [(ngModel)]="updatecmtdata._id" />
+                                                            <input type="hidden" formControlName="updatesId"
+                                                                [(ngModel)]="updatedata._id" />
+                                                            <input type="hidden" formControlName="commentId"
+                                                                [(ngModel)]="updatecmtdata._id" />
                                                             <img style="
                                   width: 25%;
                                   float: right;
@@ -862,15 +927,16 @@
                         <hr style="width: 100%; color: #fd082d" />
                         <div class="container">
                             <form [formGroup]="creatorupdateform" ngNativeValidate>
-                                <h4 style="margin-top: 2%; margin-bottom: 1%">Add Update :</h4>
+                                <h4 style="margin-top: 2%; margin-bottom: 1%">{{ contentLan.ADDUPDATE }} :</h4>
                                 <div class="row">
-                                    <label style="margin-top: 2%; margin-bottom: 1%">Update Title:</label>
+                                    <label style="margin-top: 2%; margin-bottom: 1%">{{ contentLan.UPDATETITLE }}:</label>
                                     <div class="col-md-12">
-                                        <input type="text" formControlName="updateTitle" placeholder="Enter Title" style="width: 50%; height: 120%" />
+                                        <input type="text" formControlName="updateTitle" placeholder="Enter Title"
+                                            style="width: 50%; height: 120%" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label style="margin-top: 2%; margin-bottom: 1%">Update Message:</label>
+                                    <label style="margin-top: 2%; margin-bottom: 1%">{{ contentLan.UPDATEMSG }}:</label>
                                     <div class="col-md-12">
                                         <angular-editor [config]="config" formControlName="updateMessage">
                                         </angular-editor>
@@ -881,7 +947,7 @@
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4" style="text-align: end">
                                         <button class="submitupdate" (click)="Onupdatecreator()">
-                                            Submit Update
+                                            {{ contentLan.SUBMITUPDATE }}
                                         </button>
                                     </div>
                                 </div>
@@ -891,7 +957,7 @@
                 </div>
 
                 <!-- Comments -->
-                <div class="col-md-9" *ngIf="displayMode === 4">
+                <div class="col-lg-9 col-xl-9 col-md-8" *ngIf="displayMode === 4">
                     <h2>{{ contentLan.COMMENT }}</h2>
                     <section *ngIf="projectpreview?._is_Ower_ == false; else elsecommetncreator">
                         <div class="container">
@@ -907,9 +973,10 @@
                         </div>
                         <div class="containter" *ngIf="projectpreview?._is_Pledged_ == true; else elseinvestorcmt">
                             <div class="row">
-                                <label>Add your Comments:</label>
+                                <label>{{ contentLan.ADDYOURCOMMENT }}:</label>
                                 <form [formGroup]="backerpostform" ngNativeValidate>
-                                    <textarea formControlName="comments" style="width: -webkit-fill-available; height: 180px"></textarea>
+                                    <textarea formControlName="comments"
+                                        style="width: -webkit-fill-available; height: 180px"></textarea>
                                     <div class="col-md-4">
                                         <button class="commentsub" (click)="Postcomment()">
                                             {{ contentLan.SUBMIT }}
@@ -920,7 +987,7 @@
                         </div>
                         <ng-template #elseinvestorcmt>
                             <h4 style="text-align: center; margin-top: 5%">
-                                Need to pledge this project to add comment
+                                {{ contentLan.NEEDTOPLEDGETHISPROJECT }}
                             </h4>
                         </ng-template>
                     </section>
@@ -933,24 +1000,28 @@
                                             {{ commentdata.comments }}
                                             <div class="containter">
                                                 <div class="row">
-                                                    <label style="margin-top: 2%">Add your Comments:</label>
+                                                    <label style="margin-top: 2%">{{ contentLan.ADDYOURCOMMENT }}:</label>
                                                     <form [formGroup]="creatorcommentform" ngNativeValidate>
-                                                        <input type="hidden" formControlName="commentId" [(ngModel)]="commentdata._id" />
+                                                        <input type="hidden" formControlName="commentId"
+                                                            [(ngModel)]="commentdata._id" />
                                                         <textarea formControlName="comments" style="
                                 width: -webkit-fill-available;
                                 height: 75px;
                               "></textarea>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <button class="commentsub" (click)="CreatorPostcomment()">
+                                                                <button class="commentsub"
+                                                                    (click)="CreatorPostcomment()">
                                                                     {{ contentLan.SUBMIT }}
                                                                 </button>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <form [formGroup]="commentdeleteform" ngNativeValidate>
-                                                                    <input type="hidden" formControlName="commentId" [(ngModel)]="commentdata._id" />
-                                                                    <button class="commentdele" (click)="Creatordeletecomment()">
-                                                                        Delete Comment
+                                                                    <input type="hidden" formControlName="commentId"
+                                                                        [(ngModel)]="commentdata._id" />
+                                                                    <button class="commentdele"
+                                                                        (click)="Creatordeletecomment()">
+                                                                        {{ contentLan.DELETECOMMENT }}
                                                                     </button>
                                                                 </form>
                                                             </div>
@@ -965,22 +1036,22 @@
                         </div>
                     </ng-template>
                 </div>
-                <div class="col-md-9" *ngIf="displayMode === 5">Community</div>
-                <div class="col-md-9" *ngIf="displayMode === 6">
+                <!-- <div class="col-lg-9 col-xl-9 col-md-8" *ngIf="displayMode === 5">{{ contentLan.COMMUNITY }}</div> -->
+                <div class="col-lg-9 col-xl-9 col-md-8" *ngIf="displayMode === 6">
                     <h2>{{ contentLan.RISKANDCHALLENGE }}</h2>
                     <p>{{ projectpreview?.storyTableId?.risk_chalenges }}</p>
 
                     <div class="row" style="margin-bottom: 2%" *ngFor="let updatedata of getupdates.data">
                         <div class="row" *ngFor="let updatecommentdata of updatedata.comments">
-                            1. {{ updatecommentdata.comment }}
+                           {{ updatecommentdata.comment }}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9">
+                    <div class="col-lg-3 col-xl-3 col-md-4"></div>
+                    <div class="col-lg-9 col-xl-9 col-md-8">
                         <!-- <button class="projectreport">Report this project to Fikra</button> -->
                     </div>
                 </div>
@@ -989,86 +1060,12 @@
         </div>
     </section>
 
-
-    <div class="overlay" *ngIf="popup">
-        <div class="popup">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <h2 class="aboutthecreator">About the creator</h2>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-
-            <a class="close" (click)="popup = false">&times;</a>
-            <h3 class="aboutcreatorname">Nabeel k</h3>
-            <h4 class="authorcont">Lorem Ipsum</h4>
-            <p class="aboutcreatordesc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text
-                of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing
-                and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            </p>
-            <div class="row">
-                <div class="col-md-4">
-                    <ol class="overlayol">
-                        <li><img src="assets/image/profile.png" />Nabeel k</li>
-                        <li><img src="assets/image/lock.png" />Last login Aug 4 2021</li>
-                        <li><img src="assets/image/facebook.svg" /> Not connected</li>
-                        <li>
-                            <img src="assets/image/check.png" /><a href="">10 created </a>
-                            <a href="">· 50 backed</a>
-                        </li>
-
-                    </ol>
-                </div>
-                <!-- <div class="col-md-6">
-                    <p class="collab">Collaborators on this project</p>
-                    <div class="row ro_gap">
-                        <div class="col-md-2 col-4">
-                            <img src="assets/image/avatar-placeholder.png" class="img-fluid">
-                        </div>
-                        <div class="col-md-10 col-8">
-                            <a href="#" class="projectmember">Nabeel k</a>
-                            <p class="projectmemberposition">Collaborator</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 col-4">
-                            <img src="assets/image/avatar-placeholder.png" class="img-fluid">
-                        </div>
-                        <div class="col-md-10 col-8">
-                            <a href="#" class="projectmember">Nabeel k</a>
-                            <p class="projectmemberposition">Collaborator</p>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="col-md-2">
-                    <ol class="social_link_proj">
-                        <li>
-                            <a href="www.youtube.com" class="projectcreatorlink">www.youtube.com</a>
-                        </li>
-                        <li>
-                            <a href="www.facebook.com" class="projectcreatorlink">www.facebook.com</a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- <button class="aboutcontactme">contact me</button> -->
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
     <div class="overlay1" *ngIf="popup1">
         <div class="popup1">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <h2 class="aboutthecreator">Select Shipping Address and Payment</h2>
+                    <h2 class="aboutthecreator">{{ contentLan.SELECTSHIPPINGADDANDPAY }}</h2>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -1101,7 +1098,7 @@
                 </div>
                 <div class="col-md-4 container_X" style="overflow-y: scroll; height: 390px" *ngIf="noShipping">
                     <div class="vertical-center">
-                        <h3>No sipping needed</h3>
+                        <h3>{{ contentLan.NOSHIPPINGNEEDED }}</h3>
                     </div>
                 </div>
                 <div class="col-md-4" style="
@@ -1114,7 +1111,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4>Pay with Wallet</h4>
+                                    <h4>{{ contentLan.PAYWITHWALLET }}</h4>
                                     <h3 style="color: #ff5355">SAR &nbsp;{{ walletamt }}</h3>
                                     <label style="color: #9a999e; font-size: 14px">{{
                                         contentLan.CURRAVAILBALANCE
@@ -1130,14 +1127,19 @@
                                     <div *ngIf="popuppay" class="paytext">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h5 style="font-size: 20px">Select Card Type:</h5>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked /><label for="MADA">&nbsp;MADA</label><br />
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER" /><label for="MASTER">&nbsp;MASTER</label>
+                                                <h5 style="font-size: 20px">{{ contentLan.SELECTCARDTYPE }}:</h5>
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="MADA" id="MADA" checked /><label
+                                                    for="MADA">&nbsp;MADA</label><br />
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="MASTER" id="MASTER" /><label
+                                                    for="MASTER">&nbsp;MASTER</label>
                                             </div>
                                         </div>
                                         <h5 style="font-size: 20px; margin-top: 5%">
-                                            Enter Amount:
+                                            {{ contentLan.ENTERAMT }}:
                                         </h5>
                                         <input type="number" placeholder="Amount" formControlName="amount" />
 
@@ -1153,7 +1155,7 @@
                             </div>
                             <div class="col-md-12" style="margin-top: 3%">
                                 <button class="carer_head" style="width: inherit" (click)="paywallet()">
-                                    Pay
+                                    {{ contentLan.PAY }}
                                 </button>
                             </div>
                         </div>
@@ -1168,35 +1170,37 @@
                 border-radius: 5px;
                 padding: 15px;
               ">
-                            <h4>Select the card type</h4>
+                            <h4>{{ contentLan.SELECTCARDTYPE }}</h4>
                             <form [formGroup]="pledgeform" ngNativeValidate>
                                 <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
                                 <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" checked><label>MADA</label><br> -->
                                 <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
-                                <select (change)="getpaym()" style="width: -webkit-fill-available; margin-bottom: 3%" [(ngModel)]="cardpay" formControlName="paymentMethod" requireds>
-                                    <option [ngValue]="null" disabled>Select Card</option>
+                                <select (change)="getpaym()" style="width: -webkit-fill-available; margin-bottom: 3%"
+                                    [(ngModel)]="cardpay" formControlName="paymentMethod" requireds>
+                                    <option [ngValue]="null" disabled>{{ contentLan.SELECTCARDTYPE }}</option>
                                     <option value="Mada" [selected]="true">Mada</option>
                                     <option value="Visa">Visa</option>
                                 </select>
 
-                                <button (click)="Onpledge()" [disabled]="!cardpay" class="projectbackbtn" style="width: -webkit-fill-available">
-                                    Pay
+                                <button (click)="Onpledge()" [disabled]="!cardpay" class="projectbackbtn"
+                                    style="width: -webkit-fill-available">
+                                    {{ contentLan.PAY }}
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4" style="margin-top: 1%">
-                    <h4>Payment Details</h4>
+                    <h4> {{ contentLan.PAYMENTDETAILS }}</h4>
                     <hr style="width: auto; margin-left: 0%; color: #f50905" />
                     <div class="row">
                         <div class="col-md-8">
-                            <p>Business Model Fee</p>
-                            <p>VAT</p>
-                            <p>Processing fee</p>
-                            <p>Reward Amount</p>
+                            <p>{{ contentLan.BUSINESSMODALFEE }}</p>
+                            <p>{{ contentLan.VATRATE }}</p>
+                            <p>{{ contentLan.PROCESSFEES }}</p>
+                            <p>{{ contentLan.REWARDAMT }}</p>
                             <hr style="width: auto; margin: 1% 0%; color: #f50905" />
-                            <p style="margin-top: 1%">Grand Total</p>
+                            <p style="margin-top: 1%">{{ contentLan.GRANDTOT }}</p>
                         </div>
                         <div class="col-md-4">
                             <p>:&nbsp;&nbsp;&nbsp;{{ calkeep }}</p>
@@ -1227,11 +1231,12 @@
             <a class="close" (click)="popup2 = false">&times;</a>
             <div class="col-md-10" style="margin-top: 5%">
                 <h4 style="font-size: 18px">
-                    Request city to creator if Not in City list in Reward
+                    {{ contentLan.REQUESTCITYTOCREATOR }}
                 </h4>
                 <form [formGroup]="addcityform" ngNativeValidate>
                     <!-- <input type="text" style=" width: -webkit-fill-available; " formControlName="creatorcity"> -->
-                    <select formControlName="creatorcity" #user class="form-select" style="width: -webkit-fill-available">
+                    <select formControlName="creatorcity" #user class="form-select"
+                        style="width: -webkit-fill-available">
                         <option *ngFor="let user of getcity" value="{{ user.cityName }}">
                             {{ user.cityName }}
                         </option>
@@ -1249,7 +1254,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <h2 class="aboutthecreator">Payment Process</h2>
+                    <h2 class="aboutthecreator">{{ contentLan.PAYMENTPROCESS }}</h2>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -1279,14 +1284,19 @@
                                     <div *ngIf="popuppay" class="paytext">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h5 style="font-size: 20px">Select Card Type:</h5>
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" id="MADA" checked="checked" /><label for="MADA">&nbsp;MADA</label><br />
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
-                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER" id="MASTER" /><label for="MASTER">&nbsp;MASTER</label>
+                                                <h5 style="font-size: 20px">{{ contentLan.SELECTCARDTYPE }}:</h5>
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="MADA" id="MADA" checked="checked" /><label
+                                                    for="MADA">&nbsp;MADA</label><br />
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="VISA" id="VISA" /><label for="VISA">&nbsp;VISA</label><br />
+                                                <input type="radio" formControlName="paymentMethod" name="paymentMethod"
+                                                    value="MASTER" id="MASTER" /><label
+                                                    for="MASTER">&nbsp;MASTER</label>
                                             </div>
                                         </div>
                                         <h5 style="font-size: 20px; margin-top: 5%">
-                                            Enter Amount:
+                                            {{ contentLan.ENTERAMT }}:
                                         </h5>
                                         <input type="number" placeholder="Amount" formControlName="amount" />
 
@@ -1302,7 +1312,7 @@
                             </div>
                             <div class="col-md-12" style="margin-top: 3%">
                                 <button class="carer_head" style="width: inherit" (click)="paywalletwithoutreward()">
-                                    Pay
+                                    {{ contentLan.PAY }}
                                 </button>
                             </div>
                         </div>
@@ -1317,33 +1327,35 @@
                 border-radius: 5px;
                 padding: 15px;
               ">
-                            <h4>Select the card type</h4>
+                            <h4>{{ contentLan.SELECTCARDTYPE }}</h4>
                             <form [formGroup]="pledgeform" ngNativeValidate>
                                 <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="VISA"><label>VISA/MASTER</label><br>
                                 <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MADA" checked><label>MADA</label><br> -->
                                 <!-- <input type="radio" formControlName="paymentMethod" name="paymentMethod" value="MASTER"><label>MASTER</label><br> -->
-                                <select (change)="getpaym()" style="width: -webkit-fill-available; margin-bottom: 3%" [(ngModel)]="cardpay1" formControlName="paymentMethod" required>
+                                <select (change)="getpaym()" style="width: -webkit-fill-available; margin-bottom: 3%"
+                                    [(ngModel)]="cardpay1" formControlName="paymentMethod" required>
                                     <option value="Visa">Visa</option>
                                     <option value="Mada">Mada</option>
                                 </select>
                             </form>
-                            <button type="submit" (click)="Onpledgewithoutreward()" [disabled]="!cardpay1" class="projectbackbtn" style="width: inherit">
-                                Pay
+                            <button type="submit" (click)="Onpledgewithoutreward()" [disabled]="!cardpay1"
+                                class="projectbackbtn" style="width: inherit">
+                                {{ contentLan.PAY }}
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6" style="margin-top: 1%">
-                    <h4>Payment Details</h4>
+                    <h4>{{ contentLan.PAYMENTDETAILS }}</h4>
                     <hr style="width: auto; margin-left: 0%; color: #f50905" />
                     <div class="row">
                         <div class="col-md-8">
-                            <p>Business Model Fee</p>
-                            <p>VAT</p>
-                            <p>Processing fee</p>
-                            <p>Pledge Amount</p>
+                            <p>{{ contentLan.BUSINESSMODALFEE }}</p>
+                            <p>{{ contentLan.VATRATE }}</p>
+                            <p>{{ contentLan.PROCESSFEES }}</p>
+                            <p>{{ contentLan.PLEDGEAMT }}</p>
                             <hr style="width: auto; margin: 1% 0%; color: #f50905" />
-                            <p style="margin-top: 1%">Grand Total</p>
+                            <p style="margin-top: 1%">{{ contentLan.GRANDTOT }}</p>
                         </div>
                         <div class="col-md-4">
                             <p>:&nbsp;&nbsp;&nbsp;{{ calkeepwr }}</p>
@@ -1369,377 +1381,6 @@
         </div>
 
     </div>
-    <!-- <div class="projec_recomd_sec ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-12 ">
-                    <h4>WE ALSO RECOMMEND</h4>
-                    <a>Discover more <i class="fas fa-arrow-right "></i></a>
-                </div>
-                <hr>
-                <div class="col-md-12 stre_bott ">
-                    <owl-carousel-o [options]="featOptions ">
-                        <ng-template carouselSlide>
-                            <div class="row ">
-                                <div class="col-md-12 ">
-                                    <img src="assets/image/project/slider1.svg " class="img-fluid ">
-                                    <div class="feat_proj_slider ">
-                                        <ul class="icons_sec ">
-                                            <li><img src="assets/image/project/bookmark.svg "></li>
-                                            <li><img src="assets/image/project/like.svg "></li>
-                                             <li><img src="assets/image/project/dislike.svg "></li>
-                                        </ul>
-
-                                        <ul class="cont_sec_pro ">
-                                            <li>Product Design</li>
-                                            <li><i class="fa fa-map-marker "></i>Khobar</li>
-                                        </ul>
-                                        <h3>Yellostack - Web-App</h3>
-                                        <p class="feat_cont ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                                        <p class="by_bame ">By Michael Murdock</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <div class="row ">
-                                <div class="col-md-12 ">
-                                    <img src="assets/image/project/slider2.svg " class="img-fluid ">
-                                    <div class="feat_proj_slider ">
-                                        <ul class="icons_sec ">
-                                            <li><img src="assets/image/project/bookmark.svg "></li>
-                                            <li><img src="assets/image/project/like.svg "></li>
-                                            <li><img src="assets/image/project/dislike.svg "></li>
-                                        </ul>
-
-                                        <ul class="cont_sec_pro ">
-                                            <li>Product Design</li>
-                                            <li><i class="fa fa-map-marker "></i>Khobar</li>
-                                        </ul>
-                                        <h3>Yellostack - Web-App</h3>
-                                        <p class="feat_cont ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                                        <p class="by_bame ">By Michael Murdock</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <div class="row ">
-                                <div class="col-md-12 ">
-                                    <img src="assets/image/project/slider3.svg " class="img-fluid ">
-                                    <div class="feat_proj_slider ">
-                                        <ul class="icons_sec ">
-                                            <li><img src="assets/image/project/bookmark.svg "></li>
-                                            <li><img src="assets/image/project/like.svg "></li>
-                                            <li><img src="assets/image/project/dislike.svg "></li>
-                                        </ul>
-
-                                        <ul class="cont_sec_pro ">
-                                            <li>Product Design</li>
-                                            <li><i class="fa fa-map-marker "></i>Khobar</li>
-                                        </ul>
-                                        <h3>Yellostack - Web-App</h3>
-                                        <p class="feat_cont ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                                        <p class="by_bame ">By Michael Murdock</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </owl-carousel-o>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 </div>
 
 <ng-template #elseStatement></ng-template>
-<!-- Project View 2 -->
-
-<!-- <ng-template #elseStatement>
-    <section class="proj_ban2 ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-6 ">
-                    <img src="assets/image/project/project_2.svg " class="img-fluid ">
-                </div>
-                <div class="col-md-6 ">
-                    <h3>Lorem Ipsum - Heading New</h3>
-                    <p class="proj2_cont ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                    <button class="order_btn ">Order Now</button>
-                    <p>Created by</p>
-                    <p>Timbuktu Labs</p>
-                    <p class="date_sec "><i class="fa fa-calendar "></i>Last updated Feb 10, 2021</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="proj_ban1 ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-8 ">
-                    <div class="right_hr_line ">
-                        <h3 class="projecttitle ">Lorem Ipsum - Project Name New 2021</h3>
-                        <p class="projectcontent ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                        <div class="row ">
-                            <div class="col-md-6 col-6 ">
-                                <h3 class="projectamt "> <label class="projectcurrency ">SAR</label> 250</h3>
-                                                                        <h4 class="projectpleged ">pledged of SR 6,500 goal</h4>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-6 ">
-                                                                        <div class="left_bord_sec ">
-                                                                            <h3 class="projectamt ">885</h3>
-                                                                            <h4 class="projectpleged ">backers</h4>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 ">
-                                                            <div class="left_hr_line ">
-                                                                <button class="projectbackbtn ">Back this project</button>
-                                                                <ul class="project_social_icon ">
-                                                                    <li><i class="fab fa-facebook "></i></li>
-                                                                    <li><i class="fa fa-twitter "></i></li>
-                                                                    <li><i class="fa fa-instagram "></i></li>
-                                                                    <li><i class="fas fa-envelope "></i></li>
-                                                                </ul>
-                                                                <div class="row ">
-                                                                    <div class="col-md-6 col-6 ">
-                                                                        <button class="share_btn ">Share this Project</button>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-6 ">
-                                                                        <a class="save_btn "><i class="fa fa-bookmark-o "></i>Save</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-    </section>
-
-    <div class="container ">
-        <div class="row ">
-            <div class="col-md-8 ">
-                <div class="row ">
-                    <div class="col-md-4 ">
-                        <ul class="present_ul ">
-                            <li>
-                                <p class="projectcircle "><img src="assets/image/project/presentation.svg " alt=" "></p>
-                            </li>
-                            <li>Project We Love</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 ">
-                        <ul class="present_ul ">
-                            <li>
-                                <p class="projectcircle "><img src="assets/image/project/compass.svg " alt=" "></p>
-                            </li>
-                            <li>Notification</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 ">
-                        <ul class="present_ul ">
-                            <li>
-                                <p class="projectcircle "><img src="assets/image/project/location.svg " alt=" "></p>
-                            </li>
-                            <li>Khobar, KSA</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 ">
-                        <ul class="present_ul ">
-                            <li>
-                                <button class="projectreport ">Report this project to Fikra</button> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="proj_ban1 ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-3 ">
-                    <div class="left_tab_head ">
-                        <button (click)="onDisplayModeChange(1) " [ngClass]="{ 'btn-primary ': displayMode===1 } ">Campaign</button>
-                        <button (click)="onDisplayModeChange(2) " [ngClass]="{ 'btn-primary ': displayMode===2 } ">FAQ
-<label class="numcountfaq ">10</label></button>
-                        <button (click)="onDisplayModeChange(3) " [ngClass]="{ 'btn-primary ': displayMode===3 } ">Updates <label
-class="numcountfaq ">45</label></button>
-                        <button (click)="onDisplayModeChange(4) " [ngClass]="{ 'btn-primary ': displayMode===4 } ">Comments <label
-class="numcountfaq ">195</label></button>
-                        <button (click)="onDisplayModeChange(5) " [ngClass]="{ 'btn-primary ': displayMode===5 } ">Community <label
-class="numcountfaq ">1</label></button>
-                    </div>
-                    <div class="scroll ">
-
-                        <h4 class="projectsupport "> Support</h4>
-                        <hr class="projectsupporthr ">
-
-                        <ol style=" padding-left: 0px; list-style-type: none; ">
-                            <li>
-                                <div class="box1 ">
-                                    <p class="pledge ">Pledge SR 45 or more</p>
-                                    <h3 class="pledgetitle ">Lorem Ipsum X 2</h3>
-                                    <p class="pledgedesc ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    <h5 class="pledgeinclude ">Includes :</h5>
-
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <p class="pledgeestimated ">Estimated Delivery : <label class="pledgeestimatedop ">June
-2021</label></p>
-                                    <p class="pledgeestimated ">Ships to : <label class="pledgeestimatedop ">Anywhere in the
-world</label>
-                                    </p>
-
-                                    <p class="pledgebackers ">28,525 Backers</p>
-
-                                    <p class="pledgelimited ">Limited (124 left of 3000 )</p>
-
-                                    <p class="pledgeaddons ">Add-ons</p>
-
-                                    <div class="pledgehover ">
-                                        <a href="# " class="pledgehovertext ">Select This Reward</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ol>
-
-                        <ol style=" padding-left: 0px; list-style-type: none; ">
-                            <li>
-                                <div class="box1 ">
-                                    <p class="pledge ">Pledge SR 45 or more</p>
-                                    <h3 class="pledgetitle ">Lorem Ipsum X 2</h3>
-                                    <p class="pledgedesc ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    <h5 class="pledgeinclude ">Includes :</h5>
-
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <p class="pledgeestimated ">Estimated Delivery : <label class="pledgeestimatedop ">June
-2021</label></p>
-                                    <p class="pledgeestimated ">Ships to : <label class="pledgeestimatedop ">Anywhere in the
-world</label>
-                                    </p>
-
-                                    <p class="pledgebackers ">28,525 Backers</p>
-
-                                    <p class="pledgelimited ">Limited (124 left of 3000 )</p>
-
-                                    <p class="pledgeaddons ">Add-ons</p>
-
-                                    <div class="pledgehover ">
-                                        <a href="# " class="pledgehovertext ">Select This Reward</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ol>
-
-                        <ol style=" padding-left: 0px; list-style-type: none; ">
-                            <li>
-                                <div class="box1 ">
-                                    <p class="pledge ">Pledge SR 45 or more</p>
-                                    <h3 class="pledgetitle ">Lorem Ipsum X 2</h3>
-                                    <p class="pledgedesc ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    <h5 class="pledgeinclude ">Includes :</h5>
-
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <label class="includeround "></label>
-                                    <p class="includepoints ">Lorem Ipsum is simply dummy text</p>
-                                    <p class="pledgeestimated ">Estimated Delivery : <label class="pledgeestimatedop ">June
-2021</label></p>
-                                    <p class="pledgeestimated ">Ships to : <label class="pledgeestimatedop ">Anywhere in the
-world</label>
-                                    </p>
-
-                                    <p class="pledgebackers ">28,525 Backers</p>
-
-                                    <p class="pledgelimited ">Limited (124 left of 3000 )</p>
-
-                                    <p class="pledgeaddons ">Add-ons</p>
-
-                                    <div class="pledgehover ">
-                                        <a href="# " class="pledgehovertext ">Select This Reward</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ol>
-                    </div>
-                </div>
-
-
-                <div class="col-md-9 proj_story_risk " *ngIf="displayMode===1 ">
-                    <div class="row ">
-                        <div class="col-md-6 ">
-                            <h2 id="story ">Story</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                            </p>
-                        </div>
-                        <div class="col-md-6 ">
-                            <ul class="story_risk_tab_head ">
-                                <li><a [routerLink]="[ '/projectview'] " fragment="risks " class="risklink ">Risks</a></li>
-                                <li><a [routerLink]="[ '/projectview'] " fragment="story " class="storylink ">Story</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                    <img src="assets/image/project/story1.svg " alt=" " class="img-fluid proj_name ">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                    <img src="assets/image/project/story2.svg " alt=" " class="img-fluid proj_name ">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum
-                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply
-                        dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy
-                        text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                    <img src="assets/image/project/story3.svg " alt=" " class="img-fluid proj_name ">
-                    <h2 id="risks ">Risks</h2>
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum
-                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply
-                        dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Lorem Ipsum is simply dummy
-                        text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                </div>
-
-                <div class="col-md-9 " *ngIf="displayMode===2 ">
-                    <h3> Frequently Asked Questions</h3>
-
-                    <div class="row ">
-                        <div class="col-md-8 ">
-                            <p>Looks like there aren't any frequently asked questions yet. Ask the project creator directly.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9 " *ngIf="displayMode===3 ">
-                    Update
-                </div>
-                <div class="col-md-9 " *ngIf="displayMode===4 ">
-                    Comments
-                </div>
-                <div class="col-md-9 " *ngIf="displayMode===5 ">
-                    Community
-                </div>
-            </div>
-            <div class="container ">
-                <div class="row ">
-                    <div class="col-md-3 "></div>
-                    <div class="col-md-9 ">
-                      <button class="projectreport ">Report this project to Fikra</button> -->
-<!-- </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!-- </ng-template> -->
-<!-- <app-footer></app-footer> -->

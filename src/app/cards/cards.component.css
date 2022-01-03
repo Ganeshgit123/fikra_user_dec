@@ -103,6 +103,7 @@ button.active {
 .saved_cont_sec .icons_sec li {
     display: inline-block;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 .cont_sec_pro {

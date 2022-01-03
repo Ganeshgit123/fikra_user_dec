@@ -1,6 +1,5 @@
-import { Component, OnInit,ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../shared/auth.service";
 import { ToastrService } from "ngx-toastr";
 
@@ -69,7 +68,9 @@ export class ActivityComponent implements OnInit {
   projectPaymetTotal:any;
   display = "none";
   rewardPayment:any;
-
+  dataFound = false;
+  billdetailRet: any = [];
+  billDetailInclude: any = [];
   addmoneyform = this.fb.group({
     userId: JSON.parse(localStorage.getItem('userId')!),
     userType: JSON.parse(localStorage.getItem('role')!),
@@ -78,9 +79,7 @@ export class ActivityComponent implements OnInit {
   });
   constructor(private fb: FormBuilder,
     public authService: AuthService,
-    private router: Router,
-    private toaster: ToastrService,
-    private activatedRoute: ActivatedRoute) { }
+    private toaster: ToastrService) { }
 
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -115,7 +114,7 @@ export class ActivityComponent implements OnInit {
         this.created = res;
         this.createddata = res.data;
         this.projectPaymetTotal = this.createddata.length
-        console.log("ff",this.projectPaymetTotal)
+        console.log("ff", this.projectPaymetTotal)
         this.createReduce = this.paginate(res.data, this.createcount, 1);
         this.createdcount = res.data.length;
         this.createddata.forEach((elementss: any) => {
@@ -144,9 +143,9 @@ export class ActivityComponent implements OnInit {
         this.likedata = res.data;
         this.likeReduce = this.paginate(res.data, this.likecount, 1);
         this.likedata.forEach((elementss: any) => {
-          this.likegoalAmount = elementss.likedProjectId.basicInfoId.goalAmount;
+          this.likegoalAmount = elementss.basicInfoId.goalAmount;
 
-          this.likeamountPleadged = elementss.likedProjectId._amount_Pleadged_;
+          this.likeamountPleadged = elementss._amount_Pleadged_;
           this.likepercentage =
             this.likeamountPleadged / this.likegoalAmount;
           var totPercent = this.likepercentage * 100;
@@ -155,8 +154,20 @@ export class ActivityComponent implements OnInit {
           } else {
             elementss.likelastper = totPercent;
           }
-
-          elementss.likelastpercentage = totPercent;
+          elementss.categoryName = elementss.basicInfoId.categoryName;
+          elementss.subCategoryName = elementss.basicInfoId.subCategoryName;
+          elementss.city = elementss.basicInfoId.city;
+          elementss.decription = elementss.basicInfoId.decription;
+          elementss.projectImage = elementss.basicInfoId.projectImage;
+          elementss.goalAmount = elementss.basicInfoId.goalAmount;
+          elementss.userName = elementss.userId.fullName;
+          elementss._is_All_Nothing_ = elementss._is_All_Nothing_;
+          elementss._is_Keep_It_All_ = elementss._is_Keep_It_All_;
+          elementss.launchDate = elementss.basicInfoId.launchDate;
+          elementss._is_Liked_Project = true;
+          elementss._amount_Pleadged_ = elementss._amount_Pleadged_;
+          elementss._pledged_count_ = elementss._pledged_count_;
+          elementss.featurelastpercentage = totPercent;
         });
       }
     );
@@ -247,11 +258,11 @@ export class ActivityComponent implements OnInit {
       this.ngOnInit();
     }
   }
-  calLikeAPI() {
-    this.authService.likedproject().subscribe((res: any) => {
-      this.likedata = res.data;
-    });
-  }
+  // calLikeAPI() {
+  //   this.authService.likedproject().subscribe((res: any) => {
+  //     this.likedata = res.data;
+  //   });
+  // }
 
   onDisplayModeChange(mode: number): void {
     this.displayMode = mode;
@@ -289,7 +300,8 @@ export class ActivityComponent implements OnInit {
       .addlikeproject(this.saveform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
-          this.calLikeAPI()
+          this.toaster.success('Success ', res.message);
+          this.ngOnInit();
         } else {
           this.toaster.warning("Enter valid ", res.message);
         }
@@ -297,7 +309,7 @@ export class ActivityComponent implements OnInit {
   }
 
   billpopup(value: any) {
-    this.popup = true;
+    this.display = "none";
     this.billdetail = this.fb.group({
       userId: JSON.parse(localStorage.getItem("userId")!),
       userType: JSON.parse(localStorage.getItem("role")!),
@@ -306,9 +318,10 @@ export class ActivityComponent implements OnInit {
     this.authService
       .getbillbyid(this.billdetail.value)
       .subscribe((res: any) => {
-        this.billdetail = res.data;
-        this.billxdate = new Date(this.billdetail.dueDate);
-        this.invoicedate = new Date(this.billdetail.invoiceData);
+        this.billdetailRet = res.data;
+        this.billDetailInclude = this.billdetailRet.includes;
+        this.billxdate = new Date(this.billdetailRet.dueDate);
+        this.invoicedate = new Date(this.billdetailRet.invoiceData);
         var Days = Math.abs(this.invoicedate - this.billxdate);
         this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));
       });
@@ -318,7 +331,7 @@ export class ActivityComponent implements OnInit {
   }
 
   paybill(value: any) {
-    this.popup1 = true;
+    this.display = "none";
     this.billid = value["_id"];
     this.billdetail = this.fb.group({
       userId: JSON.parse(localStorage.getItem("userId")!),
@@ -329,17 +342,19 @@ export class ActivityComponent implements OnInit {
       .getbillbyid(this.billdetail.value)
       .subscribe((res: any) => {
         console.log("checkbill", res.data);
-        this.billdetail = res.data;
+        this.billdetailRet = res.data;
       });
   }
 
   billpayment() {
+    this.display = "none";
     localStorage.setItem("redirection", JSON.stringify("bill"));
     this.addmoneyform.value.billId = this.billid;
     console.log("checkpay", this.addmoneyform.value);
     this.authService.makePaymentForBill(this.addmoneyform.value);
   }
   paywallet() {
+    this.display = "none";
     localStorage.setItem("redirection", JSON.stringify("bill"));
     this.addmoneyform.value.billId = this.billid;
     this.addmoneyform.value.paymentMethod = "WALLET";
@@ -353,17 +368,7 @@ export class ActivityComponent implements OnInit {
       userType: JSON.parse(localStorage.getItem("role")!),
       // projectId: [value["_id"]],
     });
-    this.authService
-      .getadminpayment(this.paymentvisform.value)
-      .subscribe((res: any) => {
-        if (res.error == false) {
-          if(res.message != 'Data not found'){
-            console.log("fgg",res.data)
-            this.getadmin = res.data.transactionHistory;
-            this.adminPaymetTotal = this.getadmin.length
-          }
-        }
-      });
+   
   }
 
   // addmoney() {

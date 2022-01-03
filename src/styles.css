@@ -772,6 +772,8 @@ p {
 }
 .pagenate{
     float: right !important;
+    position: relative;
+    z-index: 1;
 }
 .pagenate:lang(ar){
     float: left !important;

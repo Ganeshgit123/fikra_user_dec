@@ -11,7 +11,6 @@
                             <span [swal]="['Hi', 'Login required for this activity']">
                                 <i class="fa fa-bookmark-o" style="color: #f13b0099" aria-hidden="true"></i></span>
                         </li>
-
                         <li>
                             <span [swal]="['Hi', 'Login required for this activity']">
                                 <i class="fa fa-thumbs-o-up" style="color: #f13b0099" aria-hidden="true">
@@ -43,7 +42,7 @@
                     </ng-template>
                     <ul class="cont_sec_pro">
                         <li style="padding: 0px">
-                            <i class="fa fa-list-alt" aria-hidden="true"></i>{{ obj.categoryName }} {{ obj.subCategoryName }}
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>{{ obj.categoryName }} ——> {{ obj.subCategoryName }}
                         </li>
                         <li>
                             <i class="fa fa-map-marker"></i>{{ obj.city }}
@@ -72,7 +71,7 @@
                             {{ contentLan.GOAL || "Goal" }}: SAR {{ obj.goalAmount }}
                         </li>
                         <li>
-                            {{ contentLan.LAUNCH || "Launch" }} :{{ obj.inter }} {{ obj.luncont }}
+                            {{ contentLan.LAUNCH || "Launch" }} :{{ obj.inter }} {{ obj.luncont }} {{ obj.launchDate | date: 'MMM d, y'}}
                         </li>
                         <li>
                             {{ contentLan.PLEDGE || "Pledge" }} :{{ obj._amount_Pleadged_ }} &nbsp;({{obj.featurelastpercentage | number: "1.0-0" }}%)
