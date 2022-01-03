@@ -500,6 +500,12 @@
 .scroll {
     height: 850px;
     overflow-y: scroll;
+    padding-bottom: 20rem;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) { 
+    .scroll {
+        padding-bottom: 0;
+    }
 }
 
 .scroll::-webkit-scrollbar-thumb {

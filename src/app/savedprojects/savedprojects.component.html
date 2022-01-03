@@ -19,7 +19,7 @@
 
 <section *ngIf="savedatacount == 0;else showsaved">
     <div class="row" style="text-align: center;margin-top: 4%;">
-        <h4>No data available</h4>
+        <h4>{{ contentLan.NODATAVAILABLE }}</h4>
     </div>
 </section>
 
@@ -31,10 +31,10 @@
         </div>
         <section *ngIf="savedatacount > 5 ">
             <div class="col-xl-12" style="text-align: center;" *ngIf='CreatorReduce.length != saveddata.length'>
-                <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext()">Show More</button>
+                <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationNext()">{{ contentLan.SHOWMORE }}</button>
             </div>
             <div class="col-xl-12" style="text-align: center;" *ngIf='CreatorReduce.length == saveddata.length'>
-                <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess()">Show Less</button>
+                <button type="button" class="btn btn-sm btn-light" style=" color: #ff485e; border: 1px solid #ff475e; " (click)="paginationLess()">{{ contentLan.SHOWLESS }}</button>
             </div>
         </section>
     </div>
