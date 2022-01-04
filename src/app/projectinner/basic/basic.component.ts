@@ -99,6 +99,7 @@ export class BasicComponent implements OnInit {
  categorieName:any;
  subcategorieName:any;
  loading = false;
+
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -263,43 +264,61 @@ export class BasicComponent implements OnInit {
       [projectImage]: data,
     });
   }
-  uploadImageFile(event: any,fileName: any) {
-  
-    console.log('eventimg', event);
+  uploadImageFile(event: any, fileName: any) {
     var imgcheck = event.target.files[0].name.split(".").pop();
     if (imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'jpeg' || imgcheck == 'PNG' || imgcheck == 'JPG' || imgcheck == 'JPEG') {
-            if (event.target.files[0].size <= 589824) {
-        Swal.fire({
-          text: "Please select this  images size below 5MB and in this ratio 1024*576",
-          icon: "warning",
-        });
-      }else{
-        this.showimgon = true;
-        this.fileUpload = event.target.files[0];
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.imgfile = event.target.result;
-          // this.imgfile=event.target.files[0];
-        };
-        reader.readAsDataURL(event.target.files[0]);
-        const formdata = new FormData();
-        formdata.append("imageToStore", this.fileUpload);
-    
-        this.authService.s3upload(formdata).subscribe((res: any) => {
-          if (res.error == false) {
-            this.setIntoForm(res.data.Location, fileName);
-            this.urlloc=res.data.Location;
+      // this.showimgon = true;
+      this.fileUpload = event.target.files[0];
+      console.log("file", this.fileUpload)
+      var si = event.target.files[0].size;
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        // this.imgfile = event.target.result;
+        // this.imgfile=event.target.files[0];
+        var img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+          var ww = img.width;
+          var hh = img.height;
+          var ss = img.sizes;
+          console.log("wihe", ww, hh)
+          if (ww <= 1024 && hh <= 576 && si <= 589824) {
+            console.log("true")
+            this.upload(event, fileName)
+          } else {
+            console.log("false")
+            Swal.fire({
+              text: "Please select this images size below 5MB and in this ratio 1024*576",
+              icon: "warning",
+            });
           }
-        });
-      }
-     
-    } else {
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+    else {
       Swal.fire({
-        text: "Please select this  images in this format (jpg,png.jpeg) ",
+        text: "Please select this images in this format (jpg,png,jpeg) ",
         icon: "warning",
       });
     }
-    
+  }
+  upload(event: any, fileName: any) {
+    console.log("call", event.target.result);
+    this.showimgon = true;
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imgfile = event.target.result;
+    };
+    reader.readAsDataURL(this.fileUpload);
+    const formdata = new FormData();
+    formdata.append("imageToStore", this.fileUpload);
+    this.authService.s3upload(formdata).subscribe((res: any) => {
+      if (res.error == false) {
+        this.setIntoForm(res.data.Location, fileName);
+        this.urlloc = res.data.Location;
+      }
+    });
   }
   // onSubmit(): void {
   //   const { title, subTitle,  location, goalAmount, userId} = this.form;

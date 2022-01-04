@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button *ngIf="previous" (click)="nexbtn(previous?._id)"> < {{lang =='en' ?  previous?.handBookHead : previous?.handBookHeadAr}} </button>
+                <button *ngIf="previous" (click)="nexbtn(previous?._id)"> {{lang =='en' ?  previous?.handBookHead : previous?.handBookHeadAr}} </button>
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4">

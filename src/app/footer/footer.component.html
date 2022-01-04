@@ -9,7 +9,7 @@
 
                     <p>{{description}}</p>
 
-                    <p class="text-center"><button class="act_btn"> <a style="color: black;text-decoration: none;" href="{{buttonURL}}"> {{
+                    <p class="text-center"><button class="act_btn"> <a href="{{buttonURL}}"> {{
                                 button1 }}</a></button></p>
                 </div>
                 <div class="col-lg-2"></div>
@@ -21,27 +21,13 @@
 
                     <p>{{descriptionAr}}</p>
 
-                    <p class="text-center"><button class="act_btn"><a style="color: black;text-decoration: none;" href="{{buttonURL}}">{{
+                    <p class="text-center"><button class="act_btn"><a href="{{buttonURL}}">{{
                                 buttonAr }}</a></button></p>
                 </div>
                 <div class="col-lg-4 col-md-4"></div>
             </div>
         </div>
     </div>
-    <!-- <div class="footer_top_sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4"></div>
-                <div class="col-lg-6 col-md-8">
-                    <h2>{{user.header_ar}}</h2>
-                    <p>{{user.discription_ar}}</p>
-                    <p class="text-center"><button class="act_btn">{{ user.buttonName_ar }}</button></p>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="mob_footer">
         <div class="container">
             <div class="row">
@@ -100,7 +86,6 @@
                                 career
                         }}</a>
                         </li>
-                        <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{aboutusurl1}}">{{
                                 aboutus1
@@ -163,7 +148,6 @@
                                 support2
                         }}</a>
                         </li>
-                        <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl3}}">{{
                                 support3
@@ -225,7 +209,6 @@
                                     mff2
                             }}</a>
                             </li>
-                            <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['../people']">People</a></li> -->
                             <li role="menuitem">
                                 <a class="dropdown-item" href="{{mffurl3}}">{{
                                     mff3
@@ -251,9 +234,6 @@
                     <ul class="language_sec">
                         <li>
                             <button>
-                                <!-- <select #langselect (change)='translate.use(langselect.value)' name="lang" id="">
-<option *ngFor='let lang of translate.getLangs()' [value]='lang'>{{ lang == 'en' ? "English" : "Arabic"}}</option>
-</select> -->
                                 <select #langselect (change)='switchLang(langselect.value)' name="lang">
                                     <option value="en" [selected]="lang == 'en'">English</option>
                                     <option value="ar" [selected]="lang == 'ar'">عربي</option>
@@ -261,14 +241,6 @@
                             </button>
 
                         </li>
-                        <!-- <li>
-                            <button>
-                                <select>
-                                    <option>$ US Dollar (USD)</option>
-                                    <option>ر.س Saudi Riyal (SAR)</option>
-                                </select>
-                            </button>
-                        </li> -->
                     </ul>
                 </div>
             </div>

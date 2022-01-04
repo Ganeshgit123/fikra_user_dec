@@ -117,6 +117,7 @@
 .footer_top_sec .act_btn:hover {
     background: #8a8a8a;
     color: #fff;
+    transition: 1s ease-in-out;
 }
 
 .logo {
@@ -389,3 +390,16 @@ html:lang(ar) * {
 .ftlink {
     color: #FF5A4E;
 }
+.act_btn a{
+    color: black;
+    text-decoration: none;
+}
+.act_btn a:hover{
+    color: #fff;
+    transition: 1s ease-in-out;
+}
+.act_btn:hover a{
+    color: #fff;
+    transition: 1s ease-in-out;
+}
+ 
