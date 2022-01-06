@@ -62,9 +62,11 @@
                                     style="color: #5c82d4;margin-left: 1%;font-size: 14px;cursor: pointer;"></i></span>
                         </h6>
                     </ng-template>
-                    <h3>{{ obj.title }}</h3>
-                    <p class="feat_cont">{{ obj.decription }}</p>
-                    <p class="by_bame">{{ obj.userName }}</p>
+                    <a class="linkproject" [routerLink]="['/projectview',obj._id]">
+                        <h3>{{ obj.title }}</h3>
+                        <p class="feat_cont">{{ obj.decription }}</p>
+                        <p class="by_bame">{{ obj.userName }}</p>
+                    </a>
                     <hr class="cont_sec_hr" />
                     <ul class="save_last_sec">
                         <li class="coloured">

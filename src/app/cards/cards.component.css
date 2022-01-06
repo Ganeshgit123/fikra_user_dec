@@ -1,4 +1,7 @@
-.recom_sec {
+.linkproject {
+    color: black;
+    text-decoration: none;
+}.recom_sec {
     padding: 80px 0 40px 0;
 }
 
@@ -667,4 +670,8 @@ button.active {
         margin-top: 5%;
         display: flex;
     }
+}
+.linkproject {
+    color: black;
+    text-decoration: none;
 }

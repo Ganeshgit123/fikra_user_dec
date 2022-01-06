@@ -23,8 +23,8 @@ export class BasicComponent implements OnInit {
   country: any;
   ll: any;
   showimgon = false;
-  filevideoUpload:any;
-  dateFormatedthree:any;
+  filevideoUpload: any;
+  dateFormatedthree: any;
   // form: any = {
   //   title: null,
   //   subTitle: null,
@@ -34,80 +34,82 @@ export class BasicComponent implements OnInit {
   // };
   basicForm: any;
   // launchdateshow: any;
-  content:any;
-  selectedValue1=false;
-  selectedValue2=false;
-  selectedValue3=false;
-  dateFormated:any;
+  content: any;
+  selectedValue1 = false;
+  selectedValue2 = false;
+  selectedValue3 = false;
+  dateFormated: any;
   projectpreviewbasic: any;
-  newdate:any;
-  tabHead:any;
-  tabHead_Ar:any;
-  description:any;
-  description_Ar:any;
-  tabName:any;
-  tabName_Ar:any;
- dir:any;
- prjtitle:any;
- prjtitle_Ar:any;
- prjdes:any;
- prjdes_Ar:any;
- urlloc:any;
- prjtitle1:any;
- prjtitle1_Ar:any;
- prjdes1:any;
- prjdes1_Ar:any;
+  newdate: any;
+  tabHead: any;
+  tabHead_Ar: any;
+  description: any;
+  description_Ar: any;
+  tabName: any;
+  tabName_Ar: any;
+  dir: any;
+  prjtitle: any;
+  prjtitle_Ar: any;
+  prjdes: any;
+  prjdes_Ar: any;
+  urlloc: any;
+  sharp: any;
+  prjtitle1: any;
+  prjtitle1_Ar: any;
+  prjdes1: any;
+  prjdes1_Ar: any;
 
- prjtitle2:any;
- prjtitle2_Ar:any;
- prjdes2:any;
- prjdes2_Ar:any;
+  prjtitle2: any;
+  prjtitle2_Ar: any;
+  prjdes2: any;
+  prjdes2_Ar: any;
 
- prjtitle3:any;
- prjtitle3_Ar:any;
- prjdes3:any;
- prjdes3_Ar:any;
+  prjtitle3: any;
+  prjtitle3_Ar: any;
+  prjdes3: any;
+  prjdes3_Ar: any;
 
- prjtitle4:any;
- prjtitle4_Ar:any;
- prjdes4:any;
- prjdes4_Ar:any;
+  prjtitle4: any;
+  prjtitle4_Ar: any;
+  prjdes4: any;
+  prjdes4_Ar: any;
 
- prjtitle5:any;
- prjtitle5_Ar:any;
- prjdes5:any;
- prjdes5_Ar:any;
+  prjtitle5: any;
+  prjtitle5_Ar: any;
+  prjdes5: any;
+  prjdes5_Ar: any;
 
- prjtitle6:any;
- prjtitle6_Ar:any;
- prjdes6:any;
- prjdes6_Ar:any;
+  prjtitle6: any;
+  prjtitle6_Ar: any;
+  prjdes6: any;
+  prjdes6_Ar: any;
 
- prjtitle7:any;
- prjtitle7_Ar:any;
- prjdes7:any;
- prjdes7_Ar:any;
+  prjtitle7: any;
+  prjtitle7_Ar: any;
+  prjdes7: any;
+  prjdes7_Ar: any;
 
- videourl:any;
- videoSizeError:any;
- campaignDuation:any;
- category:any;
- subcategory:any;
- city:any;
- contentLan: any = {};
- launchdates:any;
- categorieName:any;
- subcategorieName:any;
- loading = false;
+  videourl: any;
+  videoSizeError: any;
+  campaignDuation: any;
+  category: any;
+  subcategory: any;
+  city: any;
+  contentLan: any = {};
+  launchdates: any;
+  categorieName: any;
+  subcategorieName: any;
+  loading = false;
+  projectImage_Sharp: any;
 
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute,private sanitizer: DomSanitizer,    private toastr: ToastrService,
+    private route: ActivatedRoute, private sanitizer: DomSanitizer, private toastr: ToastrService,
 
   ) {
-    
+
 
     this.basicForm = this.fb.group({
       title: [''],
@@ -121,7 +123,8 @@ export class BasicComponent implements OnInit {
       campaignDuation: [''],
       launchDate: [''],
       projectImage: [''],
-      projectVideo:[''],
+      projectVideo: [''],
+      projectImage_Sharp: [''],
       userId: JSON.parse(localStorage.getItem('userId')!),
       userType: 'creator',
       projectId: this.params,
@@ -136,19 +139,19 @@ export class BasicComponent implements OnInit {
   });
 
   async arabicCotent() {
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
   ngOnInit(): void {
     this.myPromise
@@ -166,7 +169,7 @@ export class BasicComponent implements OnInit {
       // console.log(params.id);
     });
     localStorage.setItem('projectid', JSON.stringify(this.params));
-    this.dir=localStorage.getItem('dir') || 'ltr';
+    this.dir = localStorage.getItem('dir') || 'ltr';
 
     // this.authService.country().subscribe((res: any) => {
     //   this.country = res.data;
@@ -213,34 +216,35 @@ export class BasicComponent implements OnInit {
       this.prjdes7 = res.data.fields[7].feildDescription;
       this.prjdes7_Ar = res.data.fields[7].feildDescription_Ar;
 
-      this.tabHead=res.data.tabHead;
-      this.tabHead_Ar=res.data.tabHead_Ar;
-      this.description=res.data.description;
-      this.description_Ar=res.data.description_Ar;
-      this.tabName=res.data.tabName;
-      this.tabName_Ar=res.data.tabName_Ar;
+      this.tabHead = res.data.tabHead;
+      this.tabHead_Ar = res.data.tabHead_Ar;
+      this.description = res.data.description;
+      this.description_Ar = res.data.description_Ar;
+      this.tabName = res.data.tabName;
+      this.tabName_Ar = res.data.tabName_Ar;
 
       // console.log('country', this.prjtitle);
     });
-   
+
     this.authService.projectpreview().subscribe((res: any) => {
       // console.log('projectpreviewbasic', res.data.basicInfoId);
       this.projectpreviewbasic = res.data.basicInfoId;
-      this.campaignDuation=res.data.basicInfoId.campaignDuation;
+      this.campaignDuation = res.data.basicInfoId.campaignDuation;
       this.projectImage = res.data.basicInfoId.projectImage;
       this.videourl = res.data.basicInfoId.projectVideo;
-      this.country =res.data.basicInfoId.country;
+      this.country = res.data.basicInfoId.country;
       this.categorieName = res.data.basicInfoId.categoryName;
-     this.subcategorieName =res.data.basicInfoId.subCategoryName;
-      this.city =res.data.basicInfoId.city;
+      this.subcategorieName = res.data.basicInfoId.subCategoryName;
+      this.city = res.data.basicInfoId.city;
       this.launchdates = res.data.basicInfoId.launchDate;
-        this.newdate=new Date().toISOString().substr(0, 10);
+      // this.projectImage_Sharp = res.data.basicInfoId.projectImage_Sharp;
+      this.newdate = new Date().toISOString().substr(0, 10);
       var someDate = new Date();
       someDate.setDate(someDate.getDate() + 60); //number  of days to add, e.x. 15 days
       this.dateFormated = someDate.toISOString().substr(0, 10);
       var thirtyDate = new Date();
       thirtyDate.setDate(thirtyDate.getDate() + 30);
-      this.dateFormatedthree=thirtyDate.toISOString().substr(0, 10);
+      this.dateFormatedthree = thirtyDate.toISOString().substr(0, 10);
       this.basicForm.patchValue({
         title: this.projectpreviewbasic.title,
         subTitle: this.projectpreviewbasic.subTitle,
@@ -251,20 +255,23 @@ export class BasicComponent implements OnInit {
         city: this.projectpreviewbasic.city,
         country: this.projectpreviewbasic.country,
         campaignDuation: this.projectpreviewbasic.campaignDuation || '',
-        launchDate:this.projectpreviewbasic.launchDate || '',
+        launchDate: this.projectpreviewbasic.launchDate || '',
         projectImage: this.projectpreviewbasic.projectImage,
         projectVideo: this.videourl,
       });
 
     });
-    
+
   }
-  setIntoForm(data: any, projectImage: any) {
+  setIntoForm(data: any, projectImage: any, projectImage_Sharp: any, sharpImage: any) {
     this.basicForm.patchValue({
       [projectImage]: data,
+      [projectImage_Sharp]: sharpImage
     });
+    console.log("all", sharpImage);
+    console.log("projectsharp", projectImage_Sharp);
   }
-  uploadImageFile(event: any, fileName: any) {
+  uploadImageFile(event: any, fileName: any, projectImage_Sharp: any) {
     var imgcheck = event.target.files[0].name.split(".").pop();
     if (imgcheck == 'jpg' || imgcheck == 'png' || imgcheck == 'jpeg' || imgcheck == 'PNG' || imgcheck == 'JPG' || imgcheck == 'JPEG') {
       // this.showimgon = true;
@@ -284,7 +291,7 @@ export class BasicComponent implements OnInit {
           console.log("wihe", ww, hh)
           if (ww <= 1024 && hh <= 576 && si <= 589824) {
             console.log("true")
-            this.upload(event, fileName)
+            this.upload(event, fileName, projectImage_Sharp)
           } else {
             console.log("false")
             Swal.fire({
@@ -303,7 +310,7 @@ export class BasicComponent implements OnInit {
       });
     }
   }
-  upload(event: any, fileName: any) {
+  upload(event: any, fileName: any, projectImage_Sharp: any) {
     console.log("call", event.target.result);
     this.showimgon = true;
     var reader = new FileReader();
@@ -311,12 +318,15 @@ export class BasicComponent implements OnInit {
       this.imgfile = event.target.result;
     };
     reader.readAsDataURL(this.fileUpload);
+    // const sharp = true;S
     const formdata = new FormData();
     formdata.append("imageToStore", this.fileUpload);
+    formdata.append("sharpImage", "true");
     this.authService.s3upload(formdata).subscribe((res: any) => {
       if (res.error == false) {
-        this.setIntoForm(res.data.Location, fileName);
+        this.setIntoForm(res.data.Location, fileName, projectImage_Sharp, res.data.sharpImage);
         this.urlloc = res.data.Location;
+        this.sharp = res.data.sharpImage;
       }
     });
   }
@@ -338,31 +348,31 @@ export class BasicComponent implements OnInit {
   //     }
   //   );
   // }
-selectduration(value:any){
-  console.log("suhi",value)
-  if(value == 1){
-    this.selectedValue1 = true;
-    this.selectedValue2 = false;
-    this.selectedValue3 = false;
-    console.log("suhiee", value);
+  selectduration(value: any) {
+    console.log("suhi", value)
+    if (value == 1) {
+      this.selectedValue1 = true;
+      this.selectedValue2 = false;
+      this.selectedValue3 = false;
+      console.log("suhiee", value);
+    }
+    if (value == 2) {
+      this.selectedValue2 = true;
+      console.log("suhiee", value);
+      this.selectedValue1 = false;
+      this.selectedValue3 = false;
+    }
+    if (value == 3) {
+      this.selectedValue3 = true;
+      this.selectedValue2 = false;
+      this.selectedValue1 = false;
+      console.log("suhiee", value);
+    }
   }
-  if(value == 2){
-    this.selectedValue2 = true;
-    console.log("suhiee", value);
-    this.selectedValue1 = false;
-    this.selectedValue3 = false;
-  }
-  if (value == 3) {
-    this.selectedValue3 = true;
-    this.selectedValue2 = false;
-    this.selectedValue1 = false;
-    console.log("suhiee", value);
-  }
-}
 
-canclevideo(){
-  this.videourl = null;
-}
+  canclevideo() {
+    this.videourl = null;
+  }
   uploadVideoFile(event: any) {
     var reader = new FileReader();
     reader.onload = (event: any) => {
@@ -377,43 +387,45 @@ canclevideo(){
     this.authService.s3uploadvideo(formdata).subscribe((res: any) => {
       this.loading = false;
       if (res.error == false) {
-        this.videourl=res.data.Location;
-      }else{
+        this.videourl = res.data.Location;
+      } else {
         this.videoSizeError = true;
         this.toastr.warning('*Too big Upload Video maximum 2mins, and the size of the video should be less than 15MB');
       }
     })
   }
 
-  getDuration(e:any) {
+  getDuration(e: any) {
     const duration = e.target.duration;
     this.videoSizeError = duration > 120 || this.videoSizeError;
   }
 
   onSubmit() {
 
-    
-    if(this.fileUpload == undefined){
-      console.log('undeifre', this.fileUpload);
+
+    if (this.fileUpload == undefined) {
+      console.log('undeifre', this.projectImage_Sharp);
       // this.fileUpload = this.projectImage;
-      this.basicForm.value.projectImage=this.projectImage;
-      this.basicForm.value.projectId =this.params;
-      this.basicForm.value.projectVideo =this.videourl;
+      this.basicForm.value.projectImage = this.projectImage;
+      this.basicForm.value.projectImage_Sharp = this.projectImage_Sharp;
+      this.basicForm.value.projectId = this.params;
+      this.basicForm.value.projectVideo = this.videourl;
       this.authService.basicedit(this.basicForm.value);
-    }else{
+    } else {
       console.log('sss');
-      if(this.videoSizeError == true){
+      if (this.videoSizeError == true) {
         this.toastr.warning('Check the Video Length');
-          }else{
-  
-            this.basicForm.value.projectImage=this.urlloc;
-            this.basicForm.value.projectId =this.params;
-            this.basicForm.value.projectVideo =this.videourl;
-            this.authService.basicedit(this.basicForm.value);
+      } else {
+
+        this.basicForm.value.projectImage = this.urlloc;
+        this.basicForm.value.projectImage_Sharp = this.sharp;
+        this.basicForm.value.projectId = this.params;
+        this.basicForm.value.projectVideo = this.videourl;
+        this.authService.basicedit(this.basicForm.value);
       }
-  
+
     }
- 
+
   }
   navigateToLogin() {
     this.router.navigateByUrl('/projectinner/rewards');

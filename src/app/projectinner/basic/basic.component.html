@@ -225,7 +225,7 @@
           <div class="row" *ngIf="projectImage == ''; else showimage">
             <!-- <span>Choose image</span>  -->
 
-            <input type="file" class="image form-control" accept="image/*" (change)="uploadImageFile($event, '')"
+            <input type="file" class="image form-control" accept="image/*" (change)="uploadImageFile($event, '','')"
               required />
             <img class="upload-img" src="{{ imgfile }}" />
             <!-- <img class="upload-img" src="{{projectImage}}" /> -->
@@ -235,7 +235,7 @@
           <ng-template #showimage>
             <div class="row">
 
-              <input type="file" class="image form-control" (change)="uploadImageFile($event, '')" />
+              <input type="file" class="image form-control" (change)="uploadImageFile($event, '','')"              />
               <img class="upload-img" src="{{ imgfile }}" *ngIf="showimgon == true; else imgpre" />
               <ng-template #imgpre>
                 <img class="upload-img" src="{{ projectImage }}" />
