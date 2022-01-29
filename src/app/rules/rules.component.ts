@@ -15,6 +15,7 @@ export class RulesComponent implements OnInit {
   topBanner:any;
   bodySection:any;
   background:any;
+  banerImgCheck:any;
   constructor(public authService: AuthService,private sanitizer: DomSanitizer,  ) {}
 
   ngOnInit(): void {
@@ -28,6 +29,10 @@ export class RulesComponent implements OnInit {
       this.topBanner = this.rules.topBanner;
       this.bodySection=this.rules.bodySection;
       this.background=this.sanitizer.bypassSecurityTrustStyle(`url(${this.topBanner[0].bannerImage}) no-repeat`);
+      var banImg = this.topBanner[0].bannerImage;
+      if(banImg == ""){
+        this.banerImgCheck = false;
+      }
     });
   }
 }

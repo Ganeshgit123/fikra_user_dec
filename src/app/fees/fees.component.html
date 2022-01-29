@@ -1,15 +1,42 @@
 <!-- Header -->
 <!-- <app-right-header></app-right-header> -->
 <!-- content -->
-<section *ngFor="let item of topBanner" [style.background]="background">
-    <!-- <img src="{{topBanner?.bannerImage}}" alt="Snow" style="width:100%;" /> -->
-    <div class="centered">
-        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
-        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
-        <p *ngIf=" dir == 'ltr'" style='color: white;'>{{item.bannerDescription}}</p>
-        <p *ngIf=" dir == 'rtl'" style='color: white;'>{{item.bannerDescription_Ar}}</p>
+<div *ngIf='banerImgCheck !== false '>
+    <section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="banner_cont_sec">
+                        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </section>
     </div>
-</section>
+
+    <div *ngIf='banerImgCheck == false '>
+        <section class="sec1" *ngFor="let item of topBanner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </section>
+        </div>
+
 <section class="sec2" *ngFor="let item of rules">
     <div class="container" style="margin: 0px; max-width: 100%;">
         <div class="row">
@@ -24,10 +51,11 @@
                             </button>
                             </h2>
                             <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;'>{{data.Description}}
+                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;' [innerHtml]='data.Description'>
                                 </div>
-                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;'>{{data.Description_Ar}}
+                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;' [innerHtml]='data.Description_Ar'>
                                 </div>
+                                <p *ngIf="data.downloadLink !== null"><a target="_blank" href="{{data.downloadLink}}" class="accbutton">Download</a></p>
                             </div>
                         </div>
                     </div>

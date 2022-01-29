@@ -1,64 +1,39 @@
 .sec1 {
-    margin: 2%;
-}
-
-.container_sec1 {
+    margin: 40px 0;
     text-align: center;
 }
 
-.sec1 p {
-    text-align: left;
-    padding: 10px 10px;
-}
-
-.sec2 {
-    width: 100%;
-}
 
 .sec2div1 {
     background: #9A999E19;
-    padding: 100px;
+    padding: 60px;
 }
 
-.sec2 h3 {
-    margin-bottom: 3%;
-}
-
-.sec2img {
-    padding: 0px;
-    background: #9A999E19;
-}
-
-.sec2img img {
-    width: 100%;
-    margin-left: 12px;
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .sec2div1 {
+        background: #9A999E19;
+        padding: 25px 10px;
+    }
 }
 
 .sec3 {
-    width: 100%;
     background-color: #353535;
-    margin-left: 1px;
-    padding: 0px;
-    margin: 0px 0px;
+    padding: 60px;
 }
-
-.sec3div {
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .sec3 {
+        padding: 25px 10px;
+    }
+}
+.sec3 h3 {
     text-align: center;
-    padding: 40px;
-}
-
-.sec3div h3 {
     color: #FFFFFF;
     margin-bottom: 3%;
 }
 
-.sec3div p {
+.sec3 p {
+    text-align: center;
     color: #FFFFFF;
-    opacity: 0.7;
-}
-
-h2 {
-    margin-bottom: 3%;
 }
 
 .nav-tabs {
@@ -80,17 +55,6 @@ h2 {
     margin: 3% 0% 3% 0%;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-    .sec2div1 {
-        background: #9A999E19;
-        padding: 25px;
-        margin-left: 10px;
-    }
-    .sec3div {
-        text-align: justify;
-        padding: 20px;
-    }
-}
 .tab-content p{
     padding: 20px;
     border: 1px solid #7070702E;
@@ -103,4 +67,11 @@ h2 {
 .nav-tabs{
     padding-left: 0;
     padding-right: 0;
+}
+.accbutton {
+    background: #ff455f;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    text-decoration: none;
 }

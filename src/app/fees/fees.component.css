@@ -1,3 +1,55 @@
+.sec1 {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.what_banner_sec{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-bottom: 40px;
+}
+.what_banner_sec h2{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .what_banner_sec h2 {
+       font-size: 20px;
+       padding-bottom: 10px;
+    }
+}
+.what_banner_sec p{
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .what_banner_sec p {
+       font-size: 12px;
+    }
+}
+
+.banner_cont_sec{
+    margin-top: 25%;
+    transform: translateY(-50%);
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .banner_cont_sec {
+        margin-top: 10%;
+        transform: none;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .banner_cont_sec {
+        margin-top: 40%;
+    }
+}
+
 .sec_header {
     font-size: 28px;
     text-align: center;
@@ -30,7 +82,7 @@ p {
 
 .collspan {
     font-size: 22px;
-    color: #9a999e;
+    color: #1b1b1b;
 }
 
 .centered {
@@ -39,7 +91,14 @@ p {
     height: 350px;
     padding: 100px 200px;
 }
-
+.accbutton {
+    background: #ff455f;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    margin-left: 20px;
+    text-decoration: none;
+}
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .centered {
         text-align: center;
@@ -47,6 +106,15 @@ p {
         color: white;
         padding: 40px;
         height: auto;
+    }
+    .accbutton {
+        background: #ff455f;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        margin-left: 20px;
+        font-size: 14px;
+        text-decoration: none;
     }
     .collspan {
         font-size: 14px;

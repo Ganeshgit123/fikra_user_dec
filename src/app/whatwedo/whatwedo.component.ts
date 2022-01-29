@@ -43,6 +43,8 @@ export class WhatwedoComponent implements OnInit {
   checksub:any;
   errors:any;
   errValue:any;
+  banerImgCheck:any;
+  vidUrlCheck:any;
   constructor(public authService: AuthService,private sanitizer: DomSanitizer,public fb: FormBuilder,) { 
     this.homenewsletterform = this.fb.group({
       email: ["", [Validators.required,]],
@@ -99,6 +101,14 @@ export class WhatwedoComponent implements OnInit {
       this.containerSection=this.whatewedo.containerSection;
       this.background=this.sanitizer.bypassSecurityTrustStyle(`url(${this.topBanner[0].bannerImage}) no-repeat`);
       this.videourl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoDescSection[0].viderURL);
+      var banImg = this.topBanner[0].bannerImage;
+      if(banImg == ""){
+        this.banerImgCheck = false;
+      }
+      var vidUrl = this.videoDescSection[0].viderURL;
+      if(vidUrl == ""){
+        this.vidUrlCheck = false;
+      }
     });
   }
   checksubscribe(event: any) {

@@ -1,49 +1,73 @@
-<!-- Header -->
 <!-- <app-right-header></app-right-header> -->
-<!-- content -->
 <section class="sec1" *ngFor="let item of topBanner">
-    <div class="container_sec1">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
                 <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
-                <p *ngIf=" dir == 'ltr'">{{item.bannerDescription}}</p>
-                <p *ngIf=" dir == 'rtl'">{{item.bannerDescription_Ar}}</p>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
             </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </section>
-<section *ngFor="let item of bodySection">
-    <div class="row sec2" style="width: 100%;">
-        <div class="col-md-8 sec2div1">
+
+<div *ngIf = "img !== null ">
+<section class="sec2div1" *ngFor="let item of bodySection">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-7">
             <h3 *ngIf=" dir == 'ltr'">{{item.Header}}</h3>
             <h3 *ngIf=" dir == 'rtl'">{{item.Header_Ar}}</h3>
-            <p *ngIf=" dir == 'ltr'">{{item.Description}}.</p>
-            <p *ngIf=" dir == 'rtl'">{{item.Description_Ar}}.</p>
+            <p *ngIf=" dir == 'ltr'" [innerHtml]='item.Description'></p>
+            <p *ngIf=" dir == 'rtl'" [innerHtml]='item.Description_Ar'></p>
         </div>
-        <div class="col-md-4 sec2img">
+        <div class="col-md-5">
             <img src="{{item.imageURL}}">
         </div>
     </div>
+</div>
 </section>
-<section *ngFor="let item of bodySection">
-    <div class="row sec3">
-        <div class="col-md-12 sec3div">
-            <h3 *ngIf=" dir == 'ltr'">{{item.Header2}}</h3>
-            <h3 *ngIf=" dir == 'rtl'">{{item.Header2_Ar}}</h3>
-            <p *ngIf=" dir == 'ltr'">{{item.Description2}}</p>
-            <p *ngIf=" dir == 'rtl'">{{item.Description2_Ar}}</p>
+</div>
+
+<div *ngIf = "img == null ">
+    <section class="sec2div1" *ngFor="let item of bodySection">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 *ngIf=" dir == 'ltr'">{{item.Header}}</h3>
+                <h3 *ngIf=" dir == 'rtl'">{{item.Header_Ar}}</h3>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]='item.Description'></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]='item.Description_Ar'></p>
+            </div>
         </div>
     </div>
+    </section>
+    </div>
+
+<section class="sec3" *ngFor="let item of bodySection">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 *ngIf=" dir == 'ltr'">{{item.Header2}}</h3>
+            <h3 *ngIf=" dir == 'rtl'">{{item.Header2_Ar}}</h3>
+            <p *ngIf=" dir == 'ltr'" [innerHtml]='item.Description2'></p>
+            <p *ngIf=" dir == 'rtl'" [innerHtml]='item.Description2_Ar'></p>
+        </div>
+    </div>
+</div>
 </section>
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-10 sec4div" *ngFor="let item of accDescription">
                 <h2 *ngIf=" dir == 'ltr'">{{item.header}}</h2>
                 <h2 *ngIf=" dir == 'rtl'">{{item.header_Ar}}</h2>
-                <p *ngIf=" dir == 'ltr'"> {{item.description}}</p>
-                <p *ngIf=" dir == 'rtl'"> {{item.description_Ar}}</p>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]='item.description'></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]='item.description_Ar'></p>
             </div>
         </div>
         <div class="row">
@@ -64,7 +88,8 @@
                         role="tabpanel" aria-labelledby="home-tab">
                         <p *ngIf=" dir == 'ltr'" [innerHtml]='data.Description'></p>
                         <p *ngIf=" dir == 'rtl'" [innerHtml]='data.Description_Ar'></p>
-                        </div>
+                        <p *ngIf="data.downloadLink !== null"><a target="_blank" href="{{data.downloadLink}}" class="accbutton">Download</a></p>
+                    </div>
                 </div>
             </div>
         </div>

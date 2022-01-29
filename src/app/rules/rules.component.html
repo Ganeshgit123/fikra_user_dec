@@ -1,23 +1,47 @@
-<!-- Header -->
 <!-- <app-right-header></app-right-header> -->
 <!-- content -->
-
-<section *ngFor="let item of topBanner" [style.background]="background">
->
-    <div class="centered">
-        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
-        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
-        <p *ngIf=" dir == 'ltr'">{{item.bannerDescription}}</p>
-        <p *ngIf=" dir == 'rtl'">{{item.bannerDescription_Ar}}</p>
+<div *ngIf='banerImgCheck !== false '>
+    <section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="banner_cont_sec">
+                        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </section>
     </div>
-</section>
+
+    <div *ngIf='banerImgCheck == false '>
+        <section class="sec1" *ngFor="let item of topBanner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
 <section class="sec2" *ngFor="let item of bodySection">
     <div class="container">
         <div class="row overcontent">
             <h4 class="sec_header" *ngIf=" dir == 'ltr'">{{item.Header}}</h4>
             <h4 class="sec_header" *ngIf=" dir == 'rtl'">{{item.Header_Ar}}</h4>
-            <p class="sec_desc" *ngIf=" dir == 'ltr'" style="color: black;">{{item.Description}}</p>
-            <p class="sec_desc" *ngIf=" dir == 'rtl'" style="color: black;">{{item.Description_Ar}}</p>
+            <p class="sec_desc" *ngIf=" dir == 'ltr'" style="color: black;" [innerHtml]='item.Description'></p>
+            <p class="sec_desc" *ngIf=" dir == 'rtl'" style="color: black;" [innerHtml]='item.Description_Ar'></p>
         </div>
         <div class="row">
             <section class="fikra_ques_sec" *ngFor='let data of rules.accordian'>
@@ -30,12 +54,12 @@
                             </button>
                         </h2>
                         <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse sepacc" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;'>{{data.Description}}
+                            <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;' [innerHtml]='data.Description'>
                                 <!-- <p *ngIf=" dir == 'ltr'" [innerHtml]='policy'></p> -->
                             </div>
-                            <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;'>{{data.Description_Ar}}
+                            <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;' [innerHtml]='data.Description_Ar'>
                             </div>
-                            <a target="_blank" href="{{data.downloadLink}}" class="accbutton">Download</a>
+                            <p *ngIf="data.downloadLink !== null"><a target="_blank" href="{{data.downloadLink}}" class="accbutton">Download</a></p>
                         </div>
                     </div>
                 </div>

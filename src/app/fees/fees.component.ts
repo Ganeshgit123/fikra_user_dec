@@ -13,6 +13,8 @@ export class FeesComponent implements OnInit {
   topBanner: any;
   accordian: any;
   background:any;
+  banerImgCheck:any;
+
   constructor(public authService: AuthService,private sanitizer: DomSanitizer, ) {}
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class FeesComponent implements OnInit {
       this.topBanner = res.data[0].topBanner;
       this.accordian = res.data[0].accordian;
       this.background=this.sanitizer.bypassSecurityTrustStyle(`url(${this.topBanner[0].bannerImage}) no-repeat`);
+      var banImg = this.topBanner[0].bannerImage;
+      if(banImg == ""){
+        this.banerImgCheck = false;
+      }
     });
   }
 }
