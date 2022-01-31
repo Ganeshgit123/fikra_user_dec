@@ -584,9 +584,11 @@ export class ProjectviewComponent implements OnInit {
     const data = this.reportprojectform.value;
     this.authService.reportproject(data).subscribe((res: any) => {
       if (res.error == false) {
-        this.modalClose.nativeElement.click();
+        this.onCloseHandled()
+        // this.modalClose.nativeElement.click();
         this.toastr.success('Success ', 'Send To Admin Successfully');
-        this.reportprojectform.reset();
+        // this.reportprojectform.reset();
+
       } else {
         this.toastr.warning('Enter valid ', res.message);
       }

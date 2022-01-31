@@ -102,6 +102,7 @@
     color: #ff5d4b;
     text-decoration: none;
     cursor: pointer;
+    -webkit-appearance: none;
 }
 
 .prof_next_sec {

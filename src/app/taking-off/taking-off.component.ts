@@ -79,7 +79,7 @@ export class TakingOffComponent implements OnInit {
           elementss.subCategoryName = elementss.basicInfoId.subCategoryName;
           elementss.city = elementss.basicInfoId.city;
           elementss.decription = elementss.basicInfoId.decription;
-          elementss.projectImage = elementss.basicInfoId.projectImage;
+          elementss.projectImage = elementss.basicInfoId.projectImage_Sharp;
           elementss.goalAmount = elementss.basicInfoId.goalAmount;
           elementss.userName = elementss.userId.fullName;
           elementss._is_All_Nothing_ = elementss._is_All_Nothing_;

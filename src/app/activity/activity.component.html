@@ -62,8 +62,7 @@
                 <section class="saved_cont_sec" *ngFor="let delobj of deleteReduce">
                     <div class="row">
                         <diV class="col-md-3" *ngIf="delobj.basicInfoId.projectImage; else nextImage">
-                            <img src="{{ delobj.basicInfoId.projectImage }}" class="img-fluid"
-                                style="height: 90% !important" />
+                            <img src="{{ delobj.basicInfoId.projectImage }}" class="img-fluid" />
                         </diV>
 
                         <ng-template #nextImage>
@@ -159,8 +158,7 @@
 
                 <div class="row">
                     <diV class="col-md-3" *ngIf="datas.basicInfoId.projectImage; else nextImage">
-                        <img src="{{ datas.basicInfoId.projectImage }}" class="img-fluid"
-                            style="height: 90% !important" />
+                        <img src="{{ datas.basicInfoId.projectImage }}" class="img-fluid" />
                     </diV>
 
                     <ng-template #nextImage>

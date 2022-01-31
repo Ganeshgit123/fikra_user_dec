@@ -805,6 +805,13 @@ p a{
 .page-link:hover{
     background-color: #F7757626;
 }
-.what_banner_sec p{
-    color: #fff !important;
+
+.livebtn {
+    padding: 1px 20px 1px 20px;
+    font-size: 12px;
+    background-color: red;
+    border: red;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgb(199 25 57 / 58%);
 }

@@ -10,77 +10,80 @@ import { User } from '../shared/user';
 })
 export class FooterComponent implements OnInit {
   user: any;
-  contentdata:any;
+  contentdata: any;
   header: any;
-  description:any;
-  button1:any;
-  contactEmail:any;
+  description: any;
+  button1: any;
+  contactEmail: any;
   // contactNumber:any;
-  youtubeURL:any;
-  twetterURL:any;
-  instaURL:any;
-  facebookURL:any;
-footerary=[];
-lang:any;
-dir:any;
-headerAr:any;
-descriptionAr:any;
-buttonAr:any;
-aboutus:any;
-aboutusar:any;
-aboutusurl:any;
-aboutus1:any;
-aboutusar1:any;
-aboutusurl1:any;
-aboutus2:any;
-aboutusar2:any;
-aboutusurl2:any;
-contactus:any;
-contactar:any;
-contacturl:any;
-career:any;
-careerar:any;
-careerurl:any;
-support:any;
-support1:any;
-support2:any;
-support3:any;
-support4:any;
-supportar:any;
-supportar1:any;
-supportar3:any;
-supportar2:any;
-supportar4:any;
-supporturl:any;
-supporturl1:any;
-supporturl2:any;
-supporturl3:any;
-supporturl4:any;
-mff:any;
-mffar:any;
-mffurl:any;
-mff1:any;
-mffar1:any;
-mffurl1:any;
-mff2:any;
-mffar2:any;
-mffurl2:any;
-mff3:any;
-mffar3:any;
-mffurl3:any;
-mff4:any;
-mffar4:any;
-mffurl4:any;
-buttonURL:any;
-drawerHead:any;
-drawerHeadAr:any;
-drawerHead1:any;
-drawerHeadAr1:any;
-drawerHead2:any;
-drawerHeadAr2:any;
-contentLan: any = {};
-hi = "button label"
-  constructor(public fb: FormBuilder,public authService: AuthService,) {
+  youtubeURL: any;
+  twetterURL: any;
+  instaURL: any;
+  facebookURL: any;
+  footerary = [];
+  lang: any;
+  dir: any;
+  headerAr: any;
+  descriptionAr: any;
+  buttonAr: any;
+  aboutus: any;
+  aboutusar: any;
+  aboutusurl: any;
+  aboutus1: any;
+  aboutusar1: any;
+  aboutusurl1: any;
+  aboutus2: any;
+  aboutusar2: any;
+  aboutusurl2: any;
+  contactus: any;
+  contactar: any;
+  contacturl: any;
+  career: any;
+  careerar: any;
+  careerurl: any;
+  support: any;
+  support1: any;
+  support2: any;
+  support3: any;
+  support4: any;
+  supportar: any;
+  supportar1: any;
+  supportar3: any;
+  supportar2: any;
+  supportar4: any;
+  supporturl: any;
+  supporturl1: any;
+  supporturl2: any;
+  supporturl3: any;
+  supporturl4: any;
+  mff: any;
+  mffar: any;
+  mffurl: any;
+  mff1: any;
+  mffar1: any;
+  mffurl1: any;
+  mff2: any;
+  mffar2: any;
+  mffurl2: any;
+  mff3: any;
+  mffar3: any;
+  mffurl3: any;
+  mff4: any;
+  mffar4: any;
+  mffurl4: any;
+  buttonURL: any;
+  drawerHead: any;
+  drawerHeadAr: any;
+  drawerHead1: any;
+  drawerHeadAr1: any;
+  drawerHead2: any;
+  drawerHeadAr2: any;
+  aboutstatus: any;
+  supportstatus: any;
+  mofstatus: any;
+  contentLan: any = {};
+  hi = "button label"
+  constructor(public fb: FormBuilder, public authService: AuthService,) {
   }
 
   myPromise = new Promise((resolve, reject) => {
@@ -92,63 +95,65 @@ hi = "button label"
   });
 
   async arabicCotent() {
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
   ngOnInit(): void {
     this.myPromise
 
-    this.lang=localStorage.getItem('lang') || 'en';
-    this.dir=localStorage.getItem('dir') || 'ltr';
+    this.lang = localStorage.getItem('lang') || 'en';
+    this.dir = localStorage.getItem('dir') || 'ltr';
 
     this.authService.footer().subscribe(
-    
-      (res:any)=>{
+
+      (res: any) => {
         // let ftbody=res;
-        if(res.error === false){
+        if (res.error === false) {
           this.header = res.data.header;
           this.headerAr = res.data.header_ar;
-          this.description=res.data.discription;
-          this.descriptionAr=res.data.discription_ar;
-          this.button1=res.data.buttonName;
-          this.buttonAr=res.data.buttonName_ar;
-          this.buttonURL=res.data.buttonURL;
-          this.contactEmail=res.data.contactEmail;
+          this.description = res.data.discription;
+          this.descriptionAr = res.data.discription_ar;
+          this.button1 = res.data.buttonName;
+          this.buttonAr = res.data.buttonName_ar;
+          this.buttonURL = res.data.buttonURL;
+          this.contactEmail = res.data.contactEmail;
           // this.contactNumber=res.data.contactNumber;
-          this.youtubeURL=res.data.youtubeURL;
-          this.twetterURL=res.data.twetterURL;
-          this.instaURL=res.data.instaURL;
-          this.facebookURL=res.data.facebookURL;
+          this.youtubeURL = res.data.youtubeURL;
+          this.twetterURL = res.data.twetterURL;
+          this.instaURL = res.data.instaURL;
+          this.facebookURL = res.data.facebookURL;
           // console.log('footer', res.data);
         }
-       
+
         // this.footerary.push(this.user)
-        
-       }
-     );
-     this.authService.getfootercontent().subscribe(
-    
-      (res:any)=>{
+
+      }
+    );
+    this.authService.getfootercontent().subscribe(
+
+      (res: any) => {
         // let ftbody=res;
-        if(res.error === false){
+        if (res.error === false) {
           this.drawerHead = res.data.content[0].drawerHead;
           this.drawerHeadAr = res.data.content[0].drawerHead_Ar;
           this.drawerHead1 = res.data.content[1].drawerHead;
           this.drawerHeadAr1 = res.data.content[1].drawerHead_Ar;
           this.drawerHead2 = res.data.content[2].drawerHead;
           this.drawerHeadAr2 = res.data.content[2].drawerHead_Ar;
-
+          this.aboutstatus = res.data.content[0]._is_Visible_;
+          this.supportstatus = res.data.content[1]._is_Visible_;
+          this.mofstatus = res.data.content[2]._is_Visible_;
           this.aboutus = res.data.content[0].firstLable;
           this.aboutusar = res.data.content[0].firstLable_Ar;
           this.aboutusurl = res.data.content[0].firstLable_URL;

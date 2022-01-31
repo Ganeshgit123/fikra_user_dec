@@ -14,10 +14,10 @@
             </div>
         </div>
         <div class="row firstrow" *ngFor="let data of mission">
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="data._is_Sec_On_ == true">
                 <img src="{{data.secImage}}" class="img-fluid ourmissionimage">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="data._is_Sec_On_ == true">
                 <h4 class="firstrow" *ngIf=" dir == 'ltr'">{{data.secHeadName}}</h4>
                 <h4 class="firstrow" *ngIf=" dir == 'rtl'">{{data.secHeadNameAr}}</h4>
 

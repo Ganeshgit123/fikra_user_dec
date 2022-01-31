@@ -37,7 +37,7 @@
                     <!-- <p class="ph_number">{{ contactNumber }}</p> -->
                 </div>
                 <!-- web  -->
-                <div class="col-md-2 hidefoo">
+                <div class="col-md-2 hidefoo" *ngIf="aboutstatus == true">
                     <h5 class="foot_head">
                         <span *ngIf=" dir == 'ltr'">{{drawerHead}}</span>
                         <span *ngIf=" dir == 'rtl'">{{drawerHeadAr}}</span>
@@ -66,11 +66,11 @@
                     </ul>
                 </div>
                 <!-- mobile  -->
-                <div class="footerselect" dropdown>
+                <div class="footerselect" dropdown *ngIf="aboutstatus == true">
                     <p class="text-center">
                         <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
                             {{drawerHead}} <span class="caret"></span>
-                    </button>
+                        </button>
                     </p>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <li role="menuitem">
@@ -79,27 +79,27 @@
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{contacturl}}">{{
                                 contactus
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{careerurl}}">{{
                                 career
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{aboutusurl1}}">{{
                                 aboutus1
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{aboutusurl2}}">{{
                                 aboutus2
-                        }}</a>
+                                }}</a>
                         </li>
                     </ul>
                 </div>
                 <!-- web  -->
-                <div class="col-md-2 hidefoo">
+                <div class="col-md-2 hidefoo" *ngIf="supportstatus == true">
                     <h5 class="foot_head">
                         <span *ngIf=" dir == 'ltr'">{{drawerHead1}}</span>
                         <span *ngIf=" dir == 'rtl'">{{drawerHeadAr1}}</span>
@@ -128,11 +128,11 @@
                     </ul>
                 </div>
                 <!-- mobile  -->
-                <div class="footerselect" dropdown>
+                <div class="footerselect" dropdown *ngIf="supportstatus == true">
                     <p class="text-center">
                         <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
                             {{drawerHead1}} <span class="caret"></span>
-                    </button>
+                        </button>
                     </p>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <li role="menuitem">
@@ -141,27 +141,27 @@
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl1}}">{{
                                 support1
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl2}}">{{
                                 support2
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl3}}">{{
                                 support3
-                        }}</a>
+                                }}</a>
                         </li>
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl4}}">{{
                                 support4
-                        }}</a>
+                                }}</a>
                         </li>
                     </ul>
                 </div>
                 <!-- web  -->
-                <div class="col-md-4 col-lg-5 col-xl-5 hidefoo">
+                <div class="col-md-4 col-lg-5 col-xl-5 hidefoo" *ngIf="mofstatus == true">
                     <h5 class="foot_head">
                         <span *ngIf=" dir == 'ltr'">{{drawerHead2}}</span>
                         <span *ngIf=" dir == 'rtl'">{{drawerHeadAr2}}</span>
@@ -188,45 +188,45 @@
                             <li *ngIf=" dir == 'rtl'">{{ mffar4 }}</li>
                         </a>
                     </ul>
-                    </div>
-                    <div class="footerselect" dropdown>
-                        <p class="text-center">
-                            <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
-                                {{drawerHead2}} <span class="caret"></span>
+                </div>
+                <div class="footerselect" dropdown *ngIf="mofstatus == true">
+                    <p class="text-center">
+                        <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                            {{drawerHead2}} <span class="caret"></span>
                         </button>
-                        </p>
-                        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                            <li role="menuitem">
-                                <a class="dropdown-item" href="{{mffurl}}">{{mff}}</a>
-                            </li>
-                            <li role="menuitem">
-                                <a class="dropdown-item" href="{{mffurl}}">{{
-                                    mff1
-                            }}</a>
-                            </li>
-                            <li role="menuitem">
-                                <a class="dropdown-item" href="{{mffurl2}}">{{
-                                    mff2
-                            }}</a>
-                            </li>
-                            <li role="menuitem">
-                                <a class="dropdown-item" href="{{mffurl3}}">{{
-                                    mff3
-                            }}</a>
-                            </li>
-                            <li role="menuitem">
-                                <a class="dropdown-item" href="{{mffurl4}}">{{
-                                    mff4
-                            }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul class="social_links">
-                        <li><a class="ftlink" href="{{ youtubeURL}}"><i class="fa fa-youtube"></i></a></li>
-                        <li><a class="ftlink" href="{{ twetterURL}}"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="ftlink" href="{{ instaURL}}"><i class="fa fa-instagram"></i></a></li>
-                        <li><a class="ftlink" href="{{ facebookURL}}"><i class="fab fa-facebook"></i></a></li>
+                    </p>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{mffurl}}">{{mff}}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{mffurl}}">{{
+                                mff1
+                                }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{mffurl2}}">{{
+                                mff2
+                                }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{mffurl3}}">{{
+                                mff3
+                                }}</a>
+                        </li>
+                        <li role="menuitem">
+                            <a class="dropdown-item" href="{{mffurl4}}">{{
+                                mff4
+                                }}</a>
+                        </li>
                     </ul>
+                </div>
+                <ul class="social_links">
+                    <li><a class="ftlink" href="{{ youtubeURL}}"><i class="fa fa-youtube"></i></a></li>
+                    <li><a class="ftlink" href="{{ twetterURL}}"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="ftlink" href="{{ instaURL}}"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="ftlink" href="{{ facebookURL}}"><i class="fab fa-facebook"></i></a></li>
+                </ul>
             </div>
 
             <div class="row">
