@@ -392,12 +392,15 @@
             <div class="col-md-6 right_ban_carousel">
                 <owl-carousel-o [options]="customOptions">
                     <ng-template carouselSlide *ngFor="let bnrimg of bannerhome">
-                        <a [routerLink]="['/projectview', bnrimg.projectIdenty._id]" (click)="localprojectid()">
+                        <a [routerLink]="['/projectview', bnrimg.projectIdenty._id]" (click)="localprojectid()" *ngIf="bnrimg.projectIdenty._is_On_Live_ == true;else showbnrimg">
                             <img src="{{ bnrimg.projectId.projectImage }}" />
                             <h4 class="banner_carou_txt">
                                 {{ bnrimg.projectId.title }}
                             </h4>
                         </a>
+                        <ng-template #showbnrimg>
+                            <img src="assets/image/home_page/banner_01.svg">
+                        </ng-template>
                     </ng-template>
                 </owl-carousel-o>
                 <div class="carousel_num">
@@ -1193,7 +1196,7 @@
         <div class="row">
             <h2>{{ contentLan.CREATORCORNER }}</h2>
             <div class="col-md-6" *ngFor="let creatc of creator">
-                <div class="corn_cont">
+                <div class="corn_cont" *ngIf="creatc._isVisible_ == true">
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ creatc.blogImage }}" />
@@ -1277,7 +1280,7 @@
             <div class="col-md-12">
                 <owl-carousel-o [options]="clientOption">
                     <ng-template carouselSlide *ngFor="let logos of logo.clientLogo">
-                        <img src="{{ logos.logoUrl }}" style="padding: 10px" />
+                        <img src="{{ logos.logoUrl }}" *ngIf="logos._isLogoOn_ == true" style="padding: 10px" />
                     </ng-template>
                 </owl-carousel-o>
             </div>

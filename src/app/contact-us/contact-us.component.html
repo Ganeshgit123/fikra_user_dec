@@ -2,19 +2,20 @@
 <section class="contact_sec">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false"
+            <div class="col-md-12" *ngFor="let locat of def">
+                <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false"
                     [zoomControl]="false" style="height: 400px">
                     <agm-marker *ngFor="let marker of markers; let i = index" (markerClick)="clickedMarker(infowindow)"
                         [latitude]="marker.lat" [longitude]="marker.long">
 
                         <agm-info-window #infowindow>
                             <strong *ngIf=" dir == 'ltr'">{{ contentLan.ADDRESS }} : {{marker.address}}</strong>
-                            <strong *ngIf=" dir == 'rtl'">{{ contentLan.ADDRESS }} : {{marker.addressAr}}</strong>
+                            <strong *ngIf=" di  r == 'rtl'">{{ contentLan.ADDRESS }} : {{marker.addressAr}}</strong>
                         </agm-info-window>
 
                     </agm-marker>
-                </agm-map>
+                </agm-map> -->
+                <img src="{{locat.branchImage}}">
             </div>
         </div>
     </div>
@@ -46,8 +47,8 @@
             <div class="col-md-2"></div>
         </div> -->
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-9">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
                 <div class="row" *ngFor="let locat of def">
                     <div class="col-md-3">
                         <div class="contact_info">
@@ -61,25 +62,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="contact_info">
                             <img src="assets/image/contact/mail.svg" class="img_size1">
                             <h6>{{ contentLan.EMAIL }} :</h6>
                             <p>{{locat.email}}</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="contact_info">
                             <img src="assets/image/contact/fax.svg" class="img_size1">
                             <h6>{{ contentLan.FAX }}:</h6>
                             <p>{{locat.fax}}</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="contact_info">
                             <img src="assets/image/contact/phone.svg" class="img_size1">
                             <h6>{{ contentLan.PHONENUMBER }}:</h6>
                             <p>{{locat.phone}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="contact_info">
+                            <img src="assets/image/contact/map_icon.svg" class="img_size1">
+                            <h6>{{ contentLan.VIEWINMAP }}</h6>
+                            <a href="{{locat.mapURL}}" target="_blank" class="view_map">View</a>
                         </div>
                     </div>
                 </div>

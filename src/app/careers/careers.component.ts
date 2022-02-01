@@ -59,7 +59,7 @@ export class CareersComponent implements OnInit {
     
       (res: any)=>{
        this.jobdata = res.data;
-              //  console.log('job',this.jobdata);
+               console.log('job',this.jobdata);
       }
     );
     this.authService.careercontent().subscribe(

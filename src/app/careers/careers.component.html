@@ -65,15 +65,16 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let datas of jobdata | filter:searchTerm ; let ndx = index">
+                    <tbody *ngFor="let datas of jobdata | filter:searchTerm ; let ndx = index">
+                        <tr *ngIf="datas._is_On_ == true">
                             <td>{{ndx+1}}.</td>
                             <td>
                                 <span *ngIf=" dir == 'ltr'">{{datas.jobRole}}</span>
                                 <span *ngIf=" dir == 'rtl'">{{datas.jobRoleAr}}</span>
                             </td>
                             <td>{{datas.jobVacancies}}</td>
-                            <td><a [routerLink]="['/career_form',datas._id]" class="more_btn">{{ contentLan.MOREDETAIL }}</a></td>
+                            <td><a [routerLink]="['/career_form',datas._id]" class="more_btn">{{ contentLan.MOREDETAIL
+                                    }}</a></td>
                         </tr>
                     </tbody>
                 </table>
