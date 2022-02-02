@@ -96,8 +96,12 @@ textarea {
 }
 
 .view_map {
-    color: #ec8a38;
+    color: #ffffffeb;
     text-decoration: blink;
     border: 1px solid;
     padding: 2px 10px;
+    background-color: #e96e4a;
+    font-size: 14px;
 }
+
+

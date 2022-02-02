@@ -54,7 +54,7 @@ export class CreateaccountComponent implements OnInit {
   isEmailExist: any;
   isUserExist: any;
   dir: any;
-
+  newdate: any;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -89,6 +89,8 @@ export class CreateaccountComponent implements OnInit {
   }
   ngOnInit(): void {
     this.dir = localStorage.getItem("dir") || "ltr";
+    var someDate = new Date();
+    this.newdate = someDate.toISOString().substr(0, 10);
 
 	  this.myPromise
     // Investor Form

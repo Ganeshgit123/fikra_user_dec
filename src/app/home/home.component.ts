@@ -223,6 +223,10 @@ date1:any;
 date2:any;
 luncont:any;
 lastdates:any;
+logoimg: any = [];
+  logoimgs: any = [];
+  getclt: any;
+  
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -533,6 +537,21 @@ lastdates:any;
       this.creative = res.data.banner;
       this.creatives = res.data.creative;
       this.clientlog = res.data.creative;
+      this.logoimg = [];
+      this.clientlog.forEach((element: any) => {
+        console.log("hiee", element);
+        this.getclt = element.clientLogo;
+
+        this.getclt.forEach((value: any) => {
+          // console.log("value", value._isLogoOn_)
+          if (value._isLogoOn_ === true) {
+            this.logoimgs = value;
+            console.log("valuee", this.logoimg)
+            this.logoimg.push(value)
+          }
+
+        })
+      });
       this.newsletter = res.data.newsletter;
       this.feature = res.data.featureAndTakingOf;
       this.longstory = this.sanitizer.bypassSecurityTrustResourceUrl(

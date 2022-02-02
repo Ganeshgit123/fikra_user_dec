@@ -1279,8 +1279,8 @@
         <div class="row" *ngFor="let logo of clientlog">
             <div class="col-md-12">
                 <owl-carousel-o [options]="clientOption">
-                    <ng-template carouselSlide *ngFor="let logos of logo.clientLogo">
-                        <img src="{{ logos.logoUrl }}" *ngIf="logos._isLogoOn_ == true" style="padding: 10px" />
+                    <ng-template carouselSlide *ngFor="let logos of logoimg">
+                        <img src="{{ logos.logoUrl }}" style="padding: 10px" />
                     </ng-template>
                 </owl-carousel-o>
             </div>
