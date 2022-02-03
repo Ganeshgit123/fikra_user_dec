@@ -21,6 +21,7 @@ export class CareersComponent implements OnInit {
   headAr:any;
   searchTerm:any;
   contentLan: any = {};
+  valarr :any;
 
   constructor(private fb: FormBuilder,
     public authService: AuthService,
@@ -59,6 +60,14 @@ export class CareersComponent implements OnInit {
     
       (res: any)=>{
        this.jobdata = res.data;
+       this.valarr = [];
+       this.jobdata.forEach((value: any) => {
+         if (value._is_On_ == true) {
+           // console.log("value", value)
+           this.valarr.push(value)
+         }
+
+       })
                console.log('job',this.jobdata);
       }
     );
