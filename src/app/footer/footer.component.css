@@ -229,6 +229,12 @@
         position: initial;
         margin-top: -20px;
     }
+    .dropdown-menu.show {
+        position: initial !important;
+        inset: 0px auto auto 0px;
+        margin: 0px;
+        transform: none !important;
+    }
 }
 
 .social_links {

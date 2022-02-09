@@ -16,7 +16,7 @@
             </div>
             <div class="row" *ngIf=" dir == 'rtl'">
                 <div class="col-lg-2"></div>
-               <div class="col-lg-6 col-md-8">
+                <div class="col-lg-6 col-md-8">
                     <h2>{{headerAr}}</h2>
 
                     <p>{{descriptionAr}}</p>
@@ -66,9 +66,21 @@
                     </ul>
                 </div>
                 <!-- mobile  -->
-                <div class="footerselect" dropdown *ngIf="aboutstatus == true">
-                    <p class="text-center">
-                        <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                <!-- <div class="footerselect" dropdown *ngIf="aboutstatus == true"> -->
+                <div class="dropdown footerselect" *ngIf="aboutstatus == true">
+                    <button class="dropdown-toggle footerselectbtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{drawerHead}}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{aboutusurl}}">{{aboutus}}</a></li>
+                        <li><a class="dropdown-item" href="{{contacturl}}">{{contactus}}</a></li>
+                        <li><a class="dropdown-item" href="{{careerurl}}">{{ career}}</a></li>
+                        <li><a class="dropdown-item" href="{{aboutusurl1}}">{{ aboutus1}}</a></li>
+                        <li><a class="dropdown-item" href="{{aboutusurl2}}">{{ aboutus2}}</a></li>
+                    </ul>
+                </div>
+                <!-- <p class="text-center">
+                        <button id="button-basic" dropdownToggle type="button" class="dropdown-toggle footerselectbtn" aria-controls="dropdown-basic">
                             {{drawerHead}} <span class="caret"></span>
                         </button>
                     </p>
@@ -96,8 +108,8 @@
                                 aboutus2
                                 }}</a>
                         </li>
-                    </ul>
-                </div>
+                    </ul> -->
+                <!-- </div> -->
                 <!-- web  -->
                 <div class="col-md-2 hidefoo" *ngIf="supportstatus == true">
                     <h5 class="foot_head">
@@ -128,13 +140,25 @@
                     </ul>
                 </div>
                 <!-- mobile  -->
-                <div class="footerselect" dropdown *ngIf="supportstatus == true">
-                    <p class="text-center">
-                        <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
-                            {{drawerHead1}} <span class="caret"></span>
-                        </button>
-                    </p>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                <!-- <div class="footerselect" dropdown *ngIf="supportstatus == true"> -->
+                    <!-- <p class="text-center"> -->
+                        <div class="dropdown footerselect" *ngIf="supportstatus == true">
+                            <button class="dropdown-toggle footerselectbtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{drawerHead1}}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="{{supporturl}}">{{support}}</a></li>
+                                <li><a class="dropdown-item" href="{{supporturl1}}">{{support1}}</a></li>
+                                <li><a class="dropdown-item" href="{{supporturl2}}">{{ support2}}</a></li>
+                                <li><a class="dropdown-item" href="{{supporturl3}}">{{ support3}}</a></li>
+                                <li><a class="dropdown-item" href="{{supporturl4}}">{{ support4}}</a></li>
+                            </ul>
+                        </div>
+                    <!-- <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
+                        {{drawerHead1}} <span class="caret"></span>
+                    </button> -->
+                    <!-- </p> -->
+                    <!-- <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{supporturl}}">{{support}}</a>
                         </li>
@@ -159,7 +183,7 @@
                                 }}</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- web  -->
                 <div class="col-md-4 col-lg-5 col-xl-5 hidefoo" *ngIf="mofstatus == true">
                     <h5 class="foot_head">
@@ -189,13 +213,25 @@
                         </a>
                     </ul>
                 </div>
-                <div class="footerselect" dropdown *ngIf="mofstatus == true">
-                    <p class="text-center">
+                <!-- <div class="footerselect" dropdown *ngIf="mofstatus == true"> -->
+                    <div class="dropdown footerselect" *ngIf="mofstatus == true">
+                        <button class="dropdown-toggle footerselectbtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{drawerHead2}}
+                        </button>
+                        <ul class="dropdown-menu center" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="{{mffurl}}">{{mff}}</a></li>
+                            <li><a class="dropdown-item" href="{{mffurl}}">{{mff1}}</a></li>
+                            <li><a class="dropdown-item" href="{{mffurl2}}">{{ mff2}}</a></li>
+                            <li><a class="dropdown-item" href="{{mffurl3}}">{{ mff3}}</a></li>
+                            <li><a class="dropdown-item" href="{{mffurl4}}">{{ mff4}}</a></li>
+                        </ul>
+                    </div>
+                    <!-- <p class="text-center">
                         <button id="button-basic" dropdownToggle type="button" class="footerselectbtn dropdown-toggle" aria-controls="dropdown-basic">
                             {{drawerHead2}} <span class="caret"></span>
                         </button>
-                    </p>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    </p> -->
+                    <!-- <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <li role="menuitem">
                             <a class="dropdown-item" href="{{mffurl}}">{{mff}}</a>
                         </li>
@@ -220,7 +256,7 @@
                                 }}</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <ul class="social_links">
                     <li><a class="ftlink" href="{{ youtubeURL}}"><i class="fa fa-youtube"></i></a></li>
                     <li><a class="ftlink" href="{{ twetterURL}}"><i class="fa fa-twitter"></i></a></li>
