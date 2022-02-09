@@ -1,47 +1,47 @@
 <!-- <app-right-header></app-right-header> -->
 <div *ngIf='banerImgCheck !== false '>
-<section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="banner_cont_sec">
+    <section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="banner_cont_sec">
+                        <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
+                        <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
+                        <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
+                        <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div *ngIf='banerImgCheck == false '>
+    <section class="sec1" *ngFor="let item of topBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
                     <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
                     <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
                     <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
                 </div>
+                <div class="col-md-2"></div>
             </div>
-            <div class="col-md-2"></div>
         </div>
-    </div>
-</section>
-</div>
-
-<div *ngIf='banerImgCheck == false '>
-<section class="sec1" *ngFor="let item of topBanner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <h2 *ngIf=" dir == 'ltr'">{{item.bannerHeader}}</h2>
-                <h2 *ngIf=" dir == 'rtl'">{{item.bannerHeader_Ar}}</h2>
-                <p *ngIf=" dir == 'ltr'" [innerHtml]='item.bannerDescription'></p>
-                <p *ngIf=" dir == 'rtl'" [innerHtml]='item.bannerDescription_Ar'></p>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div>
-</section>
+    </section>
 </div>
 
 <section class="what_video_sec" *ngFor="let item of videoDescSection">
     <div class="container">
         <div class="row">
-            <div class="col-md-6" *ngIf = "vidUrlCheck !== false">
-                <iframe class="video" style=" width: 100%; height: 100%; border-radius: 20px; " [src]='videourl'></iframe>
+            <div class="col-md-6" *ngIf="vidUrlCheck !== false">
+                <iframe class="video" style=" width: 100%; height: 300px; border-radius: 20px; " [src]='videourl'></iframe>
             </div>
-            <div class="col-md-6" *ngIf = "vidUrlCheck == false"></div>
+            <div class="col-md-6" *ngIf="vidUrlCheck == false"></div>
             <div class="col-md-6">
                 <div class="video_cont_sec">
                     <h2 *ngIf=" dir == 'ltr'">{{item.headTitle}}</h2>
@@ -89,7 +89,8 @@
             <div class="col-md-5 col-lg-4"></div>
             <div class="col-md-3 col-lg-4">
                 <span *ngIf=" dir == 'ltr'"><img src="assets/image/whatwedo/bottom_arrow.png" class="arrow_img"></span>
-                <span *ngIf=" dir == 'rtl'"><img src="assets/image/whatwedo/bottom_arrow_right.svg" class="arrow_img"></span>
+                <span *ngIf=" dir == 'rtl'"><img src="assets/image/whatwedo/bottom_arrow_right.svg"
+                        class="arrow_img"></span>
             </div>
             <div class="col-md-4 col-lg-4"></div>
         </div>
@@ -124,21 +125,19 @@
                 <form class="newsletter" [formGroup]="homenewsletterform" ngNativeValidate (ngSubmit)="homenewsletter()">
                     <input type="email" name="email" formControlName="email" class="form-control" placeholder="Your Email" required />
                     <button class="signup-btn" type="submit" id="element">
-                  <span>Subscribe</span>
-                </button>
+                        <span>Subscribe</span>
+                    </button>
                 </form>
                 <div class="col-md-12" style="text-align: center; margin-bottom: 20px">
                     <a style="color: red; background: white">{{ errValue }}</a>
                 </div>
                 <p style="text-align: center; color: black">
                     <input type="checkbox" (change)="checksubscribe($event)" /> &nbsp;{{ contentLan.agreetothe }}
-                    <a routerLink="/termsofuse" target="_blank" style="color: #ff475f">{{contentLan.TERMSOFUSE}}</a>&nbsp;
-                    {{ contentLan.havereadandunderstand }}&nbsp;
-          <a routerLink="/privacypolicy" target="_blank" style="color: #ff475f">{{
-            contentLan.PRIVACYPOLICY
-          }}</a
-          > .
-        </p>
+                    <a routerLink="/termsofuse" target="_blank" style="color: #ff475f">{{contentLan.TERMSOFUSE}}</a>&nbsp; {{ contentLan.havereadandunderstand }}&nbsp;
+                    <a routerLink="/privacypolicy" target="_blank" style="color: #ff475f">{{
+                        contentLan.PRIVACYPOLICY
+                        }}</a> .
+                </p>
             </div>
         </div>
     </div>
@@ -151,43 +150,102 @@
                 <div class="last_box_col_right">
                     <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle}}</h2>
                     <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitlear}}</h2>
-                    <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription'></p>
-                    <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescriptionar'></p>
-                    <a href="{{multipleSectionreadMoreURL}}" class="last_read_btn">Read More</a>
+                    <p class="texteditor" *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription'></p>
+                    <p class="texteditor" *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescriptionar'></p>
+                    <!-- <a href="{{multipleSectionreadMoreURL}}" class="last_read_btn">Read More</a> -->
+                    <button  *ngIf="multipleSectiondescription.length >= 500"  type="button" class="last_read_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Read More
+                      </button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 padding_no">
+                <img src="{{multipleSectionimageURL}}" class="img-fluid">
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 padding_no">
-            <img src="{{multipleSectionimageURL}}" class="img-fluid">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-lg-6 padding_no">
-            <img src="{{multipleSectionimageURL1}}" class="img-fluid">
-        </div>
-        <div class="col-md-6 col-lg-6 order-first order-md-last">
-            <div class="last_box_col_left">
-                <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle1}}</h2>
-                <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle1ar}}</h2>
-                <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription1'></p>
-                <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription1ar'></p>
-                <a href="{{multipleSectionreadMoreURL1}}" class="last_read_btn">Read More</a>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 padding_no">
+                <img src="{{multipleSectionimageURL1}}" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-6 order-first order-md-last">
+                <div class="last_box_col_left">
+                    <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle1}}</h2>
+                    <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle1ar}}</h2>
+                    <p  class="texteditor" *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription1'></p>
+                    <p class="texteditor" *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription1ar'></p>
+                    <!-- <a href="{{multipleSectionreadMoreURL1}}" class="lst_read_btn">Read More</a> -->
+                    <button *ngIf="multipleSectiondescription1.length >= 500" type="button" class="last_read_btn " data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        Read More
+                      </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-lg-6">
-            <div class="last_box_col_right">
-                <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle2}}</h2>
-                <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle2ar}}</h2>
-                <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription2'></p>
-                <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription2ar'></p>
-                <a href="{{multipleSectionreadMoreURL2}}" class="last_read_btn">Read More</a>
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="last_box_col_right">
+                    <h2 *ngIf=" dir == 'ltr'">{{multipleSectiontitle2}}</h2>
+                    <h2 *ngIf=" dir == 'rtl'">{{multipleSectiontitle2ar}}</h2>
+                    <p class="texteditor" *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription2'></p>
+                    <p class="texteditor" *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription2ar'></p>
+                    <!-- <a href="{{multipleSectionreadMoreURL2}}" class="last_read_btn">Read More</a> -->
+                    <button  *ngIf="multipleSectiondescription2.length >= 500"  type="button" class="last_read_btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        Read More
+                      </button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 padding_no">
+                <img src="{{multipleSectionimageURL2}}" class="img-fluid">
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 padding_no">
-            <img src="{{multipleSectionimageURL2}}" class="img-fluid">
-        </div>
-    </div>
     </div>
 </section>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body texteditorflow">
+            <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription'></p>
+            <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescriptionar'></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal1 -->
+   <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body texteditorflow">
+            <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription1'></p>
+            <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription1ar'></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal2 -->
+   <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body texteditorflow">
+            <p *ngIf=" dir == 'ltr'" [innerHtml]='multipleSectiondescription2'></p>
+            <p *ngIf=" dir == 'rtl'" [innerHtml]='multipleSectiondescription2ar'></p>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- <app-footer></app-footer> -->
