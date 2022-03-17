@@ -64,10 +64,10 @@ export class ActivityComponent implements OnInit {
   createReduce: any = [];
   page = 1;
   billTotal: any;
-  adminPaymetTotal:any;
-  projectPaymetTotal:any;
+  adminPaymetTotal: any;
+  projectPaymetTotal: any;
   display = "none";
-  rewardPayment:any;
+  rewardPayment: any;
   dataFound = false;
   billdetailRet: any = [];
   billDetailInclude: any = [];
@@ -368,7 +368,7 @@ export class ActivityComponent implements OnInit {
       userType: JSON.parse(localStorage.getItem("role")!),
       // projectId: [value["_id"]],
     });
-   
+
   }
 
   // addmoney() {
@@ -393,8 +393,7 @@ export class ActivityComponent implements OnInit {
       projectId: [datas["_id"]],
       rewardId: [value["_id"]],
     });
-    this.authService
-      .getrewardpayment(this.rewardgetform.value)
+    this.authService.getrewardpayment(this.rewardgetform.value)
       .subscribe((res: any) => {
         if (res.error == false) {
           this.getreward = res.data;

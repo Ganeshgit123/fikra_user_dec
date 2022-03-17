@@ -51,7 +51,7 @@
                 <div class="overlay">
                     <div class="row">
                         <div>
-                            <a href="/" style=" text-decoration: none; " >
+                            <a href="/" style=" text-decoration: none; ">
                                 <i class="fas fa-arrow-left" *ngIf=" dir == 'ltr'"></i>
                                 <i class="fas fa-arrow-right" *ngIf=" dir == 'rtl'"></i>
                                 <span class="home_con">
@@ -80,7 +80,8 @@
                             <input type="file" id="imageFile" capture="user" accept="image/*">
                         </p>
                     </div> -->
-                    <h4 style=" text-align: center; margin: 3%; font-size: 18px; color: #ff5a52; ">{{ contentLan.SIGNUP }}</h4>
+                    <h4 style=" text-align: center; margin: 3%; font-size: 18px; color: #ff5a52; ">{{ contentLan.SIGNUP }}
+                    </h4>
                     <!-- <div class="col-md-12">{{registerform.value | json}}</div> -->
                     <section class="dynamic_field_sec" *ngIf="displayMode == 1">
                         <form id="form" [formGroup]="registerform" ngNativeValidate>
@@ -102,7 +103,8 @@
                                                         <option *ngFor="let menace of nameList">{{menace}} </option>
                                                     </datalist>
                                                     <div *ngIf="isUserExist">
-                                                        <label style=" font-size: 11px; color: red; "> {{ isUserExist }}</label>
+                                                        <label style=" font-size: 11px; color: red; "> {{ isUserExist
+                                                            }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,7 +159,8 @@
                                             <div class="col-md-10 form_group_left">
                                                 <input type="email" [formControlName]="control.fieldId" [class]="isEmailExist ? ' borderRed ': ''" (change)="checkemail($event)" required="true" placeholder="{{control.placeholder}}" class="form-control">
                                                 <div *ngIf="isEmailExist">
-                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist }}</label>
+                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist
+                                                        }}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,7 +236,7 @@
                                                         *ngIf="control._is_Mandatory_ == true">*</span></label>
                                             </div>
                                             <div class="col-md-10 form_group_left">
-                                                <input type="date" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}"  [max]="newdate" class="form-control">
+                                                <input type="date" [formControlName]="control.fieldId" placeholder="{{control.placeholder}}" [max]="newdate" class="form-control">
                                             </div>
                                         </div>
 
@@ -346,24 +349,22 @@
                                                             <input type="text" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required class="form-control">
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
                                                 <ng-template #hidefield>
                                                     <div class="col-md-8 form_group_left">
                                                         <label class="comlabel">{{controls.fieldName}}<span
-                                                            style=" color: red; "
-                                                            *ngIf="controls._is_Mandatory_ == true">*</span></label>
+                                                                style=" color: red; "
+                                                                *ngIf="controls._is_Mandatory_ == true">*</span></label>
                                                     </div>
 
                                                     <div class="col-md-10 form_group_left" *ngIf="controls.fieldId == 'userName';else showuser">
                                                         <input autoComplete="on" list="menace" #seatodoo type="search" (keyup)='onchangeusername()' [(ngModel)]="valuesearch" name="seetodoo" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" required [class]="isUserExist ? ' form-control borderRed ': 'form-control'">
                                                         <datalist id="menace">
-                                                        <option *ngFor="let menace of nameList">{{menace}} </option>
-                                                    </datalist>
+                                                            <option *ngFor="let menace of nameList">{{menace}} </option>
+                                                        </datalist>
                                                         <div *ngIf="isUserExist">
-                                                            <label style=" font-size: 11px; color: red; "> {{ isUserExist }}</label>
+                                                            <label style=" font-size: 11px; color: red; "> {{
+                                                                isUserExist }}</label>
                                                         </div>
                                                     </div>
                                                     <ng-template #showuser>
@@ -411,7 +412,8 @@
                                             <div class="col-md-10 form_group_left">
                                                 <input type="email" [formControlName]="controls.fieldId" [class]="isEmailExist ? ' borderRed ': ''" (change)="checkemail($event)" placeholder="{{controls.placeholder}}" required="true" class="form-control">
                                                 <div *ngIf="isEmailExist">
-                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist }}</label>
+                                                    <label style=" font-size: 11px; color: red; "> {{ isEmailExist
+                                                        }}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -504,7 +506,7 @@
                                                         *ngIf="controls._is_Mandatory_ == true">*</span></label>
                                             </div>
                                             <div class="col-md-10 form_group_left">
-                                                <input type="date" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}"  [max]="newdate" required class="form-control">
+                                                <input type="date" [formControlName]="controls.fieldId" placeholder="{{controls.placeholder}}" [max]="newdate" required class="form-control">
                                             </div>
                                         </div>
 
@@ -582,7 +584,8 @@
                             <div class="row">
                                 <div class="col-md-10 col-12 custom_checkbox">
                                     <input type="checkbox" formControlName="_ispolicy_and_terms_accepted_"><label class="cus_check_lab">By clicking this you will accpeting
-                                        the <a href="/privacypolicy"> Privacy Policy</a> and <a href="/termsofuse"> Terms
+                                        the <a href="/privacypolicy"> Privacy Policy</a> and <a href="/termsofuse">
+                                            Terms
                                             &
                                             condition</a> of Fikra.<span
                                             style=" color: red;font-size: 18px ">*</span></label>

@@ -2,7 +2,7 @@
 <!-- <app-right-header></app-right-header> -->
 <!-- content -->
 <div *ngIf='banerImgCheck !== false '>
-    <section class="what_banner_sec" [style.background]="background" *ngFor="let item of topBanner">
+    <section class="what_banner_sec" [ngStyle]="{'background-position': 'center','background-size':'cover' }" [style.background]="background" *ngFor="let item of topBanner">
         <div class="container">
             <div class="row">
                 <div class="col-md-2"></div>

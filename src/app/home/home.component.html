@@ -102,11 +102,9 @@
                     </li>
                     <li *ngIf="role === 'investor' || role === 'creator'">
                         <a (click)="profilepopup()" style="font-size: 25px; margin-left: 10%">
-                            <img class="upload-img" style="width: 50px; height: 50px; border-radius: 50%"
-                                *ngIf="profileImage !== 'undefined'" src="{{ profileimg }}" />
+                            <img class="upload-img" style="width: 50px; height: 50px; border-radius: 50%" *ngIf="profileImage !== 'undefined'" src="{{ profileimg }}" />
                         </a>
-                        <i (click)="profilepopup()" *ngIf="profileImage === 'undefined'"
-                            class="extraCl fa fa-user-circle-o" aria-hidden="true"></i>
+                        <i (click)="profilepopup()" *ngIf="profileImage === 'undefined'" class="extraCl fa fa-user-circle-o" aria-hidden="true"></i>
                         <div>
                             <div class="overlay" *ngIf="popup">
                                 <form [formGroup]="WordpressForm">
@@ -114,8 +112,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-10"></div>
-                                                <i class="fal fa-times" (click)="popup = false"
-                                                    style="cursor: pointer; margin: 20px 0px"></i>
+                                                <i class="fal fa-times" (click)="popup = false" style="cursor: pointer; margin: 20px 0px"></i>
                                             </div>
                                             <div class="row">
                                                 <div class="row">
@@ -141,12 +138,10 @@
                                                     <div class="col-md-6 right_border">
                                                         <ul class="profile_ul">
                                                             <li class="profile_li">
-                                                                <a
-                                                                    routerLink="/savedproject">{{contentLan.SAVEDPROJECTS}}</a>
+                                                                <a routerLink="/savedproject">{{contentLan.SAVEDPROJECTS}}</a>
                                                             </li>
                                                             <li class="profile_li">
-                                                                <a
-                                                                    routerLink="/mypledge">{{contentLan.BACKEDPROJECS}}</a>
+                                                                <a routerLink="/mypledge">{{contentLan.BACKEDPROJECS}}</a>
                                                             </li>
                                                             <li class="profile_li">
                                                                 <a routerLink="/following">{{contentLan.FOLLOWING}}</a>
@@ -179,24 +174,21 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div *ngIf="role === 'creator'; else creatorTemplate"
-                                                    class="create_proj_top">
+                                                <div *ngIf="role === 'creator'; else creatorTemplate" class="create_proj_top">
                                                     <div class="col-md-12" style="text-align: initial; padding: 20px">
                                                         <div class="crr_po_to">
                                                             <h4 class="createdproject" style="margin-top: 7px">
                                                                 <b>{{ contentLan.CREATEDPROJECTS }}</b>
                                                             </h4>
                                                             <a class="createnewa" routerLink="/createproject">
-                                                                <button class="createplus">+</button><span
-                                                                    class="createnew">{{
+                                                                <button class="createplus">+</button><span class="createnew">{{
                                                                     contentLan.CREATENEW}}</span></a>
                                                         </div>
                                                         <ul *ngFor="
                                 let country of user.projectData;
                                 let i = index
                               " style="margin-bottom: 10px; padding: 0px">
-                                                            <input type="text" placeholder="Title" [(ngModel)]="title"
-                                                                formControlName="title" hidden />
+                                                            <input type="text" placeholder="Title" [(ngModel)]="title" formControlName="title" hidden />
                                                             <a *ngIf="6 > i" [routerLink]="[
                                   '/projectinner/' +
                                     country._id +
@@ -219,8 +211,7 @@
                                                                 </li>
                                                             </a>
                                                         </ul>
-                                                        <ul *ngIf="user.projectData?.length > 5"
-                                                            style="margin-bottom: 10px; padding: 0px">
+                                                        <ul *ngIf="user.projectData?.length > 5" style="margin-bottom: 10px; padding: 0px">
                                                             <a [routerLink]="['/activity']">
                                                                 <li>View all</li>
                                                             </a>
@@ -317,52 +308,52 @@
                                                         <a (click)="deletenotify(notifyobj._id)">
                                                             <i class="fas fa-trash-alt"></i></a>
                                                     </span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label style="font-size: 12px">{{
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label style="font-size: 12px">{{
                                                         notifyobj.createdAt | date: "M/d/yy, h:mm a"
                                                         }}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </span>
-                                <ng-template #successTemplate>
-                                    <a href="/message" style="text-decoration: none; color: black">
-                                        <div class="col-md-12 notifyfullverify">
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
-                                                    <label>{{ contentLan.MESSAGE }} :</label>
-                                                    <p *ngIf="notifyobj.notiContent">
-                                                        {{ notifyobj.notiContent }}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <span style="font-size: 18px; color: #ff495e">
+                        </div>
+                    </div>
+                </div>
+                </a>
+                </span>
+                <ng-template #successTemplate>
+                    <a href="/message" style="text-decoration: none; color: black">
+                        <div class="col-md-12 notifyfullverify">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h4 class="titnotify">{{ notifyobj.notiSub }}</h4>
+                                    <label>{{ contentLan.MESSAGE }} :</label>
+                                    <p *ngIf="notifyobj.notiContent">
+                                        {{ notifyobj.notiContent }}
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="font-size: 18px; color: #ff495e">
                                                         <a (click)="deletenotify(notifyobj._id)">
                                                             <i class="fas fa-trash-alt"></i></a>
                                                     </span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label style="font-size: 12px">{{
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label style="font-size: 12px">{{
                                                         notifyobj.createdAt | date: "M/d/yy, h:mm a"
                                                         }}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </ng-template>
+                                </div>
                             </div>
-                        </ng-template>
-                    </div>
-                </div>
-            </form>
+                        </div>
+                    </a>
+                </ng-template>
         </div>
+        </ng-template>
+    </div>
+    </div>
+    </form>
+    </div>
     </div>
     <div class class="container">
         <div class="row bannerrow" *ngFor="let banner of creative">
@@ -392,7 +383,7 @@
             <div class="col-md-6 right_ban_carousel">
                 <owl-carousel-o [options]="customOptions">
                     <ng-template carouselSlide *ngFor="let bnrimg of bannerhome">
-                        <a [routerLink]="['/projectview', bnrimg.projectIdenty._id]" (click)="localprojectid()" *ngIf="bnrimg.projectIdenty._is_On_Live_ == true;else showbnrimg">
+                        <a [routerLink]="['/projectview', bnrimg.projectIdenty._id]" (click)="localprojectid()">
                             <img src="{{ bnrimg.projectId.projectImage }}" />
                             <h4 class="banner_carou_txt">
                                 {{ bnrimg.projectId.title }}
@@ -493,8 +484,7 @@
                 <ul class="categ_ul">
                     <br />
                     <br />
-                    <li *ngFor="let subCat of subCatList"
-                        (click)="listproject('','','','', subCat ? subCat.subCategorieName : null)">
+                    <li *ngFor="let subCat of subCatList" (click)="listproject('','','','', subCat ? subCat.subCategorieName : null)">
                         <a>
                             <span *ngIf="dir == 'ltr'">{{
                                 subCat ? subCat.subCategorieName : null}}</span>
@@ -525,8 +515,7 @@
                         <div class="col-md-6">
                             <div class="left_one_sec">
                                 <!-- <img src="{{recommendedprojectimg}}" alt="" class="feat_img"> -->
-                                <img *ngIf="recommendedprojectimg" class="feat_img" style="border-radius: 15px"
-                                    src="{{ recommendedprojectimg }}" />
+                                <img *ngIf="recommendedprojectimg" class="feat_img" style="border-radius: 15px" src="{{ recommendedprojectimg }}" />
                                 <div class="forDiv_sec" style="border-radius: none" *ngIf="!recommendedprojectimg">
                                     <i class="fas fa-image forIcon_sec" style="margin: 105px"></i>
                                 </div>
@@ -540,8 +529,7 @@
                                 <!-- <p class="extra_p"> {{recommendedprojectdes}}</p> -->
                                 <p class="extra_p" *ngIf="recommendedprojectdes?.length >= 60">
                                     {{ recommendedprojectdes.slice(0, 60) }}<br />
-                                    <a [routerLink]="['/projectview', recommendedproject_Id]"
-                                        style="color: red; font-size: 15px; cursor: pointer">Read more</a>
+                                    <a [routerLink]="['/projectview', recommendedproject_Id]" style="color: red; font-size: 15px; cursor: pointer">Read more</a>
                                 </p>
                                 <p class="extra_p" *ngIf="60 >= recommendedprojectdes?.length">
                                     {{ recommendedprojectdes }}
@@ -557,8 +545,7 @@
                                     <span>{{ contentLan.CATEGORY }} :</span>&nbsp;{{recommendedprojectloc}}
                                 </p>
                                 <p class="extra_p" style="padding: 0px 0px">
-                                    <span>{{ contentLan.LAUNCH }} :</span>&nbsp;{{ lastdaterec }}
-                                    {{ contentLan.DAYSTOGO }}
+                                    <span>{{ contentLan.LAUNCH }} :</span>&nbsp;{{ lastdaterec }} {{ contentLan.DAYSTOGO }}
                                 </p>
                             </div>
                         </div>
@@ -578,36 +565,29 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 col-lg-6 col-xl-6">
                                     <!-- <img src="{{recommendeddata.basicInfoId.projectImage}}"> -->
-                                    <img *ngIf="recommendeddata.basicInfoId.projectImage" style="border-radius: 15px"
-                                        src="{{ recommendeddata.basicInfoId.projectImage }}" />
-                                    <div class="forDiv_sec" style="border-radius: none"
-                                        *ngIf="!recommendeddata.basicInfoId.projectImage">
+                                    <img *ngIf="recommendeddata.basicInfoId.projectImage" style="border-radius: 15px" src="{{ recommendeddata.basicInfoId.projectImage }}" />
+                                    <div class="forDiv_sec" style="border-radius: none" *ngIf="!recommendeddata.basicInfoId.projectImage">
                                         <i class="fas fa-image forIcon_sec"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12 col-lg-6 col-xl-6" style="padding: 0px">
                                     <div class="recom_right_sec">
-                                        <a [routerLink]="['/projectview', recommendeddata._id]"
-                                            (click)="localprojectid()">
+                                        <a [routerLink]="['/projectview', recommendeddata._id]" (click)="localprojectid()">
                                             <h6 style="color: black">{{ recommendeddata.title }}</h6>
                                             <p class="fund">
                                                 <span style="color: #ff5c58ad; font-weight: 400">{{ contentLan.GOAL
-                                                    }}:</span>&nbsp; SAR&nbsp;{{
-                                                recommendeddata.basicInfoId.goalAmount}}
+                                                    }}:</span>&nbsp; SAR&nbsp;{{ recommendeddata.basicInfoId.goalAmount}}
                                             </p>
                                             <p class="by_name">{{ recommendeddata.userId.userName }}</p>
                                         </a>
                                         <ul class="comment_icon">
                                             <li>
-                                                <button [swal]="['Hi', 'Please Login to Save this project']"
-                                                    style="border: none; background: none"
-                                                    *ngIf="userver == null; else showsave" (click)="notuser()">
+                                                <button [swal]="['Hi', 'Please Login to Save this project']" style="border: none; background: none" *ngIf="userver == null; else showsave" (click)="notuser()">
                                                     <i class="fa fa-bookmark-o" aria-hidden="true"></i>
                                                 </button>
                                             </li>
                                             <li *ngIf="userver == null; else showlike">
-                                                <button [swal]="['Hi', 'Please Login to Like this project']"
-                                                    style="border: none; background: none" (click)="notuser()">
+                                                <button [swal]="['Hi', 'Please Login to Like this project']" style="border: none; background: none" (click)="notuser()">
                                                     <i class="fa fa-thumbs-o-up" aria-hidden="true">
                                                         <span
                                                             style="margin-left: 7px">{{recommendeddata._total_Likes_}}</span></i>
@@ -616,15 +596,13 @@
 
                                             <ng-template #showsave>
                                                 <li *ngIf="recommendeddata?._is_Saved_Project;else unsaved">
-                                                    <button style="border: none; background: none"
-                                                        (click)="addtosave(recommendeddata._id)">
+                                                    <button style="border: none; background: none" (click)="addtosave(recommendeddata._id)">
                                                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                                                     </button>
                                                 </li>
                                                 <ng-template #unsaved>
                                                     <li>
-                                                        <button style="border: none; background: none"
-                                                            (click)="addtosave(recommendeddata._id)">
+                                                        <button style="border: none; background: none" (click)="addtosave(recommendeddata._id)">
                                                             <i class="fa fa-bookmark-o" aria-hidden="true"></i>
                                                         </button>
                                                     </li>
@@ -632,8 +610,7 @@
                                             </ng-template>
                                             <ng-template #showlike>
                                                 <li>
-                                                    <button style="border: none; background: none"
-                                                        (click)="addtolike(recommendeddata._id)">
+                                                    <button style="border: none; background: none" (click)="addtolike(recommendeddata._id)">
                                                         <i [class]="recommendeddata?._is_Liked_Project ? 'fa fa-thumbs-up' : 'fa fa-thumbs-o-up'"
                                                             aria-hidden="true">
                                                             <span
@@ -663,10 +640,8 @@
                 <h6 *ngIf="dir == 'ltr'">{{ data.subcribeBody }}</h6>
                 <h6 *ngIf="dir == 'rtl'">{{ data.subcribeBody_ar }}</h6>
 
-                <form class="newsletter" [formGroup]="homenewsletterform" ngNativeValidate
-                    (ngSubmit)="homenewsletter()">
-                    <input type="email" name="email" formControlName="email" class="form-control"
-                        placeholder="{{ 'Home.Enter_address' | translate }}" required />
+                <form class="newsletter" [formGroup]="homenewsletterform" ngNativeValidate (ngSubmit)="homenewsletter()">
+                    <input type="email" name="email" formControlName="email" class="form-control" placeholder="{{ 'Home.Enter_address' | translate }}" required />
                     <button class="signup-btn" type="submit" id="element">
                         <span>{{ contentLan.SUBSCRIBE }}</span>
                     </button>
@@ -675,8 +650,7 @@
                     <a style="color: red; background: white">{{ errValue }}</a>
                 </div>
                 <p style="text-align: center; color: black">
-                    <input type="checkbox" (change)="checksubscribe($event)" /> &nbsp;{{
-                    contentLan.agreetothe}}
+                    <input type="checkbox" (change)="checksubscribe($event)" /> &nbsp;{{ contentLan.agreetothe}}
                     <a routerLink="/termsofuse" target="_blank" style="color: #ffff">&nbsp;{{ contentLan.TERMSOFUSE
                         }}&nbsp;</a>&nbsp;{{ contentLan.havereadandunderstand }}&nbsp;
                     <a routerLink="/privacypolicy" target="_blank" style="color: #ffff">&nbsp;{{
@@ -716,8 +690,7 @@
                             <ng-template carouselSlide *ngFor="let datataking of featureproject">
                                 <div class="row">
                                     <div class="col-md-12" class="ownContainerBorder">
-                                        <img *ngIf="datataking.basicInfoId.projectImage" style="height: 175px"
-                                            src="{{ datataking.basicInfoId.projectImage }}" />
+                                        <img *ngIf="datataking.basicInfoId.projectImage" style="height: 175px" src="{{ datataking.basicInfoId.projectImage }}" />
                                         <div class="forDiv" *ngIf="!datataking.basicInfoId.projectImage">
                                             <i class="fas fa-image forIcon"></i>
                                         </div>
@@ -725,8 +698,7 @@
                                             <!-- <button (click)="notuser()">click</button> -->
                                             <ul class="icons_sec">
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showsave" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
                                                         <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                             aria-hidden="true"></i></span>
                                                 </li>
@@ -745,8 +717,7 @@
                                                     </li>
                                                 </ng-template>
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showlike" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
                                                         <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                             aria-hidden="true">
                                                         </i>
@@ -765,8 +736,7 @@
                                                     </li>
                                                 </ng-template>
                                             </ul>
-                                            <a [routerLink]="['/projectview', datataking._id]"
-                                                (click)="localprojectid()">
+                                            <a [routerLink]="['/projectview', datataking._id]" (click)="localprojectid()">
                                                 <h3 *ngIf="datataking.title?.length >= 50">
                                                     {{ datataking.title.slice(0, 40) }}
                                                 </h3>
@@ -949,8 +919,7 @@
                             <ng-template carouselSlide *ngFor="let datatakings of takingoffhome">
                                 <div class="row">
                                     <div class="col-md-12" class="ownContainerBorder">
-                                        <img *ngIf="datatakings.basicInfoId.projectImage" style="height: 175px"
-                                            src="{{ datatakings.basicInfoId.projectImage }}" />
+                                        <img *ngIf="datatakings.basicInfoId.projectImage" style="height: 175px" src="{{ datatakings.basicInfoId.projectImage }}" />
                                         <div class="forDiv" *ngIf="!datatakings.basicInfoId.projectImage">
                                             <i class="fas fa-image forIcon"></i>
                                         </div>
@@ -958,8 +927,7 @@
                                         <div class="feat_proj_slider">
                                             <ul class="icons_sec">
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showsave" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
                                                         <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                             aria-hidden="true"></i></span>
                                                 </li>
@@ -978,8 +946,7 @@
                                                     </li>
                                                 </ng-template>
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showlike" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
                                                         <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                             aria-hidden="true">
                                                         </i>
@@ -998,8 +965,7 @@
                                                     </li>
                                                 </ng-template>
                                             </ul>
-                                            <a [routerLink]="['/projectview', datatakings._id]"
-                                                (click)="localprojectid()">
+                                            <a [routerLink]="['/projectview', datatakings._id]" (click)="localprojectid()">
                                                 <h3 *ngIf="datatakings.title?.length >= 50">
                                                     {{ datatakings.title.slice(0, 40) }}
                                                 </h3>
@@ -1084,8 +1050,7 @@
                             <ng-template carouselSlide *ngFor="let datahomestretch of homestretch">
                                 <div class="row">
                                     <div class="col-md-12" class="ownContainerBorder">
-                                        <img *ngIf="datahomestretch.basicInfoId.projectImage" style="height: 175px"
-                                            src="{{ datahomestretch.basicInfoId.projectImage }}" />
+                                        <img *ngIf="datahomestretch.basicInfoId.projectImage" style="height: 175px" src="{{ datahomestretch.basicInfoId.projectImage }}" />
                                         <div class="forDiv" *ngIf="!datahomestretch.basicInfoId.projectImage">
                                             <i class="fas fa-image forIcon"></i>
                                         </div>
@@ -1093,8 +1058,7 @@
                                         <div class="feat_proj_slider">
                                             <ul class="icons_sec">
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showsave" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showsave" (click)="notuser()">
                                                         <i class="fa fa-bookmark-o" style="color: #f13b0099"
                                                             aria-hidden="true"></i></span>
                                                 </li>
@@ -1113,8 +1077,7 @@
                                                     </li>
                                                 </ng-template>
                                                 <li>
-                                                    <span [swal]="['Hi', 'Login required for this activity']"
-                                                        *ngIf="userver == null; else showlike" (click)="notuser()">
+                                                    <span [swal]="['Hi', 'Login required for this activity']" *ngIf="userver == null; else showlike" (click)="notuser()">
                                                         <i class="fa fa-thumbs-o-up" style="color: #f13b0099"
                                                             aria-hidden="true"></i>
                                                     </span>
@@ -1132,8 +1095,7 @@
                                                     </li>
                                                 </ng-template>
                                             </ul>
-                                            <a [routerLink]="['/projectview', datahomestretch._id]"
-                                                (click)="localprojectid()">
+                                            <a [routerLink]="['/projectview', datahomestretch._id]" (click)="localprojectid()">
                                                 <h3 *ngIf="datahomestretch.title?.length >= 50">
                                                     {{ datahomestretch.title.slice(0, 40) }}
                                                 </h3>
@@ -1236,19 +1198,15 @@
                     <div class="col-md-4" style="margin-top: 5%" *ngFor="let dataobj of creativeblog">
                         <div class="row">
                             <div class="col-md-4" *ngIf="dataobj.profileImage">
-                                <img src="{{ dataobj.profileImage }}"
-                                    style="width: 60px;border-radius: 50px;height: 60px;border: 2px solid #ff4362;" />
+                                <img src="{{ dataobj.profileImage }}" style="width: 60px;border-radius: 50px;height: 60px;border: 2px solid #ff4362;" />
                             </div>
                             <div class="col-md-4" *ngIf="!dataobj.profileImage">
-                                <i class="fas fa-user-circle"
-                                    style="width: 60px;font-size: 3.8pc;border-radius: 50px;height: 60px;border: 2px solid #ff4362;"></i>
+                                <i class="fas fa-user-circle" style="width: 60px;font-size: 3.8pc;border-radius: 50px;height: 60px;border: 2px solid #ff4362;"></i>
                             </div>
 
                             <div class="col-md-8 creatordiv">
                                 <h5 style="margin-top: 5%">{{ dataobj.fullName }}</h5>
-                                <a [routerLink]="['/profile_view', dataobj._id, dataobj._userRole_]"
-                                    class="discovermore" (click)="onknow(dataobj._id)"
-                                    style="color: black; cursor: pointer">
+                                <a [routerLink]="['/profile_view', dataobj._id, dataobj._userRole_]" class="discovermore" (click)="onknow(dataobj._id)" style="color: black; cursor: pointer">
                                     <p class="link_sec">{{ contentLan.READMORE}}
                                         <i class="fas fa-arrow-right" *ngIf="dir == 'ltr'"></i>
                                         <i class="fas fa-arrow-left" *ngIf="dir == 'rtl'"></i>

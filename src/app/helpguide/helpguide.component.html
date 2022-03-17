@@ -8,7 +8,7 @@
                     <span *ngIf=" dir == 'rtl'">{{data.titleAr}}</span>
                 </button>
                 <div class="row" *ngFor='let ques of data.question'>
-                    <div class="col-md-12" *ngIf="data._is_On_ == true">
+                    <div class="col-md-12" *ngIf="ques._is_On_ == true">
                         <h4 class="helpques" *ngIf=" dir == 'ltr'">{{ques.question}}</h4>
                         <h4 class="helpques" *ngIf=" dir == 'rtl'">{{ques.questionAr}}</h4>
                         <hr style=" color: #424242; ">

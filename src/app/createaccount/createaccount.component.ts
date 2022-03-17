@@ -34,7 +34,7 @@ export class CreateaccountComponent implements OnInit {
   statusCreator = false;
   lang: any;
   registercreatorform: any;
-  registeruserform:any;
+  registeruserform: any;
   rolecreator: any;
   createaccount: any;
   isSuccessful = false;
@@ -43,13 +43,13 @@ export class CreateaccountComponent implements OnInit {
   imgfile: any;
   fileUpload: any;
   valuesearch: any;
-  passcrt=false;
+  passcrt = false;
   loading = false;
   errors: any = [];
   errors1: any = [];
-  unamePattern = "(?=.*\d)(?=.*[a-z]).{8,}"; 
-  registercreatorformcheck:any;
-  nameList:any;
+  unamePattern = "(?=.*\d)(?=.*[a-z]).{8,}";
+  registercreatorformcheck: any;
+  nameList: any;
   contentLan: any = {};
   isEmailExist: any;
   isUserExist: any;
@@ -60,7 +60,7 @@ export class CreateaccountComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -73,26 +73,26 @@ export class CreateaccountComponent implements OnInit {
   async arabicCotent() {
     this.myPromise
 
-      let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
+    let sameContent = await JSON.parse(localStorage.getItem("transkey")!);
 
-      const lang = localStorage.getItem("lang") || "en";
+    const lang = localStorage.getItem("lang") || "en";
 
-      await sameContent.reduce(async (promise: any, element: any) => {
-        // console.log(element)
-        if (lang == "en") {
-          this.contentLan[element.key] = element.en;
-        } else {
-          this.contentLan[element.key] = element.ar;
-        }
-        await promise;
-      }, Promise.resolve());
+    await sameContent.reduce(async (promise: any, element: any) => {
+      // console.log(element)
+      if (lang == "en") {
+        this.contentLan[element.key] = element.en;
+      } else {
+        this.contentLan[element.key] = element.ar;
+      }
+      await promise;
+    }, Promise.resolve());
   }
   ngOnInit(): void {
     this.dir = localStorage.getItem("dir") || "ltr";
     var someDate = new Date();
     this.newdate = someDate.toISOString().substr(0, 10);
-
-	  this.myPromise
+    // this. = Date.now();
+    this.myPromise
     // Investor Form
     this.lang = localStorage.getItem('lang') || 'en';
     this.registerform = this.fb.group({
@@ -156,17 +156,17 @@ export class CreateaccountComponent implements OnInit {
     this.registerform.valueChanges.subscribe((x: any) => {
       let pushIt: any = []
 
-      this.investorMandatory.map((data : any) => {
-        if(this.registerform.value[data] == ''){
+      this.investorMandatory.map((data: any) => {
+        if (this.registerform.value[data] == '') {
           pushIt.push(true)
-        }else{
+        } else {
           pushIt.push(false)
         }
-      })  
+      })
 
-      if(pushIt.find((ele: any)=> ele)){
+      if (pushIt.find((ele: any) => ele)) {
         this.statusInvestor = true
-      }else{
+      } else {
         this.statusInvestor = false
       }
     });
@@ -174,17 +174,17 @@ export class CreateaccountComponent implements OnInit {
     this.registercreatorform.valueChanges.subscribe((x: any) => {
       let pushIt: any = []
 
-      this.creatorMandatory.map((data : any) => {
-        if(this.registercreatorform.value[data] == ''){
+      this.creatorMandatory.map((data: any) => {
+        if (this.registercreatorform.value[data] == '') {
           pushIt.push(true)
-        }else{
+        } else {
           pushIt.push(false)
         }
-      })  
+      })
 
-      if(pushIt.find((ele: any)=> ele)){
+      if (pushIt.find((ele: any) => ele)) {
         this.statusCreator = true
-      }else{
+      } else {
         this.statusCreator = false
       }
     });
@@ -212,7 +212,7 @@ export class CreateaccountComponent implements OnInit {
         this.loading = false;
         // this.toastr.warning('Please accept the terms and condition');
         Swal.fire({
-          text:"Please accept the terms&condition and Privacy policy",
+          text: "Please accept the terms&condition and Privacy policy",
           icon: "warning",
         });
       }
@@ -223,7 +223,7 @@ export class CreateaccountComponent implements OnInit {
   }
 
   registerCreator() {
-    if ( 
+    if (
       this.registercreatorform.value.password ==
       this.registercreatorform.value.confirmpassword
     ) {
@@ -246,7 +246,7 @@ export class CreateaccountComponent implements OnInit {
         this.loading = false
         // this.toastr.warning('Please Field the from');
         Swal.fire({
-          text:"Please accept the terms&condition and Privacy policy",
+          text: "Please accept the terms&condition and Privacy policy",
           icon: "warning",
         });
       }
@@ -289,8 +289,8 @@ export class CreateaccountComponent implements OnInit {
 
   onDisplayModeChange(mode: number): void {
     this.displayMode = mode;
-    this.isEmailExist= false;
-    this.isUserExist= false;
+    this.isEmailExist = false;
+    this.isUserExist = false;
   }
 
   formcreator() {
@@ -307,23 +307,23 @@ export class CreateaccountComponent implements OnInit {
   onchangeusername() {
     // this.registercreatorform.value.userName =value;
     // console.log('search',this.valuesearch);
-        this.registeruserform =this.fb.group({
-          queryString:this.valuesearch,
-    
-      });
-    this.authService.verifyusername( this.registeruserform.value).subscribe((res: any) => {
+    this.registeruserform = this.fb.group({
+      queryString: this.valuesearch,
+
+    });
+    this.authService.verifyusername(this.registeruserform.value).subscribe((res: any) => {
       this.nameList = res.suggestions;
-      if (res.error == true){
+      if (res.error == true) {
         // this.loading = false;
         // Swal.fire({
         //   text: res.message,
         //   icon: "warning",
         // });
         this.isUserExist = res.message
-      // this.toastr.warning(res.message);
-    }else{
-      this.isUserExist = false
-    }
+        // this.toastr.warning(res.message);
+      } else {
+        this.isUserExist = false
+      }
       // console.log('city', this.cityList: any);
     });
   }
@@ -337,67 +337,67 @@ export class CreateaccountComponent implements OnInit {
   //  }else{
   //   this.passcrt = false;
   //  }
-    
+
   // }
 
   checkpass(event: any) {
     var p = event.target.value;
-        this.errors = [];
+    this.errors = [];
     if (p.length < 8) {
-        this.errors.push("Your password must be at least 8 characters"); 
+      this.errors.push("Your password must be at least 8 characters");
     }
     if (p.search(/[a-z]/i) < 0) {
-        this.errors.push("Your password must contain at least one letter.");
+      this.errors.push("Your password must contain at least one letter.");
     }
     if (p.search(/[0-9]/) < 0) {
-        this.errors.push("Your password must contain at least one digit."); 
+      this.errors.push("Your password must contain at least one digit.");
     }
     if (this.errors.length > 0) {
-        // alert(this.errors.join("\n"));
-        // this.toastr.warning(this.errors.join("\n"));
-        this.passcrt = true;
-        return false;
-    }
-    return true;
-}
-
-checkpass1(event: any) {
-  var p = event.target.value;
-      this.errors1 = [];
-  if (p.length < 8) {
-      this.errors1.push("Your password must be at least 8 characters"); 
-  }
-  if (p.search(/[a-z]/i) < 0) {
-      this.errors1.push("Your password must contain at least one letter");
-  }
-  if (p.search(/[0-9]/) < 0) {
-      this.errors1.push("Your password must contain at least one digit."); 
-  }
-  if (this.errors1.length > 0) {
       // alert(this.errors.join("\n"));
       // this.toastr.warning(this.errors.join("\n"));
       this.passcrt = true;
       return false;
+    }
+    return true;
   }
-  return true;
-}
 
-checkemail(event:any){
-  var e = event.target.value;
-  this.errors = [];
-  const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  var check=regularExpression.test(String(e).toLowerCase());
-  if(check == false){
-  //  Swal.fire({
-  //    text: "Check the Email entered or Email is not available",
-  //    icon: "warning",
-  //  });
-   this.isEmailExist = 'Check the Email entered or Email is not available'
-    // this.toastr.warning("Check the Email entered or Email is not available");
-  }else{
-    this.isEmailExist = false
+  checkpass1(event: any) {
+    var p = event.target.value;
+    this.errors1 = [];
+    if (p.length < 8) {
+      this.errors1.push("Your password must be at least 8 characters");
+    }
+    if (p.search(/[a-z]/i) < 0) {
+      this.errors1.push("Your password must contain at least one letter");
+    }
+    if (p.search(/[0-9]/) < 0) {
+      this.errors1.push("Your password must contain at least one digit.");
+    }
+    if (this.errors1.length > 0) {
+      // alert(this.errors.join("\n"));
+      // this.toastr.warning(this.errors.join("\n"));
+      this.passcrt = true;
+      return false;
+    }
+    return true;
   }
- }
+
+  checkemail(event: any) {
+    var e = event.target.value;
+    this.errors = [];
+    const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var check = regularExpression.test(String(e).toLowerCase());
+    if (check == false) {
+      //  Swal.fire({
+      //    text: "Check the Email entered or Email is not available",
+      //    icon: "warning",
+      //  });
+      this.isEmailExist = 'Check the Email entered or Email is not available'
+      // this.toastr.warning("Check the Email entered or Email is not available");
+    } else {
+      this.isEmailExist = false
+    }
+  }
 
 
   selectchange(value: any) {

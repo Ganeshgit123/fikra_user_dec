@@ -815,3 +815,7 @@ p a{
     color: rgba(255, 255, 255, 1);
     box-shadow: 0 5px 15px rgb(199 25 57 / 58%);
 }
+.banner_cont_sec p{
+    color: #fff !important;
+    font-weight: 600;
+}

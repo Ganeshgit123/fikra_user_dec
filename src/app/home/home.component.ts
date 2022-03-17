@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit ,ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OwlOptions } from "ngx-owl-carousel-o";
@@ -16,7 +16,7 @@ import Swal, { SweetAlertOptions } from "sweetalert2";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-  errors:any;
+  errors: any;
   creator: any;
   creatives: any;
   creative: any;
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
   popup1: any;
   popup2: any;
   IsmodelShow: any;
-  opensearch =false;
+  opensearch = false;
   notify: any;
   seetodo: any;
   valuesearch: any;
@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit {
     ],
     responsive: {
       0: {
-        items: 1 
+        items: 1
       },
       480: {
         items: 2
@@ -147,7 +147,7 @@ export class HomeComponent implements OnInit {
       940: {
         items: 5,
       },
-    },    nav: false,
+    }, nav: false,
     rtl: true,
   };
   contentLan: any = {};
@@ -162,7 +162,7 @@ export class HomeComponent implements OnInit {
   user: any = [];
   title!: any;
   popup: any;
-  bannerhome: any;
+  bannerhome: any = [];
   clientlog: any;
   home: any;
   profileImage: any;
@@ -173,7 +173,7 @@ export class HomeComponent implements OnInit {
   dir: any;
   currentdate: any;
   lastdate: any = [];
-  homelastdate:any=[];
+  homelastdate: any = [];
   lastdaterec: any;
   recommendedprojectgoal: any;
   recommendedprojectloc: any;
@@ -202,7 +202,7 @@ export class HomeComponent implements OnInit {
   featurelastpercentage: any = [];
   takinglastper: any = [];
   takinglastpercentage: any = [];
-  featureamountPleadged: any=[];
+  featureamountPleadged: any = [];
   featurepercentage: any;
   featuregoalAmount: any;
   stylewidthgr: any;
@@ -216,17 +216,16 @@ export class HomeComponent implements OnInit {
   subCatList: any = [];
   currentCat: any;
   notifyl: any;
-  homecurrentdate:any;
-homeprojectdate:any;
-inter:any;
-date1:any;
-date2:any;
-luncont:any;
-lastdates:any;
-logoimg: any = [];
+  homecurrentdate: any;
+  homeprojectdate: any;
+  inter: any;
+  date1: any;
+  date2: any;
+  luncont: any;
+  lastdates: any;
+  logoimg: any = [];
   logoimgs: any = [];
   getclt: any;
-  
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -235,7 +234,7 @@ logoimg: any = [];
     private route: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private cd : ChangeDetectorRef
+    private cd: ChangeDetectorRef
   ) {
     this.homenewsletterform = this.fb.group({
       email: ["", [Validators.required,]],
@@ -342,26 +341,26 @@ logoimg: any = [];
           this.projectdate = new Date(value.basicInfoId.launchDate);
           var Days = Math.abs(this.projectdate - this.currentdate);
           value.lastdates = Math.ceil(Days / (1000 * 60 * 60 * 24));
-          this.lastdates =Math.ceil(Days / (1000 * 60 * 60 * 24));
-          var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-          this.date1 =this.currentdate;
-         this.date2 = this.projectdate;
-          if(this.lastdates <= 1){
+          this.lastdates = Math.ceil(Days / (1000 * 60 * 60 * 24));
+          var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+          this.date1 = this.currentdate;
+          this.date2 = this.projectdate;
+          if (this.lastdates <= 1) {
             var timediff = this.date2 - this.date1;
-            value.inter="hours";
-          }else{
+            value.inter = "hours";
+          } else {
             var timediff = this.date2 - this.date1;
-            value.inter="days";
+            value.inter = "days";
           }
           switch (value.inter) {
-            case "days"   :  value.inter =  Math.floor(timediff / day)
-            value.luncont="days to go"; 
-            break;
-            case "minutes"   :  value.inter =  Math.floor(timediff / minute); 
-            break;
-            case "hours"  : value.inter =  Math.floor(timediff / hour)
-            value.luncont="hours to go"; ; 
-            break;
+            case "days": value.inter = Math.floor(timediff / day)
+              value.luncont = "days to go";
+              break;
+            case "minutes": value.inter = Math.floor(timediff / minute);
+              break;
+            case "hours": value.inter = Math.floor(timediff / hour)
+              value.luncont = "hours to go";;
+              break;
             default: return undefined;
           }
         });
@@ -394,33 +393,33 @@ logoimg: any = [];
           this.projectdate = new Date(value.basicInfoId.launchDate);
           var Days = Math.abs(this.projectdate - this.currentdate);
           value.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));
-          this.lastdate =Math.ceil(Days / (1000 * 60 * 60 * 24));
-          var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-          this.date1 =this.currentdate;
-         this.date2 = this.projectdate;
-          if(this.lastdate <= 1){
+          this.lastdate = Math.ceil(Days / (1000 * 60 * 60 * 24));
+          var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+          this.date1 = this.currentdate;
+          this.date2 = this.projectdate;
+          if (this.lastdate <= 1) {
             var timediff = this.date2 - this.date1;
-            value.inter="hours";
-          }else{
+            value.inter = "hours";
+          } else {
             var timediff = this.date2 - this.date1;
-            value.inter="days";
+            value.inter = "days";
           }
           switch (value.inter) {
-            case "days"   :  value.inter =  Math.floor(timediff / day)
-            value.luncont="days to go"; 
-            break;
-            case "minutes"   :  value.inter =  Math.floor(timediff / minute); 
-            break;
-            case "hours"  : value.inter =  Math.floor(timediff / hour)
-            value.luncont="hours to go"; ; 
-            break;
+            case "days": value.inter = Math.floor(timediff / day)
+              value.luncont = "days to go";
+              break;
+            case "minutes": value.inter = Math.floor(timediff / minute);
+              break;
+            case "hours": value.inter = Math.floor(timediff / hour)
+              value.luncont = "hours to go";;
+              break;
             default: return undefined;
           }
         });
       }
-        });
-      
-    
+    });
+
+
 
     this.authService.homestretch().subscribe((res: any) => {
       if (res.error === false) {
@@ -446,29 +445,29 @@ logoimg: any = [];
           this.homeprojectdate = new Date(value.basicInfoId.launchDate);
           var homeDays = Math.abs(this.homeprojectdate - this.homecurrentdate);
           value.homelastdate = Math.ceil(homeDays / (1000 * 60 * 60 * 24));
-          this.homelastdate =Math.ceil(homeDays / (1000 * 60 * 60 * 24));
-          var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-          this.date1 =this.currentdate;
-         this.date2 = this.projectdate;
-          if(this.lastdate <= 1){
+          this.homelastdate = Math.ceil(homeDays / (1000 * 60 * 60 * 24));
+          var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24, week = day * 7;
+          this.date1 = this.currentdate;
+          this.date2 = this.projectdate;
+          if (this.lastdate <= 1) {
             var timediff = this.date2 - this.date1;
-            value.inter="hours";
-          }else{
+            value.inter = "hours";
+          } else {
             var timediff = this.date2 - this.date1;
-            value.inter="days";
+            value.inter = "days";
           }
           switch (value.inter) {
-            case "days"   :  value.inter =  Math.floor(timediff / day)
-            value.luncont="days to go"; 
-            break;
-            case "minutes"   :  value.inter =  Math.floor(timediff / minute); 
-            break;
-            case "hours"  : value.inter =  Math.floor(timediff / hour)
-            value.luncont="hours to go"; ; 
-            break;
+            case "days": value.inter = Math.floor(timediff / day)
+              value.luncont = "days to go";
+              break;
+            case "minutes": value.inter = Math.floor(timediff / minute);
+              break;
+            case "hours": value.inter = Math.floor(timediff / hour)
+              value.luncont = "hours to go";;
+              break;
             default: return undefined;
           }
-         
+
         });
       }
     });
@@ -720,7 +719,7 @@ logoimg: any = [];
   homenewsletter() {
     if (this.homenewsletterform.value) {
       if (this.checksub == true) {
-         var e = this.homenewsletterform.value.email;
+        var e = this.homenewsletterform.value.email;
         this.errors = [];
         const regularExpression =
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -729,10 +728,11 @@ logoimg: any = [];
           Swal.fire({
             text: "Check the Email entered",
             icon: "warning",
-          })}else{
- this.authService.homenewsletter(this.homenewsletterform.value);
-          }
-       
+          })
+        } else {
+          this.authService.homenewsletter(this.homenewsletterform.value);
+        }
+
         this.errValue = "";
         //this.ngOnInit();
         this.homenewsletterform.reset();
@@ -771,16 +771,16 @@ logoimg: any = [];
       notificationId: [values],
     });
     this.authService.deletenotification(this.deleteform.value);
-this.popup2 =false;
-// this.cd.detectChanges();
-this.ngOnInit();
+    this.popup2 = false;
+    // this.cd.detectChanges();
+    this.ngOnInit();
 
 
   }
 
-searchenable(){
-  this.opensearch=true;
-}
+  searchenable() {
+    this.opensearch = true;
+  }
   listproject(value: any, value1: any, value2: any, value3: any, value4: any) {
     let catName = this.category.find(
       (c: any) => c._id == this.currentCat
@@ -801,13 +801,13 @@ searchenable(){
     }
   }
 
-  mouseEnter(id: any) {}
+  mouseEnter(id: any) { }
 
   mouseLeave() {
     this.subCatList = [];
   }
 
-  onknow(value: any) {}
+  onknow(value: any) { }
   close() {
     this.IsmodelShow = true; // set false while you need open your model popup
   }
@@ -823,7 +823,7 @@ searchenable(){
   redirectstart() {
     this.router.navigateByUrl("/startproject");
   }
-  closeSearch(){
+  closeSearch() {
     this.opensearch = false;
     this.popup1 = false;
   }

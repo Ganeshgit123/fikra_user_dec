@@ -65,8 +65,8 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let datas of valarr | filter:searchTerm ; let ndx = index">
+                    <tbody *ngFor="let datas of valarr | filter:searchTerm ; let ndx = index">
+                        <tr>
                             <td>{{ndx+1}}.</td>
                             <td>
                                 <span *ngIf=" dir == 'ltr'">{{datas.jobRole}}</span>
