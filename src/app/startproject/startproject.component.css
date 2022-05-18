@@ -53,6 +53,7 @@ button[disabled] {
     margin: 0 10px;
     transition: all ease 0.5s;
 }
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .startaprojectbtnkn {
         margin: 0px 0;
@@ -84,7 +85,7 @@ button[disabled] {
 
 .creativeprojectimg1 {
     background: transparent 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-radius: 20px;
     opacity: 1;
     width: 100%;
@@ -93,7 +94,7 @@ button[disabled] {
 
 .creativeprojectimg1rtl {
     background: transparent 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-radius: 20px;
     opacity: 1;
     width: 100%;

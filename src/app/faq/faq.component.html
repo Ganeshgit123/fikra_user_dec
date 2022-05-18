@@ -19,9 +19,9 @@
                             </h2>
                             <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;'>{{data.faq_Body}}
+                                <div class="accordion-body" *ngIf=" dir == 'ltr'" style='font-size: 15px;' [innerHtml]='data.faq_Body'>
                                 </div>
-                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;'>{{data.faq_Body_ar}}
+                                <div class="accordion-body" *ngIf=" dir == 'rtl'" style='font-size: 15px;' [innerHtml]='data.faq_Body_ar'>
                                 </div>
                             </div>
                         </div>

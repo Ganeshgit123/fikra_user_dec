@@ -64,10 +64,10 @@ export class ActivityComponent implements OnInit {
   createReduce: any = [];
   page = 1;
   billTotal: any;
-  adminPaymetTotal: any;
-  projectPaymetTotal: any;
+  adminPaymetTotal:any;
+  projectPaymetTotal:any;
   display = "none";
-  rewardPayment: any;
+  rewardPayment:any;
   dataFound = false;
   billdetailRet: any = [];
   billDetailInclude: any = [];

@@ -21,12 +21,12 @@
         <div class="row">
             <div class="col-md-12 col-lg-5">
                 <h3>{{ contentLan.JOBCRITERIA }}</h3>
-                <p *ngIf=" dir == 'ltr'">{{criteria}}</p>
-                <p *ngIf=" dir == 'rtl'">{{criteriaAr}}</p>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]='criteria'></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]='criteriaAr'></p>
 
                 <h3>{{ contentLan.JOBDESCRIPTION }}</h3>
-                <p *ngIf=" dir == 'ltr'">{{jobDescription}}</p>
-                <p *ngIf=" dir == 'rtl'">{{jobDescriptionAr}}</p>
+                <p *ngIf=" dir == 'ltr'" [innerHtml]='jobDescription'></p>
+                <p *ngIf=" dir == 'rtl'" [innerHtml]='jobDescriptionAr'></p>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-md-12 col-lg-6">

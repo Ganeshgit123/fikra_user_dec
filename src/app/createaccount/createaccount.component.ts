@@ -90,6 +90,7 @@ export class CreateaccountComponent implements OnInit {
   ngOnInit(): void {
     this.dir = localStorage.getItem("dir") || "ltr";
     var someDate = new Date();
+    // someDate.setDate(someDate.getDate()); //number  of days to add, e.x. 15 days
     this.newdate = someDate.toISOString().substr(0, 10);
     // this. = Date.now();
     this.myPromise

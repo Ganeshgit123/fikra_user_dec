@@ -80,8 +80,8 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <p class="spboxpara" *ngIf=" dir == 'ltr'">{{data.quotesData}}</p>
-                <p class="spboxpara" *ngIf=" dir == 'rtl'">{{data.quotesDataAr}}</p>
+                <p class="spboxpara" *ngIf=" dir == 'ltr'" [innerHtml]='data.quotesData'></p>
+                <p class="spboxpara" *ngIf=" dir == 'rtl'" [innerHtml]='data.quotesDataAr'></p>
 
                 <h4 class="spboxauthor">{{data.writerName}}</h4>
             </div>
@@ -128,8 +128,8 @@
                             </div>
                             <div class="tab-content col-md-9" id="v-pills-tabContent" *ngIf=" ques._is_on_ == true">
                                 <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id" role="tabpanel">
-                                    <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
-                                    <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                                    <span *ngIf=" dir == 'ltr'" [innerHtml]='ques.answer'></span>
+                                    <span *ngIf=" dir == 'rtl'" [innerHtml]='ques.answerAr'></span>
                                 </div>
                             </div>
                         </div>
@@ -183,8 +183,8 @@
                     </h2>
                     <div [id]="'flush-collapseOne'+data._id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <span *ngIf=" dir == 'ltr'">{{data.solution}}</span>
-                            <span *ngIf=" dir == 'rtl'">{{data.solutionAr}}</span>
+                            <span *ngIf=" dir == 'ltr'" [innerHtml]='data.solution'></span>
+                            <span *ngIf=" dir == 'rtl'" [innerHtml]='data.solutionAr'></span>
                         </div>
                     </div>
                 </div>

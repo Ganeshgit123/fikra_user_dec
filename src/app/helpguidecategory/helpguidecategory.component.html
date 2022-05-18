@@ -6,14 +6,14 @@
         <div class="d-flex align-items-start" *ngFor='let ques of dataList.question;let i = index'>
             <div class="nav flex-column nav-pills me-3 col-md-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link" (click)="selectedItem = i;" [ngClass]="{'active': selectedItem === i}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="'#v-pills-home'+ques._id" type="button" role="tab" *ngIf="ques._is_On_ == true">
-                    <span *ngIf=" dir == 'ltr'">{{ques.question}}</span>
-                    <span *ngIf=" dir == 'rtl'">{{ques.questionAr}}</span>
+                    <span *ngIf=" dir == 'ltr'" [innerHtml]='ques.question'></span>
+                    <span *ngIf=" dir == 'rtl'" [innerHtml]='ques.questionAr'></span>
                 </button>
             </div>
             <div class="tab-content col-md-9" id="v-pills-tabContent" *ngIf="ques._is_On_ == true">
                 <div class="tab-pane fade show" [ngClass]="{'active': selectedItem === i}" id="'v-pills-home'+ques._id" role="tabpanel">
-                    <span *ngIf=" dir == 'ltr'">{{ques.answer}}</span>
-                    <span *ngIf=" dir == 'rtl'">{{ques.answerAr}}</span>
+                    <span *ngIf=" dir == 'ltr'" [innerHtml]='ques.answer'></span>
+                    <span *ngIf=" dir == 'rtl'" [innerHtml]='ques.answerAr'></span>
                 </div>
             </div>
         </div>
