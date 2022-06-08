@@ -24,7 +24,7 @@ export class TellingstoryComponent implements OnInit {
     // this.url ="https://test.oppwa.com/v1/checkouts/F9665FCB872C708ED6F79F53C014D6BB.uat01-vm-tx04/payment"
     // this.opaystatus();
     let str =
-      "https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=" +
+      "https://oppwa.com/v1/paymentWidgets.js?checkoutId=" +
       this.checkoutId;
     var s = document.createElement("script");
     s.type = "text/javascript";
@@ -44,6 +44,6 @@ export class TellingstoryComponent implements OnInit {
 
   takepay() {
     this.url =
-      "https://test.oppwa.com/v1/checkouts/'+this.checkoutId+'/payment";
+      "https://oppwa.com/v1/checkouts/'+this.checkoutId+'/payment";
   }
 }
