@@ -32,7 +32,7 @@ const httpOptions = {
 export class AuthService {
   endpoint = environment.baseUrl;
   getendpoint = environment.baseUrl;
-  paymenturl = "https://oppwa.com/v1/paymentWidgets.js?";
+  paymenturl = "https://eu-prod.oppwa.com/v1/paymentWidgets.js?";
   // endpoint: string = 'https://fikra.app/api/user';
   // endpoint: string = 'http://127.0.0.1:8080/user'
   headers = new HttpHeaders()
